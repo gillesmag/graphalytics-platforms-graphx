@@ -1,10 +1,10 @@
-package org.tudelft.graphalytics.graphx.cd
+package nl.tudelft.graphalytics.graphx.cd
 
 import org.apache.spark.graphx.{EdgeDirection, VertexId, EdgeTriplet, Graph}
 import org.apache.spark.rdd.RDD
-import org.tudelft.graphalytics.algorithms.CDParameters
-import org.tudelft.graphalytics.graphx.GraphXPregelJob
-import org.tudelft.graphalytics.GraphFormat
+import nl.tudelft.graphalytics.algorithms.CDParameters
+import nl.tudelft.graphalytics.graphx.GraphXPregelJob
+import nl.tudelft.graphalytics.GraphFormat
 
 import scala.collection.mutable
 

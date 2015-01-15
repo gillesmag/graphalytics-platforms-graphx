@@ -1,10 +1,10 @@
-package org.tudelft.graphalytics.graphx.evo
+package nl.tudelft.graphalytics.graphx.evo
 
 import org.apache.spark.graphx._
 import org.apache.spark.rdd.RDD
-import org.tudelft.graphalytics.GraphFormat
-import org.tudelft.graphalytics.algorithms.EVOParameters
-import org.tudelft.graphalytics.graphx.GraphXJob
+import nl.tudelft.graphalytics.GraphFormat
+import nl.tudelft.graphalytics.algorithms.EVOParameters
+import nl.tudelft.graphalytics.graphx.GraphXJob
 
 import scala.util.Random
 

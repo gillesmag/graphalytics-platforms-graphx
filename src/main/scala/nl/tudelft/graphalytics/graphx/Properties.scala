@@ -1,4 +1,4 @@
-package org.tudelft.graphalytics.graphx
+package nl.tudelft.graphalytics.graphx
 
 import org.apache.commons.configuration.{ConfigurationException, PropertiesConfiguration}
 

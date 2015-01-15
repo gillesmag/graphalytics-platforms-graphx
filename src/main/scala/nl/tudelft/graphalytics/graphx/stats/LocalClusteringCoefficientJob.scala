@@ -1,9 +1,9 @@
-package org.tudelft.graphalytics.graphx.stats
+package nl.tudelft.graphalytics.graphx.stats
 
 import org.apache.spark.graphx._
 import org.apache.spark.rdd.RDD
-import org.tudelft.graphalytics.GraphFormat
-import org.tudelft.graphalytics.graphx.GraphXJob
+import nl.tudelft.graphalytics.GraphFormat
+import nl.tudelft.graphalytics.graphx.GraphXJob
 
 /**
  * The implementation of the stats (LCC) algorithm on GraphX. Inspired by the TriangleCount implementation bundled

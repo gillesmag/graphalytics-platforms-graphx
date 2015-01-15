@@ -1,16 +1,16 @@
-package org.tudelft.graphalytics.graphx
+package nl.tudelft.graphalytics.graphx
 
-import org.tudelft.graphalytics.Platform
-import org.tudelft.graphalytics.Graph
-import org.tudelft.graphalytics.algorithms.AlgorithmType
+import nl.tudelft.graphalytics.Platform
+import nl.tudelft.graphalytics.Graph
+import nl.tudelft.graphalytics.algorithms.AlgorithmType
 import org.apache.hadoop.fs.FileSystem
 import org.apache.hadoop.conf.Configuration
 import org.apache.hadoop.fs.Path
-import org.tudelft.graphalytics.graphx.bfs.BreadthFirstSearchJob
-import org.tudelft.graphalytics.graphx.cd.CommunityDetectionJob
-import org.tudelft.graphalytics.graphx.conn.ConnectedComponentsJob
-import org.tudelft.graphalytics.graphx.evo.ForestFireModelJob
-import org.tudelft.graphalytics.graphx.stats.LocalClusteringCoefficientJob
+import nl.tudelft.graphalytics.graphx.bfs.BreadthFirstSearchJob
+import nl.tudelft.graphalytics.graphx.cd.CommunityDetectionJob
+import nl.tudelft.graphalytics.graphx.conn.ConnectedComponentsJob
+import nl.tudelft.graphalytics.graphx.evo.ForestFireModelJob
+import nl.tudelft.graphalytics.graphx.stats.LocalClusteringCoefficientJob
 
 /**
  * Constants for GraphXPlatform

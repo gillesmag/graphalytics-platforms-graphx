@@ -1,9 +1,9 @@
-package org.tudelft.graphalytics.graphx.conn
+package nl.tudelft.graphalytics.graphx.conn
 
 import org.apache.spark.graphx.{VertexId, Graph}
 import org.apache.spark.rdd.RDD
-import org.tudelft.graphalytics.GraphFormat
-import org.tudelft.graphalytics.graphx.GraphXJob
+import nl.tudelft.graphalytics.GraphFormat
+import nl.tudelft.graphalytics.graphx.GraphXJob
 
 /**
  * The implementation of (strongly) connected components on GraphX.

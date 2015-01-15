@@ -1,9 +1,9 @@
-package org.tudelft.graphalytics.graphx.bfs
+package nl.tudelft.graphalytics.graphx.bfs
 
-import org.tudelft.graphalytics.graphx.GraphXPregelJob
-import org.tudelft.graphalytics.GraphFormat
+import nl.tudelft.graphalytics.graphx.GraphXPregelJob
+import nl.tudelft.graphalytics.GraphFormat
 import org.apache.spark.graphx.{EdgeTriplet, VertexId}
-import org.tudelft.graphalytics.algorithms.BFSParameters
+import nl.tudelft.graphalytics.algorithms.BFSParameters
 import org.apache.spark.graphx.Graph
 
 /**
