@@ -1,49 +1,58 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
+	<groupId>nl.tudelft.graphalytics</groupId>
 	<artifactId>graphalytics-platforms-graphx</artifactId>
+	<version>0.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<parent>
-		<groupId>nl.tudelft.graphalytics</groupId>
-		<artifactId>graphalytics-platforms</artifactId>
-		<version>0.2-SNAPSHOT</version>
-		<relativePath>../pom.xml</relativePath>
-	</parent>
 
 	<properties>
-		<top.dir>${project.basedir}/../..</top.dir>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<graphalytics.version>0.2-SNAPSHOT</graphalytics.version>
+		<hadoop.version>2.4.1</hadoop.version>
+		<scala.version>2.10.4</scala.version>
+		<scalatest.version>2.2.4</scalatest.version>
+		<spark.version>1.1.1</spark.version>
 	</properties>
+
+	<scm>
+		<developerConnection>scm:git:ssh://git@github.com/tudelft-atlarge/graphalytics-platforms-giraph</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
 
 	<dependencies>
 		<dependency>
 			<groupId>nl.tudelft.graphalytics</groupId>
 			<artifactId>graphalytics-core</artifactId>
-			<version>0.2-SNAPSHOT</version>
+			<version>${graphalytics.version}</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.scala-lang</groupId>
 			<artifactId>scala-library</artifactId>
-			<version>2.10.4</version>
+			<version>${scala.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.scalatest</groupId>
 			<artifactId>scalatest_2.10</artifactId>
-			<version>2.2.4</version>
+			<version>${scalatest.version}</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.apache.spark</groupId>
 			<artifactId>spark-core_2.10</artifactId>
-			<version>1.1.1</version>
+			<version>${spark.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.spark</groupId>
 			<artifactId>spark-graphx_2.10</artifactId>
-			<version>1.1.1</version>
+			<version>${spark.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.spark</groupId>
 			<artifactId>spark-yarn_2.10</artifactId>
-			<version>1.1.1</version>
+			<version>${spark.version}</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.apache.hadoop</groupId>
@@ -103,13 +112,77 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
+				<version>2.3</version>
 				<configuration>
+					<createDependencyReducedPom>false</createDependencyReducedPom>
+					<minimizeJar>false</minimizeJar>
+					<filters>
+						<filter>
+							<artifact>*.*</artifact>
+							<excludes>
+								<exclude>META-INF/*.SF</exclude>
+								<exclude>META-INF/*.DSA</exclude>
+								<exclude>META-INF/*.RSA</exclude>
+							</excludes>
+						</filter>
+					</filters>
 					<transformers>
 						<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
 							<resource>reference.conf</resource>
 						</transformer>
 					</transformers>
 				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Maven release management -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.5.1</version>
+				<configuration>
+					<tagNameFormat>v@{project.version}</tagNameFormat>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+					<pushChanges>false</pushChanges>
+				</configuration>
+			</plugin>
+
+			<!-- Plugin for ensuring the presence of license information -->
+			<plugin>
+				<groupId>com.mycila</groupId>
+				<artifactId>license-maven-plugin</artifactId>
+				<version>2.10</version>
+				<configuration>
+					<header>http://www.pds.ewi.tudelft.nl/~mihai/copyright-notice-template</header>
+					<properties>
+						<owner>Delft University of Technology</owner>
+						<project.inceptionYear>2015</project.inceptionYear>
+					</properties>
+					<excludes>
+						<exclude>README</exclude>
+						<exclude>LICENSE</exclude>
+						<exclude>pom.xml</exclude>
+						<exclude>src/test/resources/**</exclude>
+						<exclude>src/main/resources/**</exclude>
+						<exclude>config/**</exclude>
+						<exclude>src/main/java/nl/tudelft/graphalytics/giraph/conn/DirectedConnectedComponentsComputation.java</exclude>
+						<exclude>src/main/java/nl/tudelft/graphalytics/giraph/conn/UndirectedConnectedComponentsComputation.java</exclude>
+					</excludes>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 
 			<plugin>
