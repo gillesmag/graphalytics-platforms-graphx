@@ -178,30 +178,15 @@
 						<exclude>src/main/resources/**</exclude>
 						<exclude>config-template/**</exclude>
 					</excludes>
+					<mapping>
+						<java>SLASHSTAR_STYLE</java>
+						<scala>SLASHSTAR_STYLE</scala>
+					</mapping>
 				</configuration>
 				<executions>
 					<execution>
 						<goals>
 							<goal>check</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
-			<plugin>
-				<groupId>org.scalatest</groupId>
-				<artifactId>scalatest-maven-plugin</artifactId>
-				<version>1.0</version>
-				<configuration>
-					<reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
-					<junitxml>.</junitxml>
-					<filereports>GraphalyticsGraphXTestSuite.txt</filereports>
-				</configuration>
-				<executions>
-					<execution>
-						<id>test</id>
-						<goals>
-							<goal>test</goal>
 						</goals>
 					</execution>
 				</executions>
