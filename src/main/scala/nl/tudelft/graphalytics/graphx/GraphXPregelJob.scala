@@ -16,16 +16,15 @@
 package nl.tudelft.graphalytics.graphx
 
 import nl.tudelft.graphalytics.domain.GraphFormat
-import org.apache.spark.graphx.{VertexId, Graph}
+import org.apache.spark.graphx.{VertexId, Graph, EdgeTriplet}
 import scala.reflect.ClassTag
-import org.apache.spark.graphx.EdgeTriplet
 
 /**
  * Specialisation of GraphXJob for Pregel computations.
  */
 abstract class GraphXPregelJob[VD : ClassTag, ED : ClassTag, MSG : ClassTag]
-		(graphPath : String, graphFormat : GraphFormat, outputPath : String)
-		extends GraphXJob[VD, ED](graphPath, graphFormat, outputPath) {
+		(graphVertexPath : String, graphEdgePath : String, graphFormat : GraphFormat, outputPath : String)
+		extends GraphXJob[VD, ED](graphVertexPath, graphEdgePath, graphFormat, outputPath) {
 
 	/**
 	 * Executes the GraphX Pregel computation using functions provided by the

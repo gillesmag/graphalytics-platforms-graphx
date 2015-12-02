@@ -27,12 +27,13 @@ import org.apache.spark.graphx.Graph
  *
  * @tparam VD vertex data type
  * @tparam ED edge data type
- * @param graphPath the input path of the graph
+ * @param graphVertexPath the path of the input graph's vertex data
+ * @param graphEdgePath the path of the input graph's edge data
  * @param graphFormat the format of the graph data
  * @param outputPath the output path of the computation
  */
-abstract class GraphXJob[VD : ClassTag, ED : ClassTag](graphPath : String, graphFormat : GraphFormat,
-		outputPath : String) extends Serializable {
+abstract class GraphXJob[VD : ClassTag, ED : ClassTag](graphVertexPath : String, graphEdgePath : String,
+		graphFormat : GraphFormat, outputPath : String) extends Serializable {
 
 	/**
 	 * Executes the full GraphX job by reading and parsing the input graph,
@@ -41,15 +42,16 @@ abstract class GraphXJob[VD : ClassTag, ED : ClassTag](graphPath : String, graph
 	def runJob() = {
 		// Set up the Spark context for use in the GraphX job.
 		val sparkConfiguration = new SparkConf()
-		sparkConfiguration.setAppName(s"Graphalytics: ${getAppName}")
+		sparkConfiguration.setAppName(s"Graphalytics: $getAppName")
 		sparkConfiguration.setMaster("yarn-client")
 		sparkConfiguration.set("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
 		val sparkContext = new SparkContext(sparkConfiguration)
 
 		// Load the raw graph data
-		val graphData : RDD[String] = sparkContext.textFile(graphPath)
+		val vertexData : RDD[String] = sparkContext.textFile(graphVertexPath)
+		val edgeData : RDD[String] = sparkContext.textFile(graphEdgePath)
 		// Execute the job
-		val result = executeOnGraph(graphData)
+		val result = executeOnGraph(vertexData, edgeData)
 		// Create the output
 		val output = makeOutput(result)
 		// Write the result
@@ -65,12 +67,13 @@ abstract class GraphXJob[VD : ClassTag, ED : ClassTag](graphPath : String, graph
 	/**
 	 * Executes the GraphX job using a given graph (as a Spark RDD) and returns the result of the job.
 	 *
-	 * @param graphData the input graph as a Spark RDD
+	 * @param vertexData the vertices of the input graph as a Spark RDD
+	 * @param edgeData the edges of the input graph as a Spark RDD
 	 * @return the output of the job
 	 */
-	def executeOnGraph(graphData : RDD[String]) : Graph[VD, ED] = {
+	def executeOnGraph(vertexData : RDD[String], edgeData : RDD[String]) : Graph[VD, ED] = {
 		// Parse the vertex and edge data
-		val graph = GraphLoader.loadGraph(graphData, graphFormat, false).cache()
+		val graph = GraphLoader.loadGraph(vertexData, edgeData, graphFormat, false).cache()
 
 		// Run the graph computation
 		val output = compute(graph).cache()

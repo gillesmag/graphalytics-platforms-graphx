@@ -17,7 +17,7 @@ package nl.tudelft.graphalytics.graphx
 
 import nl.tudelft.graphalytics.domain.GraphFormat
 import org.apache.spark.rdd.RDD
-import org.apache.spark.graphx.{VertexId, Graph}
+import org.apache.spark.graphx.{Edge, VertexId, Graph}
 import scala.reflect.ClassTag
 
 /**
@@ -26,35 +26,21 @@ import scala.reflect.ClassTag
 object GraphLoader {
 
 	/**
-	 * @param graphData raw graph data represent as one string per line of input
+	 * @param vertexData raw vertex data in Graphalytics vertex/edge format
+	 * @param edgeData raw edge data in Graphalytics vertex/edge format
 	 * @param graphFormat the graph data format specification
 	 * @param defaultValue default value for each vertex
 	 * @tparam VD vertex value type
 	 * @return a parsed GraphX graph
 	 */
-	def loadGraph[VD : ClassTag](graphData : RDD[String], graphFormat : GraphFormat,
+	def loadGraph[VD : ClassTag](vertexData : RDD[String], edgeData : RDD[String], graphFormat : GraphFormat,
 			defaultValue : VD) : Graph[VD, Int] = {
-		val graph = Graph.fromEdgeTuples(loadEdges(graphFormat)(graphData), defaultValue)
-		if (!graphFormat.isEdgeBased) {
-			val vertices = loadVerticesFromVertexData(graphData, defaultValue)
-			Graph(graph.vertices.union(vertices).distinct(), graph.edges, defaultValue)
-		} else {
-			graph
-		}
-	}
-
-	/**
-	 * Convenience method for selected the correct load function based on the graph format.
-	 *
-	 * @param graphFormat the graph format specification
-	 * @return a function that can parse edges from the given input specification
-	 */
-	private def loadEdges(graphFormat : GraphFormat) : RDD[String] => RDD[(VertexId, VertexId)] = {
-		(graphFormat.isEdgeBased(), graphFormat.isDirected()) match {
-			case (false, _) => loadEdgesFromVertexData
-			case (true, true) => loadEdgesFromEdgeDirectedData
-			case (true, false) => loadEdgesFromEdgeUndirectedData
-		}
+		val vertices = vertexData.map[(VertexId, VD)](line => (line.toLong, defaultValue))
+		val edges = (
+				if (graphFormat.isDirected) loadEdgesFromEdgeDirectedData(edgeData)
+				else loadEdgesFromEdgeUndirectedData(edgeData)
+		).map { case (vid1, vid2) => Edge(vid1, vid2, 0) }
+		Graph(vertices, edges)
 	}
 
 	/**
@@ -81,41 +67,6 @@ object GraphLoader {
 		}
 		
 		graphData.flatMap(lineToEdges)
-	}
-
-	/**
-	 * @param graphData graph data in vertex-based format
-	 * @return a set of parsed edges
-	 */
-	private def loadEdgesFromVertexData(graphData : RDD[String]) : RDD[(VertexId, VertexId)] = {
-		def lineToEdges(s : String) : Array[(VertexId, VertexId)] = {
-			val tokens = s.trim.split("""\s""")
-			val src = tokens(0).toLong
-			
-			tokens.tail.map(s => (src, s.toLong))
-		}
-		
-		graphData.flatMap(lineToEdges)
-	}
-
-	/**
-	 * @param graphData graph data in vertex-based format
-	 * @param defaultValue default value of vertices
-	 * @tparam VD vertex value type
-	 * @return a set of vertices that were potentially not included in the edge set
-	 */
-	private def loadVerticesFromVertexData[VD : ClassTag](graphData : RDD[String], defaultValue : VD) :
-			RDD[(VertexId, VD)] = {
-		def lineToVertex(s : String) : Iterable[(VertexId, VD)] = {
-			val tokens = s.trim.split("""\s""")
-			val src = tokens(0).toLong
-			if (tokens.size == 1)
-				Iterable((src, defaultValue))
-			else
-				Iterable()
-		}
-
-		graphData.flatMap(lineToVertex)
 	}
 	
 }

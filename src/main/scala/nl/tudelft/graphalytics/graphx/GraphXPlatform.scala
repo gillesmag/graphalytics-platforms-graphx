@@ -47,7 +47,7 @@ object GraphXPlatform {
 class GraphXPlatform extends Platform {
 	import GraphXPlatform._
 
-	var pathsOfGraphs : Map[String, String] = Map()
+	var pathsOfGraphs : Map[String, (String, String)] = Map()
 
 	/* Parse the GraphX configuration file */
 	val config = Properties.fromFile(CONFIG_PATH).getOrElse(Properties.empty())
@@ -57,35 +57,38 @@ class GraphXPlatform extends Platform {
 
 	val hdfsDirectory = config.getString(HDFS_DIRECTORY_KEY).getOrElse(HDFS_DIRECTORY)
 
-	def uploadGraph(graph : Graph, filePath : String) = {
-		val localPath = new Path(filePath)
-		val hdfsPath = new Path(s"$hdfsDirectory/${getName}/input/${graph.getName}")
+	def uploadGraph(graph : Graph) = {
+		val localVertexPath = new Path(graph.getVertexFilePath)
+		val localEdgePath = new Path(graph.getEdgeFilePath)
+		val hdfsVertexPath = new Path(s"$hdfsDirectory/$getName/input/${graph.getName}.v")
+		val hdfsEdgePath = new Path(s"$hdfsDirectory/$getName/input/${graph.getName}.e")
 
 		val fs = FileSystem.get(new Configuration())
-		fs.copyFromLocalFile(localPath, hdfsPath)
+		fs.copyFromLocalFile(localVertexPath, hdfsVertexPath)
+		fs.copyFromLocalFile(localEdgePath, hdfsEdgePath)
 		fs.close()
 		
-		pathsOfGraphs += (graph.getName -> hdfsPath.toUri.getPath)
+		pathsOfGraphs += (graph.getName -> (hdfsVertexPath.toUri.getPath, hdfsEdgePath.toUri.getPath))
 	}
 
 	def executeAlgorithmOnGraph(algorithmType : Algorithm,
 			graph : Graph, parameters : Object) : PlatformBenchmarkResult = {
 		try  {
-			val path = pathsOfGraphs(graph.getName)
-			val outPath = s"$hdfsDirectory/${getName}/output/${algorithmType.name}-${graph.getName}"
+			val (vertexPath, edgePath) = pathsOfGraphs(graph.getName)
+			val outPath = s"$hdfsDirectory/$getName/output/${algorithmType.name}-${graph.getName}"
 			val format = graph.getGraphFormat
 			
 			val job = algorithmType match {
-				case Algorithm.BFS => new BreadthFirstSearchJob(path, format, outPath, parameters)
-				case Algorithm.CD => new CommunityDetectionJob(path, format, outPath, parameters)
-				case Algorithm.CONN => new ConnectedComponentsJob(path, format, outPath)
-				case Algorithm.EVO => new ForestFireModelJob(path, format, outPath, parameters)
-				case Algorithm.STATS => new LocalClusteringCoefficientJob(path, format, outPath)
+				case Algorithm.BFS => new BreadthFirstSearchJob(vertexPath, edgePath, format, outPath, parameters)
+				case Algorithm.CD => new CommunityDetectionJob(vertexPath, edgePath, format, outPath, parameters)
+				case Algorithm.CONN => new ConnectedComponentsJob(vertexPath, edgePath, format, outPath)
+				case Algorithm.EVO => new ForestFireModelJob(vertexPath, edgePath, format, outPath, parameters)
+				case Algorithm.STATS => new LocalClusteringCoefficientJob(vertexPath, edgePath, format, outPath)
 				case x => throw new IllegalArgumentException(s"Invalid algorithm type: $x")
 			}
 			
 			if (job.hasValidInput) {
-				job.runJob
+				job.runJob()
 				// TODO: After executing the job, any intermediate and output data should be
 				// verified and/or cleaned up. This should preferably be configurable.
 				new PlatformBenchmarkResult(NestedConfiguration.empty())
@@ -101,7 +104,7 @@ class GraphXPlatform extends Platform {
 		// TODO: Delete graph data from HDFS to clean up. This should preferably be configurable.
 	}
 
-	def getName() : String = "graphx"
+	def getName : String = "graphx"
 
 	def getPlatformConfiguration: NestedConfiguration =
 		try {

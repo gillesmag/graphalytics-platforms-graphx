@@ -23,13 +23,14 @@ import nl.tudelft.graphalytics.graphx.{GraphXJobOutput, GraphXJob}
 /**
  * The implementation of (strongly) connected components on GraphX.
  *
- * @param graphPath the input path of the graph
+ * @param graphVertexPath the path of the input graph's vertex data
+ * @param graphEdgePath the path of the input graph's edge data
  * @param graphFormat the format of the graph data
  * @param outputPath the output path of the computation
  * @author Tim Hegeman
  */
-class ConnectedComponentsJob(graphPath : String, graphFormat : GraphFormat, outputPath : String)
-		extends GraphXJob[VertexId, Int](graphPath, graphFormat, outputPath) {
+class ConnectedComponentsJob(graphVertexPath : String, graphEdgePath : String, graphFormat : GraphFormat, outputPath : String)
+		extends GraphXJob[VertexId, Int](graphVertexPath, graphEdgePath, graphFormat, outputPath) {
 
 	/**
 	 * Perform the graph computation using job-specific logic.
