@@ -19,18 +19,16 @@ import java.util
 
 import nl.tudelft.graphalytics.domain.GraphFormat
 import nl.tudelft.graphalytics.domain.algorithms.BreadthFirstSearchParameters
-import nl.tudelft.graphalytics.graphx.ValidationGraphUtils
+import nl.tudelft.graphalytics.graphx.{GraphXJobTest, ValidationGraphUtils}
 import nl.tudelft.graphalytics.validation.GraphStructure
 import nl.tudelft.graphalytics.validation.bfs.{BreadthFirstSearchOutput, BreadthFirstSearchValidationTest}
-import org.apache.spark.SparkContext
-import scala.collection.JavaConverters._
 
 /**
  * Integration test for BFS job on GraphX.
  *
  * @author Tim Hegeman
  */
-class BreadthFirstSearchJobTest extends BreadthFirstSearchValidationTest {
+class BreadthFirstSearchJobTest extends BreadthFirstSearchValidationTest with GraphXJobTest {
 
 	override def executeUndirectedBreadthFirstSearch(graph: GraphStructure,
 			parameters: BreadthFirstSearchParameters): BreadthFirstSearchOutput = {
@@ -47,21 +45,10 @@ class BreadthFirstSearchJobTest extends BreadthFirstSearchValidationTest {
 	private def executeBreadthFirstSearch(vertexData : List[String], edgeData : List[String], directed: Boolean,
 			parameters: BreadthFirstSearchParameters): BreadthFirstSearchOutput = {
 		val bfsJob = new BreadthFirstSearchJob("", "", new GraphFormat(directed), "", parameters)
-		var sc: SparkContext = null
-		try {
-			sc = new SparkContext("local", "Graphalytics unit test")
-			val vertexRdd = sc.parallelize(vertexData)
-			val edgeRdd = sc.parallelize(edgeData)
-			val output = bfsJob.executeOnGraph(vertexRdd, edgeRdd)
-			val outputAsMap = output.vertices.collect().toMap
-			val outputAsJavaMap = new util.HashMap[java.lang.Long, java.lang.Long](outputAsMap.size)
-			outputAsMap.foreach { case (vid, value) => outputAsJavaMap.put(vid, value) }
-			new BreadthFirstSearchOutput(outputAsJavaMap)
-		} finally {
-			if (sc != null) {
-				sc.stop()
-			}
-		}
+		val (vertexOutput, _) = executeJob(bfsJob, vertexData, edgeData)
+		val outputAsJavaMap = new util.HashMap[java.lang.Long, java.lang.Long](vertexOutput.size)
+		vertexOutput.foreach { case (vid, value) => outputAsJavaMap.put(vid, value) }
+		new BreadthFirstSearchOutput(outputAsJavaMap)
 	}
 
 }
