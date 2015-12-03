@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2015 Delft University of Technology
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,14 +26,15 @@ import scala.util.Random
 /**
  * The implementation of the graph evolution (forest fire model) algorithm on GraphX.
  *
- * @param graphPath the input path of the graph
+ * @param graphVertexPath the path of the input graph's vertex data
+ * @param graphEdgePath the path of the input graph's edge data
  * @param graphFormat the format of the graph data
  * @param outputPath the output path of the computation
  * @author Tim Hegeman
  */
-class ForestFireModelJob(graphPath : String, graphFormat : GraphFormat, outputPath : String,
-                         parameters : Object)
-		extends GraphXJob[Boolean, Int](graphPath, graphFormat, outputPath) {
+class ForestFireModelJob(graphVertexPath : String, graphEdgePath : String, graphFormat : GraphFormat,
+		outputPath : String, parameters : Object)
+		extends GraphXJob[Boolean, Int](graphVertexPath, graphEdgePath, graphFormat, outputPath) {
 
 	val evoParam : ForestFireModelParameters = parameters match {
 		case p : ForestFireModelParameters => p
@@ -212,9 +213,15 @@ class ForestFireModelJob(graphPath : String, graphFormat : GraphFormat, outputPa
 		}
 
 		// Merge the new edges into the original graph
-		val graphEdges = g.edges.union(edgeList.flatMap {
-			case (vid, sources) => sources.map(Edge(_, vid, 1))
-		})
+		val graphEdges = if (graphFormat.isDirected) {
+			g.edges.union(edgeList.flatMap {
+				case (vid, sources) => sources.map(Edge(_, vid, 1))
+			})
+		} else {
+			g.edges.union(edgeList.flatMap {
+				case (vid, sources) => sources.flatMap(source => List(Edge(source, vid, 1), Edge(vid, source, 1)))
+			})
+		}
 		Graph[Boolean, Int](g.vertices.mapValues(_ => false), graphEdges, false)
 	}
 

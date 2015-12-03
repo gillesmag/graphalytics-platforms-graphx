@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2015 Delft University of Technology
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,16 +26,17 @@ import scala.collection.mutable
 /**
  * The implementation of the community detection algorithm on GraphX.
  *
- * @param graphPath the input path of the graph
+ * @param graphVertexPath the path of the input graph's vertex data
+ * @param graphEdgePath the path of the input graph's edge data
  * @param graphFormat the format of the graph data
  * @param outputPath the output path of the computation
  * @param parameters the graph-specific parameters for community detection
  * @author Sietse Au
  * @author Tim Hegeman
  */
-class CommunityDetectionJob(graphPath : String, graphFormat : GraphFormat,
+class CommunityDetectionJob(graphVertexPath : String, graphEdgePath : String, graphFormat : GraphFormat,
 		outputPath : String, parameters : Object)
-		extends	GraphXPregelJob[VertexData, EdgeData, MessageData](graphPath, graphFormat, outputPath) {
+		extends GraphXPregelJob[VertexData, EdgeData, MessageData](graphVertexPath, graphEdgePath, graphFormat, outputPath) {
 
 	val cdParam : CommunityDetectionParameters = parameters match {
 		case p : CommunityDetectionParameters => p

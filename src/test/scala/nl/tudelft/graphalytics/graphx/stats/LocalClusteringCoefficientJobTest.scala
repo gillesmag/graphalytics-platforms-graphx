@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2015 Delft University of Technology
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,114 +15,39 @@
  */
 package nl.tudelft.graphalytics.graphx.stats
 
-import nl.tudelft.graphalytics.domain.GraphFormat
-import nl.tudelft.graphalytics.graphx.AbstractJobTest
-import org.apache.spark.graphx.Graph
-import org.scalatest.FunSuite
+import java.util
 
-import scala.io.Source
+import nl.tudelft.graphalytics.domain.GraphFormat
+import nl.tudelft.graphalytics.graphx.{ValidationGraphUtils, GraphXJobTest}
+import nl.tudelft.graphalytics.validation.GraphStructure
+import nl.tudelft.graphalytics.validation.stats.{LocalClusteringCoefficientOutput, LocalClusteringCoefficientValidationTest}
 
 /**
- * Integration test for local clustering coefficient on GraphX.
+ * Integration test for Local Clustering Coefficient job on GraphX.
  *
  * @author Tim Hegeman
  */
-class LocalClusteringCoefficientJobTest extends FunSuite with AbstractJobTest {
+class LocalClusteringCoefficientJobTest extends LocalClusteringCoefficientValidationTest with GraphXJobTest {
 
-	val ERROR_BOUND = 1e-4
-
-	test("Local clustering coefficient on directed example graph") {
-		// Initialize the local clustering coefficient job
-		val lccJob = new LocalClusteringCoefficientJob(
-			"ignored",
-			new GraphFormat(true, false),
-			"ignored"
-		)
-
-		// Execute the LCC job
-		performTest[Double, Int](lccJob, getClass().getResource("/test-examples/stats-dir-input"),
-			(result : Graph[Double, Int]) => {
-				val resVertices = result.vertices.collect().toMap
-
-				// Parse the expected result
-				val expectedFileLines = Source.fromURL(getClass().getResource("/test-examples/stats-dir-output")).
-						getLines().toList
-				val expectedMeanLcc = expectedFileLines(0).toDouble
-				val expected = expectedFileLines.drop(1).map { s => {
-					val tokens = s.split(" ")
-					(tokens(0).toLong, tokens(1).toDouble)
-				}}.toMap
-
-				// Verify the result
-				assertResult(expected.size, "vertices in the result") {
-					resVertices.size
-				}
-				expected.foreach {
-					case (vid, lcc) => {
-						val actualLcc = resVertices.get(vid).get
-						if (actualLcc < lcc - ERROR_BOUND || actualLcc > lcc + ERROR_BOUND) {
-							assertResult(lcc, "local clustering coefficient of vertex " + vid) {
-								actualLcc
-							}
-						}
-					}
-				}
-
-				val meanLcc = lccJob.makeOutput(result).meanLcc
-				if (meanLcc < expectedMeanLcc - ERROR_BOUND || meanLcc > expectedMeanLcc + ERROR_BOUND) {
-					assertResult(expectedMeanLcc, "mean local clustering coefficient") {
-						meanLcc
-					}
-				}
-			}
-		)
+	override def executeDirectedLocalClusteringCoefficient(graph : GraphStructure)
+	: LocalClusteringCoefficientOutput = {
+		val (vertexData, edgeData) = ValidationGraphUtils.directedValidationGraphToEdgeList(graph)
+		executeLocalClusteringCoefficient(vertexData, edgeData, true)
 	}
 
-	test("Local clustering coefficient on undirected example graph") {
-		// Initialize the local clustering coefficient job
-		val lccJob = new LocalClusteringCoefficientJob(
-			"ignored",
-			new GraphFormat(false, false),
-			"ignored"
-		)
+	override def executeUndirectedLocalClusteringCoefficient(graph : GraphStructure)
+	: LocalClusteringCoefficientOutput = {
+		val (vertexData, edgeData) = ValidationGraphUtils.undirectedValidationGraphToEdgeList(graph)
+		executeLocalClusteringCoefficient(vertexData, edgeData, false)
+	}
 
-		// Execute the LCC job
-		performTest[Double, Int](lccJob, getClass().getResource("/test-examples/stats-undir-input"),
-			(result : Graph[Double, Int]) => {
-				val resVertices = result.vertices.collect().toMap
-
-				// Parse the expected result
-				val expectedFileLines = Source.fromURL(getClass().getResource("/test-examples/stats-undir-output")).
-						getLines().toList
-				val expectedMeanLcc = expectedFileLines(0).toDouble
-				val expected = expectedFileLines.drop(1).map { s => {
-					val tokens = s.split(" ")
-					(tokens(0).toLong, tokens(1).toDouble)
-				}}.toMap
-
-				// Verify the result
-				assertResult(expected.size, "vertices in the result") {
-					resVertices.size
-				}
-				expected.foreach {
-					case (vid, lcc) => {
-						val actualLcc = resVertices.get(vid).get
-						if (actualLcc < lcc - ERROR_BOUND || actualLcc > lcc + ERROR_BOUND) {
-							assertResult(lcc, "local clustering coefficient of vertex " + vid) {
-								actualLcc
-							}
-						}
-					}
-				}
-
-				val meanLcc = lccJob.makeOutput(result).meanLcc
-				if (meanLcc < expectedMeanLcc - ERROR_BOUND || meanLcc > expectedMeanLcc + ERROR_BOUND) {
-					assertResult(expectedMeanLcc, "mean local clustering coefficient") {
-						meanLcc
-					}
-				}
-			}
-		)
+	private def executeLocalClusteringCoefficient(vertexData : List[String], edgeData : List[String],
+			directed: Boolean) : LocalClusteringCoefficientOutput = {
+		val lccJob = new LocalClusteringCoefficientJob("", "", new GraphFormat(directed), "")
+		val (vertexOutput, _) = executeJob(lccJob, vertexData, edgeData)
+		val outputAsJavaMap = new util.HashMap[java.lang.Long, java.lang.Double](vertexOutput.size)
+		vertexOutput.foreach { case (vid, value) => outputAsJavaMap.put(vid, value) }
+		new LocalClusteringCoefficientOutput(outputAsJavaMap, vertexOutput.values.sum / vertexOutput.size)
 	}
 
 }

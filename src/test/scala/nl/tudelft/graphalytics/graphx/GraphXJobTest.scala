@@ -15,26 +15,31 @@
  */
 package nl.tudelft.graphalytics.graphx
 
-import org.apache.spark.graphx.VertexId
+import org.apache.spark.SparkContext
 
-import scala.collection.mutable
+import scala.reflect.ClassTag
 
 /**
- * Types for the CommunityDetection GraphX job.
- * 
- * @author Sietse Au
+ * Trait for GraphXJob tests.
+ *
  * @author Tim Hegeman
  */
-package object cd {
+trait GraphXJobTest {
 
-	type Label = VertexId
-	type Score = Double
-	type Delta = Double
-	type VertexDegree = Int
-	type LabelToPropagate = (Label, Score, VertexDegree)
-	type Neighbours = Set[Label]
-	type VertexData = (Label, Neighbours, Option[LabelToPropagate])
-	type EdgeData = Int
-	type MessageData = Array[LabelToPropagate]
-	
+	def executeJob[VD : ClassTag, ED : ClassTag](job : GraphXJob[VD, ED], vertexData : List[String],
+			edgeData : List[String]) : (Map[Long, VD], Set[(Long, Long)]) = {
+		var sc: SparkContext = null
+		try {
+			sc = new SparkContext("local", "Graphalytics unit test")
+			val vertexRdd = sc.parallelize(vertexData)
+			val edgeRdd = sc.parallelize(edgeData)
+			val output = job.executeOnGraph(vertexRdd, edgeRdd)
+			(output.vertices.collect().toMap, output.edges.map(e => (e.srcId, e.dstId)).collect().toSet)
+		} finally {
+			if (sc != null) {
+				sc.stop()
+			}
+		}
+	}
+
 }

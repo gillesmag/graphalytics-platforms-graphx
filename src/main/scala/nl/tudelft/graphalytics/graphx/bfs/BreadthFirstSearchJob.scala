@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2015 Delft University of Technology
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,22 +17,22 @@ package nl.tudelft.graphalytics.graphx.bfs
 
 import nl.tudelft.graphalytics.domain.GraphFormat
 import nl.tudelft.graphalytics.graphx.{GraphXJobOutput, GraphXPregelJob}
-import org.apache.spark.graphx.{EdgeTriplet, VertexId}
+import org.apache.spark.graphx.{VertexId, EdgeTriplet, Graph}
 import nl.tudelft.graphalytics.domain.algorithms.BreadthFirstSearchParameters
-import org.apache.spark.graphx.Graph
 
 /**
  * The implementation of BFS on GraphX.
  *
- * @param graphPath the input path of the graph
+ * @param graphVertexPath the path of the input graph's vertex data
+ * @param graphEdgePath the path of the input graph's edge data
  * @param graphFormat the format of the graph data
  * @param outputPath the output path of the computation
  * @param parameters the graph-specific parameters for BFS
  * @author Tim Hegeman
  */
-class BreadthFirstSearchJob(graphPath : String, graphFormat : GraphFormat,
+class BreadthFirstSearchJob(graphVertexPath : String, graphEdgePath : String, graphFormat : GraphFormat,
 		outputPath : String, parameters : Object)
-		extends	GraphXPregelJob[Long, Int, Long](graphPath, graphFormat, outputPath) {
+		extends	GraphXPregelJob[Long, Int, Long](graphVertexPath, graphEdgePath, graphFormat, outputPath) {
 
 	val bfsParam : BreadthFirstSearchParameters = parameters match {
 		case p : BreadthFirstSearchParameters => p

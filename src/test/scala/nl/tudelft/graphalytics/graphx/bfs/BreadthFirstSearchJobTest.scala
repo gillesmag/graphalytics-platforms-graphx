@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2015 Delft University of Technology
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,49 +15,40 @@
  */
 package nl.tudelft.graphalytics.graphx.bfs
 
+import java.util
+
 import nl.tudelft.graphalytics.domain.GraphFormat
 import nl.tudelft.graphalytics.domain.algorithms.BreadthFirstSearchParameters
-import nl.tudelft.graphalytics.graphx.AbstractJobTest
-import org.apache.spark.graphx.Graph
-import org.scalatest.FunSuite
+import nl.tudelft.graphalytics.graphx.{GraphXJobTest, ValidationGraphUtils}
+import nl.tudelft.graphalytics.validation.GraphStructure
+import nl.tudelft.graphalytics.validation.bfs.{BreadthFirstSearchOutput, BreadthFirstSearchValidationTest}
 
 /**
  * Integration test for BFS job on GraphX.
  *
  * @author Tim Hegeman
  */
-class BreadthFirstSearchJobTest extends FunSuite with AbstractJobTest {
+class BreadthFirstSearchJobTest extends BreadthFirstSearchValidationTest with GraphXJobTest {
 
-	test("BFS on example graph") {
-		// Initialize the BFS job
-		val bfsJob = new BreadthFirstSearchJob(
-			"ignored",
-			new GraphFormat(true, false),
-			"ignored",
-			new BreadthFirstSearchParameters(1L)
-		)
+	override def executeUndirectedBreadthFirstSearch(graph: GraphStructure,
+			parameters: BreadthFirstSearchParameters): BreadthFirstSearchOutput = {
+		val (vertexData, edgeData) = ValidationGraphUtils.undirectedValidationGraphToEdgeList(graph)
+		executeBreadthFirstSearch(vertexData, edgeData, false, parameters)
+	}
 
-		// Execute the BFS job
-		performTest[Long, Int](bfsJob, getClass().getResource("/test-examples/bfs-input"),
-			(result: Graph[Long, Int]) => {
-				val resVertices = result.vertices.collect().toMap
+	override def executeDirectedBreadthFirstSearch(graph: GraphStructure,
+			parameters: BreadthFirstSearchParameters): BreadthFirstSearchOutput = {
+		val (vertexData, edgeData) = ValidationGraphUtils.directedValidationGraphToEdgeList(graph)
+		executeBreadthFirstSearch(vertexData, edgeData, true, parameters)
+	}
 
-				// Parse the expected result
-				val expected = readGraphWithValues(getClass().getResource("/test-examples/bfs-output"), {
-					_(0).toLong
-				})
-
-				// Verify the result
-				assertResult(expected.size, "vertices in the result") {
-					resVertices.size
-				}
-				expected.foreach {
-					case (vid, distance) => assertResult(distance, "distance of vertex " + vid) {
-						resVertices.get(vid).get
-					}
-				}
-			}
-		)
+	private def executeBreadthFirstSearch(vertexData : List[String], edgeData : List[String], directed: Boolean,
+			parameters: BreadthFirstSearchParameters): BreadthFirstSearchOutput = {
+		val bfsJob = new BreadthFirstSearchJob("", "", new GraphFormat(directed), "", parameters)
+		val (vertexOutput, _) = executeJob(bfsJob, vertexData, edgeData)
+		val outputAsJavaMap = new util.HashMap[java.lang.Long, java.lang.Long](vertexOutput.size)
+		vertexOutput.foreach { case (vid, value) => outputAsJavaMap.put(vid, value) }
+		new BreadthFirstSearchOutput(outputAsJavaMap)
 	}
 
 }
