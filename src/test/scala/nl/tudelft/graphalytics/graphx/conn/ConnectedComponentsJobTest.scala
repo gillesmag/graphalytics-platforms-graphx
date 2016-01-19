@@ -20,7 +20,7 @@ import java.util
 import nl.tudelft.graphalytics.domain.GraphFormat
 import nl.tudelft.graphalytics.graphx.{GraphXJobTest, ValidationGraphUtils}
 import nl.tudelft.graphalytics.validation.GraphStructure
-import nl.tudelft.graphalytics.validation.conn.{ConnectedComponentsOutput, ConnectedComponentsValidationTest}
+import nl.tudelft.graphalytics.validation.algorithms.conn.{ConnectedComponentsOutput, ConnectedComponentsValidationTest}
 
 /**
  * Integration test for Connected Components job on GraphX.

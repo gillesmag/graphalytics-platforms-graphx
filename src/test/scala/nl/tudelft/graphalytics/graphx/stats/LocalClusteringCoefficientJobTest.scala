@@ -20,7 +20,7 @@ import java.util
 import nl.tudelft.graphalytics.domain.GraphFormat
 import nl.tudelft.graphalytics.graphx.{ValidationGraphUtils, GraphXJobTest}
 import nl.tudelft.graphalytics.validation.GraphStructure
-import nl.tudelft.graphalytics.validation.stats.{LocalClusteringCoefficientOutput, LocalClusteringCoefficientValidationTest}
+import nl.tudelft.graphalytics.validation.algorithms.stats.{LocalClusteringCoefficientOutput, LocalClusteringCoefficientValidationTest}
 
 /**
  * Integration test for Local Clustering Coefficient job on GraphX.

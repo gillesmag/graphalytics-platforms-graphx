@@ -22,7 +22,7 @@ import nl.tudelft.graphalytics.domain.GraphFormat
 import nl.tudelft.graphalytics.domain.algorithms.ForestFireModelParameters
 import nl.tudelft.graphalytics.graphx.{ValidationGraphUtils, GraphXJobTest}
 import nl.tudelft.graphalytics.validation.GraphStructure
-import nl.tudelft.graphalytics.validation.evo.ForestFireModelValidationTest
+import nl.tudelft.graphalytics.validation.algorithms.evo.ForestFireModelValidationTest
 
 /**
  * Integration test for Forest Fire Model job on GraphX.

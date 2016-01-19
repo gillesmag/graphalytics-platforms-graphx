@@ -21,7 +21,7 @@ import nl.tudelft.graphalytics.domain.GraphFormat
 import nl.tudelft.graphalytics.domain.algorithms.BreadthFirstSearchParameters
 import nl.tudelft.graphalytics.graphx.{GraphXJobTest, ValidationGraphUtils}
 import nl.tudelft.graphalytics.validation.GraphStructure
-import nl.tudelft.graphalytics.validation.bfs.{BreadthFirstSearchOutput, BreadthFirstSearchValidationTest}
+import nl.tudelft.graphalytics.validation.algorithms.bfs.{BreadthFirstSearchOutput, BreadthFirstSearchValidationTest}
 
 /**
  * Integration test for BFS job on GraphX.

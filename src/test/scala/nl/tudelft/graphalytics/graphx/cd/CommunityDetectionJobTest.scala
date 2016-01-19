@@ -21,7 +21,7 @@ import nl.tudelft.graphalytics.domain.GraphFormat
 import nl.tudelft.graphalytics.domain.algorithms.CommunityDetectionParameters
 import nl.tudelft.graphalytics.graphx.{ValidationGraphUtils, GraphXJobTest}
 import nl.tudelft.graphalytics.validation.GraphStructure
-import nl.tudelft.graphalytics.validation.cd.{CommunityDetectionOutput, CommunityDetectionValidationTest}
+import nl.tudelft.graphalytics.validation.algorithms.cd.{CommunityDetectionOutput, CommunityDetectionValidationTest}
 
 /**
  * Integration test for Community Detection job on GraphX.
