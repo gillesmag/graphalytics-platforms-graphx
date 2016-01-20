@@ -15,6 +15,7 @@
  */
 package nl.tudelft.graphalytics.graphx
 
+import nl.tudelft.graphalytics.graphx.pr.PageRankJob
 import nl.tudelft.graphalytics.{PlatformExecutionException, Platform}
 import nl.tudelft.graphalytics.domain._
 import org.apache.commons.configuration.{ConfigurationException, PropertiesConfiguration}
@@ -86,6 +87,7 @@ class GraphXPlatform extends Platform {
 				case Algorithm.CONN => new ConnectedComponentsJob(vertexPath, edgePath, format, outPath)
 				case Algorithm.EVO => new ForestFireModelJob(vertexPath, edgePath, format, outPath, parameters)
 				case Algorithm.STATS => new LocalClusteringCoefficientJob(vertexPath, edgePath, format, outPath)
+				case Algorithm.PAGERANK => new PageRankJob(vertexPath, edgePath, format, outPath, parameters)
 				case x => throw new IllegalArgumentException(s"Invalid algorithm type: $x")
 			}
 			
