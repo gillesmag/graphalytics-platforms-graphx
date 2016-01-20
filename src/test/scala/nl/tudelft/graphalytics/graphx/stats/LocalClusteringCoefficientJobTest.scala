@@ -31,13 +31,13 @@ class LocalClusteringCoefficientJobTest extends LocalClusteringCoefficientValida
 
 	override def executeDirectedLocalClusteringCoefficient(graph : GraphStructure)
 	: LocalClusteringCoefficientOutput = {
-		val (vertexData, edgeData) = ValidationGraphUtils.directedValidationGraphToEdgeList(graph)
+		val (vertexData, edgeData) = ValidationGraphUtils.directedValidationGraphToVertexEdgeList(graph)
 		executeLocalClusteringCoefficient(vertexData, edgeData, true)
 	}
 
 	override def executeUndirectedLocalClusteringCoefficient(graph : GraphStructure)
 	: LocalClusteringCoefficientOutput = {
-		val (vertexData, edgeData) = ValidationGraphUtils.undirectedValidationGraphToEdgeList(graph)
+		val (vertexData, edgeData) = ValidationGraphUtils.undirectedValidationGraphToVertexEdgeList(graph)
 		executeLocalClusteringCoefficient(vertexData, edgeData, false)
 	}
 
@@ -47,7 +47,7 @@ class LocalClusteringCoefficientJobTest extends LocalClusteringCoefficientValida
 		val (vertexOutput, _) = executeJob(lccJob, vertexData, edgeData)
 		val outputAsJavaMap = new util.HashMap[java.lang.Long, java.lang.Double](vertexOutput.size)
 		vertexOutput.foreach { case (vid, value) => outputAsJavaMap.put(vid, value) }
-		new LocalClusteringCoefficientOutput(outputAsJavaMap, vertexOutput.values.sum / vertexOutput.size)
+		new LocalClusteringCoefficientOutput(outputAsJavaMap)
 	}
 
 }

@@ -30,12 +30,12 @@ import nl.tudelft.graphalytics.validation.algorithms.conn.{ConnectedComponentsOu
 class ConnectedComponentsJobTest extends ConnectedComponentsValidationTest with GraphXJobTest {
 
 	override def executeDirectedConnectedComponents(graph : GraphStructure) : ConnectedComponentsOutput = {
-		val (vertexData, edgeData) = ValidationGraphUtils.directedValidationGraphToEdgeList(graph)
+		val (vertexData, edgeData) = ValidationGraphUtils.directedValidationGraphToVertexEdgeList(graph)
 		executeConnectedComponents(vertexData, edgeData, true)
 	}
 
 	override def executeUndirectedConnectedComponents(graph : GraphStructure) : ConnectedComponentsOutput = {
-		val (vertexData, edgeData) = ValidationGraphUtils.undirectedValidationGraphToEdgeList(graph)
+		val (vertexData, edgeData) = ValidationGraphUtils.undirectedValidationGraphToVertexEdgeList(graph)
 		executeConnectedComponents(vertexData, edgeData, false)
 	}
 

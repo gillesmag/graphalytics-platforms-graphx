@@ -33,13 +33,13 @@ class ForestFireModelJobTest extends ForestFireModelValidationTest with GraphXJo
 
 	override def executeDirectedForestFireModel(graph : GraphStructure, parameters : ForestFireModelParameters)
 	: GraphStructure = {
-		val (vertexData, edgeData) = ValidationGraphUtils.directedValidationGraphToEdgeList(graph)
+		val (vertexData, edgeData) = ValidationGraphUtils.directedValidationGraphToVertexEdgeList(graph)
 		executeForestFireModel(vertexData, edgeData, true, parameters)
 	}
 
 	override def executeUndirectedForestFireModel(graph : GraphStructure, parameters : ForestFireModelParameters)
 	: GraphStructure = {
-		val (vertexData, edgeData) = ValidationGraphUtils.undirectedValidationGraphToEdgeList(graph)
+		val (vertexData, edgeData) = ValidationGraphUtils.undirectedValidationGraphToVertexEdgeList(graph)
 		executeForestFireModel(vertexData, edgeData, false, parameters)
 	}
 
