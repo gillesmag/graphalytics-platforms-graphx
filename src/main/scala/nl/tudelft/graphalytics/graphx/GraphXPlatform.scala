@@ -16,7 +16,7 @@
 package nl.tudelft.graphalytics.graphx
 
 import nl.tudelft.graphalytics.{PlatformExecutionException, Platform}
-import nl.tudelft.graphalytics.domain.{NestedConfiguration, PlatformBenchmarkResult, Graph, Algorithm}
+import nl.tudelft.graphalytics.domain._
 import org.apache.commons.configuration.{ConfigurationException, PropertiesConfiguration}
 import org.apache.hadoop.fs.FileSystem
 import org.apache.hadoop.conf.Configuration
@@ -71,8 +71,10 @@ class GraphXPlatform extends Platform {
 		pathsOfGraphs += (graph.getName -> (hdfsVertexPath.toUri.getPath, hdfsEdgePath.toUri.getPath))
 	}
 
-	def executeAlgorithmOnGraph(algorithmType : Algorithm,
-			graph : Graph, parameters : Object) : PlatformBenchmarkResult = {
+	def executeAlgorithmOnGraph(benchmark : Benchmark) : PlatformBenchmarkResult = {
+		val graph = benchmark.getGraph
+		val algorithmType = benchmark.getAlgorithm
+		val parameters = benchmark.getAlgorithmParameters
 		try  {
 			val (vertexPath, edgePath) = pathsOfGraphs(graph.getName)
 			val outPath = s"$hdfsDirectory/$getName/output/${algorithmType.name}-${graph.getName}"
