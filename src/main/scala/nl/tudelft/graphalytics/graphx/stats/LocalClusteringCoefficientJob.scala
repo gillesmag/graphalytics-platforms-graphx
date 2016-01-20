@@ -17,7 +17,7 @@ package nl.tudelft.graphalytics.graphx.stats
 
 import nl.tudelft.graphalytics.domain.GraphFormat
 import org.apache.spark.graphx._
-import nl.tudelft.graphalytics.graphx.GraphXJob
+import nl.tudelft.graphalytics.graphx.{GraphXJobOutput, GraphXJob}
 
 /**
  * The implementation of the stats (LCC) algorithm on GraphX. Inspired by the TriangleCount implementation bundled
@@ -40,74 +40,71 @@ class LocalClusteringCoefficientJob(graphVertexPath : String, graphEdgePath : St
 	 * @return the resulting graph after the computation
 	 */
 	override def compute(graph: Graph[Boolean, Int]): Graph[Double, Int] = {
-		// Deduplicate the edges to ensure that every pair of connected vertices of compared exactly once
-		val canonicalGraph = Graph(graph.vertices, graph.edges.map(e =>
-			if (e.srcId > e.dstId) Edge(e.dstId, e.srcId, 0)
-			else Edge(e.srcId, e.dstId, 0)
-		).distinct()).cache()
+		// Deduplicate the edges to ensure that every pair of connected vertices is compared exactly once.
+		// The value of an edge represents if the edge is unidirectional (1) or bidirectional (2) in the input graph.
+		val canonicalGraph : Graph[Boolean, Int] = graph.mapEdges(_ => 1).convertToCanonicalEdges(_ + _).cache()
 
-		// Collect for each vertex a list of neighbours, having a vertex id occur twice if edges exist in both directions
-		val neighbours = graph.mapReduceTriplets[List[VertexId]](
-			e => Iterator((e.srcId, List(e.dstId)), (e.dstId, List(e.srcId))),
-			_ ++ _
-		)
+		// Collect for each vertex a map of (neighbour, edge value) pairs in either direction in the canonical graph
+		val neighboursPerVertex = canonicalGraph.collectEdges(EdgeDirection.Either).mapValues((vid, edges) =>
+				edges.map(edge => (edge.otherVertexId(vid), edge.attr)).toMap)
 
-		// Merge the neighbour lists back into the canonical graph
-		val neighbourGraph = canonicalGraph.outerJoinVertices[List[VertexId], List[VertexId]](neighbours) {
-			(_, _, n) => n.map(_.sorted).getOrElse(List.empty[VertexId])
-		}
+		// Attach the neighbourhood maps as values to the canonical graph
+		val neighbourGraph : Graph[Map[VertexId, Int], Int] = canonicalGraph.outerJoinVertices(neighboursPerVertex)(
+			(_, _, neighboursOpt) => neighboursOpt.getOrElse(Map[VertexId, Int]())
+		).cache()
+		// Unpersist the original canonical graph
+		canonicalGraph.unpersist(blocking = false)
 
-		// Function for computing the number of vertices in set, that also occur in selection
-		val overlap = (set : List[Long], selection : List[Long]) => {
-			var setLeft = set
-			var selectionLeft = selection
-			var sum = 0L
-			while (!setLeft.isEmpty && !selectionLeft.isEmpty) {
-				if (setLeft.head < selectionLeft.head) {
-					setLeft = setLeft.tail
-				} else if (setLeft.head > selectionLeft.head) {
-					selectionLeft = selectionLeft.tail
-				} else {
-					setLeft = setLeft.tail
-					sum = sum + 1
+		// Define the edge-based "map" function
+		def edgeToCounts(ctx : EdgeContext[Map[VertexId, Int], Int, Long]) = {
+			var countSrc = 0L
+			var countDst = 0L
+			if (ctx.srcAttr.size < ctx.dstAttr.size) {
+				val iter = ctx.srcAttr.iterator
+				while (iter.hasNext) {
+					val neighbourPair = iter.next()
+					countSrc += ctx.dstAttr.getOrElse(neighbourPair._1, 0)
+					if (ctx.dstAttr.contains(neighbourPair._1)) {
+						countDst += neighbourPair._2
+					}
+				}
+			} else {
+				val iter = ctx.dstAttr.iterator
+				while (iter.hasNext) {
+					val neighbourPair = iter.next()
+					countDst += ctx.srcAttr.getOrElse(neighbourPair._1, 0)
+					if (ctx.srcAttr.contains(neighbourPair._1)) {
+						countSrc += neighbourPair._2
+					}
 				}
 			}
-			sum
+			ctx.sendToSrc(countSrc)
+			ctx.sendToDst(countDst)
 		}
+		// Aggregate messages for all vertices in the map
+		val triangles = neighbourGraph.aggregateMessages(edgeToCounts, (a : Long, b : Long) => a + b)
+		val triangleCountGraph = neighbourGraph.outerJoinVertices(triangles)(
+			(_, _, triangleCountOpt) => triangleCountOpt.getOrElse(0L) / 2)
 
-		// Counts for every vertex the number of edges in its neighbourhood
-		val neighbourhoodEdges = neighbourGraph.mapReduceTriplets[Long](
-			e => {
-				// A vertex v has a list of vertices that defines its neighbourhood. v receives from all of its
-				// neighbours the number of edges to other vertices in v's neighbourhood, counted in canonical direction
-				val overlapToSrc = overlap(e.dstAttr, e.srcAttr.filter(_ > e.dstId))
-				val overlapToDst = overlap(e.srcAttr, e.dstAttr.filter(_ > e.srcId))
-				Iterator((e.srcId, overlapToSrc), (e.dstId, overlapToDst))
-			},
-			(a, b) => a + b
-		)
-
-		// Compute for every vertex the maximum number of edges in its neighbourhood
-		val maxNeighbourhoodEdges = canonicalGraph
-				.mapReduceTriplets[Long](e => Iterator((e.srcId, 1L), (e.dstId, 1L)), _ + _)
-				.mapValues(num => num * (num - 1))
-
-		// Compute the LCC of each vertex
-		val result = graph.outerJoinVertices[Long, Long](maxNeighbourhoodEdges) {
-			(_, _, value) => value.getOrElse(0L)
-		}.outerJoinVertices(neighbourhoodEdges) {
-			(_, max, value) => if (max == 0L) 0.0 else value.getOrElse(0L).toDouble / max
-		}.cache()
+		// Compute the number of neighbours each vertex has
+		val neighbourCounts = neighbourGraph.collectNeighbors(EdgeDirection.Either).mapValues(_.length)
+		val lccGraph = triangleCountGraph.outerJoinVertices(neighbourCounts)(
+			(_, triangleCount, neighbourCountOpt) => {
+				val neighbourCount = neighbourCountOpt.getOrElse(0)
+				if (neighbourCount < 2) 0.0
+				else triangleCount.toDouble / neighbourCount / (neighbourCount - 1)
+			}
+		).cache()
 
 		// Materialize the result
-		result.vertices.count()
-		result.edges.count()
+		lccGraph.vertices.count()
+		lccGraph.edges.count()
 
 		// Unpersist the canonical graph
 		canonicalGraph.unpersistVertices(blocking = false)
 		canonicalGraph.edges.unpersist(blocking = false)
 
-		result
+		lccGraph
 	}
 
 	/**
@@ -117,14 +114,8 @@ class LocalClusteringCoefficientJob(graphVertexPath : String, graphEdgePath : St
 	 * @return a GraphXJobOutput object representing the job result
 	 */
 	override def makeOutput(graph: Graph[Double, Int]) = {
-		val aggregatedLcc = graph.vertices.map[(Double, Long)](v => (v._2, 1L)).reduce(
-			(A: (Double, Long), B: (Double, Long)) =>
-				(A._1 + B._1, A._2 + B._2)
-		)
-
-		new LocalClusteringCoefficientJobOutput(
-			graph.vertices.map(vertex => s"${vertex._1} ${vertex._2}").cache(),
-			aggregatedLcc._1 / aggregatedLcc._2
+		new GraphXJobOutput(
+			graph.vertices.map(vertex => s"${vertex._1} ${vertex._2}").cache()
 		)
 	}
 
