@@ -21,7 +21,7 @@ import org.apache.spark.rdd.RDD
 import nl.tudelft.graphalytics.graphx.{GraphXJobOutput, GraphXJob}
 
 /**
- * The implementation of (strongly) connected components on GraphX.
+ * The implementation of weakly connected components on GraphX.
  *
  * @param graphVertexPath the path of the input graph's vertex data
  * @param graphEdgePath the path of the input graph's edge data

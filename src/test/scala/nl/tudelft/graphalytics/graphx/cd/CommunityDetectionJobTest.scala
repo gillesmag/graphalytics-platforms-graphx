@@ -32,13 +32,13 @@ class CommunityDetectionJobTest extends CommunityDetectionValidationTest with Gr
 
 	override def executeDirectedCommunityDetection(graph : GraphStructure, parameters : CommunityDetectionParameters)
 	: CommunityDetectionOutput = {
-		val (vertexData, edgeData) = ValidationGraphUtils.directedValidationGraphToEdgeList(graph)
+		val (vertexData, edgeData) = ValidationGraphUtils.directedValidationGraphToVertexEdgeList(graph)
 		executeCommunityDetection(vertexData, edgeData, true, parameters)
 	}
 
 	override def executeUndirectedCommunityDetection(graph : GraphStructure, parameters : CommunityDetectionParameters)
 	: CommunityDetectionOutput = {
-		val (vertexData, edgeData) = ValidationGraphUtils.undirectedValidationGraphToEdgeList(graph)
+		val (vertexData, edgeData) = ValidationGraphUtils.undirectedValidationGraphToVertexEdgeList(graph)
 		executeCommunityDetection(vertexData, edgeData, false, parameters)
 	}
 
@@ -47,7 +47,7 @@ class CommunityDetectionJobTest extends CommunityDetectionValidationTest with Gr
 		val cdJob = new CommunityDetectionJob("", "", new GraphFormat(directed), "", parameters)
 		val (vertexOutput, _) = executeJob(cdJob, vertexData, edgeData)
 		val outputAsJavaMap = new util.HashMap[java.lang.Long, java.lang.Long](vertexOutput.size)
-		vertexOutput.foreach { case (vid, value) => outputAsJavaMap.put(vid, value._3.get._1) }
+		vertexOutput.foreach { case (vid, value) => outputAsJavaMap.put(vid, value) }
 		new CommunityDetectionOutput(outputAsJavaMap)
 	}
 

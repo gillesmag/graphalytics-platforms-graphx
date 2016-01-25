@@ -32,13 +32,13 @@ class BreadthFirstSearchJobTest extends BreadthFirstSearchValidationTest with Gr
 
 	override def executeUndirectedBreadthFirstSearch(graph: GraphStructure,
 			parameters: BreadthFirstSearchParameters): BreadthFirstSearchOutput = {
-		val (vertexData, edgeData) = ValidationGraphUtils.undirectedValidationGraphToEdgeList(graph)
+		val (vertexData, edgeData) = ValidationGraphUtils.undirectedValidationGraphToVertexEdgeList(graph)
 		executeBreadthFirstSearch(vertexData, edgeData, false, parameters)
 	}
 
 	override def executeDirectedBreadthFirstSearch(graph: GraphStructure,
 			parameters: BreadthFirstSearchParameters): BreadthFirstSearchOutput = {
-		val (vertexData, edgeData) = ValidationGraphUtils.directedValidationGraphToEdgeList(graph)
+		val (vertexData, edgeData) = ValidationGraphUtils.directedValidationGraphToVertexEdgeList(graph)
 		executeBreadthFirstSearch(vertexData, edgeData, true, parameters)
 	}
 

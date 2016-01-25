@@ -13,7 +13,7 @@
 		<hadoop.version>2.4.1</hadoop.version>
 		<scala.version>2.10.4</scala.version>
 		<scalatest.version>2.2.4</scalatest.version>
-		<spark.version>1.1.1</spark.version>
+		<spark.version>1.6.0</spark.version>
 	</properties>
 
 	<scm>
@@ -29,8 +29,17 @@
 		</dependency>
 		<dependency>
 			<groupId>nl.tudelft.graphalytics</groupId>
+			<artifactId>graphalytics-core</artifactId>
+			<version>${graphalytics.version}</version>
+			<type>tar.gz</type>
+			<classifier>resources</classifier>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>nl.tudelft.graphalytics</groupId>
 			<artifactId>graphalytics-validation</artifactId>
 			<version>${graphalytics.version}</version>
+			<scope>test</scope>
 		</dependency>
 
 		<dependency>
@@ -110,7 +119,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<scalaVersion>2.10.4</scalaVersion>
+					<scalaVersion>${scala.version}</scalaVersion>
 				</configuration>
 			</plugin>
 
@@ -121,6 +130,11 @@
 				<configuration>
 					<createDependencyReducedPom>false</createDependencyReducedPom>
 					<minimizeJar>false</minimizeJar>
+					<artifactSet>
+						<excludes>
+							<exclude>*:*:*:resources</exclude>
+						</excludes>
+					</artifactSet>
 					<filters>
 						<filter>
 							<artifact>*.*</artifact>
@@ -176,6 +190,7 @@
 						<exclude>pom.xml</exclude>
 						<exclude>src/test/resources/**</exclude>
 						<exclude>src/main/resources/**</exclude>
+						<exclude>src/main/assembly/**</exclude>
 						<exclude>config-template/**</exclude>
 					</excludes>
 					<mapping>
@@ -188,6 +203,30 @@
 						<goals>
 							<goal>check</goal>
 						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Plugin for creating distribution archives -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.5.3</version>
+				<executions>
+					<execution>
+						<id>bin</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptors>
+								<descriptor>src/main/assembly/bin.xml</descriptor>
+							</descriptors>
+							<finalName>graphalytics-${graphalytics.version}-graphx-${project.version}</finalName>
+							<tarLongFileMode>posix</tarLongFileMode>
+							<outputDirectory>${project.basedir}</outputDirectory>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>

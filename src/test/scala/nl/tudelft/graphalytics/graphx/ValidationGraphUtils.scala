@@ -19,11 +19,14 @@ import nl.tudelft.graphalytics.validation.GraphStructure
 import scala.collection.JavaConversions._
 
 /**
- * Created by tim on 12/2/15.
+ * Utility class for transforming a GraphStructure (adjacency list) representation to a list of vertices and a list of
+ * edges.
+ *
+ * @author Tim Hegeman
  */
 object ValidationGraphUtils {
 
-	def undirectedValidationGraphToEdgeList(graphData : GraphStructure) : (List[String], List[String]) = {
+	def undirectedValidationGraphToVertexEdgeList(graphData : GraphStructure) : (List[String], List[String]) = {
 		val orderedVertices = graphData.getVertices.toList.sorted
 		val vertices = orderedVertices.map(_.toString)
 		val edges = orderedVertices.flatMap(vertex => graphData.getEdgesForVertex(vertex)
@@ -32,7 +35,7 @@ object ValidationGraphUtils {
 		(vertices, edges)
 	}
 
-	def directedValidationGraphToEdgeList(graphData : GraphStructure) : (List[String], List[String]) = {
+	def directedValidationGraphToVertexEdgeList(graphData : GraphStructure) : (List[String], List[String]) = {
 		val orderedVertices = graphData.getVertices.toList.sorted
 		val vertices = orderedVertices.map(_.toString)
 		val edges = orderedVertices.flatMap(vertex => graphData.getEdgesForVertex(vertex).toList.sorted
