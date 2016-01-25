@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package nl.tudelft.graphalytics.graphx.stats
+package nl.tudelft.graphalytics.graphx.lcc
 
 import java.util
 
 import nl.tudelft.graphalytics.domain.GraphFormat
 import nl.tudelft.graphalytics.graphx.{ValidationGraphUtils, GraphXJobTest}
 import nl.tudelft.graphalytics.validation.GraphStructure
-import nl.tudelft.graphalytics.validation.algorithms.stats.{LocalClusteringCoefficientOutput, LocalClusteringCoefficientValidationTest}
+import nl.tudelft.graphalytics.validation.algorithms.lcc.{LocalClusteringCoefficientOutput, LocalClusteringCoefficientValidationTest}
 
 /**
  * Integration test for Local Clustering Coefficient job on GraphX.

@@ -13,11 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package nl.tudelft.graphalytics.graphx.conn
+package nl.tudelft.graphalytics.graphx.wcc
 
 import nl.tudelft.graphalytics.domain.GraphFormat
 import org.apache.spark.graphx.{VertexId, Graph}
-import org.apache.spark.rdd.RDD
 import nl.tudelft.graphalytics.graphx.{GraphXJobOutput, GraphXJob}
 
 /**
@@ -29,7 +28,7 @@ import nl.tudelft.graphalytics.graphx.{GraphXJobOutput, GraphXJob}
  * @param outputPath the output path of the computation
  * @author Tim Hegeman
  */
-class ConnectedComponentsJob(graphVertexPath : String, graphEdgePath : String, graphFormat : GraphFormat, outputPath : String)
+class WeaklyConnectedComponentsJob(graphVertexPath : String, graphEdgePath : String, graphFormat : GraphFormat, outputPath : String)
 		extends GraphXJob[VertexId, Int](graphVertexPath, graphEdgePath, graphFormat, outputPath) {
 
 	/**

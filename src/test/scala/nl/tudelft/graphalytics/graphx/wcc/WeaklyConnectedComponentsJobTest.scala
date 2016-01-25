@@ -13,39 +13,39 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package nl.tudelft.graphalytics.graphx.conn
+package nl.tudelft.graphalytics.graphx.wcc
 
 import java.util
 
 import nl.tudelft.graphalytics.domain.GraphFormat
 import nl.tudelft.graphalytics.graphx.{GraphXJobTest, ValidationGraphUtils}
 import nl.tudelft.graphalytics.validation.GraphStructure
-import nl.tudelft.graphalytics.validation.algorithms.conn.{ConnectedComponentsOutput, ConnectedComponentsValidationTest}
+import nl.tudelft.graphalytics.validation.algorithms.wcc.{WeaklyConnectedComponentsOutput, WeaklyConnectedComponentsValidationTest}
 
 /**
  * Integration test for Connected Components job on GraphX.
  *
  * @author Tim Hegeman
  */
-class ConnectedComponentsJobTest extends ConnectedComponentsValidationTest with GraphXJobTest {
+class WeaklyConnectedComponentsJobTest extends WeaklyConnectedComponentsValidationTest with GraphXJobTest {
 
-	override def executeDirectedConnectedComponents(graph : GraphStructure) : ConnectedComponentsOutput = {
+	override def executeDirectedConnectedComponents(graph : GraphStructure) : WeaklyConnectedComponentsOutput = {
 		val (vertexData, edgeData) = ValidationGraphUtils.directedValidationGraphToVertexEdgeList(graph)
 		executeConnectedComponents(vertexData, edgeData, true)
 	}
 
-	override def executeUndirectedConnectedComponents(graph : GraphStructure) : ConnectedComponentsOutput = {
+	override def executeUndirectedConnectedComponents(graph : GraphStructure) : WeaklyConnectedComponentsOutput = {
 		val (vertexData, edgeData) = ValidationGraphUtils.undirectedValidationGraphToVertexEdgeList(graph)
 		executeConnectedComponents(vertexData, edgeData, false)
 	}
 
 	private def executeConnectedComponents(vertexData : List[String], edgeData : List[String],
-			directed: Boolean) : ConnectedComponentsOutput = {
-		val ccJob = new ConnectedComponentsJob("", "", new GraphFormat(directed), "")
+			directed: Boolean) : WeaklyConnectedComponentsOutput = {
+		val ccJob = new WeaklyConnectedComponentsJob("", "", new GraphFormat(directed), "")
 		val (vertexOutput, _) = executeJob(ccJob, vertexData, edgeData)
 		val outputAsJavaMap = new util.HashMap[java.lang.Long, java.lang.Long](vertexOutput.size)
 		vertexOutput.foreach { case (vid, value) => outputAsJavaMap.put(vid, value) }
-		new ConnectedComponentsOutput(outputAsJavaMap)
+		new WeaklyConnectedComponentsOutput(outputAsJavaMap)
 	}
 
 }

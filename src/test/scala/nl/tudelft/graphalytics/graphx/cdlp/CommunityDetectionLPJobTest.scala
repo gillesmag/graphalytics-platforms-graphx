@@ -13,42 +13,42 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package nl.tudelft.graphalytics.graphx.cd
+package nl.tudelft.graphalytics.graphx.cdlp
 
 import java.util
 
 import nl.tudelft.graphalytics.domain.GraphFormat
-import nl.tudelft.graphalytics.domain.algorithms.CommunityDetectionParameters
+import nl.tudelft.graphalytics.domain.algorithms.CommunityDetectionLPParameters
 import nl.tudelft.graphalytics.graphx.{ValidationGraphUtils, GraphXJobTest}
 import nl.tudelft.graphalytics.validation.GraphStructure
-import nl.tudelft.graphalytics.validation.algorithms.cd.{CommunityDetectionOutput, CommunityDetectionValidationTest}
+import nl.tudelft.graphalytics.validation.algorithms.cdlp.{CommunityDetectionLPValidationTest, CommunityDetectionLPOutput}
 
 /**
  * Integration test for Community Detection job on GraphX.
  *
  * @author Tim Hegeman
  */
-class CommunityDetectionJobTest extends CommunityDetectionValidationTest with GraphXJobTest {
+class CommunityDetectionLPJobTest extends CommunityDetectionLPValidationTest with GraphXJobTest {
 
-	override def executeDirectedCommunityDetection(graph : GraphStructure, parameters : CommunityDetectionParameters)
-	: CommunityDetectionOutput = {
+	override def executeDirectedCommunityDetection(graph : GraphStructure, parameters : CommunityDetectionLPParameters)
+	: CommunityDetectionLPOutput = {
 		val (vertexData, edgeData) = ValidationGraphUtils.directedValidationGraphToVertexEdgeList(graph)
 		executeCommunityDetection(vertexData, edgeData, true, parameters)
 	}
 
-	override def executeUndirectedCommunityDetection(graph : GraphStructure, parameters : CommunityDetectionParameters)
-	: CommunityDetectionOutput = {
+	override def executeUndirectedCommunityDetection(graph : GraphStructure, parameters : CommunityDetectionLPParameters)
+	: CommunityDetectionLPOutput = {
 		val (vertexData, edgeData) = ValidationGraphUtils.undirectedValidationGraphToVertexEdgeList(graph)
 		executeCommunityDetection(vertexData, edgeData, false, parameters)
 	}
 
 	private def executeCommunityDetection(vertexData : List[String], edgeData : List[String], directed : Boolean,
-			parameters : CommunityDetectionParameters) : CommunityDetectionOutput = {
-		val cdJob = new CommunityDetectionJob("", "", new GraphFormat(directed), "", parameters)
+			parameters : CommunityDetectionLPParameters) : CommunityDetectionLPOutput = {
+		val cdJob = new CommunityDetectionLPJob("", "", new GraphFormat(directed), "", parameters)
 		val (vertexOutput, _) = executeJob(cdJob, vertexData, edgeData)
 		val outputAsJavaMap = new util.HashMap[java.lang.Long, java.lang.Long](vertexOutput.size)
 		vertexOutput.foreach { case (vid, value) => outputAsJavaMap.put(vid, value) }
-		new CommunityDetectionOutput(outputAsJavaMap)
+		new CommunityDetectionLPOutput(outputAsJavaMap)
 	}
 
 }

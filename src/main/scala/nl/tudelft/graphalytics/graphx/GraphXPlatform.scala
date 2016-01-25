@@ -23,10 +23,10 @@ import org.apache.hadoop.fs.FileSystem
 import org.apache.hadoop.conf.Configuration
 import org.apache.hadoop.fs.Path
 import nl.tudelft.graphalytics.graphx.bfs.BreadthFirstSearchJob
-import nl.tudelft.graphalytics.graphx.cd.CommunityDetectionJob
-import nl.tudelft.graphalytics.graphx.conn.ConnectedComponentsJob
-import nl.tudelft.graphalytics.graphx.evo.ForestFireModelJob
-import nl.tudelft.graphalytics.graphx.stats.LocalClusteringCoefficientJob
+import nl.tudelft.graphalytics.graphx.cdlp.CommunityDetectionLPJob
+import nl.tudelft.graphalytics.graphx.wcc.WeaklyConnectedComponentsJob
+import nl.tudelft.graphalytics.graphx.ffm.ForestFireModelJob
+import nl.tudelft.graphalytics.graphx.lcc.LocalClusteringCoefficientJob
 
 /**
  * Constants for GraphXPlatform
@@ -83,11 +83,11 @@ class GraphXPlatform extends Platform {
 			
 			val job = algorithmType match {
 				case Algorithm.BFS => new BreadthFirstSearchJob(vertexPath, edgePath, format, outPath, parameters)
-				case Algorithm.CD => new CommunityDetectionJob(vertexPath, edgePath, format, outPath, parameters)
-				case Algorithm.CONN => new ConnectedComponentsJob(vertexPath, edgePath, format, outPath)
-				case Algorithm.EVO => new ForestFireModelJob(vertexPath, edgePath, format, outPath, parameters)
-				case Algorithm.STATS => new LocalClusteringCoefficientJob(vertexPath, edgePath, format, outPath)
-				case Algorithm.PAGERANK => new PageRankJob(vertexPath, edgePath, format, outPath, parameters)
+				case Algorithm.CDLP => new CommunityDetectionLPJob(vertexPath, edgePath, format, outPath, parameters)
+				case Algorithm.WCC => new WeaklyConnectedComponentsJob(vertexPath, edgePath, format, outPath)
+				case Algorithm.FFM => new ForestFireModelJob(vertexPath, edgePath, format, outPath, parameters)
+				case Algorithm.LCC => new LocalClusteringCoefficientJob(vertexPath, edgePath, format, outPath)
+				case Algorithm.PR => new PageRankJob(vertexPath, edgePath, format, outPath, parameters)
 				case x => throw new IllegalArgumentException(s"Invalid algorithm type: $x")
 			}
 			

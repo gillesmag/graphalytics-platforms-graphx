@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package nl.tudelft.graphalytics.graphx.cd
+package nl.tudelft.graphalytics.graphx.cdlp
 
 import nl.tudelft.graphalytics.domain.GraphFormat
-import nl.tudelft.graphalytics.domain.algorithms.CommunityDetectionParameters
+import nl.tudelft.graphalytics.domain.algorithms.CommunityDetectionLPParameters
 import nl.tudelft.graphalytics.graphx.{GraphXJobOutput, GraphXPregelJob}
 import org.apache.spark.graphx.{EdgeTriplet, Graph, VertexId}
 
@@ -31,12 +31,12 @@ import org.apache.spark.graphx.{EdgeTriplet, Graph, VertexId}
  * @param parameters the graph-specific parameters for community detection
  * @author Tim Hegeman
  */
-class CommunityDetectionJob(graphVertexPath : String, graphEdgePath : String, graphFormat : GraphFormat,
+class CommunityDetectionLPJob(graphVertexPath : String, graphEdgePath : String, graphFormat : GraphFormat,
 		outputPath : String, parameters : Object)
 		extends GraphXPregelJob[VertexId, Int, Map[VertexId, Long]](graphVertexPath, graphEdgePath, graphFormat, outputPath) {
 
-	val cdParam : CommunityDetectionParameters = parameters match {
-		case p : CommunityDetectionParameters => p
+	val cdParam : CommunityDetectionLPParameters = parameters match {
+		case p : CommunityDetectionLPParameters => p
 		case _ => null
 	}
 

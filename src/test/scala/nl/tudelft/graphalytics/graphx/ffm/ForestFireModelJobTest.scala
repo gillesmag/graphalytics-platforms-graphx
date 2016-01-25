@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package nl.tudelft.graphalytics.graphx.evo
+package nl.tudelft.graphalytics.graphx.ffm
 
 import java.util
 import java.lang.{Long => JLong}
@@ -22,7 +22,7 @@ import nl.tudelft.graphalytics.domain.GraphFormat
 import nl.tudelft.graphalytics.domain.algorithms.ForestFireModelParameters
 import nl.tudelft.graphalytics.graphx.{ValidationGraphUtils, GraphXJobTest}
 import nl.tudelft.graphalytics.validation.GraphStructure
-import nl.tudelft.graphalytics.validation.algorithms.evo.ForestFireModelValidationTest
+import nl.tudelft.graphalytics.validation.algorithms.ffm.ForestFireModelValidationTest
 
 /**
  * Integration test for Forest Fire Model job on GraphX.
