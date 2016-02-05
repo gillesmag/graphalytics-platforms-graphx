@@ -14,6 +14,7 @@
 		<scala.version>2.10.4</scala.version>
 		<scalatest.version>2.2.4</scalatest.version>
 		<spark.version>1.6.0</spark.version>
+		<log4j.version>2.0</log4j.version>
 	</properties>
 
 	<scm>
@@ -101,6 +102,11 @@
 			<artifactId>hadoop-client</artifactId>
 			<version>${hadoop.version}</version>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-1.2-api</artifactId>
+			<version>${log4j.version}</version>
 		</dependency>
 	</dependencies>
 
