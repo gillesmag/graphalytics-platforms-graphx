@@ -45,6 +45,8 @@ abstract class GraphXJob[VD : ClassTag, ED : ClassTag](graphVertexPath : String,
 		sparkConfiguration.setAppName(s"Graphalytics: $getAppName")
 		sparkConfiguration.setMaster("yarn-client")
 		sparkConfiguration.set("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
+		sparkConfiguration.set("spark.ui.showConsoleProgress", "false")
+
 		val sparkContext = new SparkContext(sparkConfiguration)
 
 		// Load the raw graph data
