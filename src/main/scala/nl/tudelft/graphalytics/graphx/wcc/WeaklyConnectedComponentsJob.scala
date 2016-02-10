@@ -29,7 +29,7 @@ import nl.tudelft.graphalytics.graphx.{GraphXJobOutput, GraphXJob}
  * @author Tim Hegeman
  */
 class WeaklyConnectedComponentsJob(graphVertexPath : String, graphEdgePath : String, graphFormat : GraphFormat, outputPath : String)
-		extends GraphXJob[VertexId, Int](graphVertexPath, graphEdgePath, graphFormat, outputPath) {
+		extends GraphXJob[VertexId, Unit](graphVertexPath, graphEdgePath, graphFormat, outputPath) {
 
 	/**
 	 * Perform the graph computation using job-specific logic.
@@ -37,15 +37,15 @@ class WeaklyConnectedComponentsJob(graphVertexPath : String, graphEdgePath : Str
 	 * @param graph the parsed graph with default vertex and edge values
 	 * @return the resulting graph after the computation
 	 */
-	override def compute(graph: Graph[Boolean, Int]): Graph[VertexId, Int] =
-		graph.connectedComponents()
+	override def compute(graph: Graph[VertexId, Unit]): Graph[VertexId, Unit] =
+	  graph.connectedComponents()
 
 	/**
 	 * Convert a graph to the output format of this job.
 	 *
 	 * @return a GraphXJobOutput object representing the job result
 	 */
-	override def makeOutput(graph: Graph[VertexId, Int]) =
+	override def makeOutput(graph: Graph[VertexId, Unit]) =
 		new GraphXJobOutput(graph.vertices.map(vertex => s"${vertex._1} ${vertex._2}").cache())
 
 	/**

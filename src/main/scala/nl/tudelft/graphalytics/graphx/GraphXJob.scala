@@ -17,6 +17,7 @@ package nl.tudelft.graphalytics.graphx
 
 import nl.tudelft.graphalytics.domain.GraphFormat
 import org.apache.spark.{SparkConf, SparkContext}
+import org.apache.spark.graphx.{VertexId, Graph, EdgeTriplet}
 import org.apache.spark.rdd.RDD
 import scala.reflect.ClassTag
 import org.apache.spark.graphx.Graph
@@ -37,7 +38,7 @@ abstract class GraphXJob[VD : ClassTag, ED : ClassTag](graphVertexPath : String,
 
 	/**
 	 * Executes the full GraphX job by reading and parsing the input graph,
-	 * running the job-specific graph computation, and writing back the result. 
+	 * running the job-specific graph computation, and writing back the result.
 	 */
 	def runJob() = {
 		// Set up the Spark context for use in the GraphX job.
@@ -52,10 +53,13 @@ abstract class GraphXJob[VD : ClassTag, ED : ClassTag](graphVertexPath : String,
 		// Load the raw graph data
 		val vertexData : RDD[String] = sparkContext.textFile(graphVertexPath)
 		val edgeData : RDD[String] = sparkContext.textFile(graphEdgePath)
+
 		// Execute the job
 		val result = executeOnGraph(vertexData, edgeData)
+
 		// Create the output
 		val output = makeOutput(result)
+
 		// Write the result
 		output.writeToPath(outputPath)
 
@@ -75,10 +79,13 @@ abstract class GraphXJob[VD : ClassTag, ED : ClassTag](graphVertexPath : String,
 	 */
 	def executeOnGraph(vertexData : RDD[String], edgeData : RDD[String]) : Graph[VD, ED] = {
 		// Parse the vertex and edge data
-		val graph = GraphLoader.loadGraph(vertexData, edgeData, graphFormat, false).cache()
+		val graph = GraphLoader.loadGraph(vertexData, edgeData,
+		                                  parseVertexData, parseEdgeData,
+		                                  graphFormat).cache()
 
 		// Run the graph computation
 		val output = compute(graph).cache()
+
 		// Materialize the output and clean up the original graph
 		output.vertices.count()
 		output.edges.count()
@@ -87,15 +94,39 @@ abstract class GraphXJob[VD : ClassTag, ED : ClassTag](graphVertexPath : String,
 
 		output
 	}
-	
+
+	/**
+	 * Parses the attributes of a vertex (stored as an array of strings).
+	 *
+	 * Default method simply returns null, subclasses can overwrite this method
+	 * to do anything useful.
+	 *
+	 * @param attr The attributes of the vertex
+	 * @return The value of the vertex
+	 */
+	def parseVertexData(attrs : Array[String]) : VD =
+	  null.asInstanceOf[VD]
+
+	/**
+	 * Parses the attributes of an edge (stored as an array of strings).
+	 *
+	 * Default method simply returns null, subclasses can overwrite this method
+	 * to do anything useful.
+	 *
+	 * @param attr The attributes of the edge
+	 * @return The value of the edge
+	 */
+	def parseEdgeData(attr : Array[String]) : ED =
+	  null.asInstanceOf[ED]
+
 	/**
 	 * Perform the graph computation using job-specific logic.
-	 * 
+	 *
 	 * @param graph the parsed graph with default vertex and edge values
 	 * @return the resulting graph after the computation
 	 */
-	def compute(graph : Graph[Boolean, Int]) : Graph[VD, ED]
-	
+	def compute(graph : Graph[VD, ED]) : Graph[VD, ED]
+
 	/**
 	 * Convert a graph to the output format of this job.
 	 *
@@ -103,15 +134,14 @@ abstract class GraphXJob[VD : ClassTag, ED : ClassTag](graphVertexPath : String,
 	 * @return a GraphXJobOutput object representing the job result
 	 */
 	def makeOutput(graph : Graph[VD, ED]) : GraphXJobOutput
-	
+
 	/**
 	 * @return true iff the input is valid
 	 */
 	def hasValidInput : Boolean
-	
+
 	/**
 	 * @return name of the GraphX job
 	 */
 	def getAppName : String
-	
 }

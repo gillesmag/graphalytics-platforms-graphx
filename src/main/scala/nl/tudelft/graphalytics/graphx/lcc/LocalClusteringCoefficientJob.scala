@@ -31,7 +31,7 @@ import nl.tudelft.graphalytics.graphx.{GraphXJobOutput, GraphXJob}
  */
 class LocalClusteringCoefficientJob(graphVertexPath : String, graphEdgePath : String, graphFormat : GraphFormat,
 		outputPath : String)
-		extends GraphXJob[Double, Int](graphVertexPath, graphEdgePath, graphFormat, outputPath) {
+		extends GraphXJob[Double, Unit](graphVertexPath, graphEdgePath, graphFormat, outputPath) {
 
 	/**
 	 * Computes the local clustering coefficient (LCC) for each vertex in the graph.
@@ -39,17 +39,17 @@ class LocalClusteringCoefficientJob(graphVertexPath : String, graphEdgePath : St
 	 * @param graph the parsed graph with default vertex and edge values
 	 * @return the resulting graph after the computation
 	 */
-	override def compute(graph: Graph[Boolean, Int]): Graph[Double, Int] = {
+	override def compute(graph: Graph[Double, Unit]) = {
 		// Deduplicate the edges to ensure that every pair of connected vertices is compared exactly once.
 		// The value of an edge represents if the edge is unidirectional (1) or bidirectional (2) in the input graph.
-		val canonicalGraph : Graph[Boolean, Int] = graph.mapEdges(_ => 1).convertToCanonicalEdges(_ + _).cache()
+		val canonicalGraph = graph.mapEdges(_ => 1).convertToCanonicalEdges(_ + _).cache()
 
 		// Collect for each vertex a map of (neighbour, edge value) pairs in either direction in the canonical graph
 		val neighboursPerVertex = canonicalGraph.collectEdges(EdgeDirection.Either).mapValues((vid, edges) =>
 				edges.map(edge => (edge.otherVertexId(vid), edge.attr)).toMap)
 
 		// Attach the neighbourhood maps as values to the canonical graph
-		val neighbourGraph : Graph[Map[VertexId, Int], Int] = canonicalGraph.outerJoinVertices(neighboursPerVertex)(
+		val neighbourGraph = canonicalGraph.outerJoinVertices(neighboursPerVertex)(
 			(_, _, neighboursOpt) => neighboursOpt.getOrElse(Map[VertexId, Int]())
 		).cache()
 		// Unpersist the original canonical graph
@@ -104,7 +104,7 @@ class LocalClusteringCoefficientJob(graphVertexPath : String, graphEdgePath : St
 		canonicalGraph.unpersistVertices(blocking = false)
 		canonicalGraph.edges.unpersist(blocking = false)
 
-		lccGraph
+		lccGraph.mapEdges(_ => Unit)
 	}
 
 	/**
@@ -113,7 +113,7 @@ class LocalClusteringCoefficientJob(graphVertexPath : String, graphEdgePath : St
 	 * @param graph the graph to output
 	 * @return a GraphXJobOutput object representing the job result
 	 */
-	override def makeOutput(graph: Graph[Double, Int]) = {
+	override def makeOutput(graph: Graph[Double, Unit]) = {
 		new GraphXJobOutput(
 			graph.vertices.map(vertex => s"${vertex._1} ${vertex._2}").cache()
 		)

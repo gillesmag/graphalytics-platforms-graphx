@@ -34,7 +34,7 @@ import org.apache.spark.graphx.{TripletFields, Graph}
  */
 class PageRankJob(graphVertexPath : String, graphEdgePath : String, graphFormat : GraphFormat, outputPath : String,
 		parameters : Object)
-		extends GraphXJob[Double, Double](graphVertexPath, graphEdgePath, graphFormat, outputPath) {
+		extends GraphXJob[Double, Unit](graphVertexPath, graphEdgePath, graphFormat, outputPath) {
 
 	val prParam : PageRankParameters = parameters match {
 		case p : PageRankParameters => p
@@ -47,16 +47,17 @@ class PageRankJob(graphVertexPath : String, graphEdgePath : String, graphFormat 
 	  * @param graph the parsed graph with default vertex and edge values
 	  * @return the resulting graph after the computation
 	  */
-	override def compute(graph: Graph[Boolean, Int]): Graph[Double, Double] = {
+	override def compute(graph: Graph[Double, Unit]): Graph[Double, Unit] = {
 		// Compute for each edge its "weight", i.e. the fraction of the value of the source that is sent
 		// to the destination vertex in each iteration. Also initialize the value of each vertex
-		val vertexCount = graph.numVertices
+
+		val vertexCount = graph.numVertices;
 		val vertexOutDegrees = graph.outerJoinVertices(graph.outDegrees)((_, _, degree) => degree.getOrElse(0))
 		val weightedGraph = vertexOutDegrees.mapTriplets(1.0 / _.srcAttr)
 		var workGraph = weightedGraph.mapVertices((_, _) => 1.0 / vertexCount).cache()
 
 		// Cache the set of vertices that have no outgoing edges
-		val danglingVertices = graph.vertices.minus(graph.outDegrees.mapValues(_ => false)).cache()
+		val danglingVertices = graph.vertices.minus(graph.outDegrees.mapValues(_ => 0.0)).cache()
 
 		// Perform a fixed number of iterations of the PageRank Algorithm
 		var iteration = 0
@@ -89,7 +90,7 @@ class PageRankJob(graphVertexPath : String, graphEdgePath : String, graphFormat 
 		// Clean up any cached datasets
 		danglingVertices.unpersist(false)
 
-		workGraph
+		workGraph.mapEdges(_ => Unit)
 	}
 
 	/**
@@ -97,7 +98,7 @@ class PageRankJob(graphVertexPath : String, graphEdgePath : String, graphFormat 
 	  *
 	  * @return a GraphXJobOutput object representing the job result
 	  */
-	override def makeOutput(graph: Graph[Double, Double]) =
+	override def makeOutput(graph: Graph[Double, Unit]) =
 		new GraphXJobOutput(graph.vertices.map(vertex => s"${vertex._1} ${vertex._2}").cache())
 
 	/**

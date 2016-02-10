@@ -16,6 +16,7 @@
 package nl.tudelft.graphalytics.graphx
 
 import nl.tudelft.graphalytics.graphx.pr.PageRankJob
+import nl.tudelft.graphalytics.graphx.sssp.SingleSourceShortestPathJob
 import nl.tudelft.graphalytics.{PlatformExecutionException, Platform}
 import nl.tudelft.graphalytics.domain._
 import org.apache.commons.configuration.{ConfigurationException, PropertiesConfiguration}
@@ -68,7 +69,7 @@ class GraphXPlatform extends Platform {
 		fs.copyFromLocalFile(localVertexPath, hdfsVertexPath)
 		fs.copyFromLocalFile(localEdgePath, hdfsEdgePath)
 		fs.close()
-		
+
 		pathsOfGraphs += (graph.getName -> (hdfsVertexPath.toUri.getPath, hdfsEdgePath.toUri.getPath))
 	}
 
@@ -80,7 +81,7 @@ class GraphXPlatform extends Platform {
 			val (vertexPath, edgePath) = pathsOfGraphs(graph.getName)
 			val outPath = s"$hdfsDirectory/$getName/output/${algorithmType.name}-${graph.getName}"
 			val format = graph.getGraphFormat
-			
+
 			val job = algorithmType match {
 				case Algorithm.BFS => new BreadthFirstSearchJob(vertexPath, edgePath, format, outPath, parameters)
 				case Algorithm.CDLP => new CommunityDetectionLPJob(vertexPath, edgePath, format, outPath, parameters)
@@ -88,9 +89,10 @@ class GraphXPlatform extends Platform {
 				case Algorithm.FFM => new ForestFireModelJob(vertexPath, edgePath, format, outPath, parameters)
 				case Algorithm.LCC => new LocalClusteringCoefficientJob(vertexPath, edgePath, format, outPath)
 				case Algorithm.PR => new PageRankJob(vertexPath, edgePath, format, outPath, parameters)
+				case Algorithm.SSSP => new SingleSourceShortestPathJob(vertexPath, edgePath, format, outPath, parameters)
 				case x => throw new IllegalArgumentException(s"Invalid algorithm type: $x")
 			}
-			
+
 			if (job.hasValidInput) {
 				job.runJob()
 				// TODO: After executing the job, any intermediate and output data should be

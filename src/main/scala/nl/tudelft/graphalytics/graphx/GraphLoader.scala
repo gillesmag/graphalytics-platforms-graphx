@@ -33,40 +33,54 @@ object GraphLoader {
 	 * @tparam VD vertex value type
 	 * @return a parsed GraphX graph
 	 */
-	def loadGraph[VD : ClassTag](vertexData : RDD[String], edgeData : RDD[String], graphFormat : GraphFormat,
-			defaultValue : VD) : Graph[VD, Int] = {
-		val vertices = vertexData.map[(VertexId, VD)](line => (line.toLong, defaultValue))
-		val edges = (
-				if (graphFormat.isDirected) loadEdgesFromEdgeDirectedData(edgeData)
-				else loadEdgesFromEdgeUndirectedData(edgeData)
-		).map { case (vid1, vid2) => Edge(vid1, vid2, 0) }
+	def loadGraph[VD : ClassTag, ED : ClassTag](vertexData : RDD[String], edgeData : RDD[String],
+	    vertexParser : Array[String] => VD, edgeParser : Array[String] => ED, graphFormat : GraphFormat) = {
+		val vertices = loadVerticesData(vertexData, vertexParser)
+		val edges = if (graphFormat.isDirected)
+		              loadEdgesFromEdgeDirectedData(edgeData, edgeParser)
+                else
+                  loadEdgesFromEdgeUndirectedData(edgeData, edgeParser)
+
 		Graph(vertices, edges)
 	}
 
 	/**
+	 * @param graphData graphData, vertex-based format
+	 * @param parser function that parses attribute of edge
+	 * @return a set of vertices
+	 */
+	private def loadVerticesData[VD : ClassTag](data : RDD[String], parser : Array[String] => VD) : RDD[(VertexId, VD)] = {
+	  data.map(line => {
+	    val tokens = line.trim.split("""\s""")
+	    (tokens(0).toLong, parser(tokens.tail))
+	  })
+	}
+
+	/**
 	 * @param graphData graph data in directed, edge-based format
+	 * @param parser function that parses attribute of edge
 	 * @return a set of parsed edges
 	 */
-	private def loadEdgesFromEdgeDirectedData(graphData : RDD[String]) : RDD[(VertexId, VertexId)] = {
-		def lineToEdge(s : String) : (VertexId, VertexId) = {
-			val tokens = s.trim.split("""\s""")
-			(tokens(0).toLong, tokens(1).toLong)
-		}
-		
-		graphData.map(lineToEdge)
+	private def loadEdgesFromEdgeDirectedData[ED : ClassTag](data : RDD[String], parser : Array[String] => ED) : RDD[Edge[ED]] = {
+		data.map(line => {
+			val tokens = line.trim.split("""\s""")
+			Edge(tokens(0).toLong, tokens(1).toLong, parser(tokens.drop(2)))
+		})
 	}
 
 	/**
 	 * @param graphData graph data in undirected, edge-based format
+	 * @param parser function that parses attribute of edge
 	 * @return a set of parsed edges
 	 */
-	private def loadEdgesFromEdgeUndirectedData(graphData : RDD[String]) : RDD[(VertexId, VertexId)] = {
-		def lineToEdges(s : String) : Array[(VertexId, VertexId)] = {
-			val tokens = s.trim.split("""\s""")
-			Array((tokens(0).toLong, tokens(1).toLong), (tokens(1).toLong, tokens(0).toLong))
-		}
-		
-		graphData.flatMap(lineToEdges)
+	private def loadEdgesFromEdgeUndirectedData[ED : ClassTag](data : RDD[String], parser : Array[String] => ED) : RDD[Edge[ED]] = {
+		data.flatMap(line => {
+			val tokens = line.trim.split("""\s""")
+			Array(
+			    Edge(tokens(0).toLong, tokens(1).toLong, parser(tokens.drop(2))),
+			    Edge(tokens(1).toLong, tokens(0).toLong, parser(tokens.drop(2)))
+	    )
+		})
 	}
-	
+
 }

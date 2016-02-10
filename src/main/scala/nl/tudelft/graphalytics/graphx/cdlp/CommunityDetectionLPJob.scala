@@ -33,7 +33,7 @@ import org.apache.spark.graphx.{EdgeTriplet, Graph, VertexId}
  */
 class CommunityDetectionLPJob(graphVertexPath : String, graphEdgePath : String, graphFormat : GraphFormat,
 		outputPath : String, parameters : Object)
-		extends GraphXPregelJob[VertexId, Int, Map[VertexId, Long]](graphVertexPath, graphEdgePath, graphFormat, outputPath) {
+		extends GraphXPregelJob[VertexId, Unit, Map[VertexId, Long]](graphVertexPath, graphEdgePath, graphFormat, outputPath) {
 
 	val cdParam : CommunityDetectionLPParameters = parameters match {
 		case p : CommunityDetectionLPParameters => p
@@ -47,7 +47,7 @@ class CommunityDetectionLPJob(graphVertexPath : String, graphEdgePath : String, 
 	 * @param graph input graph
 	 * @return preprocessed graph
 	 */
-	override def preprocess(graph: Graph[Boolean, Int]): Graph[VertexId, Int] =
+	override def preprocess(graph: Graph[VertexId, Unit]) =
 		graph.mapVertices((vid, _) => vid)
 
 	/**
@@ -83,7 +83,7 @@ class CommunityDetectionLPJob(graphVertexPath : String, graphEdgePath : String, 
 	 *
 	 * @return a set of messages to send
 	 */
-	override def sendMsg = (edge : EdgeTriplet[VertexId, Int]) => {
+	override def sendMsg = (edge : EdgeTriplet[VertexId, Unit]) => {
 		Iterator((edge.dstId, Map(edge.srcAttr -> 1L)), (edge.srcId, Map(edge.dstAttr -> 1L)))
 	}
 
@@ -92,7 +92,7 @@ class CommunityDetectionLPJob(graphVertexPath : String, graphEdgePath : String, 
 	 *
 	 * @return a GraphXJobOutput object representing the job result
 	 */
-	override def makeOutput(graph: Graph[VertexId, Int]) =
+	override def makeOutput(graph: Graph[VertexId, Unit]) =
 		new GraphXJobOutput(graph.vertices.map(vertex => {
 			s"${vertex._1} ${vertex._2}"
 		}).cache())
