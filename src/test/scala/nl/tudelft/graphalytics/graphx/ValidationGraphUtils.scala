@@ -17,6 +17,7 @@ package nl.tudelft.graphalytics.graphx
 
 import nl.tudelft.graphalytics.validation.GraphStructure
 import scala.collection.JavaConversions._
+import nl.tudelft.graphalytics.util.graph.PropertyGraph
 
 /**
  * Utility class for transforming a GraphStructure (adjacency list) representation to a list of vertices and a list of
@@ -25,6 +26,23 @@ import scala.collection.JavaConversions._
  * @author Tim Hegeman
  */
 object ValidationGraphUtils {
+
+	def undirectedPropertyGraphToVertexEdgeList[V, E](graphData : PropertyGraph[V,E]) : (List[String], List[String]) = {
+	  val orderedVertices = graphData.getVertices.toList
+	  val vertices = orderedVertices.map(v => s"${v.getId} ${v.getValue}");
+	  val edges = orderedVertices.flatMap(vertex => vertex.getOutgoingEdges
+	      .filter(e => e.getSourceVertex.getId > e.getDestinationVertex.getId)
+	      .map(e => s"${e.getSourceVertex.getId} ${e.getDestinationVertex.getId} ${e.getValue}"))
+	  (vertices, edges)
+	}
+
+	def directedPropertyGraphToVertexEdgeList[V, E](graphData : PropertyGraph[V,E]) : (List[String], List[String]) = {
+	  val orderedVertices = graphData.getVertices.toList
+	  val vertices = orderedVertices.map(v => s"${v.getId} ${v.getValue}");
+	  val edges = orderedVertices.flatMap(vertex => vertex.getOutgoingEdges
+	      .map(e => s"${e.getSourceVertex.getId} ${e.getDestinationVertex.getId} ${e.getValue}"))
+	  (vertices, edges)
+	}
 
 	def undirectedValidationGraphToVertexEdgeList(graphData : GraphStructure) : (List[String], List[String]) = {
 		val orderedVertices = graphData.getVertices.toList.sorted

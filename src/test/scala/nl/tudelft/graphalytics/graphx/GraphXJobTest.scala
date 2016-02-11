@@ -31,6 +31,7 @@ trait GraphXJobTest {
 		var sc: SparkContext = null
 		try {
 			sc = new SparkContext("local", "Graphalytics unit test")
+			sc.setLogLevel("WARN")
 			val vertexRdd = sc.parallelize(vertexData)
 			val edgeRdd = sc.parallelize(edgeData)
 			val output = job.executeOnGraph(vertexRdd, edgeRdd)

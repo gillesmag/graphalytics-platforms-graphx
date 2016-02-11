@@ -4,7 +4,7 @@ import nl.tudelft.graphalytics.domain.GraphFormat
 import nl.tudelft.graphalytics.graphx.GraphXPregelJob
 import nl.tudelft.graphalytics.graphx.GraphXJobOutput
 import org.apache.spark.graphx.{VertexId, EdgeTriplet, Graph}
-import nl.tudelft.graphalytics.domain.algorithms.SingleSourceShortestPathParameters
+import nl.tudelft.graphalytics.domain.algorithms.SingleSourceShortestPathsParameters
 import nl.tudelft.graphalytics.domain.algorithms.BreadthFirstSearchParameters
 
 /**
@@ -22,8 +22,8 @@ class SingleSourceShortestPathJob(graphVertexPath : String, graphEdgePath : Stri
 		extends	GraphXPregelJob[Double, Double, Double](graphVertexPath, graphEdgePath, graphFormat, outputPath) {
 
 
-	val ssspParam : SingleSourceShortestPathParameters = parameters match {
-		case p : SingleSourceShortestPathParameters => p
+	val ssspParam : SingleSourceShortestPathsParameters = parameters match {
+		case p : SingleSourceShortestPathsParameters => p
 		case _ => null
 	}
 
@@ -60,7 +60,7 @@ class SingleSourceShortestPathJob(graphVertexPath : String, graphEdgePath : Stri
 	 *
 	 * @return the new value of the vertex
 	 */
-	def vertexProgram(vertexId : VertexId, oldValue : Double, message : Double) =
+	def vertexProgram = (vertexId : VertexId, oldValue : Double, message : Double) =>
 		math.min(oldValue, message)
 
 	/**
@@ -72,7 +72,7 @@ class SingleSourceShortestPathJob(graphVertexPath : String, graphEdgePath : Stri
 	 *
 	 * @return a set of messages to send
 	 */
-	def sendMsg(edgeData: EdgeTriplet[Double, Double]) =
+	def sendMsg = (edgeData: EdgeTriplet[Double, Double]) =>
 		if (edgeData.srcAttr + edgeData.attr < edgeData.dstAttr)
 			Iterator((edgeData.dstId, edgeData.srcAttr + edgeData.attr))
 		else
@@ -87,7 +87,7 @@ class SingleSourceShortestPathJob(graphVertexPath : String, graphEdgePath : Stri
 	 *
 	 * @return the aggregated message
 	 */
-	def mergeMsg(a : Double, b : Double) =
+	def mergeMsg = (a : Double, b : Double) =>
 	  math.min(a, b)
 
 	/**
