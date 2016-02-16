@@ -1,0 +1,2407 @@
+
+
+Container: container_1455632795340_0001_01_000001 on node007.cm.cluster_47305
+===============================================================================
+LogType: stderr
+LogLength: 574
+Log Contents:
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/local/wlngai/graphalytics/exec/hdfs/nm-local-dir/usercache/wlngai/filecache/11/graphalytics-platforms-graphx-granula-0.1-SNAPSHOT.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/local/wlngai/graphalytics/exec/yarn/share/hadoop/common/lib/slf4j-log4j12-1.7.5.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+
+LogType: stdout
+LogLength: 16130
+Log Contents:
+15:27:13.640 Registered signal handlers for [TERM, HUP, INT]sg
+15:27:14.087 Unable to load native-hadoop library for your platform... using builtin-java classes where applicablesg
+15:27:14.327 ApplicationAttemptId: appattempt_1455632795340_0001_000001sg
+15:27:14.889 Changing view acls to: wlngaisg
+15:27:14.889 Changing modify acls to: wlngaisg
+15:27:14.890 SecurityManager: authentication disabled; ui acls disabled; users with view permissions: Set(wlngai); users with modify permissions: Set(wlngai)sg
+15:27:15.608 Waiting for Spark driver to be reachable.sg
+15:27:15.616 Driver now available: 10.141.0.5:41997sg
+15:27:15.927 Add WebUI Filter. AddWebUIFilter(org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter,Map(PROXY_HOSTS -> node005.ib.cluster, PROXY_URI_BASES -> http://node005.ib.cluster:8088/proxy/application_1455632795340_0001),/proxy/application_1455632795340_0001)sg
+15:27:15.946 Connecting to ResourceManager at /10.149.0.5:8030sg
+15:27:15.977 Registering the ApplicationMastersg
+15:27:16.124 Will request 5 executor containers, each with 1 cores and 22528 MB memory including 2048 MB overheadsg
+15:27:16.150 Container request (host: Any, capability: <memory:22528, vCores:1>)sg
+15:27:16.151 Container request (host: Any, capability: <memory:22528, vCores:1>)sg
+15:27:16.151 Container request (host: Any, capability: <memory:22528, vCores:1>)sg
+15:27:16.151 Container request (host: Any, capability: <memory:22528, vCores:1>)sg
+15:27:16.152 Container request (host: Any, capability: <memory:22528, vCores:1>)sg
+15:27:16.205 Started progress reporter thread with (heartbeat : 3000, initial allocation : 200) intervalssg
+15:27:16.425 Received new token for : node007.cm.cluster:47305sg
+15:27:16.433 Launching container container_1455632795340_0001_01_000002 for on host node007.cm.clustersg
+15:27:16.436 Launching ExecutorRunnable. driverUrl: spark://CoarseGrainedScheduler@10.141.0.5:41997,  executorHostname: node007.cm.clustersg
+15:27:16.438 Received 1 containers from YARN, launching executors on 1 of them.sg
+15:27:16.438 Starting Executor Containersg
+15:27:16.440 yarn.client.max-nodemanagers-proxies : 500sg
+15:27:16.440 Setting up ContainerLaunchContextsg
+15:27:16.449 Preparing Local resourcessg
+15:27:16.553 Prepared Local resources Map(__spark__.jar -> resource { scheme: "hdfs" host: "10.149.0.5" port: 8020 file: "/user/wlngai/.sparkStaging/application_1455632795340_0001/graphalytics-platforms-graphx-granula-0.1-SNAPSHOT.jar" } size: 108859289 timestamp: 1455632829381 type: FILE visibility: PRIVATE)sg
+15:27:16.592 
+===============================================================================
+YARN executor launch context:
+  env:
+    CLASSPATH -> {{PWD}}<CPS>{{PWD}}/__spark__.jar<CPS>$HADOOP_CONF_DIR<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/*<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/lib/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/lib/*
+    SPARK_LOG_URL_STDERR -> http://node007.cm.cluster:8042/node/containerlogs/container_1455632795340_0001_01_000002/wlngai/stderr?start=-4096
+    SPARK_YARN_STAGING_DIR -> .sparkStaging/application_1455632795340_0001
+    SPARK_YARN_CACHE_FILES_FILE_SIZES -> 108859289
+    SPARK_USER -> wlngai
+    SPARK_YARN_CACHE_FILES_VISIBILITIES -> PRIVATE
+    SPARK_YARN_MODE -> true
+    SPARK_YARN_CACHE_FILES_TIME_STAMPS -> 1455632829381
+    SPARK_LOG_URL_STDOUT -> http://node007.cm.cluster:8042/node/containerlogs/container_1455632795340_0001_01_000002/wlngai/stdout?start=-4096
+    SPARK_YARN_CACHE_FILES -> hdfs://10.149.0.5:8020/user/wlngai/.sparkStaging/application_1455632795340_0001/graphalytics-platforms-graphx-granula-0.1-SNAPSHOT.jar#__spark__.jar
+
+  command:
+    {{JAVA_HOME}}/bin/java -server -XX:OnOutOfMemoryError='kill %p' -Xms20480m -Xmx20480m -Djava.io.tmpdir={{PWD}}/tmp '-Dspark.driver.port=41997' -Dspark.yarn.app.container.log.dir=<LOG_DIR> org.apache.spark.executor.CoarseGrainedExecutorBackend --driver-url spark://CoarseGrainedScheduler@10.141.0.5:41997 --executor-id 1 --hostname node007.cm.cluster --cores 1 --app-id application_1455632795340_0001 --user-class-path file:$PWD/__app__.jar 1> <LOG_DIR>/stdout 2> <LOG_DIR>/stderr
+===============================================================================
+      sg
+15:27:16.595 Opening proxy : node007.cm.cluster:47305sg
+15:27:16.850 Received new token for : node021.cm.cluster:38894sg
+15:27:16.850 Received new token for : node013.cm.cluster:44981sg
+15:27:16.850 Received new token for : node008.cm.cluster:46261sg
+15:27:16.850 Received new token for : node054.cm.cluster:35518sg
+15:27:16.854 Launching container container_1455632795340_0001_01_000003 for on host node021.cm.clustersg
+15:27:16.855 Launching ExecutorRunnable. driverUrl: spark://CoarseGrainedScheduler@10.141.0.5:41997,  executorHostname: node021.cm.clustersg
+15:27:16.856 Launching container container_1455632795340_0001_01_000004 for on host node013.cm.clustersg
+15:27:16.856 Starting Executor Containersg
+15:27:16.856 yarn.client.max-nodemanagers-proxies : 500sg
+15:27:16.856 Setting up ContainerLaunchContextsg
+15:27:16.856 Preparing Local resourcessg
+15:27:16.856 Launching ExecutorRunnable. driverUrl: spark://CoarseGrainedScheduler@10.141.0.5:41997,  executorHostname: node013.cm.clustersg
+15:27:16.857 Starting Executor Containersg
+15:27:16.857 Launching container container_1455632795340_0001_01_000005 for on host node008.cm.clustersg
+15:27:16.857 yarn.client.max-nodemanagers-proxies : 500sg
+15:27:16.857 Prepared Local resources Map(__spark__.jar -> resource { scheme: "hdfs" host: "10.149.0.5" port: 8020 file: "/user/wlngai/.sparkStaging/application_1455632795340_0001/graphalytics-platforms-graphx-granula-0.1-SNAPSHOT.jar" } size: 108859289 timestamp: 1455632829381 type: FILE visibility: PRIVATE)sg
+15:27:16.857 Setting up ContainerLaunchContextsg
+15:27:16.857 Preparing Local resourcessg
+15:27:16.858 Launching ExecutorRunnable. driverUrl: spark://CoarseGrainedScheduler@10.141.0.5:41997,  executorHostname: node008.cm.clustersg
+15:27:16.858 Starting Executor Containersg
+15:27:16.858 Prepared Local resources Map(__spark__.jar -> resource { scheme: "hdfs" host: "10.149.0.5" port: 8020 file: "/user/wlngai/.sparkStaging/application_1455632795340_0001/graphalytics-platforms-graphx-granula-0.1-SNAPSHOT.jar" } size: 108859289 timestamp: 1455632829381 type: FILE visibility: PRIVATE)sg
+15:27:16.858 Launching container container_1455632795340_0001_01_000006 for on host node054.cm.clustersg
+15:27:16.858 yarn.client.max-nodemanagers-proxies : 500sg
+15:27:16.859 Setting up ContainerLaunchContextsg
+15:27:16.859 Preparing Local resourcessg
+15:27:16.859 Launching ExecutorRunnable. driverUrl: spark://CoarseGrainedScheduler@10.141.0.5:41997,  executorHostname: node054.cm.clustersg
+15:27:16.859 Starting Executor Containersg
+15:27:16.860 yarn.client.max-nodemanagers-proxies : 500sg
+15:27:16.860 Received 4 containers from YARN, launching executors on 4 of them.sg
+15:27:16.860 Setting up ContainerLaunchContextsg
+15:27:16.860 Preparing Local resourcessg
+15:27:16.860 Prepared Local resources Map(__spark__.jar -> resource { scheme: "hdfs" host: "10.149.0.5" port: 8020 file: "/user/wlngai/.sparkStaging/application_1455632795340_0001/graphalytics-platforms-graphx-granula-0.1-SNAPSHOT.jar" } size: 108859289 timestamp: 1455632829381 type: FILE visibility: PRIVATE)sg
+15:27:16.862 Prepared Local resources Map(__spark__.jar -> resource { scheme: "hdfs" host: "10.149.0.5" port: 8020 file: "/user/wlngai/.sparkStaging/application_1455632795340_0001/graphalytics-platforms-graphx-granula-0.1-SNAPSHOT.jar" } size: 108859289 timestamp: 1455632829381 type: FILE visibility: PRIVATE)sg
+15:27:16.863 
+===============================================================================
+YARN executor launch context:
+  env:
+    CLASSPATH -> {{PWD}}<CPS>{{PWD}}/__spark__.jar<CPS>$HADOOP_CONF_DIR<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/*<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/lib/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/lib/*
+    SPARK_LOG_URL_STDERR -> http://node021.cm.cluster:8042/node/containerlogs/container_1455632795340_0001_01_000003/wlngai/stderr?start=-4096
+    SPARK_YARN_STAGING_DIR -> .sparkStaging/application_1455632795340_0001
+    SPARK_YARN_CACHE_FILES_FILE_SIZES -> 108859289
+    SPARK_USER -> wlngai
+    SPARK_YARN_CACHE_FILES_VISIBILITIES -> PRIVATE
+    SPARK_YARN_MODE -> true
+    SPARK_YARN_CACHE_FILES_TIME_STAMPS -> 1455632829381
+    SPARK_LOG_URL_STDOUT -> http://node021.cm.cluster:8042/node/containerlogs/container_1455632795340_0001_01_000003/wlngai/stdout?start=-4096
+    SPARK_YARN_CACHE_FILES -> hdfs://10.149.0.5:8020/user/wlngai/.sparkStaging/application_1455632795340_0001/graphalytics-platforms-graphx-granula-0.1-SNAPSHOT.jar#__spark__.jar
+
+  command:
+    {{JAVA_HOME}}/bin/java -server -XX:OnOutOfMemoryError='kill %p' -Xms20480m -Xmx20480m -Djava.io.tmpdir={{PWD}}/tmp '-Dspark.driver.port=41997' -Dspark.yarn.app.container.log.dir=<LOG_DIR> org.apache.spark.executor.CoarseGrainedExecutorBackend --driver-url spark://CoarseGrainedScheduler@10.141.0.5:41997 --executor-id 2 --hostname node021.cm.cluster --cores 1 --app-id application_1455632795340_0001 --user-class-path file:$PWD/__app__.jar 1> <LOG_DIR>/stdout 2> <LOG_DIR>/stderr
+===============================================================================
+      sg
+15:27:16.863 Opening proxy : node021.cm.cluster:38894sg
+15:27:16.865 
+===============================================================================
+YARN executor launch context:
+  env:
+    CLASSPATH -> {{PWD}}<CPS>{{PWD}}/__spark__.jar<CPS>$HADOOP_CONF_DIR<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/*<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/lib/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/lib/*
+    SPARK_LOG_URL_STDERR -> http://node013.cm.cluster:8042/node/containerlogs/container_1455632795340_0001_01_000004/wlngai/stderr?start=-4096
+    SPARK_YARN_STAGING_DIR -> .sparkStaging/application_1455632795340_0001
+    SPARK_YARN_CACHE_FILES_FILE_SIZES -> 108859289
+    SPARK_USER -> wlngai
+    SPARK_YARN_CACHE_FILES_VISIBILITIES -> PRIVATE
+    SPARK_YARN_MODE -> true
+    SPARK_YARN_CACHE_FILES_TIME_STAMPS -> 1455632829381
+    SPARK_LOG_URL_STDOUT -> http://node013.cm.cluster:8042/node/containerlogs/container_1455632795340_0001_01_000004/wlngai/stdout?start=-4096
+    SPARK_YARN_CACHE_FILES -> hdfs://10.149.0.5:8020/user/wlngai/.sparkStaging/application_1455632795340_0001/graphalytics-platforms-graphx-granula-0.1-SNAPSHOT.jar#__spark__.jar
+
+  command:
+    {{JAVA_HOME}}/bin/java -server -XX:OnOutOfMemoryError='kill %p' -Xms20480m -Xmx20480m -Djava.io.tmpdir={{PWD}}/tmp '-Dspark.driver.port=41997' -Dspark.yarn.app.container.log.dir=<LOG_DIR> org.apache.spark.executor.CoarseGrainedExecutorBackend --driver-url spark://CoarseGrainedScheduler@10.141.0.5:41997 --executor-id 3 --hostname node013.cm.cluster --cores 1 --app-id application_1455632795340_0001 --user-class-path file:$PWD/__app__.jar 1> <LOG_DIR>/stdout 2> <LOG_DIR>/stderr
+===============================================================================
+      sg
+15:27:16.866 Opening proxy : node013.cm.cluster:44981sg
+15:27:16.869 
+===============================================================================
+YARN executor launch context:
+  env:
+    CLASSPATH -> {{PWD}}<CPS>{{PWD}}/__spark__.jar<CPS>$HADOOP_CONF_DIR<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/*<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/lib/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/lib/*
+    SPARK_LOG_URL_STDERR -> http://node054.cm.cluster:8042/node/containerlogs/container_1455632795340_0001_01_000006/wlngai/stderr?start=-4096
+    SPARK_YARN_STAGING_DIR -> .sparkStaging/application_1455632795340_0001
+    SPARK_YARN_CACHE_FILES_FILE_SIZES -> 108859289
+    SPARK_USER -> wlngai
+    SPARK_YARN_CACHE_FILES_VISIBILITIES -> PRIVATE
+    SPARK_YARN_MODE -> true
+    SPARK_YARN_CACHE_FILES_TIME_STAMPS -> 1455632829381
+    SPARK_LOG_URL_STDOUT -> http://node054.cm.cluster:8042/node/containerlogs/container_1455632795340_0001_01_000006/wlngai/stdout?start=-4096
+    SPARK_YARN_CACHE_FILES -> hdfs://10.149.0.5:8020/user/wlngai/.sparkStaging/application_1455632795340_0001/graphalytics-platforms-graphx-granula-0.1-SNAPSHOT.jar#__spark__.jar
+
+  command:
+    {{JAVA_HOME}}/bin/java -server -XX:OnOutOfMemoryError='kill %p' -Xms20480m -Xmx20480m -Djava.io.tmpdir={{PWD}}/tmp '-Dspark.driver.port=41997' -Dspark.yarn.app.container.log.dir=<LOG_DIR> org.apache.spark.executor.CoarseGrainedExecutorBackend --driver-url spark://CoarseGrainedScheduler@10.141.0.5:41997 --executor-id 5 --hostname node054.cm.cluster --cores 1 --app-id application_1455632795340_0001 --user-class-path file:$PWD/__app__.jar 1> <LOG_DIR>/stdout 2> <LOG_DIR>/stderr
+===============================================================================
+      sg
+15:27:16.869 Opening proxy : node054.cm.cluster:35518sg
+15:27:16.870 
+===============================================================================
+YARN executor launch context:
+  env:
+    CLASSPATH -> {{PWD}}<CPS>{{PWD}}/__spark__.jar<CPS>$HADOOP_CONF_DIR<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/*<CPS>$HADOOP_COMMON_HOME/share/hadoop/common/lib/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/*<CPS>$HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/*<CPS>$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*<CPS>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/lib/*
+    SPARK_LOG_URL_STDERR -> http://node008.cm.cluster:8042/node/containerlogs/container_1455632795340_0001_01_000005/wlngai/stderr?start=-4096
+    SPARK_YARN_STAGING_DIR -> .sparkStaging/application_1455632795340_0001
+    SPARK_YARN_CACHE_FILES_FILE_SIZES -> 108859289
+    SPARK_USER -> wlngai
+    SPARK_YARN_CACHE_FILES_VISIBILITIES -> PRIVATE
+    SPARK_YARN_MODE -> true
+    SPARK_YARN_CACHE_FILES_TIME_STAMPS -> 1455632829381
+    SPARK_LOG_URL_STDOUT -> http://node008.cm.cluster:8042/node/containerlogs/container_1455632795340_0001_01_000005/wlngai/stdout?start=-4096
+    SPARK_YARN_CACHE_FILES -> hdfs://10.149.0.5:8020/user/wlngai/.sparkStaging/application_1455632795340_0001/graphalytics-platforms-graphx-granula-0.1-SNAPSHOT.jar#__spark__.jar
+
+  command:
+    {{JAVA_HOME}}/bin/java -server -XX:OnOutOfMemoryError='kill %p' -Xms20480m -Xmx20480m -Djava.io.tmpdir={{PWD}}/tmp '-Dspark.driver.port=41997' -Dspark.yarn.app.container.log.dir=<LOG_DIR> org.apache.spark.executor.CoarseGrainedExecutorBackend --driver-url spark://CoarseGrainedScheduler@10.141.0.5:41997 --executor-id 4 --hostname node008.cm.cluster --cores 1 --app-id application_1455632795340_0001 --user-class-path file:$PWD/__app__.jar 1> <LOG_DIR>/stdout 2> <LOG_DIR>/stderr
+===============================================================================
+      sg
+15:27:16.871 Opening proxy : node008.cm.cluster:46261sg
+15:28:20.490 Driver terminated or disconnected! Shutting down. node005.cm.cluster:41997sg
+15:28:20.491 Final app status: SUCCEEDED, exitCode: 0sg
+15:28:20.496 Unregistering ApplicationMaster with SUCCEEDEDsg
+15:28:20.513 Waiting for application to be successfully unregistered.sg
+15:28:20.616 Deleting staging directory .sparkStaging/application_1455632795340_0001sg
+15:28:20.682 Shutdown hook calledsg
+
+
+
+Container: container_1455632795340_0001_01_000002 on node007.cm.cluster_47305
+===============================================================================
+LogType: stderr
+LogLength: 574
+Log Contents:
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/local/wlngai/graphalytics/exec/hdfs/nm-local-dir/usercache/wlngai/filecache/11/graphalytics-platforms-graphx-granula-0.1-SNAPSHOT.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/local/wlngai/graphalytics/exec/yarn/share/hadoop/common/lib/slf4j-log4j12-1.7.5.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+
+LogType: stdout
+LogLength: 44414
+Log Contents:
+15:27:17.543 Registered signal handlers for [TERM, HUP, INT]sg
+15:27:17.930 Unable to load native-hadoop library for your platform... using builtin-java classes where applicablesg
+15:27:18.049 Changing view acls to: wlngaisg
+15:27:18.050 Changing modify acls to: wlngaisg
+15:27:18.050 SecurityManager: authentication disabled; ui acls disabled; users with view permissions: Set(wlngai); users with modify permissions: Set(wlngai)sg
+15:27:19.266 Changing view acls to: wlngaisg
+15:27:19.266 Changing modify acls to: wlngaisg
+15:27:19.266 SecurityManager: authentication disabled; ui acls disabled; users with view permissions: Set(wlngai); users with modify permissions: Set(wlngai)sg
+15:27:19.700 Slf4jLogger startedsg
+15:27:19.753 Starting remotingsg
+15:27:19.918 Remoting started; listening on addresses :[akka.tcp://sparkExecutorActorSystem@node007.cm.cluster:51795]sg
+15:27:19.926 Successfully started service 'sparkExecutorActorSystem' on port 51795.sg
+15:27:20.042 Created local directory at /local/wlngai/graphalytics/exec/hdfs/nm-local-dir/usercache/wlngai/appcache/application_1455632795340_0001/blockmgr-ebcdfd42-7b0d-45e8-8db9-f414f23aed7fsg
+15:27:20.070 MemoryStore started with capacity 14.2 GBsg
+15:27:20.392 Connecting to driver: spark://CoarseGrainedScheduler@10.141.0.5:41997sg
+15:27:20.423 Successfully registered with driversg
+15:27:20.425 Starting executor ID 1 on host node007.cm.clustersg
+15:27:20.446 Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 56744.sg
+15:27:20.447 Server created on 56744sg
+15:27:20.448 Trying to register BlockManagersg
+15:27:20.461 Registered BlockManagersg
+15:27:41.762 Got assigned task 10sg
+15:27:41.768 Running task 1.0 in stage 6.0 (TID 10)sg
+15:27:41.815 Updating epoch to 2 and clearing cachesg
+15:27:41.851 Started reading broadcast variable 5sg
+15:27:42.104 Block broadcast_5_piece0 stored as bytes in memory (estimated size 3.2 KB, free 3.2 KB)sg
+15:27:42.116 Reading broadcast variable 5 took 265 mssg
+15:27:42.528 Block broadcast_5 stored as values in memory (estimated size 6.2 KB, free 9.3 KB)sg
+15:27:42.634 Partition rdd_26_1 not found, computing itsg
+15:27:44.680 Found block rdd_18_1 remotelysg
+15:27:45.301 Block rdd_26_1 stored as values in memory (estimated size 93.2 MB, free 93.2 MB)sg
+15:27:46.624 Finished task 1.0 in stage 6.0 (TID 10). 2779 bytes result sent to driversg
+15:27:47.394 Got assigned task 13sg
+15:27:47.395 Running task 0.0 in stage 7.0 (TID 13)sg
+15:27:47.412 Updating epoch to 5 and clearing cachesg
+15:27:47.413 Started reading broadcast variable 7sg
+15:27:47.423 Block broadcast_7_piece0 stored as bytes in memory (estimated size 4.0 KB, free 93.2 MB)sg
+15:27:47.427 Reading broadcast variable 7 took 14 mssg
+15:27:47.434 Block broadcast_7 stored as values in memory (estimated size 8.1 KB, free 93.2 MB)sg
+15:27:47.479 Partition rdd_32_0 not found, computing itsg
+15:27:47.481 Partition rdd_16_0 not found, computing itsg
+15:27:47.483 Input split: hdfs://10.149.0.5:8020/user/wlngai/graphalytics/graphx/input/cit-Patents.e:0+67108864sg
+15:27:47.484 Started reading broadcast variable 1sg
+15:27:47.497 Block broadcast_1_piece0 stored as bytes in memory (estimated size 17.3 KB, free 93.2 MB)sg
+15:27:47.501 Reading broadcast variable 1 took 17 mssg
+15:27:47.586 Block broadcast_1 stored as values in memory (estimated size 216.4 KB, free 93.5 MB)sg
+15:27:48.075 mapred.tip.id is deprecated. Instead, use mapreduce.task.idsg
+15:27:48.075 mapred.task.id is deprecated. Instead, use mapreduce.task.attempt.idsg
+15:27:48.075 mapred.task.is.map is deprecated. Instead, use mapreduce.task.ismapsg
+15:27:48.075 mapred.task.partition is deprecated. Instead, use mapreduce.task.partitionsg
+15:27:48.076 mapred.job.id is deprecated. Instead, use mapreduce.job.idsg
+15:27:59.605 Block rdd_16_0 stored as values in memory (estimated size 146.0 MB, free 239.4 MB)sg
+15:27:59.616 Don't have map outputs for shuffle 0, fetching themsg
+15:27:59.617 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:27:59.626 Got the output locationssg
+15:27:59.633 Getting 2 non-empty blocks out of 2 blockssg
+15:27:59.638 Started 2 remote fetches in 9 mssg
+15:27:59.649 Don't have map outputs for shuffle 2, fetching themsg
+15:27:59.650 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:27:59.653 Got the output locationssg
+15:27:59.653 Getting 2 non-empty blocks out of 2 blockssg
+15:27:59.654 Started 1 remote fetches in 1 mssg
+15:27:59.683 Block rdd_32_0 stored as values in memory (estimated size 146.0 MB, free 385.4 MB)sg
+15:27:59.687 Don't have map outputs for shuffle 3, fetching themsg
+15:27:59.687 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:27:59.691 Got the output locationssg
+15:27:59.692 Getting 2 non-empty blocks out of 2 blockssg
+15:27:59.693 Started 1 remote fetches in 2 mssg
+15:28:00.769 Finished task 0.0 in stage 7.0 (TID 13). 3048 bytes result sent to driversg
+15:28:00.796 Got assigned task 17sg
+15:28:00.796 Running task 1.0 in stage 8.0 (TID 17)sg
+15:28:00.800 Updating epoch to 6 and clearing cachesg
+15:28:00.801 Started reading broadcast variable 8sg
+15:28:00.823 Block broadcast_8_piece0 stored as bytes in memory (estimated size 3.5 KB, free 385.4 MB)sg
+15:28:00.826 Reading broadcast variable 8 took 25 mssg
+15:28:00.832 Block broadcast_8 stored as values in memory (estimated size 7.0 KB, free 385.4 MB)sg
+15:28:00.846 Found block rdd_26_1 locallysg
+15:28:00.846 Don't have map outputs for shuffle 4, fetching themsg
+15:28:00.846 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:00.850 Got the output locationssg
+15:28:00.851 Getting 1 non-empty blocks out of 4 blockssg
+15:28:00.851 Started 1 remote fetches in 1 mssg
+15:28:00.883 Finished task 1.0 in stage 8.0 (TID 17). 2229 bytes result sent to driversg
+15:28:00.977 Got assigned task 19sg
+15:28:00.977 Running task 1.0 in stage 17.0 (TID 19)sg
+15:28:00.980 Started reading broadcast variable 9sg
+15:28:00.988 Block broadcast_9_piece0 stored as bytes in memory (estimated size 3.6 KB, free 385.4 MB)sg
+15:28:00.990 Reading broadcast variable 9 took 10 mssg
+15:28:00.995 Block broadcast_9 stored as values in memory (estimated size 7.4 KB, free 385.4 MB)sg
+15:28:01.002 Found block rdd_26_1 locallysg
+15:28:01.004 Partition rdd_43_1 not found, computing itsg
+15:28:01.004 Found block rdd_26_1 locallysg
+15:28:01.004 Found block rdd_26_1 locallysg
+15:28:01.004 Getting 1 non-empty blocks out of 4 blockssg
+15:28:01.005 Started 1 remote fetches in 1 mssg
+15:28:01.231 Block rdd_43_1 stored as values in memory (estimated size 93.2 MB, free 478.7 MB)sg
+15:28:01.843 Finished task 1.0 in stage 17.0 (TID 19). 2995 bytes result sent to driversg
+15:28:01.848 Got assigned task 21sg
+15:28:01.848 Running task 1.0 in stage 24.0 (TID 21)sg
+15:28:01.850 Started reading broadcast variable 10sg
+15:28:01.857 Block broadcast_10_piece0 stored as bytes in memory (estimated size 3.4 KB, free 478.7 MB)sg
+15:28:01.860 Reading broadcast variable 10 took 10 mssg
+15:28:01.864 Block broadcast_10 stored as values in memory (estimated size 6.8 KB, free 478.7 MB)sg
+15:28:01.868 Found block rdd_26_1 locallysg
+15:28:01.868 Getting 1 non-empty blocks out of 4 blockssg
+15:28:01.869 Started 1 remote fetches in 1 mssg
+15:28:02.318 Finished task 1.0 in stage 24.0 (TID 21). 2415 bytes result sent to driversg
+15:28:02.345 Got assigned task 22sg
+15:28:02.345 Running task 0.0 in stage 25.0 (TID 22)sg
+15:28:02.347 Updating epoch to 8 and clearing cachesg
+15:28:02.347 Started reading broadcast variable 11sg
+15:28:02.354 Block broadcast_11_piece0 stored as bytes in memory (estimated size 4.3 KB, free 478.7 MB)sg
+15:28:02.357 Reading broadcast variable 11 took 10 mssg
+15:28:02.361 Block broadcast_11 stored as values in memory (estimated size 8.8 KB, free 478.7 MB)sg
+15:28:02.368 Partition rdd_49_0 not found, computing itsg
+15:28:02.368 Found block rdd_32_0 locallysg
+15:28:02.368 Don't have map outputs for shuffle 3, fetching themsg
+15:28:02.368 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:02.370 Got the output locationssg
+15:28:02.371 Getting 2 non-empty blocks out of 2 blockssg
+15:28:02.372 Started 1 remote fetches in 1 mssg
+15:28:02.375 Don't have map outputs for shuffle 6, fetching themsg
+15:28:02.375 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:02.382 Got the output locationssg
+15:28:02.382 Getting 2 non-empty blocks out of 2 blockssg
+15:28:02.383 Started 1 remote fetches in 1 mssg
+15:28:02.988 Block rdd_49_0 stored as values in memory (estimated size 146.0 MB, free 624.7 MB)sg
+15:28:02.991 Don't have map outputs for shuffle 7, fetching themsg
+15:28:02.991 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:02.994 Got the output locationssg
+15:28:02.994 Getting 2 non-empty blocks out of 2 blockssg
+15:28:02.995 Started 1 remote fetches in 1 mssg
+15:28:03.548 Finished task 0.0 in stage 25.0 (TID 22). 2993 bytes result sent to driversg
+15:28:03.566 Got assigned task 26sg
+15:28:03.566 Running task 1.0 in stage 26.0 (TID 26)sg
+15:28:03.568 Updating epoch to 9 and clearing cachesg
+15:28:03.568 Started reading broadcast variable 12sg
+15:28:03.574 Block broadcast_12_piece0 stored as bytes in memory (estimated size 3.7 KB, free 624.7 MB)sg
+15:28:03.577 Reading broadcast variable 12 took 9 mssg
+15:28:03.581 Block broadcast_12 stored as values in memory (estimated size 7.7 KB, free 624.7 MB)sg
+15:28:03.585 Partition rdd_57_1 not found, computing itsg
+15:28:03.585 Found block rdd_43_1 locallysg
+15:28:03.586 Don't have map outputs for shuffle 8, fetching themsg
+15:28:03.586 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:03.588 Got the output locationssg
+15:28:03.588 Getting 2 non-empty blocks out of 4 blockssg
+15:28:03.589 Started 1 remote fetches in 1 mssg
+15:28:03.694 Block rdd_57_1 stored as values in memory (estimated size 93.7 MB, free 718.4 MB)sg
+15:28:03.703 Finished task 1.0 in stage 26.0 (TID 26). 2809 bytes result sent to driversg
+15:28:03.722 Removing RDD 40sg
+15:28:03.725 Removing RDD 26sg
+15:28:03.727 Removing RDD 32sg
+15:28:03.782 Got assigned task 28sg
+15:28:03.782 Running task 1.0 in stage 44.0 (TID 28)sg
+15:28:03.784 Started reading broadcast variable 13sg
+15:28:03.789 Block broadcast_13_piece0 stored as bytes in memory (estimated size 3.7 KB, free 479.2 MB)sg
+15:28:03.792 Reading broadcast variable 13 took 8 mssg
+15:28:03.797 Block broadcast_13 stored as values in memory (estimated size 7.8 KB, free 479.2 MB)sg
+15:28:03.801 Found block rdd_43_1 locallysg
+15:28:03.802 Partition rdd_60_1 not found, computing itsg
+15:28:03.803 Found block rdd_43_1 locallysg
+15:28:03.803 Found block rdd_57_1 locallysg
+15:28:03.931 Block rdd_60_1 stored as values in memory (estimated size 93.2 MB, free 572.4 MB)sg
+15:28:04.498 Finished task 1.0 in stage 44.0 (TID 28). 2779 bytes result sent to driversg
+15:28:04.503 Got assigned task 31sg
+15:28:04.503 Running task 1.0 in stage 54.0 (TID 31)sg
+15:28:04.504 Started reading broadcast variable 14sg
+15:28:04.511 Block broadcast_14_piece0 stored as bytes in memory (estimated size 3.6 KB, free 572.4 MB)sg
+15:28:04.513 Reading broadcast variable 14 took 8 mssg
+15:28:04.516 Block broadcast_14 stored as values in memory (estimated size 7.4 KB, free 572.4 MB)sg
+15:28:04.519 Found block rdd_57_1 locallysg
+15:28:04.949 Finished task 1.0 in stage 54.0 (TID 31). 2199 bytes result sent to driversg
+15:28:04.969 Got assigned task 32sg
+15:28:04.969 Running task 0.0 in stage 55.0 (TID 32)sg
+15:28:04.971 Updating epoch to 11 and clearing cachesg
+15:28:04.972 Started reading broadcast variable 15sg
+15:28:04.978 Block broadcast_15_piece0 stored as bytes in memory (estimated size 4.3 KB, free 572.4 MB)sg
+15:28:04.980 Reading broadcast variable 15 took 8 mssg
+15:28:04.983 Block broadcast_15 stored as values in memory (estimated size 9.1 KB, free 572.4 MB)sg
+15:28:04.988 Partition rdd_66_0 not found, computing itsg
+15:28:04.988 Found block rdd_49_0 locallysg
+15:28:04.988 Don't have map outputs for shuffle 9, fetching themsg
+15:28:04.988 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:04.990 Got the output locationssg
+15:28:04.990 Getting 2 non-empty blocks out of 2 blockssg
+15:28:04.991 Started 1 remote fetches in 1 mssg
+15:28:05.005 Block rdd_66_0 stored as values in memory (estimated size 146.0 MB, free 718.4 MB)sg
+15:28:05.008 Don't have map outputs for shuffle 10, fetching themsg
+15:28:05.008 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:05.010 Got the output locationssg
+15:28:05.010 Getting 2 non-empty blocks out of 2 blockssg
+15:28:05.010 Started 1 remote fetches in 0 mssg
+15:28:05.492 Finished task 0.0 in stage 55.0 (TID 32). 2993 bytes result sent to driversg
+15:28:05.511 Got assigned task 36sg
+15:28:05.511 Running task 1.0 in stage 56.0 (TID 36)sg
+15:28:05.512 Updating epoch to 12 and clearing cachesg
+15:28:05.513 Started reading broadcast variable 16sg
+15:28:05.519 Block broadcast_16_piece0 stored as bytes in memory (estimated size 3.8 KB, free 718.4 MB)sg
+15:28:05.521 Reading broadcast variable 16 took 8 mssg
+15:28:05.525 Block broadcast_16 stored as values in memory (estimated size 8.1 KB, free 718.4 MB)sg
+15:28:05.529 Partition rdd_74_1 not found, computing itsg
+15:28:05.529 Found block rdd_60_1 locallysg
+15:28:05.529 Don't have map outputs for shuffle 11, fetching themsg
+15:28:05.529 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:05.531 Got the output locationssg
+15:28:05.532 Getting 2 non-empty blocks out of 4 blockssg
+15:28:05.532 Started 1 remote fetches in 1 mssg
+15:28:05.544 Block rdd_74_1 stored as values in memory (estimated size 93.7 MB, free 812.1 MB)sg
+15:28:05.550 Finished task 1.0 in stage 56.0 (TID 36). 2810 bytes result sent to driversg
+15:28:05.562 Removing RDD 57sg
+15:28:05.564 Removing RDD 43sg
+15:28:05.566 Removing RDD 49sg
+15:28:05.622 Got assigned task 39sg
+15:28:05.622 Running task 1.0 in stage 86.0 (TID 39)sg
+15:28:05.624 Started reading broadcast variable 17sg
+15:28:05.629 Block broadcast_17_piece0 stored as bytes in memory (estimated size 3.8 KB, free 479.2 MB)sg
+15:28:05.632 Reading broadcast variable 17 took 8 mssg
+15:28:05.635 Block broadcast_17 stored as values in memory (estimated size 8.2 KB, free 479.2 MB)sg
+15:28:05.638 Found block rdd_60_1 locallysg
+15:28:05.640 Partition rdd_77_1 not found, computing itsg
+15:28:05.640 Found block rdd_60_1 locallysg
+15:28:05.640 Found block rdd_74_1 locallysg
+15:28:05.741 Block rdd_77_1 stored as values in memory (estimated size 93.2 MB, free 572.5 MB)sg
+15:28:06.174 Finished task 1.0 in stage 86.0 (TID 39). 2779 bytes result sent to driversg
+15:28:06.179 Got assigned task 40sg
+15:28:06.179 Running task 1.0 in stage 99.0 (TID 40)sg
+15:28:06.181 Started reading broadcast variable 18sg
+15:28:06.186 Block broadcast_18_piece0 stored as bytes in memory (estimated size 3.7 KB, free 572.5 MB)sg
+15:28:06.189 Reading broadcast variable 18 took 8 mssg
+15:28:06.192 Block broadcast_18 stored as values in memory (estimated size 7.9 KB, free 572.5 MB)sg
+15:28:06.194 Found block rdd_74_1 locallysg
+15:28:06.634 Finished task 1.0 in stage 99.0 (TID 40). 2199 bytes result sent to driversg
+15:28:06.670 Got assigned task 43sg
+15:28:06.671 Running task 0.0 in stage 100.0 (TID 43)sg
+15:28:06.672 Updating epoch to 14 and clearing cachesg
+15:28:06.673 Started reading broadcast variable 19sg
+15:28:06.679 Block broadcast_19_piece0 stored as bytes in memory (estimated size 4.4 KB, free 572.5 MB)sg
+15:28:06.681 Reading broadcast variable 19 took 8 mssg
+15:28:06.684 Block broadcast_19 stored as values in memory (estimated size 9.3 KB, free 572.5 MB)sg
+15:28:06.688 Partition rdd_83_0 not found, computing itsg
+15:28:06.688 Found block rdd_66_0 locallysg
+15:28:06.688 Don't have map outputs for shuffle 12, fetching themsg
+15:28:06.688 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:06.690 Got the output locationssg
+15:28:06.691 Getting 2 non-empty blocks out of 2 blockssg
+15:28:06.692 Started 1 remote fetches in 1 mssg
+15:28:06.706 Block rdd_83_0 stored as values in memory (estimated size 146.0 MB, free 718.5 MB)sg
+15:28:06.709 Don't have map outputs for shuffle 13, fetching themsg
+15:28:06.709 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:06.711 Got the output locationssg
+15:28:06.712 Getting 2 non-empty blocks out of 2 blockssg
+15:28:06.713 Started 1 remote fetches in 1 mssg
+15:28:07.190 Finished task 0.0 in stage 100.0 (TID 43). 2993 bytes result sent to driversg
+15:28:07.210 Got assigned task 46sg
+15:28:07.210 Running task 1.0 in stage 101.0 (TID 46)sg
+15:28:07.211 Updating epoch to 15 and clearing cachesg
+15:28:07.213 Started reading broadcast variable 20sg
+15:28:07.218 Block broadcast_20_piece0 stored as bytes in memory (estimated size 3.9 KB, free 718.5 MB)sg
+15:28:07.220 Reading broadcast variable 20 took 7 mssg
+15:28:07.223 Block broadcast_20 stored as values in memory (estimated size 8.5 KB, free 718.5 MB)sg
+15:28:07.228 Partition rdd_91_1 not found, computing itsg
+15:28:07.228 Found block rdd_77_1 locallysg
+15:28:07.228 Don't have map outputs for shuffle 14, fetching themsg
+15:28:07.228 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:07.230 Got the output locationssg
+15:28:07.231 Getting 1 non-empty blocks out of 4 blockssg
+15:28:07.231 Started 0 remote fetches in 0 mssg
+15:28:07.244 Block rdd_91_1 stored as values in memory (estimated size 93.7 MB, free 812.2 MB)sg
+15:28:07.249 Finished task 1.0 in stage 101.0 (TID 46). 2810 bytes result sent to driversg
+15:28:07.260 Removing RDD 74sg
+15:28:07.262 Removing RDD 60sg
+15:28:07.264 Removing RDD 66sg
+15:28:07.337 Got assigned task 49sg
+15:28:07.337 Running task 1.0 in stage 146.0 (TID 49)sg
+15:28:07.342 Started reading broadcast variable 21sg
+15:28:07.347 Block broadcast_21_piece0 stored as bytes in memory (estimated size 3.9 KB, free 479.3 MB)sg
+15:28:07.351 Reading broadcast variable 21 took 9 mssg
+15:28:07.355 Block broadcast_21 stored as values in memory (estimated size 8.7 KB, free 479.3 MB)sg
+15:28:07.358 Found block rdd_77_1 locallysg
+15:28:07.359 Partition rdd_94_1 not found, computing itsg
+15:28:07.360 Found block rdd_77_1 locallysg
+15:28:07.360 Found block rdd_91_1 locallysg
+15:28:07.481 Block rdd_94_1 stored as values in memory (estimated size 93.2 MB, free 572.3 MB)sg
+15:28:08.003 Finished task 1.0 in stage 146.0 (TID 49). 2779 bytes result sent to driversg
+15:28:08.009 Got assigned task 50sg
+15:28:08.009 Running task 1.0 in stage 162.0 (TID 50)sg
+15:28:08.011 Started reading broadcast variable 22sg
+15:28:08.016 Block broadcast_22_piece0 stored as bytes in memory (estimated size 3.8 KB, free 572.3 MB)sg
+15:28:08.018 Reading broadcast variable 22 took 7 mssg
+15:28:08.020 Block broadcast_22 stored as values in memory (estimated size 8.3 KB, free 572.4 MB)sg
+15:28:08.022 Found block rdd_91_1 locallysg
+15:28:08.450 Finished task 1.0 in stage 162.0 (TID 50). 2199 bytes result sent to driversg
+15:28:08.466 Got assigned task 55sg
+15:28:08.466 Running task 0.0 in stage 163.0 (TID 55)sg
+15:28:08.467 Updating epoch to 17 and clearing cachesg
+15:28:08.468 Started reading broadcast variable 23sg
+15:28:08.474 Block broadcast_23_piece0 stored as bytes in memory (estimated size 4.5 KB, free 572.4 MB)sg
+15:28:08.476 Reading broadcast variable 23 took 8 mssg
+15:28:08.479 Block broadcast_23 stored as values in memory (estimated size 9.6 KB, free 572.4 MB)sg
+15:28:08.483 Partition rdd_100_0 not found, computing itsg
+15:28:08.483 Found block rdd_83_0 locallysg
+15:28:08.483 Don't have map outputs for shuffle 15, fetching themsg
+15:28:08.483 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:08.486 Got the output locationssg
+15:28:08.487 Getting 2 non-empty blocks out of 2 blockssg
+15:28:08.487 Started 1 remote fetches in 0 mssg
+15:28:08.501 Block rdd_100_0 stored as values in memory (estimated size 146.0 MB, free 718.4 MB)sg
+15:28:08.503 Don't have map outputs for shuffle 16, fetching themsg
+15:28:08.503 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:08.505 Got the output locationssg
+15:28:08.505 Getting 2 non-empty blocks out of 2 blockssg
+15:28:08.505 Started 1 remote fetches in 0 mssg
+15:28:08.998 Finished task 0.0 in stage 163.0 (TID 55). 2993 bytes result sent to driversg
+15:28:09.012 Got assigned task 57sg
+15:28:09.013 Running task 1.0 in stage 164.0 (TID 57)sg
+15:28:09.014 Updating epoch to 18 and clearing cachesg
+15:28:09.014 Started reading broadcast variable 24sg
+15:28:09.019 Block broadcast_24_piece0 stored as bytes in memory (estimated size 4.0 KB, free 718.4 MB)sg
+15:28:09.022 Reading broadcast variable 24 took 8 mssg
+15:28:09.024 Block broadcast_24 stored as values in memory (estimated size 9.0 KB, free 718.4 MB)sg
+15:28:09.028 Partition rdd_108_1 not found, computing itsg
+15:28:09.028 Found block rdd_94_1 locallysg
+15:28:09.028 Don't have map outputs for shuffle 17, fetching themsg
+15:28:09.028 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:09.031 Got the output locationssg
+15:28:09.031 Getting 1 non-empty blocks out of 4 blockssg
+15:28:09.031 Started 0 remote fetches in 0 mssg
+15:28:09.041 Block rdd_108_1 stored as values in memory (estimated size 93.7 MB, free 812.1 MB)sg
+15:28:09.045 Finished task 1.0 in stage 164.0 (TID 57). 2810 bytes result sent to driversg
+15:28:09.057 Removing RDD 91sg
+15:28:09.058 Removing RDD 77sg
+15:28:09.058 Removing RDD 83sg
+15:28:09.118 Got assigned task 58sg
+15:28:09.118 Running task 1.0 in stage 227.0 (TID 58)sg
+15:28:09.119 Started reading broadcast variable 25sg
+15:28:09.125 Block broadcast_25_piece0 stored as bytes in memory (estimated size 4.0 KB, free 479.2 MB)sg
+15:28:09.127 Reading broadcast variable 25 took 8 mssg
+15:28:09.130 Block broadcast_25 stored as values in memory (estimated size 9.1 KB, free 479.2 MB)sg
+15:28:09.132 Found block rdd_94_1 locallysg
+15:28:09.133 Partition rdd_111_1 not found, computing itsg
+15:28:09.133 Found block rdd_94_1 locallysg
+15:28:09.133 Found block rdd_108_1 locallysg
+15:28:09.232 Block rdd_111_1 stored as values in memory (estimated size 93.2 MB, free 572.4 MB)sg
+15:28:09.752 Finished task 1.0 in stage 227.0 (TID 58). 2779 bytes result sent to driversg
+15:28:09.757 Got assigned task 60sg
+15:28:09.757 Running task 1.0 in stage 246.0 (TID 60)sg
+15:28:09.758 Started reading broadcast variable 26sg
+15:28:09.762 Block broadcast_26_piece0 stored as bytes in memory (estimated size 3.9 KB, free 572.4 MB)sg
+15:28:09.764 Reading broadcast variable 26 took 6 mssg
+15:28:09.767 Block broadcast_26 stored as values in memory (estimated size 8.7 KB, free 572.4 MB)sg
+15:28:09.769 Found block rdd_108_1 locallysg
+15:28:10.197 Finished task 1.0 in stage 246.0 (TID 60). 2199 bytes result sent to driversg
+15:28:10.213 Got assigned task 63sg
+15:28:10.213 Running task 0.0 in stage 247.0 (TID 63)sg
+15:28:10.215 Updating epoch to 20 and clearing cachesg
+15:28:10.215 Started reading broadcast variable 27sg
+15:28:10.221 Block broadcast_27_piece0 stored as bytes in memory (estimated size 4.6 KB, free 572.4 MB)sg
+15:28:10.223 Reading broadcast variable 27 took 8 mssg
+15:28:10.225 Block broadcast_27 stored as values in memory (estimated size 9.9 KB, free 572.4 MB)sg
+15:28:10.229 Partition rdd_117_0 not found, computing itsg
+15:28:10.229 Found block rdd_100_0 locallysg
+15:28:10.229 Don't have map outputs for shuffle 18, fetching themsg
+15:28:10.229 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:10.231 Got the output locationssg
+15:28:10.232 Getting 2 non-empty blocks out of 2 blockssg
+15:28:10.232 Started 1 remote fetches in 1 mssg
+15:28:10.244 Block rdd_117_0 stored as values in memory (estimated size 146.0 MB, free 718.4 MB)sg
+15:28:10.247 Don't have map outputs for shuffle 19, fetching themsg
+15:28:10.247 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:10.250 Got the output locationssg
+15:28:10.250 Getting 2 non-empty blocks out of 2 blockssg
+15:28:10.251 Started 1 remote fetches in 1 mssg
+15:28:10.731 Finished task 0.0 in stage 247.0 (TID 63). 2993 bytes result sent to driversg
+15:28:10.745 Got assigned task 66sg
+15:28:10.745 Running task 1.0 in stage 248.0 (TID 66)sg
+15:28:10.746 Updating epoch to 21 and clearing cachesg
+15:28:10.747 Started reading broadcast variable 28sg
+15:28:10.751 Block broadcast_28_piece0 stored as bytes in memory (estimated size 4.1 KB, free 718.4 MB)sg
+15:28:10.753 Reading broadcast variable 28 took 6 mssg
+15:28:10.756 Block broadcast_28 stored as values in memory (estimated size 9.4 KB, free 718.4 MB)sg
+15:28:10.759 Partition rdd_125_1 not found, computing itsg
+15:28:10.759 Found block rdd_111_1 locallysg
+15:28:10.759 Don't have map outputs for shuffle 20, fetching themsg
+15:28:10.760 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:10.761 Got the output locationssg
+15:28:10.762 Getting 1 non-empty blocks out of 4 blockssg
+15:28:10.762 Started 0 remote fetches in 0 mssg
+15:28:10.771 Block rdd_125_1 stored as values in memory (estimated size 93.7 MB, free 812.1 MB)sg
+15:28:10.776 Finished task 1.0 in stage 248.0 (TID 66). 2810 bytes result sent to driversg
+15:28:10.786 Removing RDD 108sg
+15:28:10.787 Removing RDD 94sg
+15:28:10.789 Removing RDD 100sg
+15:28:10.849 Got assigned task 69sg
+15:28:10.849 Running task 1.0 in stage 332.0 (TID 69)sg
+15:28:10.851 Started reading broadcast variable 29sg
+15:28:10.855 Block broadcast_29_piece0 stored as bytes in memory (estimated size 4.1 KB, free 479.2 MB)sg
+15:28:10.857 Reading broadcast variable 29 took 6 mssg
+15:28:10.860 Block broadcast_29 stored as values in memory (estimated size 9.5 KB, free 479.2 MB)sg
+15:28:10.862 Found block rdd_111_1 locallysg
+15:28:10.863 Partition rdd_128_1 not found, computing itsg
+15:28:10.863 Found block rdd_111_1 locallysg
+15:28:10.863 Found block rdd_125_1 locallysg
+15:28:10.967 Block rdd_128_1 stored as values in memory (estimated size 93.2 MB, free 572.4 MB)sg
+15:28:11.491 Finished task 1.0 in stage 332.0 (TID 69). 2779 bytes result sent to driversg
+15:28:11.494 Got assigned task 71sg
+15:28:11.495 Running task 1.0 in stage 354.0 (TID 71)sg
+15:28:11.496 Started reading broadcast variable 30sg
+15:28:11.500 Block broadcast_30_piece0 stored as bytes in memory (estimated size 4.0 KB, free 572.5 MB)sg
+15:28:11.502 Reading broadcast variable 30 took 6 mssg
+15:28:11.504 Block broadcast_30 stored as values in memory (estimated size 9.2 KB, free 572.5 MB)sg
+15:28:11.506 Found block rdd_125_1 locallysg
+15:28:12.031 Finished task 1.0 in stage 354.0 (TID 71). 2199 bytes result sent to driversg
+15:28:12.047 Got assigned task 74sg
+15:28:12.047 Running task 0.0 in stage 355.0 (TID 74)sg
+15:28:12.048 Updating epoch to 23 and clearing cachesg
+15:28:12.049 Started reading broadcast variable 31sg
+15:28:12.053 Block broadcast_31_piece0 stored as bytes in memory (estimated size 4.7 KB, free 572.5 MB)sg
+15:28:12.055 Reading broadcast variable 31 took 6 mssg
+15:28:12.057 Block broadcast_31 stored as values in memory (estimated size 10.1 KB, free 572.5 MB)sg
+15:28:12.061 Partition rdd_134_0 not found, computing itsg
+15:28:12.061 Found block rdd_117_0 locallysg
+15:28:12.061 Don't have map outputs for shuffle 21, fetching themsg
+15:28:12.061 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:12.063 Got the output locationssg
+15:28:12.063 Getting 2 non-empty blocks out of 2 blockssg
+15:28:12.064 Started 1 remote fetches in 1 mssg
+15:28:12.076 Block rdd_134_0 stored as values in memory (estimated size 146.0 MB, free 718.5 MB)sg
+15:28:12.078 Don't have map outputs for shuffle 22, fetching themsg
+15:28:12.078 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:12.080 Got the output locationssg
+15:28:12.080 Getting 2 non-empty blocks out of 2 blockssg
+15:28:12.081 Started 1 remote fetches in 1 mssg
+15:28:12.507 Finished task 0.0 in stage 355.0 (TID 74). 2993 bytes result sent to driversg
+15:28:12.529 Got assigned task 76sg
+15:28:12.530 Running task 1.0 in stage 356.0 (TID 76)sg
+15:28:12.530 Updating epoch to 24 and clearing cachesg
+15:28:12.531 Started reading broadcast variable 32sg
+15:28:12.535 Block broadcast_32_piece0 stored as bytes in memory (estimated size 4.1 KB, free 718.5 MB)sg
+15:28:12.537 Reading broadcast variable 32 took 6 mssg
+15:28:12.540 Block broadcast_32 stored as values in memory (estimated size 9.8 KB, free 718.5 MB)sg
+15:28:12.543 Partition rdd_142_1 not found, computing itsg
+15:28:12.543 Found block rdd_128_1 locallysg
+15:28:12.543 Don't have map outputs for shuffle 23, fetching themsg
+15:28:12.543 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:12.545 Got the output locationssg
+15:28:12.545 Getting 1 non-empty blocks out of 4 blockssg
+15:28:12.545 Started 0 remote fetches in 0 mssg
+15:28:12.554 Block rdd_142_1 stored as values in memory (estimated size 93.7 MB, free 812.2 MB)sg
+15:28:12.559 Finished task 1.0 in stage 356.0 (TID 76). 2810 bytes result sent to driversg
+15:28:12.570 Removing RDD 125sg
+15:28:12.571 Removing RDD 111sg
+15:28:12.572 Removing RDD 117sg
+15:28:12.649 Got assigned task 78sg
+15:28:12.649 Running task 1.0 in stage 464.0 (TID 78)sg
+15:28:12.651 Started reading broadcast variable 33sg
+15:28:12.655 Block broadcast_33_piece0 stored as bytes in memory (estimated size 4.2 KB, free 479.3 MB)sg
+15:28:12.657 Reading broadcast variable 33 took 6 mssg
+15:28:12.659 Block broadcast_33 stored as values in memory (estimated size 10.0 KB, free 479.3 MB)sg
+15:28:12.661 Found block rdd_128_1 locallysg
+15:28:12.662 Partition rdd_145_1 not found, computing itsg
+15:28:12.662 Found block rdd_128_1 locallysg
+15:28:12.662 Found block rdd_142_1 locallysg
+15:28:12.762 Block rdd_145_1 stored as values in memory (estimated size 93.2 MB, free 572.5 MB)sg
+15:28:13.279 Finished task 1.0 in stage 464.0 (TID 78). 2779 bytes result sent to driversg
+15:28:13.283 Got assigned task 81sg
+15:28:13.283 Running task 1.0 in stage 489.0 (TID 81)sg
+15:28:13.284 Started reading broadcast variable 34sg
+15:28:13.288 Block broadcast_34_piece0 stored as bytes in memory (estimated size 4.1 KB, free 572.5 MB)sg
+15:28:13.290 Reading broadcast variable 34 took 6 mssg
+15:28:13.292 Block broadcast_34 stored as values in memory (estimated size 9.6 KB, free 572.5 MB)sg
+15:28:13.293 Found block rdd_142_1 locallysg
+15:28:13.719 Finished task 1.0 in stage 489.0 (TID 81). 2199 bytes result sent to driversg
+15:28:13.736 Got assigned task 83sg
+15:28:13.736 Running task 0.0 in stage 490.0 (TID 83)sg
+15:28:13.737 Updating epoch to 26 and clearing cachesg
+15:28:13.738 Started reading broadcast variable 35sg
+15:28:13.743 Block broadcast_35_piece0 stored as bytes in memory (estimated size 4.7 KB, free 572.5 MB)sg
+15:28:13.745 Reading broadcast variable 35 took 7 mssg
+15:28:13.748 Block broadcast_35 stored as values in memory (estimated size 10.4 KB, free 572.5 MB)sg
+15:28:13.751 Partition rdd_151_0 not found, computing itsg
+15:28:13.751 Found block rdd_134_0 locallysg
+15:28:13.751 Don't have map outputs for shuffle 24, fetching themsg
+15:28:13.751 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:13.754 Got the output locationssg
+15:28:13.754 Getting 2 non-empty blocks out of 2 blockssg
+15:28:13.754 Started 1 remote fetches in 0 mssg
+15:28:13.768 Block rdd_151_0 stored as values in memory (estimated size 146.0 MB, free 718.5 MB)sg
+15:28:13.769 Don't have map outputs for shuffle 25, fetching themsg
+15:28:13.770 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:13.771 Got the output locationssg
+15:28:13.772 Getting 2 non-empty blocks out of 2 blockssg
+15:28:13.772 Started 1 remote fetches in 1 mssg
+15:28:14.106 Finished task 0.0 in stage 490.0 (TID 83). 2993 bytes result sent to driversg
+15:28:14.219 Got assigned task 86sg
+15:28:14.219 Running task 1.0 in stage 491.0 (TID 86)sg
+15:28:14.220 Updating epoch to 27 and clearing cachesg
+15:28:14.221 Started reading broadcast variable 36sg
+15:28:14.224 Block broadcast_36_piece0 stored as bytes in memory (estimated size 4.3 KB, free 718.5 MB)sg
+15:28:14.226 Reading broadcast variable 36 took 5 mssg
+15:28:14.228 Block broadcast_36 stored as values in memory (estimated size 10.3 KB, free 718.5 MB)sg
+15:28:14.230 Partition rdd_159_1 not found, computing itsg
+15:28:14.231 Found block rdd_145_1 locallysg
+15:28:14.231 Don't have map outputs for shuffle 26, fetching themsg
+15:28:14.231 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:14.233 Got the output locationssg
+15:28:14.234 Getting 1 non-empty blocks out of 4 blockssg
+15:28:14.234 Started 0 remote fetches in 1 mssg
+15:28:14.242 Block rdd_159_1 stored as values in memory (estimated size 93.7 MB, free 812.2 MB)sg
+15:28:14.247 Finished task 1.0 in stage 491.0 (TID 86). 2810 bytes result sent to driversg
+15:28:14.258 Removing RDD 142sg
+15:28:14.259 Removing RDD 128sg
+15:28:14.261 Removing RDD 134sg
+15:28:14.343 Got assigned task 88sg
+15:28:14.343 Running task 1.0 in stage 626.0 (TID 88)sg
+15:28:14.344 Started reading broadcast variable 37sg
+15:28:14.348 Block broadcast_37_piece0 stored as bytes in memory (estimated size 4.3 KB, free 479.3 MB)sg
+15:28:14.350 Reading broadcast variable 37 took 6 mssg
+15:28:14.352 Block broadcast_37 stored as values in memory (estimated size 10.4 KB, free 479.3 MB)sg
+15:28:14.353 Found block rdd_145_1 locallysg
+15:28:14.354 Partition rdd_162_1 not found, computing itsg
+15:28:14.354 Found block rdd_145_1 locallysg
+15:28:14.354 Found block rdd_159_1 locallysg
+15:28:14.427 Block rdd_162_1 stored as values in memory (estimated size 93.2 MB, free 572.6 MB)sg
+15:28:14.786 Finished task 1.0 in stage 626.0 (TID 88). 2779 bytes result sent to driversg
+15:28:14.790 Got assigned task 90sg
+15:28:14.790 Running task 1.0 in stage 654.0 (TID 90)sg
+15:28:14.791 Started reading broadcast variable 38sg
+15:28:14.794 Block broadcast_38_piece0 stored as bytes in memory (estimated size 4.2 KB, free 572.6 MB)sg
+15:28:14.796 Reading broadcast variable 38 took 5 mssg
+15:28:14.798 Block broadcast_38 stored as values in memory (estimated size 10.0 KB, free 572.6 MB)sg
+15:28:14.799 Found block rdd_159_1 locallysg
+15:28:15.092 Finished task 1.0 in stage 654.0 (TID 90). 2199 bytes result sent to driversg
+15:28:15.219 Got assigned task 95sg
+15:28:15.219 Running task 0.0 in stage 655.0 (TID 95)sg
+15:28:15.220 Updating epoch to 29 and clearing cachesg
+15:28:15.221 Started reading broadcast variable 39sg
+15:28:15.225 Block broadcast_39_piece0 stored as bytes in memory (estimated size 4.8 KB, free 572.4 MB)sg
+15:28:15.227 Reading broadcast variable 39 took 6 mssg
+15:28:15.228 Block broadcast_39 stored as values in memory (estimated size 10.7 KB, free 572.4 MB)sg
+15:28:15.231 Partition rdd_168_0 not found, computing itsg
+15:28:15.231 Found block rdd_151_0 locallysg
+15:28:15.231 Don't have map outputs for shuffle 27, fetching themsg
+15:28:15.231 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:15.234 Got the output locationssg
+15:28:15.234 Getting 2 non-empty blocks out of 2 blockssg
+15:28:15.234 Started 1 remote fetches in 0 mssg
+15:28:15.246 Block rdd_168_0 stored as values in memory (estimated size 146.0 MB, free 718.4 MB)sg
+15:28:15.248 Don't have map outputs for shuffle 28, fetching themsg
+15:28:15.248 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:15.251 Got the output locationssg
+15:28:15.251 Getting 2 non-empty blocks out of 2 blockssg
+15:28:15.251 Started 1 remote fetches in 0 mssg
+15:28:15.590 Finished task 0.0 in stage 655.0 (TID 95). 2993 bytes result sent to driversg
+15:28:15.718 Got assigned task 97sg
+15:28:15.718 Running task 1.0 in stage 656.0 (TID 97)sg
+15:28:15.718 Updating epoch to 30 and clearing cachesg
+15:28:15.719 Started reading broadcast variable 40sg
+15:28:15.723 Block broadcast_40_piece0 stored as bytes in memory (estimated size 4.3 KB, free 718.4 MB)sg
+15:28:15.725 Reading broadcast variable 40 took 6 mssg
+15:28:15.727 Block broadcast_40 stored as values in memory (estimated size 10.7 KB, free 718.4 MB)sg
+15:28:15.729 Partition rdd_176_1 not found, computing itsg
+15:28:15.730 Found block rdd_162_1 locallysg
+15:28:15.730 Don't have map outputs for shuffle 29, fetching themsg
+15:28:15.730 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:15.732 Got the output locationssg
+15:28:15.732 Getting 1 non-empty blocks out of 4 blockssg
+15:28:15.732 Started 0 remote fetches in 0 mssg
+15:28:15.741 Block rdd_176_1 stored as values in memory (estimated size 93.7 MB, free 812.1 MB)sg
+15:28:15.745 Finished task 1.0 in stage 656.0 (TID 97). 2809 bytes result sent to driversg
+15:28:15.754 Removing RDD 159sg
+15:28:15.755 Removing RDD 145sg
+15:28:15.756 Removing RDD 151sg
+15:28:15.835 Got assigned task 98sg
+15:28:15.835 Running task 1.0 in stage 821.0 (TID 98)sg
+15:28:15.836 Started reading broadcast variable 41sg
+15:28:15.840 Block broadcast_41_piece0 stored as bytes in memory (estimated size 4.4 KB, free 479.2 MB)sg
+15:28:15.842 Reading broadcast variable 41 took 6 mssg
+15:28:15.843 Block broadcast_41 stored as values in memory (estimated size 10.8 KB, free 479.2 MB)sg
+15:28:15.844 Found block rdd_162_1 locallysg
+15:28:15.846 Partition rdd_179_1 not found, computing itsg
+15:28:15.846 Found block rdd_162_1 locallysg
+15:28:15.846 Found block rdd_176_1 locallysg
+15:28:15.918 Block rdd_179_1 stored as values in memory (estimated size 93.2 MB, free 572.4 MB)sg
+15:28:16.274 Finished task 1.0 in stage 821.0 (TID 98). 2779 bytes result sent to driversg
+15:28:16.277 Got assigned task 100sg
+15:28:16.277 Running task 1.0 in stage 852.0 (TID 100)sg
+15:28:16.278 Started reading broadcast variable 42sg
+15:28:16.282 Block broadcast_42_piece0 stored as bytes in memory (estimated size 4.3 KB, free 572.4 MB)sg
+15:28:16.284 Reading broadcast variable 42 took 6 mssg
+15:28:16.285 Block broadcast_42 stored as values in memory (estimated size 10.5 KB, free 572.4 MB)sg
+15:28:16.287 Found block rdd_176_1 locallysg
+15:28:16.578 Finished task 1.0 in stage 852.0 (TID 100). 2199 bytes result sent to driversg
+15:28:16.654 Got assigned task 102sg
+15:28:16.654 Running task 0.0 in stage 853.0 (TID 102)sg
+15:28:16.655 Updating epoch to 32 and clearing cachesg
+15:28:16.656 Started reading broadcast variable 43sg
+15:28:16.660 Block broadcast_43_piece0 stored as bytes in memory (estimated size 4.9 KB, free 572.4 MB)sg
+15:28:16.662 Reading broadcast variable 43 took 6 mssg
+15:28:16.663 Block broadcast_43 stored as values in memory (estimated size 10.9 KB, free 572.4 MB)sg
+15:28:16.666 Partition rdd_185_0 not found, computing itsg
+15:28:16.666 Found block rdd_168_0 locallysg
+15:28:16.666 Don't have map outputs for shuffle 30, fetching themsg
+15:28:16.666 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:16.669 Got the output locationssg
+15:28:16.669 Getting 2 non-empty blocks out of 2 blockssg
+15:28:16.669 Started 1 remote fetches in 0 mssg
+15:28:16.682 Block rdd_185_0 stored as values in memory (estimated size 146.0 MB, free 718.4 MB)sg
+15:28:16.683 Don't have map outputs for shuffle 31, fetching themsg
+15:28:16.683 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:16.686 Got the output locationssg
+15:28:16.686 Getting 2 non-empty blocks out of 2 blockssg
+15:28:16.687 Started 1 remote fetches in 1 mssg
+15:28:16.932 Finished task 0.0 in stage 853.0 (TID 102). 2993 bytes result sent to driversg
+15:28:16.993 Got assigned task 106sg
+15:28:16.993 Running task 1.0 in stage 854.0 (TID 106)sg
+15:28:16.994 Updating epoch to 33 and clearing cachesg
+15:28:16.994 Started reading broadcast variable 44sg
+15:28:16.998 Block broadcast_44_piece0 stored as bytes in memory (estimated size 4.4 KB, free 718.4 MB)sg
+15:28:17.000 Reading broadcast variable 44 took 6 mssg
+15:28:17.002 Block broadcast_44 stored as values in memory (estimated size 11.1 KB, free 718.4 MB)sg
+15:28:17.004 Partition rdd_193_1 not found, computing itsg
+15:28:17.004 Found block rdd_179_1 locallysg
+15:28:17.004 Don't have map outputs for shuffle 32, fetching themsg
+15:28:17.004 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:17.006 Got the output locationssg
+15:28:17.007 Getting 0 non-empty blocks out of 4 blockssg
+15:28:17.007 Started 0 remote fetches in 1 mssg
+15:28:17.015 Block rdd_193_1 stored as values in memory (estimated size 93.7 MB, free 812.1 MB)sg
+15:28:17.019 Finished task 1.0 in stage 854.0 (TID 106). 2809 bytes result sent to driversg
+15:28:17.028 Removing RDD 176sg
+15:28:17.029 Removing RDD 162sg
+15:28:17.029 Removing RDD 168sg
+15:28:17.084 Got assigned task 108sg
+15:28:17.085 Running task 1.0 in stage 1019.0 (TID 108)sg
+15:28:17.086 Started reading broadcast variable 45sg
+15:28:17.089 Block broadcast_45_piece0 stored as bytes in memory (estimated size 4.3 KB, free 479.2 MB)sg
+15:28:17.091 Reading broadcast variable 45 took 5 mssg
+15:28:17.092 Block broadcast_45 stored as values in memory (estimated size 10.8 KB, free 479.3 MB)sg
+15:28:17.093 Found block rdd_179_1 locallysg
+15:28:17.096 Finished task 1.0 in stage 1019.0 (TID 108). 2016 bytes result sent to driversg
+15:28:17.147 Got assigned task 111sg
+15:28:17.147 Running task 0.0 in stage 1185.0 (TID 111)sg
+15:28:17.148 Started reading broadcast variable 46sg
+15:28:17.151 Block broadcast_46_piece0 stored as bytes in memory (estimated size 4.4 KB, free 479.3 MB)sg
+15:28:17.153 Reading broadcast variable 46 took 5 mssg
+15:28:17.155 Block broadcast_46 stored as values in memory (estimated size 9.7 KB, free 479.3 MB)sg
+15:28:17.158 Found block rdd_185_0 locallysg
+15:28:17.159 Finished task 0.0 in stage 1185.0 (TID 111). 2016 bytes result sent to driversg
+15:28:17.180 Removing RDD 13sg
+15:28:17.180 Removing RDD 16sg
+15:28:17.323 Got assigned task 115sg
+15:28:17.323 Running task 1.0 in stage 1350.0 (TID 115)sg
+15:28:17.324 Started reading broadcast variable 47sg
+15:28:17.328 Block broadcast_47_piece0 stored as bytes in memory (estimated size 23.1 KB, free 333.3 MB)sg
+15:28:17.330 Reading broadcast variable 47 took 6 mssg
+15:28:17.331 Block broadcast_47 stored as values in memory (estimated size 65.8 KB, free 333.4 MB)sg
+15:28:17.353 Partition rdd_198_1 not found, computing itsg
+15:28:17.353 Found block rdd_179_1 locallysg
+15:28:18.481 Block rdd_198_1 stored as values in memory (estimated size 180.0 MB, free 513.4 MB)sg
+15:28:20.247 Saved output of task 'attempt_201602161528_1350_m_000001_115' to hdfs://10.149.0.5:8020/user/wlngai/graphalytics/graphx/output/BFS-cit-Patents/_temporary/0/task_201602161528_1350_m_000001sg
+15:28:20.248 attempt_201602161528_1350_m_000001_115: Committedsg
+15:28:20.251 Finished task 1.0 in stage 1350.0 (TID 115). 2591 bytes result sent to driversg
+15:28:20.347 Removing RDD 179sg
+15:28:20.347 Removing RDD 185sg
+15:28:20.347 Removing RDD 198sg
+15:28:20.465 Driver commanded a shutdownsg
+15:28:20.489 MemoryStore clearedsg
+15:28:20.490 BlockManager stoppedsg
+15:28:20.493 An unknown (node005.cm.cluster:41997) driver disconnected.sg
+15:28:20.493 Driver 10.141.0.5:41997 disassociated! Shutting down.sg
+15:28:20.495 Shutdown hook calledsg
+15:28:20.498 Shutting down remote daemon.sg
+15:28:20.500 Remote daemon shut down; proceeding with flushing remote transports.sg
+15:28:20.529 Remoting shut down.sg
+
+
+
+Container: container_1455632795340_0001_01_000005 on node008.cm.cluster_46261
+===============================================================================
+LogType: stderr
+LogLength: 574
+Log Contents:
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/local/wlngai/graphalytics/exec/hdfs/nm-local-dir/usercache/wlngai/filecache/10/graphalytics-platforms-graphx-granula-0.1-SNAPSHOT.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/local/wlngai/graphalytics/exec/yarn/share/hadoop/common/lib/slf4j-log4j12-1.7.5.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+
+LogType: stdout
+LogLength: 19987
+Log Contents:
+15:27:19.316 Registered signal handlers for [TERM, HUP, INT]sg
+15:27:19.648 Unable to load native-hadoop library for your platform... using builtin-java classes where applicablesg
+15:27:19.744 Changing view acls to: wlngaisg
+15:27:19.745 Changing modify acls to: wlngaisg
+15:27:19.745 SecurityManager: authentication disabled; ui acls disabled; users with view permissions: Set(wlngai); users with modify permissions: Set(wlngai)sg
+15:27:20.636 Changing view acls to: wlngaisg
+15:27:20.637 Changing modify acls to: wlngaisg
+15:27:20.637 SecurityManager: authentication disabled; ui acls disabled; users with view permissions: Set(wlngai); users with modify permissions: Set(wlngai)sg
+15:27:20.944 Slf4jLogger startedsg
+15:27:20.982 Starting remotingsg
+15:27:21.133 Remoting started; listening on addresses :[akka.tcp://sparkExecutorActorSystem@node008.cm.cluster:36113]sg
+15:27:21.138 Successfully started service 'sparkExecutorActorSystem' on port 36113.sg
+15:27:21.203 Created local directory at /local/wlngai/graphalytics/exec/hdfs/nm-local-dir/usercache/wlngai/appcache/application_1455632795340_0001/blockmgr-e367eb12-6a88-4fdf-a8f0-9bb901e4b228sg
+15:27:21.225 MemoryStore started with capacity 14.2 GBsg
+15:27:21.465 Connecting to driver: spark://CoarseGrainedScheduler@10.141.0.5:41997sg
+15:27:21.484 Successfully registered with driversg
+15:27:21.486 Starting executor ID 4 on host node008.cm.clustersg
+15:27:21.507 Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 49627.sg
+15:27:21.508 Server created on 49627sg
+15:27:21.509 Trying to register BlockManagersg
+15:27:21.515 Registered BlockManagersg
+15:27:23.111 Got assigned task 3sg
+15:27:23.116 Running task 3.0 in stage 5.0 (TID 3)sg
+15:27:23.208 Started reading broadcast variable 3sg
+15:27:23.303 Block broadcast_3_piece0 stored as bytes in memory (estimated size 2.9 KB, free 2.9 KB)sg
+15:27:23.317 Reading broadcast variable 3 took 108 mssg
+15:27:23.625 Block broadcast_3 stored as values in memory (estimated size 5.4 KB, free 8.4 KB)sg
+15:27:23.682 Input split: hdfs://10.149.0.5:8020/user/wlngai/graphalytics/graphx/input/cit-Patents.e:201326592+62692993sg
+15:27:23.683 Started reading broadcast variable 1sg
+15:27:23.692 Block broadcast_1_piece0 stored as bytes in memory (estimated size 17.3 KB, free 25.6 KB)sg
+15:27:23.697 Reading broadcast variable 1 took 14 mssg
+15:27:23.769 Block broadcast_1 stored as values in memory (estimated size 216.4 KB, free 242.0 KB)sg
+15:27:24.109 mapred.tip.id is deprecated. Instead, use mapreduce.task.idsg
+15:27:24.110 mapred.task.id is deprecated. Instead, use mapreduce.task.attempt.idsg
+15:27:24.110 mapred.task.is.map is deprecated. Instead, use mapreduce.task.ismapsg
+15:27:24.110 mapred.task.partition is deprecated. Instead, use mapreduce.task.partitionsg
+15:27:24.110 mapred.job.id is deprecated. Instead, use mapreduce.job.idsg
+15:27:34.162 Finished task 3.0 in stage 5.0 (TID 3). 2197 bytes result sent to driversg
+15:27:47.393 Got assigned task 15sg
+15:27:47.394 Running task 3.0 in stage 7.0 (TID 15)sg
+15:27:47.399 Updating epoch to 5 and clearing cachesg
+15:27:47.399 Started reading broadcast variable 7sg
+15:27:47.408 Block broadcast_7_piece0 stored as bytes in memory (estimated size 4.0 KB, free 237.7 KB)sg
+15:27:47.412 Reading broadcast variable 7 took 13 mssg
+15:27:47.418 Block broadcast_7 stored as values in memory (estimated size 8.1 KB, free 245.8 KB)sg
+15:27:47.450 Partition rdd_32_3 not found, computing itsg
+15:27:47.452 Partition rdd_16_3 not found, computing itsg
+15:27:47.453 Input split: hdfs://10.149.0.5:8020/user/wlngai/graphalytics/graphx/input/cit-Patents.e:201326592+62692993sg
+15:27:54.168 Block rdd_16_3 stored as values in memory (estimated size 133.5 MB, free 133.7 MB)sg
+15:27:54.177 Don't have map outputs for shuffle 0, fetching themsg
+15:27:54.178 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:27:54.185 Got the output locationssg
+15:27:54.190 Getting 2 non-empty blocks out of 2 blockssg
+15:27:54.200 Started 2 remote fetches in 13 mssg
+15:27:54.209 Don't have map outputs for shuffle 2, fetching themsg
+15:27:54.210 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:27:54.214 Got the output locationssg
+15:27:54.214 Getting 2 non-empty blocks out of 2 blockssg
+15:27:54.214 Started 1 remote fetches in 0 mssg
+15:27:54.246 Block rdd_32_3 stored as values in memory (estimated size 133.5 MB, free 267.2 MB)sg
+15:27:54.249 Don't have map outputs for shuffle 3, fetching themsg
+15:27:54.249 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:27:54.253 Got the output locationssg
+15:27:54.253 Getting 2 non-empty blocks out of 2 blockssg
+15:27:54.259 Started 2 remote fetches in 6 mssg
+15:27:55.001 Finished task 3.0 in stage 7.0 (TID 15). 3048 bytes result sent to driversg
+15:28:02.345 Got assigned task 23sg
+15:28:02.346 Running task 3.0 in stage 25.0 (TID 23)sg
+15:28:02.348 Updating epoch to 8 and clearing cachesg
+15:28:02.349 Started reading broadcast variable 11sg
+15:28:02.357 Block broadcast_11_piece0 stored as bytes in memory (estimated size 4.3 KB, free 267.2 MB)sg
+15:28:02.360 Reading broadcast variable 11 took 11 mssg
+15:28:02.364 Block broadcast_11 stored as values in memory (estimated size 8.8 KB, free 267.2 MB)sg
+15:28:02.370 Partition rdd_49_3 not found, computing itsg
+15:28:02.371 Found block rdd_32_3 locallysg
+15:28:02.371 Don't have map outputs for shuffle 3, fetching themsg
+15:28:02.371 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:02.373 Got the output locationssg
+15:28:02.373 Getting 2 non-empty blocks out of 2 blockssg
+15:28:02.374 Started 2 remote fetches in 1 mssg
+15:28:02.377 Don't have map outputs for shuffle 6, fetching themsg
+15:28:02.378 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:02.380 Got the output locationssg
+15:28:02.380 Getting 2 non-empty blocks out of 2 blockssg
+15:28:02.381 Started 2 remote fetches in 1 mssg
+15:28:02.811 Block rdd_49_3 stored as values in memory (estimated size 133.5 MB, free 400.7 MB)sg
+15:28:02.813 Don't have map outputs for shuffle 7, fetching themsg
+15:28:02.813 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:02.815 Got the output locationssg
+15:28:02.816 Getting 2 non-empty blocks out of 2 blockssg
+15:28:02.816 Started 2 remote fetches in 1 mssg
+15:28:03.076 Finished task 3.0 in stage 25.0 (TID 23). 2993 bytes result sent to driversg
+15:28:03.722 Removing RDD 40sg
+15:28:03.724 Removing RDD 26sg
+15:28:03.727 Removing RDD 32sg
+15:28:04.969 Got assigned task 34sg
+15:28:04.969 Running task 3.0 in stage 55.0 (TID 34)sg
+15:28:04.971 Updating epoch to 11 and clearing cachesg
+15:28:04.971 Started reading broadcast variable 15sg
+15:28:04.977 Block broadcast_15_piece0 stored as bytes in memory (estimated size 4.3 KB, free 267.2 MB)sg
+15:28:04.980 Reading broadcast variable 15 took 9 mssg
+15:28:04.985 Block broadcast_15 stored as values in memory (estimated size 9.1 KB, free 267.3 MB)sg
+15:28:04.989 Partition rdd_66_3 not found, computing itsg
+15:28:04.990 Found block rdd_49_3 locallysg
+15:28:04.990 Don't have map outputs for shuffle 9, fetching themsg
+15:28:04.990 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:04.991 Got the output locationssg
+15:28:04.992 Getting 2 non-empty blocks out of 2 blockssg
+15:28:04.992 Started 2 remote fetches in 0 mssg
+15:28:05.005 Block rdd_66_3 stored as values in memory (estimated size 133.5 MB, free 400.8 MB)sg
+15:28:05.007 Don't have map outputs for shuffle 10, fetching themsg
+15:28:05.008 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:05.010 Got the output locationssg
+15:28:05.010 Getting 2 non-empty blocks out of 2 blockssg
+15:28:05.011 Started 2 remote fetches in 1 mssg
+15:28:05.273 Finished task 3.0 in stage 55.0 (TID 34). 2993 bytes result sent to driversg
+15:28:05.562 Removing RDD 57sg
+15:28:05.563 Removing RDD 43sg
+15:28:05.565 Removing RDD 49sg
+15:28:06.670 Got assigned task 42sg
+15:28:06.671 Running task 3.0 in stage 100.0 (TID 42)sg
+15:28:06.672 Updating epoch to 14 and clearing cachesg
+15:28:06.673 Started reading broadcast variable 19sg
+15:28:06.678 Block broadcast_19_piece0 stored as bytes in memory (estimated size 4.4 KB, free 267.3 MB)sg
+15:28:06.681 Reading broadcast variable 19 took 8 mssg
+15:28:06.684 Block broadcast_19 stored as values in memory (estimated size 9.3 KB, free 267.3 MB)sg
+15:28:06.689 Partition rdd_83_3 not found, computing itsg
+15:28:06.689 Found block rdd_66_3 locallysg
+15:28:06.690 Don't have map outputs for shuffle 12, fetching themsg
+15:28:06.690 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:06.691 Got the output locationssg
+15:28:06.692 Getting 2 non-empty blocks out of 2 blockssg
+15:28:06.692 Started 2 remote fetches in 0 mssg
+15:28:06.706 Block rdd_83_3 stored as values in memory (estimated size 133.5 MB, free 400.8 MB)sg
+15:28:06.708 Don't have map outputs for shuffle 13, fetching themsg
+15:28:06.708 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:06.710 Got the output locationssg
+15:28:06.710 Getting 2 non-empty blocks out of 2 blockssg
+15:28:06.711 Started 2 remote fetches in 1 mssg
+15:28:07.028 Finished task 3.0 in stage 100.0 (TID 42). 2993 bytes result sent to driversg
+15:28:07.260 Removing RDD 74sg
+15:28:07.262 Removing RDD 60sg
+15:28:07.263 Removing RDD 66sg
+15:28:08.465 Got assigned task 52sg
+15:28:08.465 Running task 3.0 in stage 163.0 (TID 52)sg
+15:28:08.467 Updating epoch to 17 and clearing cachesg
+15:28:08.467 Started reading broadcast variable 23sg
+15:28:08.473 Block broadcast_23_piece0 stored as bytes in memory (estimated size 4.5 KB, free 267.2 MB)sg
+15:28:08.476 Reading broadcast variable 23 took 9 mssg
+15:28:08.479 Block broadcast_23 stored as values in memory (estimated size 9.6 KB, free 267.2 MB)sg
+15:28:08.483 Partition rdd_100_3 not found, computing itsg
+15:28:08.483 Found block rdd_83_3 locallysg
+15:28:08.483 Don't have map outputs for shuffle 15, fetching themsg
+15:28:08.483 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:08.485 Got the output locationssg
+15:28:08.485 Getting 2 non-empty blocks out of 2 blockssg
+15:28:08.486 Started 2 remote fetches in 1 mssg
+15:28:08.498 Block rdd_100_3 stored as values in memory (estimated size 133.5 MB, free 400.7 MB)sg
+15:28:08.502 Don't have map outputs for shuffle 16, fetching themsg
+15:28:08.502 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:08.503 Got the output locationssg
+15:28:08.504 Getting 2 non-empty blocks out of 2 blockssg
+15:28:08.504 Started 2 remote fetches in 1 mssg
+15:28:08.800 Finished task 3.0 in stage 163.0 (TID 52). 2993 bytes result sent to driversg
+15:28:09.056 Removing RDD 91sg
+15:28:09.057 Removing RDD 77sg
+15:28:09.058 Removing RDD 83sg
+15:28:10.213 Got assigned task 65sg
+15:28:10.214 Running task 3.0 in stage 247.0 (TID 65)sg
+15:28:10.215 Updating epoch to 20 and clearing cachesg
+15:28:10.215 Started reading broadcast variable 27sg
+15:28:10.220 Block broadcast_27_piece0 stored as bytes in memory (estimated size 4.6 KB, free 267.2 MB)sg
+15:28:10.222 Reading broadcast variable 27 took 6 mssg
+15:28:10.225 Block broadcast_27 stored as values in memory (estimated size 9.9 KB, free 267.2 MB)sg
+15:28:10.228 Partition rdd_117_3 not found, computing itsg
+15:28:10.228 Found block rdd_100_3 locallysg
+15:28:10.228 Don't have map outputs for shuffle 18, fetching themsg
+15:28:10.228 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:10.231 Got the output locationssg
+15:28:10.231 Getting 2 non-empty blocks out of 2 blockssg
+15:28:10.232 Started 2 remote fetches in 1 mssg
+15:28:10.245 Block rdd_117_3 stored as values in memory (estimated size 133.5 MB, free 400.7 MB)sg
+15:28:10.247 Don't have map outputs for shuffle 19, fetching themsg
+15:28:10.247 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:10.249 Got the output locationssg
+15:28:10.250 Getting 2 non-empty blocks out of 2 blockssg
+15:28:10.250 Started 2 remote fetches in 0 mssg
+15:28:10.488 Finished task 3.0 in stage 247.0 (TID 65). 2993 bytes result sent to driversg
+15:28:10.786 Removing RDD 108sg
+15:28:10.787 Removing RDD 94sg
+15:28:10.789 Removing RDD 100sg
+15:28:12.047 Got assigned task 73sg
+15:28:12.047 Running task 3.0 in stage 355.0 (TID 73)sg
+15:28:12.049 Updating epoch to 23 and clearing cachesg
+15:28:12.049 Started reading broadcast variable 31sg
+15:28:12.054 Block broadcast_31_piece0 stored as bytes in memory (estimated size 4.7 KB, free 267.3 MB)sg
+15:28:12.056 Reading broadcast variable 31 took 7 mssg
+15:28:12.059 Block broadcast_31 stored as values in memory (estimated size 10.1 KB, free 267.3 MB)sg
+15:28:12.063 Partition rdd_134_3 not found, computing itsg
+15:28:12.063 Found block rdd_117_3 locallysg
+15:28:12.063 Don't have map outputs for shuffle 21, fetching themsg
+15:28:12.063 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:12.064 Got the output locationssg
+15:28:12.065 Getting 2 non-empty blocks out of 2 blockssg
+15:28:12.065 Started 2 remote fetches in 0 mssg
+15:28:12.077 Block rdd_134_3 stored as values in memory (estimated size 133.5 MB, free 400.8 MB)sg
+15:28:12.080 Don't have map outputs for shuffle 22, fetching themsg
+15:28:12.080 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:12.081 Got the output locationssg
+15:28:12.082 Getting 2 non-empty blocks out of 2 blockssg
+15:28:12.082 Started 2 remote fetches in 1 mssg
+15:28:12.394 Finished task 3.0 in stage 355.0 (TID 73). 2993 bytes result sent to driversg
+15:28:12.569 Removing RDD 125sg
+15:28:12.571 Removing RDD 111sg
+15:28:12.572 Removing RDD 117sg
+15:28:13.736 Got assigned task 82sg
+15:28:13.737 Running task 3.0 in stage 490.0 (TID 82)sg
+15:28:13.738 Updating epoch to 26 and clearing cachesg
+15:28:13.739 Started reading broadcast variable 35sg
+15:28:13.743 Block broadcast_35_piece0 stored as bytes in memory (estimated size 4.7 KB, free 267.3 MB)sg
+15:28:13.745 Reading broadcast variable 35 took 6 mssg
+15:28:13.747 Block broadcast_35 stored as values in memory (estimated size 10.4 KB, free 267.3 MB)sg
+15:28:13.751 Partition rdd_151_3 not found, computing itsg
+15:28:13.752 Found block rdd_134_3 locallysg
+15:28:13.752 Don't have map outputs for shuffle 24, fetching themsg
+15:28:13.752 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:13.754 Got the output locationssg
+15:28:13.754 Getting 2 non-empty blocks out of 2 blockssg
+15:28:13.754 Started 2 remote fetches in 0 mssg
+15:28:13.765 Block rdd_151_3 stored as values in memory (estimated size 133.5 MB, free 400.8 MB)sg
+15:28:13.767 Don't have map outputs for shuffle 25, fetching themsg
+15:28:13.767 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:13.770 Got the output locationssg
+15:28:13.770 Getting 2 non-empty blocks out of 2 blockssg
+15:28:13.770 Started 2 remote fetches in 0 mssg
+15:28:14.067 Finished task 3.0 in stage 490.0 (TID 82). 2993 bytes result sent to driversg
+15:28:14.258 Removing RDD 142sg
+15:28:14.259 Removing RDD 128sg
+15:28:14.260 Removing RDD 134sg
+15:28:15.219 Got assigned task 94sg
+15:28:15.219 Running task 3.0 in stage 655.0 (TID 94)sg
+15:28:15.221 Updating epoch to 29 and clearing cachesg
+15:28:15.221 Started reading broadcast variable 39sg
+15:28:15.225 Block broadcast_39_piece0 stored as bytes in memory (estimated size 4.8 KB, free 267.2 MB)sg
+15:28:15.226 Reading broadcast variable 39 took 5 mssg
+15:28:15.229 Block broadcast_39 stored as values in memory (estimated size 10.7 KB, free 267.2 MB)sg
+15:28:15.233 Partition rdd_168_3 not found, computing itsg
+15:28:15.233 Found block rdd_151_3 locallysg
+15:28:15.233 Don't have map outputs for shuffle 27, fetching themsg
+15:28:15.233 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:15.234 Got the output locationssg
+15:28:15.235 Getting 2 non-empty blocks out of 2 blockssg
+15:28:15.236 Started 2 remote fetches in 1 mssg
+15:28:15.246 Block rdd_168_3 stored as values in memory (estimated size 133.5 MB, free 400.7 MB)sg
+15:28:15.249 Don't have map outputs for shuffle 28, fetching themsg
+15:28:15.249 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:15.251 Got the output locationssg
+15:28:15.251 Getting 2 non-empty blocks out of 2 blockssg
+15:28:15.252 Started 2 remote fetches in 1 mssg
+15:28:15.570 Finished task 3.0 in stage 655.0 (TID 94). 2993 bytes result sent to driversg
+15:28:15.755 Removing RDD 159sg
+15:28:15.756 Removing RDD 145sg
+15:28:15.756 Removing RDD 151sg
+15:28:16.655 Got assigned task 103sg
+15:28:16.655 Running task 3.0 in stage 853.0 (TID 103)sg
+15:28:16.656 Updating epoch to 32 and clearing cachesg
+15:28:16.657 Started reading broadcast variable 43sg
+15:28:16.661 Block broadcast_43_piece0 stored as bytes in memory (estimated size 4.9 KB, free 267.2 MB)sg
+15:28:16.663 Reading broadcast variable 43 took 6 mssg
+15:28:16.666 Block broadcast_43 stored as values in memory (estimated size 10.9 KB, free 267.3 MB)sg
+15:28:16.669 Partition rdd_185_3 not found, computing itsg
+15:28:16.669 Found block rdd_168_3 locallysg
+15:28:16.669 Don't have map outputs for shuffle 30, fetching themsg
+15:28:16.669 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:16.670 Got the output locationssg
+15:28:16.670 Getting 2 non-empty blocks out of 2 blockssg
+15:28:16.671 Started 2 remote fetches in 1 mssg
+15:28:16.683 Block rdd_185_3 stored as values in memory (estimated size 133.5 MB, free 400.7 MB)sg
+15:28:16.685 Don't have map outputs for shuffle 31, fetching themsg
+15:28:16.685 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:16.686 Got the output locationssg
+15:28:16.687 Getting 2 non-empty blocks out of 2 blockssg
+15:28:16.687 Started 2 remote fetches in 1 mssg
+15:28:16.854 Finished task 3.0 in stage 853.0 (TID 103). 2993 bytes result sent to driversg
+15:28:17.028 Removing RDD 176sg
+15:28:17.029 Removing RDD 162sg
+15:28:17.030 Removing RDD 168sg
+15:28:17.147 Got assigned task 113sg
+15:28:17.147 Running task 3.0 in stage 1185.0 (TID 113)sg
+15:28:17.150 Updating epoch to 33 and clearing cachesg
+15:28:17.150 Started reading broadcast variable 46sg
+15:28:17.154 Block broadcast_46_piece0 stored as bytes in memory (estimated size 4.4 KB, free 267.3 MB)sg
+15:28:17.155 Reading broadcast variable 46 took 5 mssg
+15:28:17.157 Block broadcast_46 stored as values in memory (estimated size 9.7 KB, free 267.3 MB)sg
+15:28:17.162 Found block rdd_185_3 locallysg
+15:28:17.164 Finished task 3.0 in stage 1185.0 (TID 113). 2016 bytes result sent to driversg
+15:28:17.179 Removing RDD 13sg
+15:28:17.180 Removing RDD 16sg
+15:28:20.346 Removing RDD 179sg
+15:28:20.347 Removing RDD 185sg
+15:28:20.347 Removing RDD 198sg
+15:28:20.465 Driver commanded a shutdownsg
+15:28:20.480 MemoryStore clearedsg
+15:28:20.481 BlockManager stoppedsg
+15:28:20.484 An unknown (node005.cm.cluster:41997) driver disconnected.sg
+15:28:20.484 Driver 10.141.0.5:41997 disassociated! Shutting down.sg
+15:28:20.486 Shutdown hook calledsg
+15:28:20.488 Shutting down remote daemon.sg
+15:28:20.490 Remote daemon shut down; proceeding with flushing remote transports.sg
+
+
+
+Container: container_1455632795340_0001_01_000004 on node013.cm.cluster_44981
+===============================================================================
+LogType: stderr
+LogLength: 574
+Log Contents:
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/local/wlngai/graphalytics/exec/hdfs/nm-local-dir/usercache/wlngai/filecache/10/graphalytics-platforms-graphx-granula-0.1-SNAPSHOT.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/local/wlngai/graphalytics/exec/yarn/share/hadoop/common/lib/slf4j-log4j12-1.7.5.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+
+LogType: stdout
+LogLength: 32468
+Log Contents:
+15:27:19.347 Registered signal handlers for [TERM, HUP, INT]sg
+15:27:19.660 Unable to load native-hadoop library for your platform... using builtin-java classes where applicablesg
+15:27:19.735 Changing view acls to: wlngaisg
+15:27:19.735 Changing modify acls to: wlngaisg
+15:27:19.736 SecurityManager: authentication disabled; ui acls disabled; users with view permissions: Set(wlngai); users with modify permissions: Set(wlngai)sg
+15:27:20.594 Changing view acls to: wlngaisg
+15:27:20.594 Changing modify acls to: wlngaisg
+15:27:20.594 SecurityManager: authentication disabled; ui acls disabled; users with view permissions: Set(wlngai); users with modify permissions: Set(wlngai)sg
+15:27:20.905 Slf4jLogger startedsg
+15:27:20.946 Starting remotingsg
+15:27:21.106 Remoting started; listening on addresses :[akka.tcp://sparkExecutorActorSystem@node013.cm.cluster:44881]sg
+15:27:21.112 Successfully started service 'sparkExecutorActorSystem' on port 44881.sg
+15:27:21.181 Created local directory at /local/wlngai/graphalytics/exec/hdfs/nm-local-dir/usercache/wlngai/appcache/application_1455632795340_0001/blockmgr-4e73ac9d-ceb1-48a6-8f43-0b0b865a28b8sg
+15:27:21.200 MemoryStore started with capacity 14.2 GBsg
+15:27:21.435 Connecting to driver: spark://CoarseGrainedScheduler@10.141.0.5:41997sg
+15:27:21.456 Successfully registered with driversg
+15:27:21.458 Starting executor ID 3 on host node013.cm.clustersg
+15:27:21.478 Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 41236.sg
+15:27:21.479 Server created on 41236sg
+15:27:21.480 Trying to register BlockManagersg
+15:27:21.487 Registered BlockManagersg
+15:27:23.110 Got assigned task 1sg
+15:27:23.121 Running task 1.0 in stage 4.0 (TID 1)sg
+15:27:23.211 Started reading broadcast variable 2sg
+15:27:23.304 Block broadcast_2_piece0 stored as bytes in memory (estimated size 2.7 KB, free 2.7 KB)sg
+15:27:23.316 Reading broadcast variable 2 took 105 mssg
+15:27:23.628 Block broadcast_2 stored as values in memory (estimated size 4.9 KB, free 7.6 KB)sg
+15:27:23.679 Input split: hdfs://10.149.0.5:8020/user/wlngai/graphalytics/graphx/input/cit-Patents.v:15012649+15012649sg
+15:27:23.679 Started reading broadcast variable 0sg
+15:27:23.689 Block broadcast_0_piece0 stored as bytes in memory (estimated size 17.3 KB, free 24.8 KB)sg
+15:27:23.694 Reading broadcast variable 0 took 15 mssg
+15:27:23.773 Block broadcast_0 stored as values in memory (estimated size 216.4 KB, free 241.2 KB)sg
+15:27:24.126 mapred.tip.id is deprecated. Instead, use mapreduce.task.idsg
+15:27:24.126 mapred.task.id is deprecated. Instead, use mapreduce.task.attempt.idsg
+15:27:24.126 mapred.task.is.map is deprecated. Instead, use mapreduce.task.ismapsg
+15:27:24.126 mapred.task.partition is deprecated. Instead, use mapreduce.task.partitionsg
+15:27:24.126 mapred.job.id is deprecated. Instead, use mapreduce.job.idsg
+15:27:26.732 Finished task 1.0 in stage 4.0 (TID 1). 2197 bytes result sent to driversg
+15:27:26.744 Got assigned task 4sg
+15:27:26.744 Running task 1.0 in stage 5.0 (TID 4)sg
+15:27:26.747 Started reading broadcast variable 3sg
+15:27:26.755 Block broadcast_3_piece0 stored as bytes in memory (estimated size 2.9 KB, free 244.2 KB)sg
+15:27:26.758 Reading broadcast variable 3 took 11 mssg
+15:27:26.763 Block broadcast_3 stored as values in memory (estimated size 5.4 KB, free 249.6 KB)sg
+15:27:26.777 Input split: hdfs://10.149.0.5:8020/user/wlngai/graphalytics/graphx/input/cit-Patents.e:67108864+67108864sg
+15:27:26.777 Started reading broadcast variable 1sg
+15:27:26.791 Block broadcast_1_piece0 stored as bytes in memory (estimated size 17.3 KB, free 266.9 KB)sg
+15:27:26.795 Reading broadcast variable 1 took 18 mssg
+15:27:26.818 Block broadcast_1 stored as values in memory (estimated size 216.4 KB, free 483.3 KB)sg
+15:27:38.220 Finished task 1.0 in stage 5.0 (TID 4). 2197 bytes result sent to driversg
+15:27:38.255 Got assigned task 6sg
+15:27:38.256 Running task 0.0 in stage 2.0 (TID 6)sg
+15:27:38.260 Updating epoch to 2 and clearing cachesg
+15:27:38.260 Started reading broadcast variable 4sg
+15:27:38.269 Block broadcast_4_piece0 stored as bytes in memory (estimated size 3.2 KB, free 486.4 KB)sg
+15:27:38.274 Reading broadcast variable 4 took 14 mssg
+15:27:38.278 Block broadcast_4 stored as values in memory (estimated size 6.2 KB, free 492.6 KB)sg
+15:27:38.314 Partition rdd_13_0 not found, computing itsg
+15:27:38.318 Don't have map outputs for shuffle 1, fetching themsg
+15:27:38.319 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:27:38.331 Got the output locationssg
+15:27:38.337 Getting 2 non-empty blocks out of 2 blockssg
+15:27:38.344 Started 1 remote fetches in 10 mssg
+15:27:38.355 Don't have map outputs for shuffle 5, fetching themsg
+15:27:38.355 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:27:38.361 Got the output locationssg
+15:27:38.362 Getting 4 non-empty blocks out of 4 blockssg
+15:27:38.384 Started 3 remote fetches in 22 mssg
+15:27:41.271 Block rdd_13_0 stored as values in memory (estimated size 93.2 MB, free 93.7 MB)sg
+15:27:41.279 Partition rdd_18_0 not found, computing itsg
+15:27:41.280 Found block rdd_13_0 locallysg
+15:27:41.407 Block rdd_18_0 stored as values in memory (estimated size 93.2 MB, free 186.9 MB)sg
+15:27:41.532 Finished task 0.0 in stage 2.0 (TID 6). 3050 bytes result sent to driversg
+15:27:41.538 Got assigned task 8sg
+15:27:41.538 Running task 0.0 in stage 3.0 (TID 8)sg
+15:27:41.539 Started reading broadcast variable 6sg
+15:27:41.546 Block broadcast_6_piece0 stored as bytes in memory (estimated size 3.3 KB, free 186.9 MB)sg
+15:27:41.550 Reading broadcast variable 6 took 11 mssg
+15:27:41.553 Block broadcast_6 stored as values in memory (estimated size 6.6 KB, free 186.9 MB)sg
+15:27:41.557 Found block rdd_18_0 locallysg
+15:27:41.560 Partition rdd_26_0 not found, computing itsg
+15:27:41.560 Found block rdd_18_0 locallysg
+15:27:41.730 Block rdd_26_0 stored as values in memory (estimated size 93.2 MB, free 280.1 MB)sg
+15:27:41.811 Finished task 0.0 in stage 3.0 (TID 8). 2779 bytes result sent to driversg
+15:27:41.817 Got assigned task 11sg
+15:27:41.817 Running task 1.0 in stage 3.0 (TID 11)sg
+15:27:44.789 Found block rdd_18_1 remotelysg
+15:27:44.792 Partition rdd_26_1 not found, computing itsg
+15:27:46.471 Found block rdd_18_1 remotelysg
+15:27:46.804 Block rdd_26_1 stored as values in memory (estimated size 93.2 MB, free 373.3 MB)sg
+15:27:47.034 Diffing two VertexPartitions with different indexes is slow.sg
+15:27:47.362 Finished task 1.0 in stage 3.0 (TID 11). 2779 bytes result sent to driversg
+15:28:00.795 Got assigned task 16sg
+15:28:00.795 Running task 0.0 in stage 8.0 (TID 16)sg
+15:28:00.798 Updating epoch to 6 and clearing cachesg
+15:28:00.799 Started reading broadcast variable 8sg
+15:28:00.805 Block broadcast_8_piece0 stored as bytes in memory (estimated size 3.5 KB, free 373.3 MB)sg
+15:28:00.807 Reading broadcast variable 8 took 8 mssg
+15:28:00.810 Block broadcast_8 stored as values in memory (estimated size 7.0 KB, free 373.3 MB)sg
+15:28:00.817 Found block rdd_26_0 locallysg
+15:28:00.817 Don't have map outputs for shuffle 4, fetching themsg
+15:28:00.817 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:00.821 Got the output locationssg
+15:28:00.821 Getting 1 non-empty blocks out of 4 blockssg
+15:28:00.821 Started 1 remote fetches in 0 mssg
+15:28:00.842 Finished task 0.0 in stage 8.0 (TID 16). 2229 bytes result sent to driversg
+15:28:00.976 Got assigned task 18sg
+15:28:00.977 Running task 0.0 in stage 17.0 (TID 18)sg
+15:28:00.978 Started reading broadcast variable 9sg
+15:28:00.984 Block broadcast_9_piece0 stored as bytes in memory (estimated size 3.6 KB, free 373.3 MB)sg
+15:28:00.987 Reading broadcast variable 9 took 9 mssg
+15:28:00.990 Block broadcast_9 stored as values in memory (estimated size 7.4 KB, free 373.3 MB)sg
+15:28:00.994 Found block rdd_26_0 locallysg
+15:28:00.996 Partition rdd_43_0 not found, computing itsg
+15:28:00.996 Found block rdd_26_0 locallysg
+15:28:00.996 Found block rdd_26_0 locallysg
+15:28:00.996 Getting 1 non-empty blocks out of 4 blockssg
+15:28:00.997 Started 1 remote fetches in 1 mssg
+15:28:01.174 Block rdd_43_0 stored as values in memory (estimated size 93.2 MB, free 466.5 MB)sg
+15:28:01.551 Finished task 0.0 in stage 17.0 (TID 18). 2995 bytes result sent to driversg
+15:28:01.555 Got assigned task 20sg
+15:28:01.555 Running task 0.0 in stage 24.0 (TID 20)sg
+15:28:01.557 Started reading broadcast variable 10sg
+15:28:01.562 Block broadcast_10_piece0 stored as bytes in memory (estimated size 3.4 KB, free 466.5 MB)sg
+15:28:01.565 Reading broadcast variable 10 took 8 mssg
+15:28:01.568 Block broadcast_10 stored as values in memory (estimated size 6.8 KB, free 466.5 MB)sg
+15:28:01.571 Found block rdd_26_0 locallysg
+15:28:01.571 Getting 1 non-empty blocks out of 4 blockssg
+15:28:01.571 Started 1 remote fetches in 0 mssg
+15:28:01.890 Finished task 0.0 in stage 24.0 (TID 20). 2415 bytes result sent to driversg
+15:28:03.566 Got assigned task 27sg
+15:28:03.566 Running task 0.0 in stage 26.0 (TID 27)sg
+15:28:03.567 Updating epoch to 9 and clearing cachesg
+15:28:03.568 Started reading broadcast variable 12sg
+15:28:03.574 Block broadcast_12_piece0 stored as bytes in memory (estimated size 3.7 KB, free 466.5 MB)sg
+15:28:03.576 Reading broadcast variable 12 took 8 mssg
+15:28:03.580 Block broadcast_12 stored as values in memory (estimated size 7.7 KB, free 466.6 MB)sg
+15:28:03.583 Partition rdd_57_0 not found, computing itsg
+15:28:03.583 Found block rdd_43_0 locallysg
+15:28:03.584 Don't have map outputs for shuffle 8, fetching themsg
+15:28:03.584 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:03.587 Got the output locationssg
+15:28:03.587 Getting 2 non-empty blocks out of 4 blockssg
+15:28:03.590 Started 2 remote fetches in 3 mssg
+15:28:03.694 Block rdd_57_0 stored as values in memory (estimated size 93.7 MB, free 560.3 MB)sg
+15:28:03.701 Finished task 0.0 in stage 26.0 (TID 27). 2809 bytes result sent to driversg
+15:28:03.722 Removing RDD 40sg
+15:28:03.725 Removing RDD 26sg
+15:28:03.727 Removing RDD 32sg
+15:28:03.781 Got assigned task 29sg
+15:28:03.782 Running task 0.0 in stage 44.0 (TID 29)sg
+15:28:03.783 Started reading broadcast variable 13sg
+15:28:03.788 Block broadcast_13_piece0 stored as bytes in memory (estimated size 3.7 KB, free 373.8 MB)sg
+15:28:03.790 Reading broadcast variable 13 took 7 mssg
+15:28:03.795 Block broadcast_13 stored as values in memory (estimated size 7.8 KB, free 373.8 MB)sg
+15:28:03.797 Found block rdd_43_0 locallysg
+15:28:03.799 Partition rdd_60_0 not found, computing itsg
+15:28:03.799 Found block rdd_43_0 locallysg
+15:28:03.799 Found block rdd_57_0 locallysg
+15:28:03.897 Block rdd_60_0 stored as values in memory (estimated size 93.2 MB, free 467.1 MB)sg
+15:28:04.296 Finished task 0.0 in stage 44.0 (TID 29). 2779 bytes result sent to driversg
+15:28:04.300 Got assigned task 30sg
+15:28:04.301 Running task 0.0 in stage 54.0 (TID 30)sg
+15:28:04.302 Started reading broadcast variable 14sg
+15:28:04.308 Block broadcast_14_piece0 stored as bytes in memory (estimated size 3.6 KB, free 467.1 MB)sg
+15:28:04.310 Reading broadcast variable 14 took 8 mssg
+15:28:04.313 Block broadcast_14 stored as values in memory (estimated size 7.4 KB, free 467.1 MB)sg
+15:28:04.315 Found block rdd_57_0 locallysg
+15:28:04.801 Finished task 0.0 in stage 54.0 (TID 30). 2199 bytes result sent to driversg
+15:28:05.510 Got assigned task 37sg
+15:28:05.510 Running task 0.0 in stage 56.0 (TID 37)sg
+15:28:05.512 Updating epoch to 12 and clearing cachesg
+15:28:05.512 Started reading broadcast variable 16sg
+15:28:05.518 Block broadcast_16_piece0 stored as bytes in memory (estimated size 3.8 KB, free 467.1 MB)sg
+15:28:05.521 Reading broadcast variable 16 took 9 mssg
+15:28:05.524 Block broadcast_16 stored as values in memory (estimated size 8.1 KB, free 467.1 MB)sg
+15:28:05.528 Partition rdd_74_0 not found, computing itsg
+15:28:05.528 Found block rdd_60_0 locallysg
+15:28:05.528 Don't have map outputs for shuffle 11, fetching themsg
+15:28:05.528 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:05.531 Got the output locationssg
+15:28:05.531 Getting 2 non-empty blocks out of 4 blockssg
+15:28:05.532 Started 2 remote fetches in 1 mssg
+15:28:05.542 Block rdd_74_0 stored as values in memory (estimated size 93.7 MB, free 560.8 MB)sg
+15:28:05.547 Finished task 0.0 in stage 56.0 (TID 37). 2810 bytes result sent to driversg
+15:28:05.562 Removing RDD 57sg
+15:28:05.564 Removing RDD 43sg
+15:28:05.565 Removing RDD 49sg
+15:28:05.621 Got assigned task 38sg
+15:28:05.622 Running task 0.0 in stage 86.0 (TID 38)sg
+15:28:05.623 Started reading broadcast variable 17sg
+15:28:05.629 Block broadcast_17_piece0 stored as bytes in memory (estimated size 3.8 KB, free 373.9 MB)sg
+15:28:05.631 Reading broadcast variable 17 took 7 mssg
+15:28:05.633 Block broadcast_17 stored as values in memory (estimated size 8.2 KB, free 373.9 MB)sg
+15:28:05.635 Found block rdd_60_0 locallysg
+15:28:05.636 Partition rdd_77_0 not found, computing itsg
+15:28:05.636 Found block rdd_60_0 locallysg
+15:28:05.636 Found block rdd_74_0 locallysg
+15:28:05.706 Block rdd_77_0 stored as values in memory (estimated size 93.2 MB, free 467.1 MB)sg
+15:28:06.176 Finished task 0.0 in stage 86.0 (TID 38). 2779 bytes result sent to driversg
+15:28:06.179 Got assigned task 41sg
+15:28:06.180 Running task 0.0 in stage 99.0 (TID 41)sg
+15:28:06.181 Started reading broadcast variable 18sg
+15:28:06.186 Block broadcast_18_piece0 stored as bytes in memory (estimated size 3.7 KB, free 467.1 MB)sg
+15:28:06.188 Reading broadcast variable 18 took 7 mssg
+15:28:06.191 Block broadcast_18 stored as values in memory (estimated size 7.9 KB, free 467.1 MB)sg
+15:28:06.193 Found block rdd_74_0 locallysg
+15:28:06.652 Finished task 0.0 in stage 99.0 (TID 41). 2199 bytes result sent to driversg
+15:28:07.210 Got assigned task 47sg
+15:28:07.210 Running task 0.0 in stage 101.0 (TID 47)sg
+15:28:07.212 Updating epoch to 15 and clearing cachesg
+15:28:07.212 Started reading broadcast variable 20sg
+15:28:07.218 Block broadcast_20_piece0 stored as bytes in memory (estimated size 3.9 KB, free 467.1 MB)sg
+15:28:07.220 Reading broadcast variable 20 took 8 mssg
+15:28:07.223 Block broadcast_20 stored as values in memory (estimated size 8.5 KB, free 467.1 MB)sg
+15:28:07.226 Partition rdd_91_0 not found, computing itsg
+15:28:07.226 Found block rdd_77_0 locallysg
+15:28:07.226 Don't have map outputs for shuffle 14, fetching themsg
+15:28:07.226 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:07.229 Got the output locationssg
+15:28:07.229 Getting 1 non-empty blocks out of 4 blockssg
+15:28:07.230 Started 1 remote fetches in 1 mssg
+15:28:07.240 Block rdd_91_0 stored as values in memory (estimated size 93.7 MB, free 560.8 MB)sg
+15:28:07.246 Finished task 0.0 in stage 101.0 (TID 47). 2810 bytes result sent to driversg
+15:28:07.260 Removing RDD 74sg
+15:28:07.262 Removing RDD 60sg
+15:28:07.264 Removing RDD 66sg
+15:28:07.337 Got assigned task 48sg
+15:28:07.337 Running task 0.0 in stage 146.0 (TID 48)sg
+15:28:07.340 Started reading broadcast variable 21sg
+15:28:07.346 Block broadcast_21_piece0 stored as bytes in memory (estimated size 3.9 KB, free 373.9 MB)sg
+15:28:07.349 Reading broadcast variable 21 took 9 mssg
+15:28:07.352 Block broadcast_21 stored as values in memory (estimated size 8.7 KB, free 373.9 MB)sg
+15:28:07.354 Found block rdd_77_0 locallysg
+15:28:07.358 Partition rdd_94_0 not found, computing itsg
+15:28:07.358 Found block rdd_77_0 locallysg
+15:28:07.359 Found block rdd_91_0 locallysg
+15:28:07.465 Block rdd_94_0 stored as values in memory (estimated size 93.2 MB, free 467.0 MB)sg
+15:28:08.025 Finished task 0.0 in stage 146.0 (TID 48). 2779 bytes result sent to driversg
+15:28:08.029 Got assigned task 51sg
+15:28:08.029 Running task 0.0 in stage 162.0 (TID 51)sg
+15:28:08.031 Started reading broadcast variable 22sg
+15:28:08.037 Block broadcast_22_piece0 stored as bytes in memory (estimated size 3.8 KB, free 467.0 MB)sg
+15:28:08.038 Reading broadcast variable 22 took 7 mssg
+15:28:08.041 Block broadcast_22 stored as values in memory (estimated size 8.3 KB, free 467.0 MB)sg
+15:28:08.043 Found block rdd_91_0 locallysg
+15:28:08.356 Finished task 0.0 in stage 162.0 (TID 51). 2199 bytes result sent to driversg
+15:28:09.012 Got assigned task 56sg
+15:28:09.013 Running task 0.0 in stage 164.0 (TID 56)sg
+15:28:09.014 Updating epoch to 18 and clearing cachesg
+15:28:09.015 Started reading broadcast variable 24sg
+15:28:09.020 Block broadcast_24_piece0 stored as bytes in memory (estimated size 4.0 KB, free 467.0 MB)sg
+15:28:09.022 Reading broadcast variable 24 took 7 mssg
+15:28:09.025 Block broadcast_24 stored as values in memory (estimated size 9.0 KB, free 467.0 MB)sg
+15:28:09.028 Partition rdd_108_0 not found, computing itsg
+15:28:09.028 Found block rdd_94_0 locallysg
+15:28:09.028 Don't have map outputs for shuffle 17, fetching themsg
+15:28:09.028 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:09.031 Got the output locationssg
+15:28:09.032 Getting 1 non-empty blocks out of 4 blockssg
+15:28:09.032 Started 1 remote fetches in 1 mssg
+15:28:09.042 Block rdd_108_0 stored as values in memory (estimated size 93.7 MB, free 560.7 MB)sg
+15:28:09.047 Finished task 0.0 in stage 164.0 (TID 56). 2810 bytes result sent to driversg
+15:28:09.056 Removing RDD 91sg
+15:28:09.058 Removing RDD 77sg
+15:28:09.058 Removing RDD 83sg
+15:28:09.118 Got assigned task 59sg
+15:28:09.118 Running task 0.0 in stage 227.0 (TID 59)sg
+15:28:09.119 Started reading broadcast variable 25sg
+15:28:09.124 Block broadcast_25_piece0 stored as bytes in memory (estimated size 4.0 KB, free 373.8 MB)sg
+15:28:09.126 Reading broadcast variable 25 took 7 mssg
+15:28:09.128 Block broadcast_25 stored as values in memory (estimated size 9.1 KB, free 373.8 MB)sg
+15:28:09.130 Found block rdd_94_0 locallysg
+15:28:09.132 Partition rdd_111_0 not found, computing itsg
+15:28:09.132 Found block rdd_94_0 locallysg
+15:28:09.132 Found block rdd_108_0 locallysg
+15:28:09.243 Block rdd_111_0 stored as values in memory (estimated size 93.2 MB, free 467.1 MB)sg
+15:28:09.797 Finished task 0.0 in stage 227.0 (TID 59). 2779 bytes result sent to driversg
+15:28:09.800 Got assigned task 61sg
+15:28:09.800 Running task 0.0 in stage 246.0 (TID 61)sg
+15:28:09.802 Started reading broadcast variable 26sg
+15:28:09.807 Block broadcast_26_piece0 stored as bytes in memory (estimated size 3.9 KB, free 467.1 MB)sg
+15:28:09.809 Reading broadcast variable 26 took 7 mssg
+15:28:09.811 Block broadcast_26 stored as values in memory (estimated size 8.7 KB, free 467.1 MB)sg
+15:28:09.813 Found block rdd_108_0 locallysg
+15:28:10.141 Finished task 0.0 in stage 246.0 (TID 61). 2199 bytes result sent to driversg
+15:28:10.744 Got assigned task 67sg
+15:28:10.744 Running task 0.0 in stage 248.0 (TID 67)sg
+15:28:10.745 Updating epoch to 21 and clearing cachesg
+15:28:10.746 Started reading broadcast variable 28sg
+15:28:10.750 Block broadcast_28_piece0 stored as bytes in memory (estimated size 4.1 KB, free 467.1 MB)sg
+15:28:10.752 Reading broadcast variable 28 took 6 mssg
+15:28:10.754 Block broadcast_28 stored as values in memory (estimated size 9.4 KB, free 467.1 MB)sg
+15:28:10.757 Partition rdd_125_0 not found, computing itsg
+15:28:10.757 Found block rdd_111_0 locallysg
+15:28:10.757 Don't have map outputs for shuffle 20, fetching themsg
+15:28:10.757 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:10.760 Got the output locationssg
+15:28:10.760 Getting 1 non-empty blocks out of 4 blockssg
+15:28:10.760 Started 1 remote fetches in 0 mssg
+15:28:10.768 Block rdd_125_0 stored as values in memory (estimated size 93.7 MB, free 560.8 MB)sg
+15:28:10.772 Finished task 0.0 in stage 248.0 (TID 67). 2810 bytes result sent to driversg
+15:28:10.786 Removing RDD 108sg
+15:28:10.787 Removing RDD 94sg
+15:28:10.789 Removing RDD 100sg
+15:28:10.848 Got assigned task 68sg
+15:28:10.848 Running task 0.0 in stage 332.0 (TID 68)sg
+15:28:10.849 Started reading broadcast variable 29sg
+15:28:10.854 Block broadcast_29_piece0 stored as bytes in memory (estimated size 4.1 KB, free 373.9 MB)sg
+15:28:10.856 Reading broadcast variable 29 took 6 mssg
+15:28:10.858 Block broadcast_29 stored as values in memory (estimated size 9.5 KB, free 373.9 MB)sg
+15:28:10.859 Found block rdd_111_0 locallysg
+15:28:10.860 Partition rdd_128_0 not found, computing itsg
+15:28:10.861 Found block rdd_111_0 locallysg
+15:28:10.861 Found block rdd_125_0 locallysg
+15:28:10.955 Block rdd_128_0 stored as values in memory (estimated size 93.2 MB, free 467.1 MB)sg
+15:28:11.326 Finished task 0.0 in stage 332.0 (TID 68). 2779 bytes result sent to driversg
+15:28:11.330 Got assigned task 70sg
+15:28:11.330 Running task 0.0 in stage 354.0 (TID 70)sg
+15:28:11.331 Started reading broadcast variable 30sg
+15:28:11.336 Block broadcast_30_piece0 stored as bytes in memory (estimated size 4.0 KB, free 467.1 MB)sg
+15:28:11.338 Reading broadcast variable 30 took 7 mssg
+15:28:11.340 Block broadcast_30 stored as values in memory (estimated size 9.2 KB, free 467.1 MB)sg
+15:28:11.341 Found block rdd_125_0 locallysg
+15:28:11.654 Finished task 0.0 in stage 354.0 (TID 70). 2199 bytes result sent to driversg
+15:28:12.529 Got assigned task 77sg
+15:28:12.529 Running task 0.0 in stage 356.0 (TID 77)sg
+15:28:12.530 Updating epoch to 24 and clearing cachesg
+15:28:12.530 Started reading broadcast variable 32sg
+15:28:12.535 Block broadcast_32_piece0 stored as bytes in memory (estimated size 4.1 KB, free 467.1 MB)sg
+15:28:12.537 Reading broadcast variable 32 took 7 mssg
+15:28:12.539 Block broadcast_32 stored as values in memory (estimated size 9.8 KB, free 467.1 MB)sg
+15:28:12.542 Partition rdd_142_0 not found, computing itsg
+15:28:12.542 Found block rdd_128_0 locallysg
+15:28:12.542 Don't have map outputs for shuffle 23, fetching themsg
+15:28:12.542 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:12.544 Got the output locationssg
+15:28:12.545 Getting 1 non-empty blocks out of 4 blockssg
+15:28:12.545 Started 1 remote fetches in 0 mssg
+15:28:12.553 Block rdd_142_0 stored as values in memory (estimated size 93.7 MB, free 560.8 MB)sg
+15:28:12.558 Finished task 0.0 in stage 356.0 (TID 77). 2810 bytes result sent to driversg
+15:28:12.570 Removing RDD 125sg
+15:28:12.571 Removing RDD 111sg
+15:28:12.572 Removing RDD 117sg
+15:28:12.649 Got assigned task 79sg
+15:28:12.649 Running task 0.0 in stage 464.0 (TID 79)sg
+15:28:12.650 Started reading broadcast variable 33sg
+15:28:12.654 Block broadcast_33_piece0 stored as bytes in memory (estimated size 4.2 KB, free 373.9 MB)sg
+15:28:12.656 Reading broadcast variable 33 took 6 mssg
+15:28:12.658 Block broadcast_33 stored as values in memory (estimated size 10.0 KB, free 373.9 MB)sg
+15:28:12.660 Found block rdd_128_0 locallysg
+15:28:12.661 Partition rdd_145_0 not found, computing itsg
+15:28:12.661 Found block rdd_128_0 locallysg
+15:28:12.661 Found block rdd_142_0 locallysg
+15:28:12.767 Block rdd_145_0 stored as values in memory (estimated size 93.2 MB, free 467.1 MB)sg
+15:28:13.134 Finished task 0.0 in stage 464.0 (TID 79). 2779 bytes result sent to driversg
+15:28:13.137 Got assigned task 80sg
+15:28:13.137 Running task 0.0 in stage 489.0 (TID 80)sg
+15:28:13.138 Started reading broadcast variable 34sg
+15:28:13.142 Block broadcast_34_piece0 stored as bytes in memory (estimated size 4.1 KB, free 467.1 MB)sg
+15:28:13.143 Reading broadcast variable 34 took 5 mssg
+15:28:13.145 Block broadcast_34 stored as values in memory (estimated size 9.6 KB, free 467.1 MB)sg
+15:28:13.146 Found block rdd_142_0 locallysg
+15:28:13.460 Finished task 0.0 in stage 489.0 (TID 80). 2199 bytes result sent to driversg
+15:28:14.219 Got assigned task 87sg
+15:28:14.219 Running task 0.0 in stage 491.0 (TID 87)sg
+15:28:14.220 Updating epoch to 27 and clearing cachesg
+15:28:14.220 Started reading broadcast variable 36sg
+15:28:14.224 Block broadcast_36_piece0 stored as bytes in memory (estimated size 4.3 KB, free 467.1 MB)sg
+15:28:14.225 Reading broadcast variable 36 took 5 mssg
+15:28:14.227 Block broadcast_36 stored as values in memory (estimated size 10.3 KB, free 467.2 MB)sg
+15:28:14.230 Partition rdd_159_0 not found, computing itsg
+15:28:14.230 Found block rdd_145_0 locallysg
+15:28:14.230 Don't have map outputs for shuffle 26, fetching themsg
+15:28:14.230 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:14.233 Got the output locationssg
+15:28:14.233 Getting 1 non-empty blocks out of 4 blockssg
+15:28:14.234 Started 1 remote fetches in 1 mssg
+15:28:14.241 Block rdd_159_0 stored as values in memory (estimated size 93.7 MB, free 560.9 MB)sg
+15:28:14.245 Finished task 0.0 in stage 491.0 (TID 87). 2810 bytes result sent to driversg
+15:28:14.258 Removing RDD 142sg
+15:28:14.259 Removing RDD 128sg
+15:28:14.260 Removing RDD 134sg
+15:28:14.342 Got assigned task 89sg
+15:28:14.343 Running task 0.0 in stage 626.0 (TID 89)sg
+15:28:14.344 Started reading broadcast variable 37sg
+15:28:14.347 Block broadcast_37_piece0 stored as bytes in memory (estimated size 4.3 KB, free 374.0 MB)sg
+15:28:14.351 Reading broadcast variable 37 took 7 mssg
+15:28:14.353 Block broadcast_37 stored as values in memory (estimated size 10.4 KB, free 374.0 MB)sg
+15:28:14.354 Found block rdd_145_0 locallysg
+15:28:14.356 Partition rdd_162_0 not found, computing itsg
+15:28:14.356 Found block rdd_145_0 locallysg
+15:28:14.356 Found block rdd_159_0 locallysg
+15:28:14.424 Block rdd_162_0 stored as values in memory (estimated size 93.2 MB, free 467.2 MB)sg
+15:28:14.791 Finished task 0.0 in stage 626.0 (TID 89). 2779 bytes result sent to driversg
+15:28:14.795 Got assigned task 91sg
+15:28:14.795 Running task 0.0 in stage 654.0 (TID 91)sg
+15:28:14.796 Started reading broadcast variable 38sg
+15:28:14.814 Block broadcast_38_piece0 stored as bytes in memory (estimated size 4.2 KB, free 467.2 MB)sg
+15:28:14.816 Reading broadcast variable 38 took 20 mssg
+15:28:14.819 Block broadcast_38 stored as values in memory (estimated size 10.0 KB, free 467.2 MB)sg
+15:28:14.821 Found block rdd_159_0 locallysg
+15:28:15.204 Finished task 0.0 in stage 654.0 (TID 91). 2199 bytes result sent to driversg
+15:28:15.718 Got assigned task 96sg
+15:28:15.718 Running task 0.0 in stage 656.0 (TID 96)sg
+15:28:15.719 Updating epoch to 30 and clearing cachesg
+15:28:15.720 Started reading broadcast variable 40sg
+15:28:15.723 Block broadcast_40_piece0 stored as bytes in memory (estimated size 4.3 KB, free 467.0 MB)sg
+15:28:15.725 Reading broadcast variable 40 took 5 mssg
+15:28:15.726 Block broadcast_40 stored as values in memory (estimated size 10.7 KB, free 467.0 MB)sg
+15:28:15.729 Partition rdd_176_0 not found, computing itsg
+15:28:15.729 Found block rdd_162_0 locallysg
+15:28:15.729 Don't have map outputs for shuffle 29, fetching themsg
+15:28:15.730 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:15.732 Got the output locationssg
+15:28:15.732 Getting 1 non-empty blocks out of 4 blockssg
+15:28:15.733 Started 1 remote fetches in 1 mssg
+15:28:15.740 Block rdd_176_0 stored as values in memory (estimated size 93.7 MB, free 560.7 MB)sg
+15:28:15.744 Finished task 0.0 in stage 656.0 (TID 96). 2809 bytes result sent to driversg
+15:28:15.754 Removing RDD 159sg
+15:28:15.755 Removing RDD 145sg
+15:28:15.756 Removing RDD 151sg
+15:28:15.835 Got assigned task 99sg
+15:28:15.835 Running task 0.0 in stage 821.0 (TID 99)sg
+15:28:15.836 Started reading broadcast variable 41sg
+15:28:15.840 Block broadcast_41_piece0 stored as bytes in memory (estimated size 4.4 KB, free 373.8 MB)sg
+15:28:15.841 Reading broadcast variable 41 took 5 mssg
+15:28:15.843 Block broadcast_41 stored as values in memory (estimated size 10.8 KB, free 373.9 MB)sg
+15:28:15.844 Found block rdd_162_0 locallysg
+15:28:15.846 Partition rdd_179_0 not found, computing itsg
+15:28:15.846 Found block rdd_162_0 locallysg
+15:28:15.846 Found block rdd_176_0 locallysg
+15:28:15.935 Block rdd_179_0 stored as values in memory (estimated size 93.2 MB, free 467.1 MB)sg
+15:28:16.308 Finished task 0.0 in stage 821.0 (TID 99). 2779 bytes result sent to driversg
+15:28:16.311 Got assigned task 101sg
+15:28:16.311 Running task 0.0 in stage 852.0 (TID 101)sg
+15:28:16.312 Started reading broadcast variable 42sg
+15:28:16.316 Block broadcast_42_piece0 stored as bytes in memory (estimated size 4.3 KB, free 467.1 MB)sg
+15:28:16.317 Reading broadcast variable 42 took 5 mssg
+15:28:16.319 Block broadcast_42 stored as values in memory (estimated size 10.5 KB, free 467.1 MB)sg
+15:28:16.321 Found block rdd_176_0 locallysg
+15:28:16.639 Finished task 0.0 in stage 852.0 (TID 101). 2199 bytes result sent to driversg
+15:28:16.993 Got assigned task 107sg
+15:28:16.993 Running task 0.0 in stage 854.0 (TID 107)sg
+15:28:16.994 Updating epoch to 33 and clearing cachesg
+15:28:16.994 Started reading broadcast variable 44sg
+15:28:16.998 Block broadcast_44_piece0 stored as bytes in memory (estimated size 4.4 KB, free 467.1 MB)sg
+15:28:16.999 Reading broadcast variable 44 took 5 mssg
+15:28:17.001 Block broadcast_44 stored as values in memory (estimated size 11.1 KB, free 467.1 MB)sg
+15:28:17.003 Partition rdd_193_0 not found, computing itsg
+15:28:17.004 Found block rdd_179_0 locallysg
+15:28:17.004 Don't have map outputs for shuffle 32, fetching themsg
+15:28:17.004 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:17.006 Got the output locationssg
+15:28:17.006 Getting 0 non-empty blocks out of 4 blockssg
+15:28:17.006 Started 0 remote fetches in 0 mssg
+15:28:17.013 Block rdd_193_0 stored as values in memory (estimated size 93.7 MB, free 560.8 MB)sg
+15:28:17.017 Finished task 0.0 in stage 854.0 (TID 107). 2809 bytes result sent to driversg
+15:28:17.028 Removing RDD 176sg
+15:28:17.028 Removing RDD 162sg
+15:28:17.030 Removing RDD 168sg
+15:28:17.084 Got assigned task 109sg
+15:28:17.085 Running task 0.0 in stage 1019.0 (TID 109)sg
+15:28:17.085 Started reading broadcast variable 45sg
+15:28:17.089 Block broadcast_45_piece0 stored as bytes in memory (estimated size 4.3 KB, free 373.9 MB)sg
+15:28:17.090 Reading broadcast variable 45 took 4 mssg
+15:28:17.092 Block broadcast_45 stored as values in memory (estimated size 10.8 KB, free 373.9 MB)sg
+15:28:17.093 Found block rdd_179_0 locallysg
+15:28:17.095 Finished task 0.0 in stage 1019.0 (TID 109). 2016 bytes result sent to driversg
+15:28:17.179 Removing RDD 13sg
+15:28:17.180 Removing RDD 16sg
+15:28:17.322 Got assigned task 114sg
+15:28:17.323 Running task 0.0 in stage 1350.0 (TID 114)sg
+15:28:17.323 Started reading broadcast variable 47sg
+15:28:17.328 Block broadcast_47_piece0 stored as bytes in memory (estimated size 23.1 KB, free 280.7 MB)sg
+15:28:17.330 Reading broadcast variable 47 took 7 mssg
+15:28:17.332 Block broadcast_47 stored as values in memory (estimated size 65.8 KB, free 280.8 MB)sg
+15:28:17.352 Partition rdd_198_0 not found, computing itsg
+15:28:17.352 Found block rdd_179_0 locallysg
+15:28:18.466 Block rdd_198_0 stored as values in memory (estimated size 180.0 MB, free 460.8 MB)sg
+15:28:19.558 Saved output of task 'attempt_201602161528_1350_m_000000_114' to hdfs://10.149.0.5:8020/user/wlngai/graphalytics/graphx/output/BFS-cit-Patents/_temporary/0/task_201602161528_1350_m_000000sg
+15:28:19.558 attempt_201602161528_1350_m_000000_114: Committedsg
+15:28:19.561 Finished task 0.0 in stage 1350.0 (TID 114). 2591 bytes result sent to driversg
+15:28:20.346 Removing RDD 179sg
+15:28:20.347 Removing RDD 185sg
+15:28:20.347 Removing RDD 198sg
+15:28:20.465 Driver commanded a shutdownsg
+15:28:20.495 MemoryStore clearedsg
+15:28:20.496 BlockManager stoppedsg
+15:28:20.498 An unknown (node005.cm.cluster:41997) driver disconnected.sg
+15:28:20.499 Driver 10.141.0.5:41997 disassociated! Shutting down.sg
+15:28:20.501 Shutdown hook calledsg
+15:28:20.504 Shutting down remote daemon.sg
+15:28:20.505 Remote daemon shut down; proceeding with flushing remote transports.sg
+15:28:20.531 Remoting shut down.sg
+
+
+
+Container: container_1455632795340_0001_01_000003 on node021.cm.cluster_38894
+===============================================================================
+LogType: stderr
+LogLength: 574
+Log Contents:
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/local/wlngai/graphalytics/exec/hdfs/nm-local-dir/usercache/wlngai/filecache/10/graphalytics-platforms-graphx-granula-0.1-SNAPSHOT.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/local/wlngai/graphalytics/exec/yarn/share/hadoop/common/lib/slf4j-log4j12-1.7.5.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+
+LogType: stdout
+LogLength: 22447
+Log Contents:
+15:27:19.703 Registered signal handlers for [TERM, HUP, INT]sg
+15:27:20.039 Unable to load native-hadoop library for your platform... using builtin-java classes where applicablesg
+15:27:20.119 Changing view acls to: wlngaisg
+15:27:20.120 Changing modify acls to: wlngaisg
+15:27:20.120 SecurityManager: authentication disabled; ui acls disabled; users with view permissions: Set(wlngai); users with modify permissions: Set(wlngai)sg
+15:27:20.959 Changing view acls to: wlngaisg
+15:27:20.959 Changing modify acls to: wlngaisg
+15:27:20.959 SecurityManager: authentication disabled; ui acls disabled; users with view permissions: Set(wlngai); users with modify permissions: Set(wlngai)sg
+15:27:21.288 Slf4jLogger startedsg
+15:27:21.328 Starting remotingsg
+15:27:21.483 Remoting started; listening on addresses :[akka.tcp://sparkExecutorActorSystem@node021.cm.cluster:55831]sg
+15:27:21.490 Successfully started service 'sparkExecutorActorSystem' on port 55831.sg
+15:27:21.553 Created local directory at /local/wlngai/graphalytics/exec/hdfs/nm-local-dir/usercache/wlngai/appcache/application_1455632795340_0001/blockmgr-dc9dc5df-390a-489b-8f1b-7ca2e48c0a3bsg
+15:27:21.572 MemoryStore started with capacity 14.2 GBsg
+15:27:21.811 Connecting to driver: spark://CoarseGrainedScheduler@10.141.0.5:41997sg
+15:27:21.829 Successfully registered with driversg
+15:27:21.832 Starting executor ID 2 on host node021.cm.clustersg
+15:27:21.858 Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 58055.sg
+15:27:21.858 Server created on 58055sg
+15:27:21.859 Trying to register BlockManagersg
+15:27:21.866 Registered BlockManagersg
+15:27:23.109 Got assigned task 0sg
+15:27:23.114 Running task 0.0 in stage 4.0 (TID 0)sg
+15:27:23.205 Started reading broadcast variable 2sg
+15:27:23.304 Block broadcast_2_piece0 stored as bytes in memory (estimated size 2.7 KB, free 2.7 KB)sg
+15:27:23.317 Reading broadcast variable 2 took 112 mssg
+15:27:23.649 Block broadcast_2 stored as values in memory (estimated size 4.9 KB, free 7.6 KB)sg
+15:27:23.712 Input split: hdfs://10.149.0.5:8020/user/wlngai/graphalytics/graphx/input/cit-Patents.v:0+15012649sg
+15:27:23.713 Started reading broadcast variable 0sg
+15:27:23.755 Block broadcast_0_piece0 stored as bytes in memory (estimated size 17.3 KB, free 24.8 KB)sg
+15:27:23.761 Reading broadcast variable 0 took 48 mssg
+15:27:23.834 Block broadcast_0 stored as values in memory (estimated size 216.4 KB, free 241.2 KB)sg
+15:27:24.173 mapred.tip.id is deprecated. Instead, use mapreduce.task.idsg
+15:27:24.173 mapred.task.id is deprecated. Instead, use mapreduce.task.attempt.idsg
+15:27:24.173 mapred.task.is.map is deprecated. Instead, use mapreduce.task.ismapsg
+15:27:24.173 mapred.task.partition is deprecated. Instead, use mapreduce.task.partitionsg
+15:27:24.173 mapred.job.id is deprecated. Instead, use mapreduce.job.idsg
+15:27:26.894 Finished task 0.0 in stage 4.0 (TID 0). 2197 bytes result sent to driversg
+15:27:26.902 Got assigned task 5sg
+15:27:26.902 Running task 2.0 in stage 5.0 (TID 5)sg
+15:27:26.905 Started reading broadcast variable 3sg
+15:27:26.914 Block broadcast_3_piece0 stored as bytes in memory (estimated size 2.9 KB, free 244.2 KB)sg
+15:27:26.919 Reading broadcast variable 3 took 14 mssg
+15:27:26.925 Block broadcast_3 stored as values in memory (estimated size 5.4 KB, free 249.6 KB)sg
+15:27:26.937 Input split: hdfs://10.149.0.5:8020/user/wlngai/graphalytics/graphx/input/cit-Patents.e:134217728+67108864sg
+15:27:26.938 Started reading broadcast variable 1sg
+15:27:26.949 Block broadcast_1_piece0 stored as bytes in memory (estimated size 17.3 KB, free 266.9 KB)sg
+15:27:26.953 Reading broadcast variable 1 took 15 mssg
+15:27:26.978 Block broadcast_1 stored as values in memory (estimated size 216.4 KB, free 483.3 KB)sg
+15:27:37.230 Finished task 2.0 in stage 5.0 (TID 5). 2197 bytes result sent to driversg
+15:27:38.256 Got assigned task 7sg
+15:27:38.256 Running task 1.0 in stage 2.0 (TID 7)sg
+15:27:38.261 Updating epoch to 2 and clearing cachesg
+15:27:38.261 Started reading broadcast variable 4sg
+15:27:38.269 Block broadcast_4_piece0 stored as bytes in memory (estimated size 3.2 KB, free 486.4 KB)sg
+15:27:38.274 Reading broadcast variable 4 took 13 mssg
+15:27:38.278 Block broadcast_4 stored as values in memory (estimated size 6.2 KB, free 492.6 KB)sg
+15:27:38.316 Partition rdd_13_1 not found, computing itsg
+15:27:38.320 Don't have map outputs for shuffle 1, fetching themsg
+15:27:38.321 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:27:38.332 Got the output locationssg
+15:27:38.338 Getting 2 non-empty blocks out of 2 blockssg
+15:27:38.342 Started 1 remote fetches in 7 mssg
+15:27:38.360 Don't have map outputs for shuffle 5, fetching themsg
+15:27:38.360 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:27:38.366 Got the output locationssg
+15:27:38.367 Getting 4 non-empty blocks out of 4 blockssg
+15:27:38.374 Started 3 remote fetches in 7 mssg
+15:27:41.551 Block rdd_13_1 stored as values in memory (estimated size 93.2 MB, free 93.7 MB)sg
+15:27:41.558 Partition rdd_18_1 not found, computing itsg
+15:27:41.560 Found block rdd_13_1 locallysg
+15:27:41.696 Block rdd_18_1 stored as values in memory (estimated size 93.2 MB, free 186.9 MB)sg
+15:27:41.815 Finished task 1.0 in stage 2.0 (TID 7). 3050 bytes result sent to driversg
+15:27:47.393 Got assigned task 12sg
+15:27:47.393 Running task 1.0 in stage 7.0 (TID 12)sg
+15:27:47.395 Updating epoch to 5 and clearing cachesg
+15:27:47.395 Started reading broadcast variable 7sg
+15:27:47.403 Block broadcast_7_piece0 stored as bytes in memory (estimated size 4.0 KB, free 186.9 MB)sg
+15:27:47.406 Reading broadcast variable 7 took 11 mssg
+15:27:47.410 Block broadcast_7 stored as values in memory (estimated size 8.1 KB, free 186.9 MB)sg
+15:27:47.424 Partition rdd_32_1 not found, computing itsg
+15:27:47.426 Partition rdd_16_1 not found, computing itsg
+15:27:47.426 Input split: hdfs://10.149.0.5:8020/user/wlngai/graphalytics/graphx/input/cit-Patents.e:67108864+67108864sg
+15:27:55.616 Block rdd_16_1 stored as values in memory (estimated size 145.1 MB, free 332.0 MB)sg
+15:27:55.619 Don't have map outputs for shuffle 0, fetching themsg
+15:27:55.619 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:27:55.622 Got the output locationssg
+15:27:55.622 Getting 2 non-empty blocks out of 2 blockssg
+15:27:55.624 Started 1 remote fetches in 2 mssg
+15:27:55.629 Don't have map outputs for shuffle 2, fetching themsg
+15:27:55.629 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:27:55.631 Got the output locationssg
+15:27:55.631 Getting 2 non-empty blocks out of 2 blockssg
+15:27:55.632 Started 1 remote fetches in 1 mssg
+15:27:55.657 Block rdd_32_1 stored as values in memory (estimated size 145.1 MB, free 477.2 MB)sg
+15:27:55.660 Don't have map outputs for shuffle 3, fetching themsg
+15:27:55.660 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:27:55.662 Got the output locationssg
+15:27:55.663 Getting 2 non-empty blocks out of 2 blockssg
+15:27:55.666 Started 2 remote fetches in 3 mssg
+15:27:56.609 Finished task 1.0 in stage 7.0 (TID 12). 3048 bytes result sent to driversg
+15:28:02.345 Got assigned task 25sg
+15:28:02.346 Running task 1.0 in stage 25.0 (TID 25)sg
+15:28:02.347 Updating epoch to 8 and clearing cachesg
+15:28:02.348 Started reading broadcast variable 11sg
+15:28:02.354 Block broadcast_11_piece0 stored as bytes in memory (estimated size 4.3 KB, free 477.2 MB)sg
+15:28:02.356 Reading broadcast variable 11 took 8 mssg
+15:28:02.359 Block broadcast_11 stored as values in memory (estimated size 8.8 KB, free 477.2 MB)sg
+15:28:02.365 Partition rdd_49_1 not found, computing itsg
+15:28:02.365 Found block rdd_32_1 locallysg
+15:28:02.365 Don't have map outputs for shuffle 3, fetching themsg
+15:28:02.365 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:02.368 Got the output locationssg
+15:28:02.368 Getting 2 non-empty blocks out of 2 blockssg
+15:28:02.369 Started 2 remote fetches in 1 mssg
+15:28:02.372 Don't have map outputs for shuffle 6, fetching themsg
+15:28:02.373 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:02.376 Got the output locationssg
+15:28:02.377 Getting 2 non-empty blocks out of 2 blockssg
+15:28:02.378 Started 2 remote fetches in 1 mssg
+15:28:02.857 Block rdd_49_1 stored as values in memory (estimated size 145.1 MB, free 622.3 MB)sg
+15:28:02.860 Don't have map outputs for shuffle 7, fetching themsg
+15:28:02.860 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:02.862 Got the output locationssg
+15:28:02.863 Getting 2 non-empty blocks out of 2 blockssg
+15:28:02.863 Started 2 remote fetches in 0 mssg
+15:28:03.172 Finished task 1.0 in stage 25.0 (TID 25). 2993 bytes result sent to driversg
+15:28:03.722 Removing RDD 40sg
+15:28:03.724 Removing RDD 26sg
+15:28:03.727 Removing RDD 32sg
+15:28:04.969 Got assigned task 35sg
+15:28:04.969 Running task 1.0 in stage 55.0 (TID 35)sg
+15:28:04.971 Updating epoch to 11 and clearing cachesg
+15:28:04.972 Started reading broadcast variable 15sg
+15:28:04.977 Block broadcast_15_piece0 stored as bytes in memory (estimated size 4.3 KB, free 477.2 MB)sg
+15:28:04.980 Reading broadcast variable 15 took 8 mssg
+15:28:04.983 Block broadcast_15 stored as values in memory (estimated size 9.1 KB, free 477.2 MB)sg
+15:28:04.986 Partition rdd_66_1 not found, computing itsg
+15:28:04.986 Found block rdd_49_1 locallysg
+15:28:04.986 Don't have map outputs for shuffle 9, fetching themsg
+15:28:04.987 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:04.989 Got the output locationssg
+15:28:04.990 Getting 2 non-empty blocks out of 2 blockssg
+15:28:04.990 Started 2 remote fetches in 1 mssg
+15:28:05.003 Block rdd_66_1 stored as values in memory (estimated size 145.1 MB, free 622.3 MB)sg
+15:28:05.006 Don't have map outputs for shuffle 10, fetching themsg
+15:28:05.006 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:05.008 Got the output locationssg
+15:28:05.009 Getting 2 non-empty blocks out of 2 blockssg
+15:28:05.009 Started 2 remote fetches in 1 mssg
+15:28:05.357 Finished task 1.0 in stage 55.0 (TID 35). 2993 bytes result sent to driversg
+15:28:05.562 Removing RDD 57sg
+15:28:05.563 Removing RDD 43sg
+15:28:05.565 Removing RDD 49sg
+15:28:06.671 Got assigned task 45sg
+15:28:06.671 Running task 1.0 in stage 100.0 (TID 45)sg
+15:28:06.672 Updating epoch to 14 and clearing cachesg
+15:28:06.673 Started reading broadcast variable 19sg
+15:28:06.678 Block broadcast_19_piece0 stored as bytes in memory (estimated size 4.4 KB, free 477.2 MB)sg
+15:28:06.681 Reading broadcast variable 19 took 8 mssg
+15:28:06.683 Block broadcast_19 stored as values in memory (estimated size 9.3 KB, free 477.2 MB)sg
+15:28:06.687 Partition rdd_83_1 not found, computing itsg
+15:28:06.687 Found block rdd_66_1 locallysg
+15:28:06.687 Don't have map outputs for shuffle 12, fetching themsg
+15:28:06.687 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:06.690 Got the output locationssg
+15:28:06.690 Getting 2 non-empty blocks out of 2 blockssg
+15:28:06.691 Started 2 remote fetches in 1 mssg
+15:28:06.705 Block rdd_83_1 stored as values in memory (estimated size 145.1 MB, free 622.4 MB)sg
+15:28:06.707 Don't have map outputs for shuffle 13, fetching themsg
+15:28:06.707 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:06.709 Got the output locationssg
+15:28:06.710 Getting 2 non-empty blocks out of 2 blockssg
+15:28:06.710 Started 2 remote fetches in 0 mssg
+15:28:07.021 Finished task 1.0 in stage 100.0 (TID 45). 2993 bytes result sent to driversg
+15:28:07.260 Removing RDD 74sg
+15:28:07.262 Removing RDD 60sg
+15:28:07.263 Removing RDD 66sg
+15:28:08.466 Got assigned task 53sg
+15:28:08.466 Running task 1.0 in stage 163.0 (TID 53)sg
+15:28:08.467 Updating epoch to 17 and clearing cachesg
+15:28:08.468 Started reading broadcast variable 23sg
+15:28:08.473 Block broadcast_23_piece0 stored as bytes in memory (estimated size 4.5 KB, free 477.2 MB)sg
+15:28:08.475 Reading broadcast variable 23 took 7 mssg
+15:28:08.478 Block broadcast_23 stored as values in memory (estimated size 9.6 KB, free 477.2 MB)sg
+15:28:08.481 Partition rdd_100_1 not found, computing itsg
+15:28:08.482 Found block rdd_83_1 locallysg
+15:28:08.482 Don't have map outputs for shuffle 15, fetching themsg
+15:28:08.482 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:08.485 Got the output locationssg
+15:28:08.485 Getting 2 non-empty blocks out of 2 blockssg
+15:28:08.485 Started 2 remote fetches in 0 mssg
+15:28:08.499 Block rdd_100_1 stored as values in memory (estimated size 145.1 MB, free 622.3 MB)sg
+15:28:08.501 Don't have map outputs for shuffle 16, fetching themsg
+15:28:08.502 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:08.503 Got the output locationssg
+15:28:08.504 Getting 2 non-empty blocks out of 2 blockssg
+15:28:08.504 Started 2 remote fetches in 1 mssg
+15:28:08.808 Finished task 1.0 in stage 163.0 (TID 53). 2993 bytes result sent to driversg
+15:28:09.057 Removing RDD 91sg
+15:28:09.057 Removing RDD 77sg
+15:28:09.059 Removing RDD 83sg
+15:28:10.213 Got assigned task 64sg
+15:28:10.214 Running task 1.0 in stage 247.0 (TID 64)sg
+15:28:10.215 Updating epoch to 20 and clearing cachesg
+15:28:10.216 Started reading broadcast variable 27sg
+15:28:10.221 Block broadcast_27_piece0 stored as bytes in memory (estimated size 4.6 KB, free 477.2 MB)sg
+15:28:10.223 Reading broadcast variable 27 took 7 mssg
+15:28:10.226 Block broadcast_27 stored as values in memory (estimated size 9.9 KB, free 477.2 MB)sg
+15:28:10.230 Partition rdd_117_1 not found, computing itsg
+15:28:10.230 Found block rdd_100_1 locallysg
+15:28:10.231 Don't have map outputs for shuffle 18, fetching themsg
+15:28:10.231 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:10.232 Got the output locationssg
+15:28:10.233 Getting 2 non-empty blocks out of 2 blockssg
+15:28:10.233 Started 2 remote fetches in 1 mssg
+15:28:10.248 Block rdd_117_1 stored as values in memory (estimated size 145.1 MB, free 622.3 MB)sg
+15:28:10.250 Don't have map outputs for shuffle 19, fetching themsg
+15:28:10.251 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:10.252 Got the output locationssg
+15:28:10.252 Getting 2 non-empty blocks out of 2 blockssg
+15:28:10.253 Started 2 remote fetches in 1 mssg
+15:28:10.623 Finished task 1.0 in stage 247.0 (TID 64). 2993 bytes result sent to driversg
+15:28:10.787 Removing RDD 108sg
+15:28:10.787 Removing RDD 94sg
+15:28:10.789 Removing RDD 100sg
+15:28:12.047 Got assigned task 72sg
+15:28:12.047 Running task 1.0 in stage 355.0 (TID 72)sg
+15:28:12.048 Updating epoch to 23 and clearing cachesg
+15:28:12.049 Started reading broadcast variable 31sg
+15:28:12.053 Block broadcast_31_piece0 stored as bytes in memory (estimated size 4.7 KB, free 477.2 MB)sg
+15:28:12.055 Reading broadcast variable 31 took 6 mssg
+15:28:12.057 Block broadcast_31 stored as values in memory (estimated size 10.1 KB, free 477.2 MB)sg
+15:28:12.061 Partition rdd_134_1 not found, computing itsg
+15:28:12.061 Found block rdd_117_1 locallysg
+15:28:12.061 Don't have map outputs for shuffle 21, fetching themsg
+15:28:12.061 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:12.064 Got the output locationssg
+15:28:12.064 Getting 2 non-empty blocks out of 2 blockssg
+15:28:12.065 Started 2 remote fetches in 1 mssg
+15:28:12.077 Block rdd_134_1 stored as values in memory (estimated size 145.1 MB, free 622.3 MB)sg
+15:28:12.079 Don't have map outputs for shuffle 22, fetching themsg
+15:28:12.079 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:12.081 Got the output locationssg
+15:28:12.081 Getting 2 non-empty blocks out of 2 blockssg
+15:28:12.082 Started 2 remote fetches in 1 mssg
+15:28:12.434 Finished task 1.0 in stage 355.0 (TID 72). 2993 bytes result sent to driversg
+15:28:12.570 Removing RDD 125sg
+15:28:12.571 Removing RDD 111sg
+15:28:12.572 Removing RDD 117sg
+15:28:13.736 Got assigned task 84sg
+15:28:13.737 Running task 1.0 in stage 490.0 (TID 84)sg
+15:28:13.738 Updating epoch to 26 and clearing cachesg
+15:28:13.738 Started reading broadcast variable 35sg
+15:28:13.743 Block broadcast_35_piece0 stored as bytes in memory (estimated size 4.7 KB, free 477.2 MB)sg
+15:28:13.745 Reading broadcast variable 35 took 7 mssg
+15:28:13.748 Block broadcast_35 stored as values in memory (estimated size 10.4 KB, free 477.2 MB)sg
+15:28:13.751 Partition rdd_151_1 not found, computing itsg
+15:28:13.751 Found block rdd_134_1 locallysg
+15:28:13.751 Don't have map outputs for shuffle 24, fetching themsg
+15:28:13.751 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:13.754 Got the output locationssg
+15:28:13.754 Getting 2 non-empty blocks out of 2 blockssg
+15:28:13.756 Started 2 remote fetches in 2 mssg
+15:28:13.767 Block rdd_151_1 stored as values in memory (estimated size 145.1 MB, free 622.4 MB)sg
+15:28:13.769 Don't have map outputs for shuffle 25, fetching themsg
+15:28:13.770 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:13.771 Got the output locationssg
+15:28:13.772 Getting 2 non-empty blocks out of 2 blockssg
+15:28:13.772 Started 2 remote fetches in 1 mssg
+15:28:14.036 Finished task 1.0 in stage 490.0 (TID 84). 2993 bytes result sent to driversg
+15:28:14.258 Removing RDD 142sg
+15:28:14.259 Removing RDD 128sg
+15:28:14.261 Removing RDD 134sg
+15:28:15.219 Got assigned task 92sg
+15:28:15.219 Running task 1.0 in stage 655.0 (TID 92)sg
+15:28:15.221 Updating epoch to 29 and clearing cachesg
+15:28:15.221 Started reading broadcast variable 39sg
+15:28:15.226 Block broadcast_39_piece0 stored as bytes in memory (estimated size 4.8 KB, free 477.2 MB)sg
+15:28:15.227 Reading broadcast variable 39 took 6 mssg
+15:28:15.230 Block broadcast_39 stored as values in memory (estimated size 10.7 KB, free 477.2 MB)sg
+15:28:15.233 Partition rdd_168_1 not found, computing itsg
+15:28:15.233 Found block rdd_151_1 locallysg
+15:28:15.233 Don't have map outputs for shuffle 27, fetching themsg
+15:28:15.233 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:15.235 Got the output locationssg
+15:28:15.235 Getting 2 non-empty blocks out of 2 blockssg
+15:28:15.235 Started 2 remote fetches in 0 mssg
+15:28:15.247 Block rdd_168_1 stored as values in memory (estimated size 145.1 MB, free 622.3 MB)sg
+15:28:15.250 Don't have map outputs for shuffle 28, fetching themsg
+15:28:15.250 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:15.251 Got the output locationssg
+15:28:15.251 Getting 2 non-empty blocks out of 2 blockssg
+15:28:15.252 Started 2 remote fetches in 1 mssg
+15:28:15.519 Finished task 1.0 in stage 655.0 (TID 92). 2993 bytes result sent to driversg
+15:28:15.755 Removing RDD 159sg
+15:28:15.756 Removing RDD 145sg
+15:28:15.756 Removing RDD 151sg
+15:28:16.655 Got assigned task 104sg
+15:28:16.655 Running task 1.0 in stage 853.0 (TID 104)sg
+15:28:16.656 Updating epoch to 32 and clearing cachesg
+15:28:16.657 Started reading broadcast variable 43sg
+15:28:16.661 Block broadcast_43_piece0 stored as bytes in memory (estimated size 4.9 KB, free 477.2 MB)sg
+15:28:16.662 Reading broadcast variable 43 took 5 mssg
+15:28:16.665 Block broadcast_43 stored as values in memory (estimated size 10.9 KB, free 477.2 MB)sg
+15:28:16.668 Partition rdd_185_1 not found, computing itsg
+15:28:16.668 Found block rdd_168_1 locallysg
+15:28:16.668 Don't have map outputs for shuffle 30, fetching themsg
+15:28:16.668 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:16.670 Got the output locationssg
+15:28:16.671 Getting 2 non-empty blocks out of 2 blockssg
+15:28:16.671 Started 2 remote fetches in 0 mssg
+15:28:16.683 Block rdd_185_1 stored as values in memory (estimated size 145.1 MB, free 622.3 MB)sg
+15:28:16.685 Don't have map outputs for shuffle 31, fetching themsg
+15:28:16.685 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:16.687 Got the output locationssg
+15:28:16.687 Getting 2 non-empty blocks out of 2 blockssg
+15:28:16.687 Started 2 remote fetches in 0 mssg
+15:28:16.910 Finished task 1.0 in stage 853.0 (TID 104). 2993 bytes result sent to driversg
+15:28:17.028 Removing RDD 176sg
+15:28:17.029 Removing RDD 162sg
+15:28:17.030 Removing RDD 168sg
+15:28:17.147 Got assigned task 110sg
+15:28:17.147 Running task 1.0 in stage 1185.0 (TID 110)sg
+15:28:17.150 Updating epoch to 33 and clearing cachesg
+15:28:17.150 Started reading broadcast variable 46sg
+15:28:17.154 Block broadcast_46_piece0 stored as bytes in memory (estimated size 4.4 KB, free 477.2 MB)sg
+15:28:17.156 Reading broadcast variable 46 took 5 mssg
+15:28:17.159 Block broadcast_46 stored as values in memory (estimated size 9.7 KB, free 477.2 MB)sg
+15:28:17.164 Found block rdd_185_1 locallysg
+15:28:17.166 Finished task 1.0 in stage 1185.0 (TID 110). 2016 bytes result sent to driversg
+15:28:17.180 Removing RDD 13sg
+15:28:17.181 Removing RDD 16sg
+15:28:20.347 Removing RDD 179sg
+15:28:20.347 Removing RDD 185sg
+15:28:20.348 Removing RDD 198sg
+15:28:20.465 Driver commanded a shutdownsg
+15:28:20.484 MemoryStore clearedsg
+15:28:20.485 BlockManager stoppedsg
+15:28:20.488 An unknown (node005.cm.cluster:41997) driver disconnected.sg
+15:28:20.488 Driver 10.141.0.5:41997 disassociated! Shutting down.sg
+15:28:20.491 Shutdown hook calledsg
+15:28:20.492 Shutting down remote daemon.sg
+15:28:20.494 Remote daemon shut down; proceeding with flushing remote transports.sg
+
+
+
+Container: container_1455632795340_0001_01_000006 on node054.cm.cluster_35518
+===============================================================================
+LogType: stderr
+LogLength: 574
+Log Contents:
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/local/wlngai/graphalytics/exec/hdfs/nm-local-dir/usercache/wlngai/filecache/10/graphalytics-platforms-graphx-granula-0.1-SNAPSHOT.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/local/wlngai/graphalytics/exec/yarn/share/hadoop/common/lib/slf4j-log4j12-1.7.5.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+
+LogType: stdout
+LogLength: 20480
+Log Contents:
+15:27:19.567 Registered signal handlers for [TERM, HUP, INT]sg
+15:27:19.890 Unable to load native-hadoop library for your platform... using builtin-java classes where applicablesg
+15:27:19.974 Changing view acls to: wlngaisg
+15:27:19.975 Changing modify acls to: wlngaisg
+15:27:19.975 SecurityManager: authentication disabled; ui acls disabled; users with view permissions: Set(wlngai); users with modify permissions: Set(wlngai)sg
+15:27:20.930 Changing view acls to: wlngaisg
+15:27:20.930 Changing modify acls to: wlngaisg
+15:27:20.930 SecurityManager: authentication disabled; ui acls disabled; users with view permissions: Set(wlngai); users with modify permissions: Set(wlngai)sg
+15:27:21.244 Slf4jLogger startedsg
+15:27:21.285 Starting remotingsg
+15:27:21.446 Remoting started; listening on addresses :[akka.tcp://sparkExecutorActorSystem@node054.cm.cluster:46908]sg
+15:27:21.452 Successfully started service 'sparkExecutorActorSystem' on port 46908.sg
+15:27:21.519 Created local directory at /local/wlngai/graphalytics/exec/hdfs/nm-local-dir/usercache/wlngai/appcache/application_1455632795340_0001/blockmgr-5dbbf297-a6b2-4ec1-bc0e-6a835755a940sg
+15:27:21.541 MemoryStore started with capacity 14.2 GBsg
+15:27:21.769 Connecting to driver: spark://CoarseGrainedScheduler@10.141.0.5:41997sg
+15:27:21.800 Successfully registered with driversg
+15:27:21.801 Starting executor ID 5 on host node054.cm.clustersg
+15:27:21.821 Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 55445.sg
+15:27:21.822 Server created on 55445sg
+15:27:21.823 Trying to register BlockManagersg
+15:27:21.830 Registered BlockManagersg
+15:27:23.117 Got assigned task 2sg
+15:27:23.124 Running task 0.0 in stage 5.0 (TID 2)sg
+15:27:23.244 Started reading broadcast variable 3sg
+15:27:23.349 Block broadcast_3_piece0 stored as bytes in memory (estimated size 2.9 KB, free 2.9 KB)sg
+15:27:23.362 Reading broadcast variable 3 took 118 mssg
+15:27:23.792 Block broadcast_3 stored as values in memory (estimated size 5.4 KB, free 8.4 KB)sg
+15:27:23.874 Input split: hdfs://10.149.0.5:8020/user/wlngai/graphalytics/graphx/input/cit-Patents.e:0+67108864sg
+15:27:23.875 Started reading broadcast variable 1sg
+15:27:23.919 Block broadcast_1_piece0 stored as bytes in memory (estimated size 17.3 KB, free 25.6 KB)sg
+15:27:23.924 Reading broadcast variable 1 took 49 mssg
+15:27:24.007 Block broadcast_1 stored as values in memory (estimated size 216.4 KB, free 242.0 KB)sg
+15:27:24.350 mapred.tip.id is deprecated. Instead, use mapreduce.task.idsg
+15:27:24.350 mapred.task.id is deprecated. Instead, use mapreduce.task.attempt.idsg
+15:27:24.350 mapred.task.is.map is deprecated. Instead, use mapreduce.task.ismapsg
+15:27:24.350 mapred.task.partition is deprecated. Instead, use mapreduce.task.partitionsg
+15:27:24.350 mapred.job.id is deprecated. Instead, use mapreduce.job.idsg
+15:27:35.228 Finished task 0.0 in stage 5.0 (TID 2). 2197 bytes result sent to driversg
+15:27:41.746 Got assigned task 9sg
+15:27:41.747 Running task 0.0 in stage 6.0 (TID 9)sg
+15:27:41.754 Updating epoch to 2 and clearing cachesg
+15:27:41.755 Started reading broadcast variable 5sg
+15:27:41.764 Block broadcast_5_piece0 stored as bytes in memory (estimated size 3.2 KB, free 245.2 KB)sg
+15:27:41.768 Reading broadcast variable 5 took 13 mssg
+15:27:41.775 Block broadcast_5 stored as values in memory (estimated size 6.2 KB, free 251.4 KB)sg
+15:27:43.579 Found block rdd_26_0 remotelysg
+15:27:45.360 Finished task 0.0 in stage 6.0 (TID 9). 2199 bytes result sent to driversg
+15:27:47.393 Got assigned task 14sg
+15:27:47.394 Running task 2.0 in stage 7.0 (TID 14)sg
+15:27:47.397 Updating epoch to 5 and clearing cachesg
+15:27:47.398 Started reading broadcast variable 7sg
+15:27:47.406 Block broadcast_7_piece0 stored as bytes in memory (estimated size 4.0 KB, free 247.0 KB)sg
+15:27:47.410 Reading broadcast variable 7 took 12 mssg
+15:27:47.415 Block broadcast_7 stored as values in memory (estimated size 8.1 KB, free 255.2 KB)sg
+15:27:47.435 Partition rdd_32_2 not found, computing itsg
+15:27:47.438 Partition rdd_16_2 not found, computing itsg
+15:27:47.438 Input split: hdfs://10.149.0.5:8020/user/wlngai/graphalytics/graphx/input/cit-Patents.e:134217728+67108864sg
+15:27:54.919 Block rdd_16_2 stored as values in memory (estimated size 144.2 MB, free 144.5 MB)sg
+15:27:54.928 Don't have map outputs for shuffle 0, fetching themsg
+15:27:54.929 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:27:54.935 Got the output locationssg
+15:27:54.940 Getting 2 non-empty blocks out of 2 blockssg
+15:27:54.952 Started 2 remote fetches in 15 mssg
+15:27:54.962 Don't have map outputs for shuffle 2, fetching themsg
+15:27:54.963 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:27:54.966 Got the output locationssg
+15:27:54.966 Getting 2 non-empty blocks out of 2 blockssg
+15:27:54.967 Started 1 remote fetches in 1 mssg
+15:27:54.998 Block rdd_32_2 stored as values in memory (estimated size 144.2 MB, free 288.7 MB)sg
+15:27:55.001 Don't have map outputs for shuffle 3, fetching themsg
+15:27:55.002 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:27:55.005 Got the output locationssg
+15:27:55.006 Getting 2 non-empty blocks out of 2 blockssg
+15:27:55.011 Started 1 remote fetches in 6 mssg
+15:27:56.226 Finished task 2.0 in stage 7.0 (TID 14). 3048 bytes result sent to driversg
+15:28:02.345 Got assigned task 24sg
+15:28:02.346 Running task 2.0 in stage 25.0 (TID 24)sg
+15:28:02.348 Updating epoch to 8 and clearing cachesg
+15:28:02.348 Started reading broadcast variable 11sg
+15:28:02.354 Block broadcast_11_piece0 stored as bytes in memory (estimated size 4.3 KB, free 288.7 MB)sg
+15:28:02.357 Reading broadcast variable 11 took 9 mssg
+15:28:02.362 Block broadcast_11 stored as values in memory (estimated size 8.8 KB, free 288.7 MB)sg
+15:28:02.370 Partition rdd_49_2 not found, computing itsg
+15:28:02.371 Found block rdd_32_2 locallysg
+15:28:02.371 Don't have map outputs for shuffle 3, fetching themsg
+15:28:02.371 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:02.374 Got the output locationssg
+15:28:02.375 Getting 2 non-empty blocks out of 2 blockssg
+15:28:02.375 Started 1 remote fetches in 0 mssg
+15:28:02.380 Don't have map outputs for shuffle 6, fetching themsg
+15:28:02.380 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:02.384 Got the output locationssg
+15:28:02.384 Getting 2 non-empty blocks out of 2 blockssg
+15:28:02.385 Started 2 remote fetches in 1 mssg
+15:28:02.771 Block rdd_49_2 stored as values in memory (estimated size 144.2 MB, free 432.9 MB)sg
+15:28:02.774 Don't have map outputs for shuffle 7, fetching themsg
+15:28:02.774 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:02.777 Got the output locationssg
+15:28:02.778 Getting 2 non-empty blocks out of 2 blockssg
+15:28:02.778 Started 2 remote fetches in 0 mssg
+15:28:03.059 Finished task 2.0 in stage 25.0 (TID 24). 2993 bytes result sent to driversg
+15:28:03.722 Removing RDD 40sg
+15:28:03.724 Removing RDD 26sg
+15:28:03.727 Removing RDD 32sg
+15:28:04.969 Got assigned task 33sg
+15:28:04.969 Running task 2.0 in stage 55.0 (TID 33)sg
+15:28:04.971 Updating epoch to 11 and clearing cachesg
+15:28:04.972 Started reading broadcast variable 15sg
+15:28:04.979 Block broadcast_15_piece0 stored as bytes in memory (estimated size 4.3 KB, free 288.7 MB)sg
+15:28:04.981 Reading broadcast variable 15 took 9 mssg
+15:28:04.986 Block broadcast_15 stored as values in memory (estimated size 9.1 KB, free 288.7 MB)sg
+15:28:04.990 Partition rdd_66_2 not found, computing itsg
+15:28:04.990 Found block rdd_49_2 locallysg
+15:28:04.990 Don't have map outputs for shuffle 9, fetching themsg
+15:28:04.990 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:04.992 Got the output locationssg
+15:28:04.993 Getting 2 non-empty blocks out of 2 blockssg
+15:28:04.993 Started 2 remote fetches in 1 mssg
+15:28:05.006 Block rdd_66_2 stored as values in memory (estimated size 144.2 MB, free 432.9 MB)sg
+15:28:05.009 Don't have map outputs for shuffle 10, fetching themsg
+15:28:05.009 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:05.011 Got the output locationssg
+15:28:05.011 Getting 2 non-empty blocks out of 2 blockssg
+15:28:05.012 Started 2 remote fetches in 1 mssg
+15:28:05.327 Finished task 2.0 in stage 55.0 (TID 33). 2993 bytes result sent to driversg
+15:28:05.561 Removing RDD 57sg
+15:28:05.563 Removing RDD 43sg
+15:28:05.564 Removing RDD 49sg
+15:28:06.670 Got assigned task 44sg
+15:28:06.671 Running task 2.0 in stage 100.0 (TID 44)sg
+15:28:06.672 Updating epoch to 14 and clearing cachesg
+15:28:06.673 Started reading broadcast variable 19sg
+15:28:06.678 Block broadcast_19_piece0 stored as bytes in memory (estimated size 4.4 KB, free 288.7 MB)sg
+15:28:06.680 Reading broadcast variable 19 took 7 mssg
+15:28:06.684 Block broadcast_19 stored as values in memory (estimated size 9.3 KB, free 288.7 MB)sg
+15:28:06.687 Partition rdd_83_2 not found, computing itsg
+15:28:06.687 Found block rdd_66_2 locallysg
+15:28:06.688 Don't have map outputs for shuffle 12, fetching themsg
+15:28:06.688 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:06.690 Got the output locationssg
+15:28:06.690 Getting 2 non-empty blocks out of 2 blockssg
+15:28:06.691 Started 2 remote fetches in 1 mssg
+15:28:06.703 Block rdd_83_2 stored as values in memory (estimated size 144.2 MB, free 433.0 MB)sg
+15:28:06.705 Don't have map outputs for shuffle 13, fetching themsg
+15:28:06.706 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:06.708 Got the output locationssg
+15:28:06.708 Getting 2 non-empty blocks out of 2 blockssg
+15:28:06.709 Started 2 remote fetches in 1 mssg
+15:28:06.983 Finished task 2.0 in stage 100.0 (TID 44). 2993 bytes result sent to driversg
+15:28:07.259 Removing RDD 74sg
+15:28:07.262 Removing RDD 60sg
+15:28:07.263 Removing RDD 66sg
+15:28:08.465 Got assigned task 54sg
+15:28:08.466 Running task 2.0 in stage 163.0 (TID 54)sg
+15:28:08.467 Updating epoch to 17 and clearing cachesg
+15:28:08.467 Started reading broadcast variable 23sg
+15:28:08.473 Block broadcast_23_piece0 stored as bytes in memory (estimated size 4.5 KB, free 288.7 MB)sg
+15:28:08.475 Reading broadcast variable 23 took 7 mssg
+15:28:08.479 Block broadcast_23 stored as values in memory (estimated size 9.6 KB, free 288.7 MB)sg
+15:28:08.482 Partition rdd_100_2 not found, computing itsg
+15:28:08.483 Found block rdd_83_2 locallysg
+15:28:08.483 Don't have map outputs for shuffle 15, fetching themsg
+15:28:08.483 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:08.484 Got the output locationssg
+15:28:08.485 Getting 2 non-empty blocks out of 2 blockssg
+15:28:08.485 Started 2 remote fetches in 0 mssg
+15:28:08.497 Block rdd_100_2 stored as values in memory (estimated size 144.2 MB, free 432.9 MB)sg
+15:28:08.500 Don't have map outputs for shuffle 16, fetching themsg
+15:28:08.500 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:08.502 Got the output locationssg
+15:28:08.502 Getting 2 non-empty blocks out of 2 blockssg
+15:28:08.503 Started 2 remote fetches in 1 mssg
+15:28:08.848 Finished task 2.0 in stage 163.0 (TID 54). 2993 bytes result sent to driversg
+15:28:09.056 Removing RDD 91sg
+15:28:09.057 Removing RDD 77sg
+15:28:09.058 Removing RDD 83sg
+15:28:10.213 Got assigned task 62sg
+15:28:10.214 Running task 2.0 in stage 247.0 (TID 62)sg
+15:28:10.215 Updating epoch to 20 and clearing cachesg
+15:28:10.216 Started reading broadcast variable 27sg
+15:28:10.221 Block broadcast_27_piece0 stored as bytes in memory (estimated size 4.6 KB, free 288.7 MB)sg
+15:28:10.223 Reading broadcast variable 27 took 7 mssg
+15:28:10.228 Block broadcast_27 stored as values in memory (estimated size 9.9 KB, free 288.7 MB)sg
+15:28:10.233 Partition rdd_117_2 not found, computing itsg
+15:28:10.233 Found block rdd_100_2 locallysg
+15:28:10.233 Don't have map outputs for shuffle 18, fetching themsg
+15:28:10.233 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:10.235 Got the output locationssg
+15:28:10.235 Getting 2 non-empty blocks out of 2 blockssg
+15:28:10.235 Started 2 remote fetches in 0 mssg
+15:28:10.247 Block rdd_117_2 stored as values in memory (estimated size 144.2 MB, free 432.9 MB)sg
+15:28:10.249 Don't have map outputs for shuffle 19, fetching themsg
+15:28:10.249 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:10.251 Got the output locationssg
+15:28:10.251 Getting 2 non-empty blocks out of 2 blockssg
+15:28:10.252 Started 2 remote fetches in 1 mssg
+15:28:10.545 Finished task 2.0 in stage 247.0 (TID 62). 2993 bytes result sent to driversg
+15:28:10.786 Removing RDD 108sg
+15:28:10.787 Removing RDD 94sg
+15:28:10.788 Removing RDD 100sg
+15:28:12.047 Got assigned task 75sg
+15:28:12.047 Running task 2.0 in stage 355.0 (TID 75)sg
+15:28:12.048 Updating epoch to 23 and clearing cachesg
+15:28:12.049 Started reading broadcast variable 31sg
+15:28:12.055 Block broadcast_31_piece0 stored as bytes in memory (estimated size 4.7 KB, free 288.7 MB)sg
+15:28:12.057 Reading broadcast variable 31 took 8 mssg
+15:28:12.060 Block broadcast_31 stored as values in memory (estimated size 10.1 KB, free 288.7 MB)sg
+15:28:12.065 Partition rdd_134_2 not found, computing itsg
+15:28:12.065 Found block rdd_117_2 locallysg
+15:28:12.065 Don't have map outputs for shuffle 21, fetching themsg
+15:28:12.065 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:12.067 Got the output locationssg
+15:28:12.067 Getting 2 non-empty blocks out of 2 blockssg
+15:28:12.071 Started 2 remote fetches in 4 mssg
+15:28:12.088 Block rdd_134_2 stored as values in memory (estimated size 144.2 MB, free 432.9 MB)sg
+15:28:12.091 Don't have map outputs for shuffle 22, fetching themsg
+15:28:12.091 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:12.093 Got the output locationssg
+15:28:12.093 Getting 2 non-empty blocks out of 2 blockssg
+15:28:12.094 Started 2 remote fetches in 1 mssg
+15:28:12.515 Finished task 2.0 in stage 355.0 (TID 75). 2993 bytes result sent to driversg
+15:28:12.569 Removing RDD 125sg
+15:28:12.570 Removing RDD 111sg
+15:28:12.571 Removing RDD 117sg
+15:28:13.736 Got assigned task 85sg
+15:28:13.737 Running task 2.0 in stage 490.0 (TID 85)sg
+15:28:13.738 Updating epoch to 26 and clearing cachesg
+15:28:13.739 Started reading broadcast variable 35sg
+15:28:13.743 Block broadcast_35_piece0 stored as bytes in memory (estimated size 4.7 KB, free 288.7 MB)sg
+15:28:13.745 Reading broadcast variable 35 took 6 mssg
+15:28:13.749 Block broadcast_35 stored as values in memory (estimated size 10.4 KB, free 288.7 MB)sg
+15:28:13.753 Partition rdd_151_2 not found, computing itsg
+15:28:13.753 Found block rdd_134_2 locallysg
+15:28:13.753 Don't have map outputs for shuffle 24, fetching themsg
+15:28:13.753 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:13.755 Got the output locationssg
+15:28:13.756 Getting 2 non-empty blocks out of 2 blockssg
+15:28:13.756 Started 2 remote fetches in 1 mssg
+15:28:13.772 Block rdd_151_2 stored as values in memory (estimated size 144.2 MB, free 433.0 MB)sg
+15:28:13.775 Don't have map outputs for shuffle 25, fetching themsg
+15:28:13.775 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:13.776 Got the output locationssg
+15:28:13.777 Getting 2 non-empty blocks out of 2 blockssg
+15:28:13.778 Started 2 remote fetches in 1 mssg
+15:28:14.204 Finished task 2.0 in stage 490.0 (TID 85). 2993 bytes result sent to driversg
+15:28:14.257 Removing RDD 142sg
+15:28:14.258 Removing RDD 128sg
+15:28:14.260 Removing RDD 134sg
+15:28:15.219 Got assigned task 93sg
+15:28:15.219 Running task 2.0 in stage 655.0 (TID 93)sg
+15:28:15.221 Updating epoch to 29 and clearing cachesg
+15:28:15.222 Started reading broadcast variable 39sg
+15:28:15.226 Block broadcast_39_piece0 stored as bytes in memory (estimated size 4.8 KB, free 288.7 MB)sg
+15:28:15.228 Reading broadcast variable 39 took 6 mssg
+15:28:15.231 Block broadcast_39 stored as values in memory (estimated size 10.7 KB, free 288.7 MB)sg
+15:28:15.236 Partition rdd_168_2 not found, computing itsg
+15:28:15.236 Found block rdd_151_2 locallysg
+15:28:15.236 Don't have map outputs for shuffle 27, fetching themsg
+15:28:15.236 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:15.238 Got the output locationssg
+15:28:15.238 Getting 2 non-empty blocks out of 2 blockssg
+15:28:15.240 Started 2 remote fetches in 2 mssg
+15:28:15.255 Block rdd_168_2 stored as values in memory (estimated size 144.2 MB, free 432.9 MB)sg
+15:28:15.258 Don't have map outputs for shuffle 28, fetching themsg
+15:28:15.258 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:15.259 Got the output locationssg
+15:28:15.260 Getting 2 non-empty blocks out of 2 blockssg
+15:28:15.261 Started 2 remote fetches in 1 mssg
+15:28:15.703 Finished task 2.0 in stage 655.0 (TID 93). 2993 bytes result sent to driversg
+15:28:15.755 Removing RDD 159sg
+15:28:15.755 Removing RDD 145sg
+15:28:15.756 Removing RDD 151sg
+15:28:16.654 Got assigned task 105sg
+15:28:16.655 Running task 2.0 in stage 853.0 (TID 105)sg
+15:28:16.656 Updating epoch to 32 and clearing cachesg
+15:28:16.657 Started reading broadcast variable 43sg
+15:28:16.661 Block broadcast_43_piece0 stored as bytes in memory (estimated size 4.9 KB, free 288.7 MB)sg
+15:28:16.663 Reading broadcast variable 43 took 6 mssg
+15:28:16.667 Block broadcast_43 stored as values in memory (estimated size 10.9 KB, free 288.7 MB)sg
+15:28:16.671 Partition rdd_185_2 not found, computing itsg
+15:28:16.671 Found block rdd_168_2 locallysg
+15:28:16.671 Don't have map outputs for shuffle 30, fetching themsg
+15:28:16.671 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:16.673 Got the output locationssg
+15:28:16.674 Getting 2 non-empty blocks out of 2 blockssg
+15:28:16.674 Started 2 remote fetches in 1 mssg
+15:28:16.690 Block rdd_185_2 stored as values in memory (estimated size 144.2 MB, free 432.9 MB)sg
+15:28:16.692 Don't have map outputs for shuffle 31, fetching themsg
+15:28:16.692 Doing the fetch; tracker endpoint = NettyRpcEndpointRef(spark://MapOutputTracker@10.141.0.5:41997)sg
+15:28:16.694 Got the output locationssg
+15:28:16.695 Getting 2 non-empty blocks out of 2 blockssg
+15:28:16.696 Started 2 remote fetches in 2 mssg
+15:28:16.979 Finished task 2.0 in stage 853.0 (TID 105). 2993 bytes result sent to driversg
+15:28:17.028 Removing RDD 176sg
+15:28:17.028 Removing RDD 162sg
+15:28:17.029 Removing RDD 168sg
+15:28:17.147 Got assigned task 112sg
+15:28:17.147 Running task 2.0 in stage 1185.0 (TID 112)sg
+15:28:17.150 Updating epoch to 33 and clearing cachesg
+15:28:17.151 Started reading broadcast variable 46sg
+15:28:17.157 Block broadcast_46_piece0 stored as bytes in memory (estimated size 4.4 KB, free 288.7 MB)sg
+15:28:17.159 Reading broadcast variable 46 took 8 mssg
+15:28:17.163 Block broadcast_46 stored as values in memory (estimated size 9.7 KB, free 288.7 MB)sg
+15:28:17.169 Found block rdd_185_2 locallysg
+15:28:17.173 Finished task 2.0 in stage 1185.0 (TID 112). 2016 bytes result sent to driversg
+15:28:17.179 Removing RDD 13sg
+15:28:17.180 Removing RDD 16sg
+15:28:20.346 Removing RDD 179sg
+15:28:20.347 Removing RDD 185sg
+15:28:20.347 Removing RDD 198sg
+15:28:20.465 Driver commanded a shutdownsg
+15:28:20.496 MemoryStore clearedsg
+15:28:20.496 BlockManager stoppedsg
+15:28:20.500 An unknown (node005.cm.cluster:41997) driver disconnected.sg
+15:28:20.501 Driver 10.141.0.5:41997 disassociated! Shutting down.sg
+15:28:20.503 Shutdown hook calledsg
+15:28:20.505 Shutting down remote daemon.sg
+
