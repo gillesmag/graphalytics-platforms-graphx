@@ -4,17 +4,12 @@
 	<groupId>nl.tudelft.graphalytics</groupId>
 	<artifactId>graphalytics-platforms-graphx</artifactId>
 	<version>0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>pom</packaging>
+
+	<name>Graphalytics Platform GraphX</name>
 
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
 		<graphalytics.version>0.3-SNAPSHOT</graphalytics.version>
-		<hadoop.version>2.4.1</hadoop.version>
-		<scala.version>2.10.4</scala.version>
-		<scalatest.version>2.2.4</scalatest.version>
-		<spark.version>1.6.0</spark.version>
-		<log4j.version>2.0</log4j.version>
 	</properties>
 
 	<scm>
@@ -27,192 +22,32 @@
 			<groupId>nl.tudelft.graphalytics</groupId>
 			<artifactId>graphalytics-core</artifactId>
 			<version>${graphalytics.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>nl.tudelft.graphalytics</groupId>
-			<artifactId>graphalytics-core</artifactId>
-			<version>${graphalytics.version}</version>
 			<type>tar.gz</type>
 			<classifier>resources</classifier>
 			<scope>runtime</scope>
 		</dependency>
-		<dependency>
-			<groupId>nl.tudelft.graphalytics</groupId>
-			<artifactId>graphalytics-validation</artifactId>
-			<version>${graphalytics.version}</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.scala-lang</groupId>
-			<artifactId>scala-library</artifactId>
-			<version>${scala.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.scalatest</groupId>
-			<artifactId>scalatest_2.10</artifactId>
-			<version>${scalatest.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.spark</groupId>
-			<artifactId>spark-core_2.10</artifactId>
-			<version>${spark.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.spark</groupId>
-			<artifactId>spark-graphx_2.10</artifactId>
-			<version>${spark.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.spark</groupId>
-			<artifactId>spark-yarn_2.10</artifactId>
-			<version>${spark.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>org.apache.hadoop</groupId>
-					<artifactId>hadoop-client</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.apache.hadoop</groupId>
-					<artifactId>hadoop-yarn-api</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.apache.hadoop</groupId>
-					<artifactId>hadoop-yarn-client</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.apache.hadoop</groupId>
-					<artifactId>hadoop-yarn-common</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.apache.hadoop</groupId>
-					<artifactId>hadoop-yarn-server-web-proxy</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.hadoop</groupId>
-			<artifactId>hadoop-yarn-client</artifactId>
-			<version>${hadoop.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.hadoop</groupId>
-			<artifactId>hadoop-client</artifactId>
-			<version>${hadoop.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-1.2-api</artifactId>
-			<version>${log4j.version}</version>
-		</dependency>
 	</dependencies>
+
+	<modules>
+		<module>graphalytics-platforms-graphx-platform</module>
+		<module>graphalytics-platforms-graphx-std</module>
+	</modules>
+
+	<profiles>
+		<profile>
+			<id>granula</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<modules>
+				<module>granula-model-graphx</module>
+				<module>graphalytics-platforms-graphx-granula</module>
+			</modules>
+		</profile>
+	</profiles>
 
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>net.alchim31.maven</groupId>
-				<artifactId>scala-maven-plugin</artifactId>
-				<version>3.2.0</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>compile</goal>
-							<goal>testCompile</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<scalaVersion>${scala.version}</scalaVersion>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-shade-plugin</artifactId>
-				<version>2.3</version>
-				<configuration>
-					<createDependencyReducedPom>false</createDependencyReducedPom>
-					<minimizeJar>false</minimizeJar>
-					<artifactSet>
-						<excludes>
-							<exclude>*:*:*:resources</exclude>
-						</excludes>
-					</artifactSet>
-					<filters>
-						<filter>
-							<artifact>*.*</artifact>
-							<excludes>
-								<exclude>META-INF/*.SF</exclude>
-								<exclude>META-INF/*.DSA</exclude>
-								<exclude>META-INF/*.RSA</exclude>
-							</excludes>
-						</filter>
-					</filters>
-					<transformers>
-						<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
-							<resource>reference.conf</resource>
-						</transformer>
-					</transformers>
-				</configuration>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>shade</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
-			<!-- Maven release management -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-release-plugin</artifactId>
-				<version>2.5.1</version>
-				<configuration>
-					<tagNameFormat>v@{project.version}</tagNameFormat>
-					<autoVersionSubmodules>true</autoVersionSubmodules>
-					<pushChanges>false</pushChanges>
-				</configuration>
-			</plugin>
-
-			<!-- Plugin for ensuring the presence of license information -->
-			<plugin>
-				<groupId>com.mycila</groupId>
-				<artifactId>license-maven-plugin</artifactId>
-				<version>2.10</version>
-				<configuration>
-					<header>http://www.pds.ewi.tudelft.nl/~mihai/copyright-notice-template</header>
-					<properties>
-						<owner>Delft University of Technology</owner>
-						<project.inceptionYear>2015</project.inceptionYear>
-					</properties>
-					<excludes>
-						<exclude>README</exclude>
-						<exclude>LICENSE</exclude>
-						<exclude>pom.xml</exclude>
-						<exclude>src/test/resources/**</exclude>
-						<exclude>src/main/resources/**</exclude>
-						<exclude>src/main/assembly/**</exclude>
-						<exclude>config-template/**</exclude>
-					</excludes>
-					<mapping>
-						<java>SLASHSTAR_STYLE</java>
-						<scala>SLASHSTAR_STYLE</scala>
-					</mapping>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>check</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
 			<!-- Plugin for creating distribution archives -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
