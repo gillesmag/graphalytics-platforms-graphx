@@ -101,10 +101,9 @@ class GraphXPlatform extends Platform {
 			if (job.hasValidInput) {
 				job.runJob()
 
-				if(outputRequired.toBoolean) {
-					// TODO: fetch output from hdfs. This should not be in this section!
+				if(benchmark.isOutputRequired){
 					val fs = FileSystem.get(new Configuration())
-					fs.copyToLocalFile(new Path(outPath), new Path(OUTPUT_DIRECTORY_KEY))
+					fs.copyToLocalFile(new Path(outPath), new Path(benchmark.getOutputPath))
 					fs.close()
 				}
 
