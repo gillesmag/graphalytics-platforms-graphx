@@ -29,7 +29,7 @@ import nl.tudelft.pds.granula.modeller.rule.visual.MainInfoTableVisualization;
 
 import java.util.ArrayList;
 
-public class ProcessGraph extends AbstractOperationModel {
+public class ProcessGraph extends ConcreteOperationModel {
 
     public ProcessGraph() {
         super(GraphXType.GraphX, GraphXType.ProcessGraph);
@@ -40,9 +40,7 @@ public class ProcessGraph extends AbstractOperationModel {
 
         addLinkingRule(new UniqueParentLinking(GraphXType.SparkApp, GraphXType.SparkJob));
 
-        addInfoDerivation(new FilialStartTimeDerivation(3));
-        addInfoDerivation(new FilialEndTimeDerivation(3));
-        addInfoDerivation(new DurationDerivation(4));
+
 //        addInfoDerivation(new RecordInfoDerivation(1, "StackTrace"));
 //        addInfoDerivation(new DurationDerivation(3));
 //        addInfoDerivation(new RecordInfoDerivation(1, "JobName"));

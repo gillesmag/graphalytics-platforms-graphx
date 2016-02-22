@@ -3,6 +3,7 @@ package nl.tudelft.pds.granula.modeller.rule.extraction;
 import nl.tudelft.pds.granula.archiver.source.DataStream;
 import nl.tudelft.pds.granula.archiver.source.record.Record;
 import nl.tudelft.pds.granula.archiver.source.record.RecordLocation;
+import nl.tudelft.pds.granula.modeller.graphx.GraphXType;
 import nl.tudelft.pds.granula.modeller.rule.extraction.ExtractionRule;
 import nl.tudelft.pds.granula.util.UuidGenerator;
 
@@ -34,15 +35,49 @@ public class GraphXExtractionRule extends ExtractionRule {
         return text;
     }
 
+    public String parseLog(DataStream dataStream) {
+        StringBuilder text = new StringBuilder();
+
+        String processUuid = UuidGenerator.getRandomUUID();
+        try {
+            BufferedReader br = new BufferedReader(
+                    new InputStreamReader(dataStream.getInputStream()));
+
+            String line = null;
+            while ((line = br.readLine()) != null) {
+
+                if (line.contains("GRANULA")) {
+                    text.append(line + "\n");
+                } else if (line.contains("ProcessGraph StartTime")) {
+                    text.append(generateText("StartTime", line.trim().split("\\s+")[2], GraphXType.GraphX,
+                            GraphXType.Unique, GraphXType.ProcessGraph, GraphXType.Unique, processUuid));
+                } else if (line.contains("ProcessGraph EndTime")) {
+                    text.append(generateText("EndTime", line.trim().split("\\s+")[2], GraphXType.GraphX,
+                            GraphXType.Unique, GraphXType.ProcessGraph, GraphXType.Unique, processUuid));
+                }
+            }
+
+            br.close();
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return text.toString();
+    }
+
+
     public List<Record> extractRecordFromInputStream(DataStream dataStream) {
 
-        //String parsedLog = parseLog(dataStream);
+        String parsedLog = parseLog(dataStream);
 
         List<Record> granularlogList = new ArrayList<>();
 
         try {
             BufferedReader br = new BufferedReader(
-                    new InputStreamReader(dataStream.getInputStream()));
+                    new InputStreamReader(new ByteArrayInputStream(parsedLog.getBytes())));
 
             String line = null;
             int lineCount = 0;

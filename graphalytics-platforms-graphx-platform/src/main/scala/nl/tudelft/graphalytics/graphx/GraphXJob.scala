@@ -83,17 +83,17 @@ abstract class GraphXJob[VD : ClassTag, ED : ClassTag](graphVertexPath : String,
 		                                  parseVertexData, parseEdgeData,
 		                                  graphFormat).cache()
 
-		graph.vertices.count()
-		graph.edges.count()
-		println("Start Algorithm" + System.currentTimeMillis());
+		println("Vertex count: " + graph.vertices.count())
+		println("Edge count: " + graph.edges.count())
+		println("ProcessGraph StartTime " + System.currentTimeMillis())
 
 		// Run the graph computation
 		val output = compute(graph).cache()
 
 		// Materialize the output and clean up the original graph
-		output.vertices.count()
-		output.edges.count()
-		println("End Algorithm" + System.currentTimeMillis());
+		println("Vertex count: " + output.vertices.count())
+		println("Edge count: " + output.edges.count())
+		println("ProcessGraph EndTime " + System.currentTimeMillis())
 
 		graph.unpersistVertices(blocking = false)
 		graph.edges.unpersist(blocking = false)

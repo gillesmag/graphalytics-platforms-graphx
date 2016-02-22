@@ -1,0 +1,1020 @@
+2016-02-22 21:45:49,830 [main] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:StartTime InfoValue:1456173949826 ActorType:SparkApp ActorId:Id.Unique MissionType:SparkJob MissionId:Id.Unique Timestamp:1456173949830 Extra:None
+2016-02-22 21:45:49,840 [main] INFO [SparkContext (logInfo(58))] Running Spark version 1.6.0
+2016-02-22 21:45:49,867 [main] INFO [SecurityManager (logInfo(58))] Changing view acls to: wlngai
+2016-02-22 21:45:49,867 [main] INFO [SecurityManager (logInfo(58))] Changing modify acls to: wlngai
+2016-02-22 21:45:49,868 [main] INFO [SecurityManager (logInfo(58))] SecurityManager: authentication disabled; ui acls disabled; users with view permissions: Set(wlngai); users with modify permissions: Set(wlngai)
+2016-02-22 21:45:50,212 [main] INFO [Utils (logInfo(58))] Successfully started service 'sparkDriver' on port 38885.
+2016-02-22 21:45:50,540 [sparkDriverActorSystem-akka.actor.default-dispatcher-4] INFO [Slf4jLogger (applyOrElse(80))] Slf4jLogger started
+2016-02-22 21:45:50,574 [sparkDriverActorSystem-akka.actor.default-dispatcher-4] INFO [Remoting (apply$mcV$sp(74))] Starting remoting
+2016-02-22 21:45:50,688 [sparkDriverActorSystem-akka.actor.default-dispatcher-4] INFO [Remoting (apply$mcV$sp(74))] Remoting started; listening on addresses :[akka.tcp://sparkDriverActorSystem@10.141.0.23:51382]
+2016-02-22 21:45:50,695 [main] INFO [Utils (logInfo(58))] Successfully started service 'sparkDriverActorSystem' on port 51382.
+2016-02-22 21:45:50,717 [main] INFO [SparkEnv (logInfo(58))] Registering MapOutputTracker
+2016-02-22 21:45:50,735 [main] INFO [SparkEnv (logInfo(58))] Registering BlockManagerMaster
+2016-02-22 21:45:50,750 [main] INFO [DiskBlockManager (logInfo(58))] Created local directory at /tmp/blockmgr-038a2efd-c68e-4995-b736-4002849761f2
+2016-02-22 21:45:50,762 [main] INFO [MemoryStore (logInfo(58))] MemoryStore started with capacity 10.3 GB
+2016-02-22 21:45:50,834 [main] INFO [SparkEnv (logInfo(58))] Registering OutputCommitCoordinator
+2016-02-22 21:45:50,947 [main] INFO [Server (doStart(272))] jetty-8.y.z-SNAPSHOT
+2016-02-22 21:45:50,987 [main] INFO [AbstractConnector (doStart(338))] Started SelectChannelConnector@0.0.0.0:4040
+2016-02-22 21:45:50,987 [main] INFO [Utils (logInfo(58))] Successfully started service 'SparkUI' on port 4040.
+2016-02-22 21:45:50,989 [main] INFO [SparkUI (logInfo(58))] Started SparkUI at http://10.141.0.23:4040
+2016-02-22 21:45:51,111 [main] INFO [RMProxy (createRMProxy(92))] Connecting to ResourceManager at /10.149.3.23:8032
+2016-02-22 21:45:51,183 [main] INFO [Client (logInfo(58))] Requesting a new application from cluster with 1 NodeManagers
+2016-02-22 21:45:51,202 [main] INFO [Client (logInfo(58))] Verifying our application has not requested more than the maximum memory capability of the cluster (60000 MB per container)
+2016-02-22 21:45:51,202 [main] INFO [Client (logInfo(58))] Will allocate AM container, with 896 MB memory including 384 MB overhead
+2016-02-22 21:45:51,203 [main] INFO [Client (logInfo(58))] Setting up container launch context for our AM
+2016-02-22 21:45:51,205 [main] INFO [Client (logInfo(58))] Setting up the launch environment for our AM container
+2016-02-22 21:45:51,212 [main] INFO [Client (logInfo(58))] Preparing resources for our AM container
+2016-02-22 21:45:51,261 [main] INFO [Client (logInfo(58))] Uploading resource file:/local/wlngai/graphalytics/exec/graphalytics/lib/graphalytics-platforms-graphx-granula-0.1-SNAPSHOT.jar -> hdfs://10.149.3.23:8020/user/wlngai/.sparkStaging/application_1456173911821_0001/graphalytics-platforms-graphx-granula-0.1-SNAPSHOT.jar
+2016-02-22 21:45:51,690 [main] INFO [Client (logInfo(58))] Uploading resource file:/tmp/spark-3c72973a-0bbf-402d-8384-b65ac7dab3db/__spark_conf__8252980362696160390.zip -> hdfs://10.149.3.23:8020/user/wlngai/.sparkStaging/application_1456173911821_0001/__spark_conf__8252980362696160390.zip
+2016-02-22 21:45:51,753 [main] INFO [SecurityManager (logInfo(58))] Changing view acls to: wlngai
+2016-02-22 21:45:51,754 [main] INFO [SecurityManager (logInfo(58))] Changing modify acls to: wlngai
+2016-02-22 21:45:51,754 [main] INFO [SecurityManager (logInfo(58))] SecurityManager: authentication disabled; ui acls disabled; users with view permissions: Set(wlngai); users with modify permissions: Set(wlngai)
+2016-02-22 21:45:51,764 [main] INFO [Client (logInfo(58))] Submitting application 1 to ResourceManager
+2016-02-22 21:45:51,907 [main] INFO [YarnClientImpl (submitApplication(204))] Submitted application application_1456173911821_0001
+2016-02-22 21:45:52,917 [main] INFO [Client (logInfo(58))] Application report for application_1456173911821_0001 (state: ACCEPTED)
+2016-02-22 21:45:52,922 [main] INFO [Client (logInfo(58))] 
+	 client token: N/A
+	 diagnostics: N/A
+	 ApplicationMaster host: N/A
+	 ApplicationMaster RPC port: -1
+	 queue: default
+	 start time: 1456173951839
+	 final status: UNDEFINED
+	 tracking URL: http://node323.ib.cluster:8088/proxy/application_1456173911821_0001/
+	 user: wlngai
+2016-02-22 21:45:53,925 [main] INFO [Client (logInfo(58))] Application report for application_1456173911821_0001 (state: ACCEPTED)
+2016-02-22 21:45:54,927 [main] INFO [Client (logInfo(58))] Application report for application_1456173911821_0001 (state: ACCEPTED)
+2016-02-22 21:45:55,869 [dispatcher-event-loop-31] INFO [YarnSchedulerBackend$YarnSchedulerEndpoint (logInfo(58))] ApplicationMaster registered as NettyRpcEndpointRef(null)
+2016-02-22 21:45:55,887 [dispatcher-event-loop-0] INFO [YarnClientSchedulerBackend (logInfo(58))] Add WebUI Filter. org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter, Map(PROXY_HOSTS -> node323.ib.cluster, PROXY_URI_BASES -> http://node323.ib.cluster:8088/proxy/application_1456173911821_0001), /proxy/application_1456173911821_0001
+2016-02-22 21:45:55,890 [dispatcher-event-loop-0] INFO [JettyUtils (logInfo(58))] Adding filter: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+2016-02-22 21:45:55,930 [main] INFO [Client (logInfo(58))] Application report for application_1456173911821_0001 (state: ACCEPTED)
+2016-02-22 21:45:56,932 [main] INFO [Client (logInfo(58))] Application report for application_1456173911821_0001 (state: RUNNING)
+2016-02-22 21:45:56,933 [main] INFO [Client (logInfo(58))] 
+	 client token: N/A
+	 diagnostics: N/A
+	 ApplicationMaster host: 10.141.0.24
+	 ApplicationMaster RPC port: 0
+	 queue: default
+	 start time: 1456173951839
+	 final status: UNDEFINED
+	 tracking URL: http://node323.ib.cluster:8088/proxy/application_1456173911821_0001/
+	 user: wlngai
+2016-02-22 21:45:56,934 [main] INFO [YarnClientSchedulerBackend (logInfo(58))] Application application_1456173911821_0001 has started running.
+2016-02-22 21:45:56,945 [main] INFO [Utils (logInfo(58))] Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 47687.
+2016-02-22 21:45:56,946 [main] INFO [NettyBlockTransferService (logInfo(58))] Server created on 47687
+2016-02-22 21:45:56,948 [main] INFO [BlockManagerMaster (logInfo(58))] Trying to register BlockManager
+2016-02-22 21:45:56,953 [dispatcher-event-loop-3] INFO [BlockManagerMasterEndpoint (logInfo(58))] Registering block manager 10.141.0.23:47687 with 10.3 GB RAM, BlockManagerId(driver, 10.141.0.23, 47687)
+2016-02-22 21:45:56,957 [main] INFO [BlockManagerMaster (logInfo(58))] Registered BlockManager
+2016-02-22 21:45:59,235 [dispatcher-event-loop-4] INFO [YarnClientSchedulerBackend (logInfo(58))] Registered executor NettyRpcEndpointRef(null) (node324.cm.cluster:45480) with ID 1
+2016-02-22 21:45:59,270 [main] INFO [YarnClientSchedulerBackend (logInfo(58))] SchedulerBackend is ready for scheduling beginning after reached minRegisteredResourcesRatio: 0.8
+2016-02-22 21:45:59,282 [dispatcher-event-loop-7] INFO [BlockManagerMasterEndpoint (logInfo(58))] Registering block manager node324.cm.cluster:52317 with 34.3 GB RAM, BlockManagerId(1, node324.cm.cluster, 52317)
+2016-02-22 21:45:59,535 [main] INFO [MemoryStore (logInfo(58))] Block broadcast_0 stored as values in memory (estimated size 156.4 KB, free 156.4 KB)
+2016-02-22 21:45:59,661 [main] INFO [MemoryStore (logInfo(58))] Block broadcast_0_piece0 stored as bytes in memory (estimated size 17.3 KB, free 173.7 KB)
+2016-02-22 21:45:59,663 [dispatcher-event-loop-9] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_0_piece0 in memory on 10.141.0.23:47687 (size: 17.3 KB, free: 10.3 GB)
+2016-02-22 21:45:59,666 [main] INFO [SparkContext (logInfo(58))] Created broadcast 0 from textFile at GraphXJob.scala:54
+2016-02-22 21:45:59,704 [main] INFO [MemoryStore (logInfo(58))] Block broadcast_1 stored as values in memory (estimated size 156.5 KB, free 330.2 KB)
+2016-02-22 21:45:59,717 [main] INFO [MemoryStore (logInfo(58))] Block broadcast_1_piece0 stored as bytes in memory (estimated size 17.3 KB, free 347.4 KB)
+2016-02-22 21:45:59,718 [dispatcher-event-loop-10] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_1_piece0 in memory on 10.141.0.23:47687 (size: 17.3 KB, free: 10.3 GB)
+2016-02-22 21:45:59,719 [main] INFO [SparkContext (logInfo(58))] Created broadcast 1 from textFile at GraphXJob.scala:55
+2016-02-22 21:45:59,765 [main] INFO [FileInputFormat (listStatus(247))] Total input paths to process : 1
+2016-02-22 21:45:59,775 [main] INFO [NetworkTopology (add(413))] Adding a new node: /default-rack/10.149.3.24:50010
+2016-02-22 21:45:59,784 [main] INFO [FileInputFormat (listStatus(247))] Total input paths to process : 1
+2016-02-22 21:45:59,818 [main] INFO [SparkContext (logInfo(58))] Starting job: reduce at VertexRDDImpl.scala:90
+2016-02-22 21:45:59,836 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Registering RDD 10 (mapPartitions at VertexRDD.scala:358)
+2016-02-22 21:45:59,836 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Registering RDD 4 (map at GraphLoader.scala:53)
+2016-02-22 21:45:59,839 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Got job 0 (reduce at VertexRDDImpl.scala:90) with 2 output partitions
+2016-02-22 21:45:59,839 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Final stage: ResultStage 2 (reduce at VertexRDDImpl.scala:90)
+2016-02-22 21:45:59,839 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Parents of final stage: List(ShuffleMapStage 0, ShuffleMapStage 1)
+2016-02-22 21:45:59,844 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Missing parents: List(ShuffleMapStage 0, ShuffleMapStage 1)
+2016-02-22 21:45:59,850 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting ShuffleMapStage 0 (VertexRDD.createRoutingTables - vid2pid (aggregation) MapPartitionsRDD[10] at mapPartitions at VertexRDD.scala:358), which has no missing parents
+2016-02-22 21:45:59,851 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:StartTime InfoValue:1456173959850 ActorType:Scheduler ActorId:0 MissionType:Stage MissionId:0 Timestamp:1456173959851 Extra:None
+2016-02-22 21:45:59,887 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_2 stored as values in memory (estimated size 5.4 KB, free 352.9 KB)
+2016-02-22 21:45:59,900 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_2_piece0 stored as bytes in memory (estimated size 2.9 KB, free 355.8 KB)
+2016-02-22 21:45:59,901 [dispatcher-event-loop-5] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_2_piece0 in memory on 10.141.0.23:47687 (size: 2.9 KB, free: 10.3 GB)
+2016-02-22 21:45:59,902 [dag-scheduler-event-loop] INFO [SparkContext (logInfo(58))] Created broadcast 2 from broadcast at DAGScheduler.scala:1010
+2016-02-22 21:45:59,906 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting 2 missing tasks from ShuffleMapStage 0 (VertexRDD.createRoutingTables - vid2pid (aggregation) MapPartitionsRDD[10] at mapPartitions at VertexRDD.scala:358)
+2016-02-22 21:45:59,907 [dag-scheduler-event-loop] INFO [YarnScheduler (logInfo(58))] Adding task set 0.0 with 2 tasks
+2016-02-22 21:45:59,917 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting ShuffleMapStage 1 (MapPartitionsRDD[4] at map at GraphLoader.scala:53), which has no missing parents
+2016-02-22 21:45:59,917 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:StartTime InfoValue:1456173959917 ActorType:Scheduler ActorId:1 MissionType:Stage MissionId:1 Timestamp:1456173959917 Extra:None
+2016-02-22 21:45:59,920 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_3 stored as values in memory (estimated size 4.8 KB, free 360.6 KB)
+2016-02-22 21:45:59,925 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_3_piece0 stored as bytes in memory (estimated size 2.7 KB, free 363.3 KB)
+2016-02-22 21:45:59,926 [dispatcher-event-loop-20] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_3_piece0 in memory on 10.141.0.23:47687 (size: 2.7 KB, free: 10.3 GB)
+2016-02-22 21:45:59,926 [dag-scheduler-event-loop] INFO [SparkContext (logInfo(58))] Created broadcast 3 from broadcast at DAGScheduler.scala:1010
+2016-02-22 21:45:59,927 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting 2 missing tasks from ShuffleMapStage 1 (MapPartitionsRDD[4] at map at GraphLoader.scala:53)
+2016-02-22 21:45:59,927 [dag-scheduler-event-loop] INFO [YarnScheduler (logInfo(58))] Adding task set 1.0 with 2 tasks
+2016-02-22 21:45:59,939 [dispatcher-event-loop-12] INFO [TaskSetManager (logInfo(58))] Starting task 0.0 in stage 0.0 (TID 0, node324.cm.cluster, partition 0,NODE_LOCAL, 2162 bytes)
+2016-02-22 21:46:00,183 [dispatcher-event-loop-17] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_2_piece0 in memory on node324.cm.cluster:52317 (size: 2.9 KB, free: 34.3 GB)
+2016-02-22 21:46:00,560 [dispatcher-event-loop-24] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_1_piece0 in memory on node324.cm.cluster:52317 (size: 17.3 KB, free: 34.3 GB)
+2016-02-22 21:46:05,479 [dispatcher-event-loop-28] INFO [TaskSetManager (logInfo(58))] Starting task 1.0 in stage 0.0 (TID 1, node324.cm.cluster, partition 1,RACK_LOCAL, 2162 bytes)
+2016-02-22 21:46:05,514 [task-result-getter-0] INFO [TaskSetManager (logInfo(58))] Finished task 0.0 in stage 0.0 (TID 0) in 5592 ms on node324.cm.cluster (1/2)
+2016-02-22 21:46:09,368 [dispatcher-event-loop-0] INFO [TaskSetManager (logInfo(58))] Starting task 0.0 in stage 1.0 (TID 2, node324.cm.cluster, partition 0,NODE_LOCAL, 2162 bytes)
+2016-02-22 21:46:09,375 [task-result-getter-1] INFO [TaskSetManager (logInfo(58))] Finished task 1.0 in stage 0.0 (TID 1) in 3898 ms on node324.cm.cluster (2/2)
+2016-02-22 21:46:09,376 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] ShuffleMapStage 0 (mapPartitions at VertexRDD.scala:358) finished in 9.459 s
+2016-02-22 21:46:09,376 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:EndTime InfoValue:1456173969376 ActorType:Scheduler ActorId:0 MissionType:Stage MissionId:0 Timestamp:1456173969376 Extra:None
+2016-02-22 21:46:09,376 [task-result-getter-1] INFO [YarnScheduler (logInfo(58))] Removed TaskSet 0.0, whose tasks have all completed, from pool 
+2016-02-22 21:46:09,378 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] looking for newly runnable stages
+2016-02-22 21:46:09,378 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] running: Set(ShuffleMapStage 1)
+2016-02-22 21:46:09,379 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] waiting: Set(ResultStage 2)
+2016-02-22 21:46:09,379 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] failed: Set()
+2016-02-22 21:46:09,389 [dispatcher-event-loop-6] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_3_piece0 in memory on node324.cm.cluster:52317 (size: 2.7 KB, free: 34.3 GB)
+2016-02-22 21:46:09,406 [dispatcher-event-loop-7] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_0_piece0 in memory on node324.cm.cluster:52317 (size: 17.3 KB, free: 34.3 GB)
+2016-02-22 21:46:09,500 [dispatcher-event-loop-8] INFO [TaskSetManager (logInfo(58))] Starting task 1.0 in stage 1.0 (TID 3, node324.cm.cluster, partition 1,NODE_LOCAL, 2162 bytes)
+2016-02-22 21:46:09,507 [task-result-getter-2] INFO [TaskSetManager (logInfo(58))] Finished task 0.0 in stage 1.0 (TID 2) in 140 ms on node324.cm.cluster (1/2)
+2016-02-22 21:46:09,570 [task-result-getter-3] INFO [TaskSetManager (logInfo(58))] Finished task 1.0 in stage 1.0 (TID 3) in 70 ms on node324.cm.cluster (2/2)
+2016-02-22 21:46:09,570 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] ShuffleMapStage 1 (map at GraphLoader.scala:53) finished in 9.628 s
+2016-02-22 21:46:09,570 [task-result-getter-3] INFO [YarnScheduler (logInfo(58))] Removed TaskSet 1.0, whose tasks have all completed, from pool 
+2016-02-22 21:46:09,571 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:EndTime InfoValue:1456173969570 ActorType:Scheduler ActorId:1 MissionType:Stage MissionId:1 Timestamp:1456173969571 Extra:None
+2016-02-22 21:46:09,571 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] looking for newly runnable stages
+2016-02-22 21:46:09,571 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] running: Set()
+2016-02-22 21:46:09,571 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] waiting: Set(ResultStage 2)
+2016-02-22 21:46:09,571 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] failed: Set()
+2016-02-22 21:46:09,573 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting ResultStage 2 (MapPartitionsRDD[18] at map at VertexRDDImpl.scala:90), which has no missing parents
+2016-02-22 21:46:09,573 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:StartTime InfoValue:1456173969573 ActorType:Scheduler ActorId:2 MissionType:Stage MissionId:2 Timestamp:1456173969573 Extra:None
+2016-02-22 21:46:09,590 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_4 stored as values in memory (estimated size 4.2 KB, free 367.5 KB)
+2016-02-22 21:46:09,596 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_4_piece0 stored as bytes in memory (estimated size 2.3 KB, free 369.8 KB)
+2016-02-22 21:46:09,597 [dispatcher-event-loop-5] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_4_piece0 in memory on 10.141.0.23:47687 (size: 2.3 KB, free: 10.3 GB)
+2016-02-22 21:46:09,598 [dag-scheduler-event-loop] INFO [SparkContext (logInfo(58))] Created broadcast 4 from broadcast at DAGScheduler.scala:1010
+2016-02-22 21:46:09,599 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting 2 missing tasks from ResultStage 2 (MapPartitionsRDD[18] at map at VertexRDDImpl.scala:90)
+2016-02-22 21:46:09,599 [dag-scheduler-event-loop] INFO [YarnScheduler (logInfo(58))] Adding task set 2.0 with 2 tasks
+2016-02-22 21:46:09,604 [dispatcher-event-loop-13] INFO [TaskSetManager (logInfo(58))] Starting task 0.0 in stage 2.0 (TID 4, node324.cm.cluster, partition 0,NODE_LOCAL, 2077 bytes)
+2016-02-22 21:46:09,625 [dispatcher-event-loop-12] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_4_piece0 in memory on node324.cm.cluster:52317 (size: 2.3 KB, free: 34.3 GB)
+2016-02-22 21:46:09,664 [dispatcher-event-loop-14] INFO [MapOutputTrackerMasterEndpoint (logInfo(58))] Asked to send map output locations for shuffle 0 to node324.cm.cluster:45480
+2016-02-22 21:46:09,669 [dispatcher-event-loop-14] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 0 is 159 bytes
+2016-02-22 21:46:09,691 [dispatcher-event-loop-17] INFO [MapOutputTrackerMasterEndpoint (logInfo(58))] Asked to send map output locations for shuffle 1 to node324.cm.cluster:45480
+2016-02-22 21:46:09,692 [dispatcher-event-loop-17] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 1 is 156 bytes
+2016-02-22 21:46:09,826 [dispatcher-event-loop-21] INFO [BlockManagerInfo (logInfo(58))] Added rdd_13_0 in memory on node324.cm.cluster:52317 (size: 1605.0 KB, free: 34.3 GB)
+2016-02-22 21:46:09,835 [dispatcher-event-loop-24] INFO [TaskSetManager (logInfo(58))] Starting task 1.0 in stage 2.0 (TID 5, node324.cm.cluster, partition 1,NODE_LOCAL, 2077 bytes)
+2016-02-22 21:46:09,842 [task-result-getter-0] INFO [TaskSetManager (logInfo(58))] Finished task 0.0 in stage 2.0 (TID 4) in 241 ms on node324.cm.cluster (1/2)
+2016-02-22 21:46:09,894 [dispatcher-event-loop-23] INFO [BlockManagerInfo (logInfo(58))] Added rdd_13_1 in memory on node324.cm.cluster:52317 (size: 1614.9 KB, free: 34.3 GB)
+2016-02-22 21:46:10,089 [task-result-getter-1] INFO [TaskSetManager (logInfo(58))] Finished task 1.0 in stage 2.0 (TID 5) in 253 ms on node324.cm.cluster (2/2)
+2016-02-22 21:46:10,089 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] ResultStage 2 (reduce at VertexRDDImpl.scala:90) finished in 0.488 s
+2016-02-22 21:46:10,089 [task-result-getter-1] INFO [YarnScheduler (logInfo(58))] Removed TaskSet 2.0, whose tasks have all completed, from pool 
+2016-02-22 21:46:10,090 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:EndTime InfoValue:1456173970089 ActorType:Scheduler ActorId:2 MissionType:Stage MissionId:2 Timestamp:1456173970090 Extra:None
+2016-02-22 21:46:10,097 [main] INFO [DAGScheduler (logInfo(58))] Job 0 finished: reduce at VertexRDDImpl.scala:90, took 10.278100 s
+2016-02-22 21:46:10,107 [main] INFO [SparkContext (logInfo(58))] Starting job: reduce at EdgeRDDImpl.scala:89
+2016-02-22 21:46:10,109 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Got job 1 (reduce at EdgeRDDImpl.scala:89) with 2 output partitions
+2016-02-22 21:46:10,109 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Final stage: ResultStage 3 (reduce at EdgeRDDImpl.scala:89)
+2016-02-22 21:46:10,109 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Parents of final stage: List()
+2016-02-22 21:46:10,111 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Missing parents: List()
+2016-02-22 21:46:10,111 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting ResultStage 3 (MapPartitionsRDD[19] at map at EdgeRDDImpl.scala:89), which has no missing parents
+2016-02-22 21:46:10,112 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:StartTime InfoValue:1456173970112 ActorType:Scheduler ActorId:3 MissionType:Stage MissionId:3 Timestamp:1456173970112 Extra:None
+2016-02-22 21:46:10,115 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_5 stored as values in memory (estimated size 5.2 KB, free 375.0 KB)
+2016-02-22 21:46:10,116 [dispatcher-event-loop-30] INFO [BlockManagerInfo (logInfo(58))] Removed broadcast_3_piece0 on 10.141.0.23:47687 in memory (size: 2.7 KB, free: 10.3 GB)
+2016-02-22 21:46:10,119 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_5_piece0 stored as bytes in memory (estimated size 2.7 KB, free 370.2 KB)
+2016-02-22 21:46:10,120 [dispatcher-event-loop-25] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_5_piece0 in memory on 10.141.0.23:47687 (size: 2.7 KB, free: 10.3 GB)
+2016-02-22 21:46:10,120 [dag-scheduler-event-loop] INFO [SparkContext (logInfo(58))] Created broadcast 5 from broadcast at DAGScheduler.scala:1010
+2016-02-22 21:46:10,121 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting 2 missing tasks from ResultStage 3 (MapPartitionsRDD[19] at map at EdgeRDDImpl.scala:89)
+2016-02-22 21:46:10,121 [dag-scheduler-event-loop] INFO [YarnScheduler (logInfo(58))] Adding task set 3.0 with 2 tasks
+2016-02-22 21:46:10,122 [dispatcher-event-loop-31] INFO [TaskSetManager (logInfo(58))] Starting task 0.0 in stage 3.0 (TID 6, node324.cm.cluster, partition 0,NODE_LOCAL, 2173 bytes)
+2016-02-22 21:46:10,126 [dispatcher-event-loop-0] INFO [BlockManagerInfo (logInfo(58))] Removed broadcast_3_piece0 on node324.cm.cluster:52317 in memory (size: 2.7 KB, free: 34.3 GB)
+2016-02-22 21:46:10,134 [dispatcher-event-loop-4] INFO [BlockManagerInfo (logInfo(58))] Removed broadcast_2_piece0 on 10.141.0.23:47687 in memory (size: 2.9 KB, free: 10.3 GB)
+2016-02-22 21:46:10,138 [dispatcher-event-loop-7] INFO [BlockManagerInfo (logInfo(58))] Removed broadcast_2_piece0 on node324.cm.cluster:52317 in memory (size: 2.9 KB, free: 34.3 GB)
+2016-02-22 21:46:10,139 [dispatcher-event-loop-8] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_5_piece0 in memory on node324.cm.cluster:52317 (size: 2.7 KB, free: 34.3 GB)
+2016-02-22 21:46:14,072 [dispatcher-event-loop-20] INFO [BlockManagerInfo (logInfo(58))] Added rdd_16_0 in memory on node324.cm.cluster:52317 (size: 40.1 MB, free: 34.2 GB)
+2016-02-22 21:46:14,080 [dispatcher-event-loop-15] INFO [TaskSetManager (logInfo(58))] Starting task 1.0 in stage 3.0 (TID 7, node324.cm.cluster, partition 1,RACK_LOCAL, 2173 bytes)
+2016-02-22 21:46:14,086 [task-result-getter-2] INFO [TaskSetManager (logInfo(58))] Finished task 0.0 in stage 3.0 (TID 6) in 3964 ms on node324.cm.cluster (1/2)
+2016-02-22 21:46:17,600 [dispatcher-event-loop-18] INFO [BlockManagerInfo (logInfo(58))] Added rdd_16_1 in memory on node324.cm.cluster:52317 (size: 38.1 MB, free: 34.2 GB)
+2016-02-22 21:46:17,615 [task-result-getter-3] INFO [TaskSetManager (logInfo(58))] Finished task 1.0 in stage 3.0 (TID 7) in 3536 ms on node324.cm.cluster (2/2)
+2016-02-22 21:46:17,615 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] ResultStage 3 (reduce at EdgeRDDImpl.scala:89) finished in 7.494 s
+2016-02-22 21:46:17,615 [task-result-getter-3] INFO [YarnScheduler (logInfo(58))] Removed TaskSet 3.0, whose tasks have all completed, from pool 
+2016-02-22 21:46:17,615 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:EndTime InfoValue:1456173977615 ActorType:Scheduler ActorId:3 MissionType:Stage MissionId:3 Timestamp:1456173977615 Extra:None
+2016-02-22 21:46:17,616 [main] INFO [DAGScheduler (logInfo(58))] Job 1 finished: reduce at EdgeRDDImpl.scala:89, took 7.508069 s
+2016-02-22 21:46:17,693 [main] INFO [SparkContext (logInfo(58))] Starting job: reduce at VertexRDDImpl.scala:90
+2016-02-22 21:46:17,701 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Registering RDD 24 (mapPartitions at VertexRDDImpl.scala:247)
+2016-02-22 21:46:17,702 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Registering RDD 32 (mapPartitions at VertexRDDImpl.scala:247)
+2016-02-22 21:46:17,704 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Registering RDD 36 (mapPartitions at VertexRDDImpl.scala:247)
+2016-02-22 21:46:17,704 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Registering RDD 40 (mapPartitions at GraphImpl.scala:235)
+2016-02-22 21:46:17,705 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Got job 2 (reduce at VertexRDDImpl.scala:90) with 2 output partitions
+2016-02-22 21:46:17,705 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Final stage: ResultStage 12 (reduce at VertexRDDImpl.scala:90)
+2016-02-22 21:46:17,705 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Parents of final stage: List(ShuffleMapStage 9, ShuffleMapStage 11, ShuffleMapStage 8)
+2016-02-22 21:46:17,709 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Missing parents: List(ShuffleMapStage 11)
+2016-02-22 21:46:17,711 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting ShuffleMapStage 6 (ReplicatedVertexView.updateVertices - shippedVerts false false (broadcast) MapPartitionsRDD[24] at mapPartitions at VertexRDDImpl.scala:247), which has no missing parents
+2016-02-22 21:46:17,711 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:StartTime InfoValue:1456173977711 ActorType:Scheduler ActorId:6 MissionType:Stage MissionId:6 Timestamp:1456173977711 Extra:None
+2016-02-22 21:46:17,717 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_6 stored as values in memory (estimated size 6.2 KB, free 368.0 KB)
+2016-02-22 21:46:17,725 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_6_piece0 stored as bytes in memory (estimated size 3.1 KB, free 371.1 KB)
+2016-02-22 21:46:17,726 [dispatcher-event-loop-30] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_6_piece0 in memory on 10.141.0.23:47687 (size: 3.1 KB, free: 10.3 GB)
+2016-02-22 21:46:17,727 [dag-scheduler-event-loop] INFO [SparkContext (logInfo(58))] Created broadcast 6 from broadcast at DAGScheduler.scala:1010
+2016-02-22 21:46:17,727 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting 2 missing tasks from ShuffleMapStage 6 (ReplicatedVertexView.updateVertices - shippedVerts false false (broadcast) MapPartitionsRDD[24] at mapPartitions at VertexRDDImpl.scala:247)
+2016-02-22 21:46:17,727 [dag-scheduler-event-loop] INFO [YarnScheduler (logInfo(58))] Adding task set 6.0 with 2 tasks
+2016-02-22 21:46:17,730 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting ShuffleMapStage 7 (ReplicatedVertexView.updateVertices - shippedVerts false false (broadcast) MapPartitionsRDD[32] at mapPartitions at VertexRDDImpl.scala:247), which has no missing parents
+2016-02-22 21:46:17,730 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:StartTime InfoValue:1456173977730 ActorType:Scheduler ActorId:7 MissionType:Stage MissionId:7 Timestamp:1456173977730 Extra:None
+2016-02-22 21:46:17,731 [dispatcher-event-loop-25] INFO [TaskSetManager (logInfo(58))] Starting task 0.0 in stage 6.0 (TID 8, node324.cm.cluster, partition 0,PROCESS_LOCAL, 2098 bytes)
+2016-02-22 21:46:17,732 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_7 stored as values in memory (estimated size 6.6 KB, free 377.7 KB)
+2016-02-22 21:46:17,739 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_7_piece0 stored as bytes in memory (estimated size 3.3 KB, free 381.0 KB)
+2016-02-22 21:46:17,739 [dispatcher-event-loop-31] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_7_piece0 in memory on 10.141.0.23:47687 (size: 3.3 KB, free: 10.3 GB)
+2016-02-22 21:46:17,740 [dag-scheduler-event-loop] INFO [SparkContext (logInfo(58))] Created broadcast 7 from broadcast at DAGScheduler.scala:1010
+2016-02-22 21:46:17,740 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting 2 missing tasks from ShuffleMapStage 7 (ReplicatedVertexView.updateVertices - shippedVerts false false (broadcast) MapPartitionsRDD[32] at mapPartitions at VertexRDDImpl.scala:247)
+2016-02-22 21:46:17,740 [dag-scheduler-event-loop] INFO [YarnScheduler (logInfo(58))] Adding task set 7.0 with 2 tasks
+2016-02-22 21:46:17,741 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting ShuffleMapStage 10 (ReplicatedVertexView.upgrade(true, true) - shippedVerts true true (broadcast) MapPartitionsRDD[36] at mapPartitions at VertexRDDImpl.scala:247), which has no missing parents
+2016-02-22 21:46:17,742 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:StartTime InfoValue:1456173977742 ActorType:Scheduler ActorId:10 MissionType:Stage MissionId:10 Timestamp:1456173977742 Extra:None
+2016-02-22 21:46:17,743 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_8 stored as values in memory (estimated size 6.1 KB, free 387.2 KB)
+2016-02-22 21:46:17,749 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_8_piece0 stored as bytes in memory (estimated size 3.2 KB, free 390.3 KB)
+2016-02-22 21:46:17,750 [dispatcher-event-loop-6] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_8_piece0 in memory on 10.141.0.23:47687 (size: 3.2 KB, free: 10.3 GB)
+2016-02-22 21:46:17,751 [dag-scheduler-event-loop] INFO [SparkContext (logInfo(58))] Created broadcast 8 from broadcast at DAGScheduler.scala:1010
+2016-02-22 21:46:17,751 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting 2 missing tasks from ShuffleMapStage 10 (ReplicatedVertexView.upgrade(true, true) - shippedVerts true true (broadcast) MapPartitionsRDD[36] at mapPartitions at VertexRDDImpl.scala:247)
+2016-02-22 21:46:17,751 [dag-scheduler-event-loop] INFO [YarnScheduler (logInfo(58))] Adding task set 10.0 with 2 tasks
+2016-02-22 21:46:17,751 [dispatcher-event-loop-3] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_6_piece0 in memory on node324.cm.cluster:52317 (size: 3.1 KB, free: 34.2 GB)
+2016-02-22 21:46:17,789 [dispatcher-event-loop-8] INFO [BlockManagerInfo (logInfo(58))] Added rdd_20_0 in memory on node324.cm.cluster:52317 (size: 1605.0 KB, free: 34.2 GB)
+2016-02-22 21:46:17,810 [dispatcher-event-loop-9] INFO [TaskSetManager (logInfo(58))] Starting task 1.0 in stage 6.0 (TID 9, node324.cm.cluster, partition 1,PROCESS_LOCAL, 2098 bytes)
+2016-02-22 21:46:17,815 [task-result-getter-0] INFO [TaskSetManager (logInfo(58))] Finished task 0.0 in stage 6.0 (TID 8) in 85 ms on node324.cm.cluster (1/2)
+2016-02-22 21:46:17,830 [dispatcher-event-loop-5] INFO [BlockManagerInfo (logInfo(58))] Added rdd_20_1 in memory on node324.cm.cluster:52317 (size: 1614.9 KB, free: 34.2 GB)
+2016-02-22 21:46:17,848 [dispatcher-event-loop-13] INFO [TaskSetManager (logInfo(58))] Starting task 0.0 in stage 7.0 (TID 10, node324.cm.cluster, partition 0,PROCESS_LOCAL, 2098 bytes)
+2016-02-22 21:46:17,851 [task-result-getter-1] INFO [TaskSetManager (logInfo(58))] Finished task 1.0 in stage 6.0 (TID 9) in 41 ms on node324.cm.cluster (2/2)
+2016-02-22 21:46:17,852 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] ShuffleMapStage 6 (mapPartitions at VertexRDDImpl.scala:247) finished in 0.122 s
+2016-02-22 21:46:17,852 [task-result-getter-1] INFO [YarnScheduler (logInfo(58))] Removed TaskSet 6.0, whose tasks have all completed, from pool 
+2016-02-22 21:46:17,852 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:EndTime InfoValue:1456173977852 ActorType:Scheduler ActorId:6 MissionType:Stage MissionId:6 Timestamp:1456173977852 Extra:None
+2016-02-22 21:46:17,852 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] looking for newly runnable stages
+2016-02-22 21:46:17,852 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] running: Set(ShuffleMapStage 10, ShuffleMapStage 7)
+2016-02-22 21:46:17,852 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] waiting: Set(ResultStage 12, ShuffleMapStage 11)
+2016-02-22 21:46:17,852 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] failed: Set()
+2016-02-22 21:46:17,859 [dispatcher-event-loop-21] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_7_piece0 in memory on node324.cm.cluster:52317 (size: 3.3 KB, free: 34.2 GB)
+2016-02-22 21:46:17,878 [dispatcher-event-loop-16] INFO [BlockManagerInfo (logInfo(58))] Added rdd_28_0 in memory on node324.cm.cluster:52317 (size: 1605.0 KB, free: 34.2 GB)
+2016-02-22 21:46:17,890 [dispatcher-event-loop-18] INFO [TaskSetManager (logInfo(58))] Starting task 1.0 in stage 7.0 (TID 11, node324.cm.cluster, partition 1,PROCESS_LOCAL, 2098 bytes)
+2016-02-22 21:46:17,894 [task-result-getter-2] INFO [TaskSetManager (logInfo(58))] Finished task 0.0 in stage 7.0 (TID 10) in 47 ms on node324.cm.cluster (1/2)
+2016-02-22 21:46:17,904 [dispatcher-event-loop-26] INFO [BlockManagerInfo (logInfo(58))] Added rdd_28_1 in memory on node324.cm.cluster:52317 (size: 1614.9 KB, free: 34.2 GB)
+2016-02-22 21:46:17,917 [dispatcher-event-loop-28] INFO [TaskSetManager (logInfo(58))] Starting task 0.0 in stage 10.0 (TID 12, node324.cm.cluster, partition 0,PROCESS_LOCAL, 2066 bytes)
+2016-02-22 21:46:17,921 [task-result-getter-3] INFO [TaskSetManager (logInfo(58))] Finished task 1.0 in stage 7.0 (TID 11) in 31 ms on node324.cm.cluster (2/2)
+2016-02-22 21:46:17,921 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] ShuffleMapStage 7 (mapPartitions at VertexRDDImpl.scala:247) finished in 0.180 s
+2016-02-22 21:46:17,921 [task-result-getter-3] INFO [YarnScheduler (logInfo(58))] Removed TaskSet 7.0, whose tasks have all completed, from pool 
+2016-02-22 21:46:17,921 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:EndTime InfoValue:1456173977921 ActorType:Scheduler ActorId:7 MissionType:Stage MissionId:7 Timestamp:1456173977921 Extra:None
+2016-02-22 21:46:17,922 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] looking for newly runnable stages
+2016-02-22 21:46:17,922 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] running: Set(ShuffleMapStage 10)
+2016-02-22 21:46:17,922 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] waiting: Set(ResultStage 12, ShuffleMapStage 11)
+2016-02-22 21:46:17,922 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] failed: Set()
+2016-02-22 21:46:17,928 [dispatcher-event-loop-1] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_8_piece0 in memory on node324.cm.cluster:52317 (size: 3.2 KB, free: 34.2 GB)
+2016-02-22 21:46:18,000 [dispatcher-event-loop-2] INFO [TaskSetManager (logInfo(58))] Starting task 1.0 in stage 10.0 (TID 13, node324.cm.cluster, partition 1,PROCESS_LOCAL, 2066 bytes)
+2016-02-22 21:46:18,004 [task-result-getter-0] INFO [TaskSetManager (logInfo(58))] Finished task 0.0 in stage 10.0 (TID 12) in 88 ms on node324.cm.cluster (1/2)
+2016-02-22 21:46:18,047 [task-result-getter-1] INFO [TaskSetManager (logInfo(58))] Finished task 1.0 in stage 10.0 (TID 13) in 47 ms on node324.cm.cluster (2/2)
+2016-02-22 21:46:18,047 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] ShuffleMapStage 10 (mapPartitions at VertexRDDImpl.scala:247) finished in 0.295 s
+2016-02-22 21:46:18,047 [task-result-getter-1] INFO [YarnScheduler (logInfo(58))] Removed TaskSet 10.0, whose tasks have all completed, from pool 
+2016-02-22 21:46:18,047 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:EndTime InfoValue:1456173978047 ActorType:Scheduler ActorId:10 MissionType:Stage MissionId:10 Timestamp:1456173978047 Extra:None
+2016-02-22 21:46:18,047 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] looking for newly runnable stages
+2016-02-22 21:46:18,048 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] running: Set()
+2016-02-22 21:46:18,048 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] waiting: Set(ResultStage 12, ShuffleMapStage 11)
+2016-02-22 21:46:18,048 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] failed: Set()
+2016-02-22 21:46:18,050 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting ShuffleMapStage 11 (GraphImpl.aggregateMessages - preAgg MapPartitionsRDD[40] at mapPartitions at GraphImpl.scala:235), which has no missing parents
+2016-02-22 21:46:18,050 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:StartTime InfoValue:1456173978050 ActorType:Scheduler ActorId:11 MissionType:Stage MissionId:11 Timestamp:1456173978050 Extra:None
+2016-02-22 21:46:18,054 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_9 stored as values in memory (estimated size 8.1 KB, free 398.4 KB)
+2016-02-22 21:46:18,061 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_9_piece0 stored as bytes in memory (estimated size 4.0 KB, free 402.5 KB)
+2016-02-22 21:46:18,062 [dispatcher-event-loop-9] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_9_piece0 in memory on 10.141.0.23:47687 (size: 4.0 KB, free: 10.3 GB)
+2016-02-22 21:46:18,062 [dag-scheduler-event-loop] INFO [SparkContext (logInfo(58))] Created broadcast 9 from broadcast at DAGScheduler.scala:1010
+2016-02-22 21:46:18,063 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting 2 missing tasks from ShuffleMapStage 11 (GraphImpl.aggregateMessages - preAgg MapPartitionsRDD[40] at mapPartitions at GraphImpl.scala:235)
+2016-02-22 21:46:18,063 [dag-scheduler-event-loop] INFO [YarnScheduler (logInfo(58))] Adding task set 11.0 with 2 tasks
+2016-02-22 21:46:18,065 [dispatcher-event-loop-10] INFO [TaskSetManager (logInfo(58))] Starting task 0.0 in stage 11.0 (TID 14, node324.cm.cluster, partition 0,PROCESS_LOCAL, 2493 bytes)
+2016-02-22 21:46:18,078 [dispatcher-event-loop-13] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_9_piece0 in memory on node324.cm.cluster:52317 (size: 4.0 KB, free: 34.2 GB)
+2016-02-22 21:46:18,094 [dispatcher-event-loop-12] INFO [MapOutputTrackerMasterEndpoint (logInfo(58))] Asked to send map output locations for shuffle 2 to node324.cm.cluster:45480
+2016-02-22 21:46:18,095 [dispatcher-event-loop-12] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 2 is 156 bytes
+2016-02-22 21:46:18,099 [dispatcher-event-loop-19] INFO [MapOutputTrackerMasterEndpoint (logInfo(58))] Asked to send map output locations for shuffle 3 to node324.cm.cluster:45480
+2016-02-22 21:46:18,100 [dispatcher-event-loop-19] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 3 is 156 bytes
+2016-02-22 21:46:18,114 [dispatcher-event-loop-15] INFO [BlockManagerInfo (logInfo(58))] Added rdd_34_0 in memory on node324.cm.cluster:52317 (size: 40.1 MB, free: 34.2 GB)
+2016-02-22 21:46:18,116 [dispatcher-event-loop-14] INFO [MapOutputTrackerMasterEndpoint (logInfo(58))] Asked to send map output locations for shuffle 4 to node324.cm.cluster:45480
+2016-02-22 21:46:18,117 [dispatcher-event-loop-14] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 4 is 159 bytes
+2016-02-22 21:46:18,301 [dispatcher-event-loop-17] INFO [TaskSetManager (logInfo(58))] Starting task 1.0 in stage 11.0 (TID 15, node324.cm.cluster, partition 1,PROCESS_LOCAL, 2493 bytes)
+2016-02-22 21:46:18,305 [task-result-getter-2] INFO [TaskSetManager (logInfo(58))] Finished task 0.0 in stage 11.0 (TID 14) in 240 ms on node324.cm.cluster (1/2)
+2016-02-22 21:46:18,316 [dispatcher-event-loop-16] INFO [BlockManagerInfo (logInfo(58))] Added rdd_34_1 in memory on node324.cm.cluster:52317 (size: 38.1 MB, free: 34.1 GB)
+2016-02-22 21:46:18,457 [task-result-getter-3] INFO [TaskSetManager (logInfo(58))] Finished task 1.0 in stage 11.0 (TID 15) in 156 ms on node324.cm.cluster (2/2)
+2016-02-22 21:46:18,457 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] ShuffleMapStage 11 (mapPartitions at GraphImpl.scala:235) finished in 0.393 s
+2016-02-22 21:46:18,457 [task-result-getter-3] INFO [YarnScheduler (logInfo(58))] Removed TaskSet 11.0, whose tasks have all completed, from pool 
+2016-02-22 21:46:18,457 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:EndTime InfoValue:1456173978457 ActorType:Scheduler ActorId:11 MissionType:Stage MissionId:11 Timestamp:1456173978457 Extra:None
+2016-02-22 21:46:18,457 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] looking for newly runnable stages
+2016-02-22 21:46:18,458 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] running: Set()
+2016-02-22 21:46:18,458 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] waiting: Set(ResultStage 12)
+2016-02-22 21:46:18,458 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] failed: Set()
+2016-02-22 21:46:18,459 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting ResultStage 12 (MapPartitionsRDD[44] at map at VertexRDDImpl.scala:90), which has no missing parents
+2016-02-22 21:46:18,459 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:StartTime InfoValue:1456173978459 ActorType:Scheduler ActorId:12 MissionType:Stage MissionId:12 Timestamp:1456173978459 Extra:None
+2016-02-22 21:46:18,461 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_10 stored as values in memory (estimated size 7.0 KB, free 409.5 KB)
+2016-02-22 21:46:18,469 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_10_piece0 stored as bytes in memory (estimated size 3.5 KB, free 412.9 KB)
+2016-02-22 21:46:18,469 [dispatcher-event-loop-27] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_10_piece0 in memory on 10.141.0.23:47687 (size: 3.5 KB, free: 10.3 GB)
+2016-02-22 21:46:18,470 [dag-scheduler-event-loop] INFO [SparkContext (logInfo(58))] Created broadcast 10 from broadcast at DAGScheduler.scala:1010
+2016-02-22 21:46:18,470 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting 2 missing tasks from ResultStage 12 (MapPartitionsRDD[44] at map at VertexRDDImpl.scala:90)
+2016-02-22 21:46:18,470 [dag-scheduler-event-loop] INFO [YarnScheduler (logInfo(58))] Adding task set 12.0 with 2 tasks
+2016-02-22 21:46:18,472 [dispatcher-event-loop-26] INFO [TaskSetManager (logInfo(58))] Starting task 0.0 in stage 12.0 (TID 16, node324.cm.cluster, partition 0,PROCESS_LOCAL, 2118 bytes)
+2016-02-22 21:46:18,484 [dispatcher-event-loop-22] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_10_piece0 in memory on node324.cm.cluster:52317 (size: 3.5 KB, free: 34.1 GB)
+2016-02-22 21:46:18,491 [dispatcher-event-loop-30] INFO [MapOutputTrackerMasterEndpoint (logInfo(58))] Asked to send map output locations for shuffle 5 to node324.cm.cluster:45480
+2016-02-22 21:46:18,492 [dispatcher-event-loop-30] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 5 is 158 bytes
+2016-02-22 21:46:18,499 [dispatcher-event-loop-25] INFO [TaskSetManager (logInfo(58))] Starting task 1.0 in stage 12.0 (TID 17, node324.cm.cluster, partition 1,PROCESS_LOCAL, 2118 bytes)
+2016-02-22 21:46:18,503 [task-result-getter-0] INFO [TaskSetManager (logInfo(58))] Finished task 0.0 in stage 12.0 (TID 16) in 30 ms on node324.cm.cluster (1/2)
+2016-02-22 21:46:18,512 [task-result-getter-1] INFO [TaskSetManager (logInfo(58))] Finished task 1.0 in stage 12.0 (TID 17) in 12 ms on node324.cm.cluster (2/2)
+2016-02-22 21:46:18,512 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] ResultStage 12 (reduce at VertexRDDImpl.scala:90) finished in 0.041 s
+2016-02-22 21:46:18,512 [task-result-getter-1] INFO [YarnScheduler (logInfo(58))] Removed TaskSet 12.0, whose tasks have all completed, from pool 
+2016-02-22 21:46:18,512 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:EndTime InfoValue:1456173978512 ActorType:Scheduler ActorId:12 MissionType:Stage MissionId:12 Timestamp:1456173978512 Extra:None
+2016-02-22 21:46:18,513 [main] INFO [DAGScheduler (logInfo(58))] Job 2 finished: reduce at VertexRDDImpl.scala:90, took 0.819280 s
+2016-02-22 21:46:18,551 [main] INFO [SparkContext (logInfo(58))] Starting job: reduce at VertexRDDImpl.scala:90
+2016-02-22 21:46:18,552 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 1 is 156 bytes
+2016-02-22 21:46:18,554 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 0 is 159 bytes
+2016-02-22 21:46:18,555 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 2 is 156 bytes
+2016-02-22 21:46:18,556 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 3 is 156 bytes
+2016-02-22 21:46:18,558 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 4 is 159 bytes
+2016-02-22 21:46:18,560 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Registering RDD 49 (mapPartitions at VertexRDDImpl.scala:247)
+2016-02-22 21:46:18,564 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Registering RDD 53 (mapPartitions at VertexRDDImpl.scala:251)
+2016-02-22 21:46:18,565 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Registering RDD 57 (mapPartitions at GraphImpl.scala:235)
+2016-02-22 21:46:18,566 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Got job 3 (reduce at VertexRDDImpl.scala:90) with 2 output partitions
+2016-02-22 21:46:18,566 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Final stage: ResultStage 30 (reduce at VertexRDDImpl.scala:90)
+2016-02-22 21:46:18,566 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Parents of final stage: List(ShuffleMapStage 27, ShuffleMapStage 24, ShuffleMapStage 25, ShuffleMapStage 29)
+2016-02-22 21:46:18,567 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Missing parents: List(ShuffleMapStage 29)
+2016-02-22 21:46:18,572 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting ShuffleMapStage 21 (ReplicatedVertexView.updateVertices - shippedVerts true true (broadcast) MapPartitionsRDD[49] at mapPartitions at VertexRDDImpl.scala:247), which has no missing parents
+2016-02-22 21:46:18,572 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:StartTime InfoValue:1456173978572 ActorType:Scheduler ActorId:21 MissionType:Stage MissionId:21 Timestamp:1456173978572 Extra:None
+2016-02-22 21:46:18,576 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_11 stored as values in memory (estimated size 7.4 KB, free 420.3 KB)
+2016-02-22 21:46:18,582 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_11_piece0 stored as bytes in memory (estimated size 3.6 KB, free 423.9 KB)
+2016-02-22 21:46:18,583 [dispatcher-event-loop-7] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_11_piece0 in memory on 10.141.0.23:47687 (size: 3.6 KB, free: 10.3 GB)
+2016-02-22 21:46:18,583 [dag-scheduler-event-loop] INFO [SparkContext (logInfo(58))] Created broadcast 11 from broadcast at DAGScheduler.scala:1010
+2016-02-22 21:46:18,583 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting 2 missing tasks from ShuffleMapStage 21 (ReplicatedVertexView.updateVertices - shippedVerts true true (broadcast) MapPartitionsRDD[49] at mapPartitions at VertexRDDImpl.scala:247)
+2016-02-22 21:46:18,584 [dag-scheduler-event-loop] INFO [YarnScheduler (logInfo(58))] Adding task set 21.0 with 2 tasks
+2016-02-22 21:46:18,585 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting ShuffleMapStage 28 (ReplicatedVertexView.withActiveSet - shippedActives (broadcast) MapPartitionsRDD[53] at mapPartitions at VertexRDDImpl.scala:251), which has no missing parents
+2016-02-22 21:46:18,585 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:StartTime InfoValue:1456173978585 ActorType:Scheduler ActorId:28 MissionType:Stage MissionId:28 Timestamp:1456173978585 Extra:None
+2016-02-22 21:46:18,585 [dispatcher-event-loop-8] INFO [TaskSetManager (logInfo(58))] Starting task 0.0 in stage 21.0 (TID 18, node324.cm.cluster, partition 0,PROCESS_LOCAL, 2171 bytes)
+2016-02-22 21:46:18,587 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_12 stored as values in memory (estimated size 6.8 KB, free 430.6 KB)
+2016-02-22 21:46:18,593 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_12_piece0 stored as bytes in memory (estimated size 3.4 KB, free 434.0 KB)
+2016-02-22 21:46:18,593 [dispatcher-event-loop-11] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_12_piece0 in memory on 10.141.0.23:47687 (size: 3.4 KB, free: 10.3 GB)
+2016-02-22 21:46:18,594 [dag-scheduler-event-loop] INFO [SparkContext (logInfo(58))] Created broadcast 12 from broadcast at DAGScheduler.scala:1010
+2016-02-22 21:46:18,594 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting 2 missing tasks from ShuffleMapStage 28 (ReplicatedVertexView.withActiveSet - shippedActives (broadcast) MapPartitionsRDD[53] at mapPartitions at VertexRDDImpl.scala:251)
+2016-02-22 21:46:18,594 [dag-scheduler-event-loop] INFO [YarnScheduler (logInfo(58))] Adding task set 28.0 with 2 tasks
+2016-02-22 21:46:18,597 [dispatcher-event-loop-13] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_11_piece0 in memory on node324.cm.cluster:52317 (size: 3.6 KB, free: 34.1 GB)
+2016-02-22 21:46:18,634 [dispatcher-event-loop-12] INFO [BlockManagerInfo (logInfo(58))] Added rdd_45_0 in memory on node324.cm.cluster:52317 (size: 1605.0 KB, free: 34.1 GB)
+2016-02-22 21:46:18,722 [dispatcher-event-loop-19] INFO [TaskSetManager (logInfo(58))] Starting task 1.0 in stage 21.0 (TID 19, node324.cm.cluster, partition 1,PROCESS_LOCAL, 2171 bytes)
+2016-02-22 21:46:18,726 [task-result-getter-2] INFO [TaskSetManager (logInfo(58))] Finished task 0.0 in stage 21.0 (TID 18) in 140 ms on node324.cm.cluster (1/2)
+2016-02-22 21:46:18,756 [dispatcher-event-loop-17] INFO [BlockManagerInfo (logInfo(58))] Added rdd_45_1 in memory on node324.cm.cluster:52317 (size: 1614.9 KB, free: 34.1 GB)
+2016-02-22 21:46:18,775 [dispatcher-event-loop-21] INFO [TaskSetManager (logInfo(58))] Starting task 0.0 in stage 28.0 (TID 20, node324.cm.cluster, partition 0,PROCESS_LOCAL, 2107 bytes)
+2016-02-22 21:46:18,779 [task-result-getter-3] INFO [TaskSetManager (logInfo(58))] Finished task 1.0 in stage 21.0 (TID 19) in 56 ms on node324.cm.cluster (2/2)
+2016-02-22 21:46:18,779 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] ShuffleMapStage 21 (mapPartitions at VertexRDDImpl.scala:247) finished in 0.195 s
+2016-02-22 21:46:18,779 [task-result-getter-3] INFO [YarnScheduler (logInfo(58))] Removed TaskSet 21.0, whose tasks have all completed, from pool 
+2016-02-22 21:46:18,779 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:EndTime InfoValue:1456173978779 ActorType:Scheduler ActorId:21 MissionType:Stage MissionId:21 Timestamp:1456173978779 Extra:None
+2016-02-22 21:46:18,779 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] looking for newly runnable stages
+2016-02-22 21:46:18,779 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] running: Set(ShuffleMapStage 28)
+2016-02-22 21:46:18,779 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] waiting: Set(ResultStage 30, ShuffleMapStage 29)
+2016-02-22 21:46:18,779 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] failed: Set()
+2016-02-22 21:46:18,787 [dispatcher-event-loop-29] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_12_piece0 in memory on node324.cm.cluster:52317 (size: 3.4 KB, free: 34.1 GB)
+2016-02-22 21:46:18,812 [dispatcher-event-loop-28] INFO [TaskSetManager (logInfo(58))] Starting task 1.0 in stage 28.0 (TID 21, node324.cm.cluster, partition 1,PROCESS_LOCAL, 2107 bytes)
+2016-02-22 21:46:18,815 [task-result-getter-0] INFO [TaskSetManager (logInfo(58))] Finished task 0.0 in stage 28.0 (TID 20) in 40 ms on node324.cm.cluster (1/2)
+2016-02-22 21:46:18,834 [task-result-getter-1] INFO [TaskSetManager (logInfo(58))] Finished task 1.0 in stage 28.0 (TID 21) in 22 ms on node324.cm.cluster (2/2)
+2016-02-22 21:46:18,834 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] ShuffleMapStage 28 (mapPartitions at VertexRDDImpl.scala:251) finished in 0.239 s
+2016-02-22 21:46:18,834 [task-result-getter-1] INFO [YarnScheduler (logInfo(58))] Removed TaskSet 28.0, whose tasks have all completed, from pool 
+2016-02-22 21:46:18,834 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:EndTime InfoValue:1456173978834 ActorType:Scheduler ActorId:28 MissionType:Stage MissionId:28 Timestamp:1456173978834 Extra:None
+2016-02-22 21:46:18,834 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] looking for newly runnable stages
+2016-02-22 21:46:18,834 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] running: Set()
+2016-02-22 21:46:18,834 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] waiting: Set(ResultStage 30, ShuffleMapStage 29)
+2016-02-22 21:46:18,834 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] failed: Set()
+2016-02-22 21:46:18,837 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting ShuffleMapStage 29 (GraphImpl.aggregateMessages - preAgg MapPartitionsRDD[57] at mapPartitions at GraphImpl.scala:235), which has no missing parents
+2016-02-22 21:46:18,837 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:StartTime InfoValue:1456173978837 ActorType:Scheduler ActorId:29 MissionType:Stage MissionId:29 Timestamp:1456173978837 Extra:None
+2016-02-22 21:46:18,841 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_13 stored as values in memory (estimated size 8.8 KB, free 442.8 KB)
+2016-02-22 21:46:18,846 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_13_piece0 stored as bytes in memory (estimated size 4.2 KB, free 447.1 KB)
+2016-02-22 21:46:18,847 [dispatcher-event-loop-2] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_13_piece0 in memory on 10.141.0.23:47687 (size: 4.2 KB, free: 10.3 GB)
+2016-02-22 21:46:18,848 [dag-scheduler-event-loop] INFO [SparkContext (logInfo(58))] Created broadcast 13 from broadcast at DAGScheduler.scala:1010
+2016-02-22 21:46:18,848 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting 2 missing tasks from ShuffleMapStage 29 (GraphImpl.aggregateMessages - preAgg MapPartitionsRDD[57] at mapPartitions at GraphImpl.scala:235)
+2016-02-22 21:46:18,848 [dag-scheduler-event-loop] INFO [YarnScheduler (logInfo(58))] Adding task set 29.0 with 2 tasks
+2016-02-22 21:46:18,850 [dispatcher-event-loop-6] INFO [TaskSetManager (logInfo(58))] Starting task 0.0 in stage 29.0 (TID 22, node324.cm.cluster, partition 0,PROCESS_LOCAL, 2575 bytes)
+2016-02-22 21:46:18,861 [dispatcher-event-loop-7] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_13_piece0 in memory on node324.cm.cluster:52317 (size: 4.2 KB, free: 34.1 GB)
+2016-02-22 21:46:18,871 [dispatcher-event-loop-9] INFO [MapOutputTrackerMasterEndpoint (logInfo(58))] Asked to send map output locations for shuffle 4 to node324.cm.cluster:45480
+2016-02-22 21:46:18,871 [dispatcher-event-loop-9] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 4 is 159 bytes
+2016-02-22 21:46:18,875 [dispatcher-event-loop-10] INFO [MapOutputTrackerMasterEndpoint (logInfo(58))] Asked to send map output locations for shuffle 6 to node324.cm.cluster:45480
+2016-02-22 21:46:18,876 [dispatcher-event-loop-10] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 6 is 159 bytes
+2016-02-22 21:46:18,899 [dispatcher-event-loop-11] INFO [BlockManagerInfo (logInfo(58))] Added rdd_51_0 in memory on node324.cm.cluster:52317 (size: 40.1 MB, free: 34.1 GB)
+2016-02-22 21:46:18,901 [dispatcher-event-loop-5] INFO [MapOutputTrackerMasterEndpoint (logInfo(58))] Asked to send map output locations for shuffle 7 to node324.cm.cluster:45480
+2016-02-22 21:46:18,901 [dispatcher-event-loop-5] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 7 is 159 bytes
+2016-02-22 21:46:19,232 [dispatcher-event-loop-20] INFO [TaskSetManager (logInfo(58))] Starting task 1.0 in stage 29.0 (TID 23, node324.cm.cluster, partition 1,PROCESS_LOCAL, 2575 bytes)
+2016-02-22 21:46:19,236 [task-result-getter-2] INFO [TaskSetManager (logInfo(58))] Finished task 0.0 in stage 29.0 (TID 22) in 387 ms on node324.cm.cluster (1/2)
+2016-02-22 21:46:19,260 [dispatcher-event-loop-15] INFO [BlockManagerInfo (logInfo(58))] Added rdd_51_1 in memory on node324.cm.cluster:52317 (size: 38.1 MB, free: 34.0 GB)
+2016-02-22 21:46:19,373 [task-result-getter-3] INFO [TaskSetManager (logInfo(58))] Finished task 1.0 in stage 29.0 (TID 23) in 140 ms on node324.cm.cluster (2/2)
+2016-02-22 21:46:19,373 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] ShuffleMapStage 29 (mapPartitions at GraphImpl.scala:235) finished in 0.524 s
+2016-02-22 21:46:19,373 [task-result-getter-3] INFO [YarnScheduler (logInfo(58))] Removed TaskSet 29.0, whose tasks have all completed, from pool 
+2016-02-22 21:46:19,373 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:EndTime InfoValue:1456173979373 ActorType:Scheduler ActorId:29 MissionType:Stage MissionId:29 Timestamp:1456173979373 Extra:None
+2016-02-22 21:46:19,373 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] looking for newly runnable stages
+2016-02-22 21:46:19,373 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] running: Set()
+2016-02-22 21:46:19,373 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] waiting: Set(ResultStage 30)
+2016-02-22 21:46:19,373 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] failed: Set()
+2016-02-22 21:46:19,374 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting ResultStage 30 (MapPartitionsRDD[61] at map at VertexRDDImpl.scala:90), which has no missing parents
+2016-02-22 21:46:19,375 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:StartTime InfoValue:1456173979375 ActorType:Scheduler ActorId:30 MissionType:Stage MissionId:30 Timestamp:1456173979375 Extra:None
+2016-02-22 21:46:19,377 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_14 stored as values in memory (estimated size 7.6 KB, free 454.7 KB)
+2016-02-22 21:46:19,384 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_14_piece0 stored as bytes in memory (estimated size 3.7 KB, free 458.4 KB)
+2016-02-22 21:46:19,384 [dispatcher-event-loop-24] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_14_piece0 in memory on 10.141.0.23:47687 (size: 3.7 KB, free: 10.3 GB)
+2016-02-22 21:46:19,385 [dag-scheduler-event-loop] INFO [SparkContext (logInfo(58))] Created broadcast 14 from broadcast at DAGScheduler.scala:1010
+2016-02-22 21:46:19,385 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting 2 missing tasks from ResultStage 30 (MapPartitionsRDD[61] at map at VertexRDDImpl.scala:90)
+2016-02-22 21:46:19,385 [dag-scheduler-event-loop] INFO [YarnScheduler (logInfo(58))] Adding task set 30.0 with 2 tasks
+2016-02-22 21:46:19,387 [dispatcher-event-loop-16] INFO [TaskSetManager (logInfo(58))] Starting task 0.0 in stage 30.0 (TID 24, node324.cm.cluster, partition 0,PROCESS_LOCAL, 2191 bytes)
+2016-02-22 21:46:19,397 [dispatcher-event-loop-27] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_14_piece0 in memory on node324.cm.cluster:52317 (size: 3.7 KB, free: 34.0 GB)
+2016-02-22 21:46:19,404 [dispatcher-event-loop-29] INFO [MapOutputTrackerMasterEndpoint (logInfo(58))] Asked to send map output locations for shuffle 8 to node324.cm.cluster:45480
+2016-02-22 21:46:19,404 [dispatcher-event-loop-29] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 8 is 159 bytes
+2016-02-22 21:46:19,412 [dispatcher-event-loop-28] INFO [BlockManagerInfo (logInfo(58))] Added rdd_59_0 in memory on node324.cm.cluster:52317 (size: 1613.0 KB, free: 34.0 GB)
+2016-02-22 21:46:19,417 [dispatcher-event-loop-22] INFO [TaskSetManager (logInfo(58))] Starting task 1.0 in stage 30.0 (TID 25, node324.cm.cluster, partition 1,PROCESS_LOCAL, 2191 bytes)
+2016-02-22 21:46:19,421 [task-result-getter-0] INFO [TaskSetManager (logInfo(58))] Finished task 0.0 in stage 30.0 (TID 24) in 34 ms on node324.cm.cluster (1/2)
+2016-02-22 21:46:19,428 [dispatcher-event-loop-31] INFO [BlockManagerInfo (logInfo(58))] Added rdd_59_1 in memory on node324.cm.cluster:52317 (size: 1623.0 KB, free: 34.0 GB)
+2016-02-22 21:46:19,438 [task-result-getter-1] INFO [TaskSetManager (logInfo(58))] Finished task 1.0 in stage 30.0 (TID 25) in 21 ms on node324.cm.cluster (2/2)
+2016-02-22 21:46:19,438 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] ResultStage 30 (reduce at VertexRDDImpl.scala:90) finished in 0.052 s
+2016-02-22 21:46:19,438 [task-result-getter-1] INFO [YarnScheduler (logInfo(58))] Removed TaskSet 30.0, whose tasks have all completed, from pool 
+2016-02-22 21:46:19,438 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:EndTime InfoValue:1456173979438 ActorType:Scheduler ActorId:30 MissionType:Stage MissionId:30 Timestamp:1456173979438 Extra:None
+2016-02-22 21:46:19,439 [main] INFO [DAGScheduler (logInfo(58))] Job 3 finished: reduce at VertexRDDImpl.scala:90, took 0.888104 s
+2016-02-22 21:46:19,446 [main] INFO [Pregel (logInfo(58))] Pregel finished iteration 0
+2016-02-22 21:46:19,447 [main] INFO [ZippedPartitionsRDD2 (logInfo(58))] Removing RDD 42 from persistence list
+2016-02-22 21:46:19,454 [main] INFO [MapPartitionsRDD (logInfo(58))] Removing RDD 28 from persistence list
+2016-02-22 21:46:19,454 [block-manager-slave-async-thread-pool-0] INFO [BlockManager (logInfo(58))] Removing RDD 42
+2016-02-22 21:46:19,457 [block-manager-slave-async-thread-pool-1] INFO [BlockManager (logInfo(58))] Removing RDD 28
+2016-02-22 21:46:19,458 [main] INFO [ZippedPartitionsRDD2 (logInfo(58))] Removing RDD 34 from persistence list
+2016-02-22 21:46:19,459 [block-manager-slave-async-thread-pool-0] INFO [BlockManager (logInfo(58))] Removing RDD 34
+2016-02-22 21:46:19,490 [main] INFO [SparkContext (logInfo(58))] Starting job: reduce at VertexRDDImpl.scala:90
+2016-02-22 21:46:19,492 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 1 is 156 bytes
+2016-02-22 21:46:19,494 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 0 is 159 bytes
+2016-02-22 21:46:19,495 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 2 is 156 bytes
+2016-02-22 21:46:19,495 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 3 is 156 bytes
+2016-02-22 21:46:19,497 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 4 is 159 bytes
+2016-02-22 21:46:19,498 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 5 is 158 bytes
+2016-02-22 21:46:19,499 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 6 is 159 bytes
+2016-02-22 21:46:19,502 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 7 is 159 bytes
+2016-02-22 21:46:19,503 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Registering RDD 66 (mapPartitions at VertexRDDImpl.scala:247)
+2016-02-22 21:46:19,508 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Registering RDD 70 (mapPartitions at VertexRDDImpl.scala:251)
+2016-02-22 21:46:19,509 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Registering RDD 74 (mapPartitions at GraphImpl.scala:235)
+2016-02-22 21:46:19,509 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Got job 4 (reduce at VertexRDDImpl.scala:90) with 2 output partitions
+2016-02-22 21:46:19,509 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Final stage: ResultStage 60 (reduce at VertexRDDImpl.scala:90)
+2016-02-22 21:46:19,509 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Parents of final stage: List(ShuffleMapStage 52, ShuffleMapStage 53, ShuffleMapStage 57, ShuffleMapStage 55, ShuffleMapStage 59)
+2016-02-22 21:46:19,511 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Missing parents: List(ShuffleMapStage 59)
+2016-02-22 21:46:19,512 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting ShuffleMapStage 48 (ReplicatedVertexView.updateVertices - shippedVerts true true (broadcast) MapPartitionsRDD[66] at mapPartitions at VertexRDDImpl.scala:247), which has no missing parents
+2016-02-22 21:46:19,513 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:StartTime InfoValue:1456173979512 ActorType:Scheduler ActorId:48 MissionType:Stage MissionId:48 Timestamp:1456173979513 Extra:None
+2016-02-22 21:46:19,515 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_15 stored as values in memory (estimated size 7.8 KB, free 466.2 KB)
+2016-02-22 21:46:19,520 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_15_piece0 stored as bytes in memory (estimated size 3.7 KB, free 469.9 KB)
+2016-02-22 21:46:19,521 [dispatcher-event-loop-20] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_15_piece0 in memory on 10.141.0.23:47687 (size: 3.7 KB, free: 10.3 GB)
+2016-02-22 21:46:19,522 [dag-scheduler-event-loop] INFO [SparkContext (logInfo(58))] Created broadcast 15 from broadcast at DAGScheduler.scala:1010
+2016-02-22 21:46:19,522 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting 2 missing tasks from ShuffleMapStage 48 (ReplicatedVertexView.updateVertices - shippedVerts true true (broadcast) MapPartitionsRDD[66] at mapPartitions at VertexRDDImpl.scala:247)
+2016-02-22 21:46:19,522 [dag-scheduler-event-loop] INFO [YarnScheduler (logInfo(58))] Adding task set 48.0 with 2 tasks
+2016-02-22 21:46:19,524 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting ShuffleMapStage 58 (ReplicatedVertexView.withActiveSet - shippedActives (broadcast) MapPartitionsRDD[70] at mapPartitions at VertexRDDImpl.scala:251), which has no missing parents
+2016-02-22 21:46:19,524 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:StartTime InfoValue:1456173979524 ActorType:Scheduler ActorId:58 MissionType:Stage MissionId:58 Timestamp:1456173979524 Extra:None
+2016-02-22 21:46:19,525 [dispatcher-event-loop-12] INFO [TaskSetManager (logInfo(58))] Starting task 0.0 in stage 48.0 (TID 26, node324.cm.cluster, partition 0,PROCESS_LOCAL, 2244 bytes)
+2016-02-22 21:46:19,526 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_16 stored as values in memory (estimated size 7.4 KB, free 477.3 KB)
+2016-02-22 21:46:19,530 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_16_piece0 stored as bytes in memory (estimated size 3.6 KB, free 480.9 KB)
+2016-02-22 21:46:19,531 [dispatcher-event-loop-15] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_16_piece0 in memory on 10.141.0.23:47687 (size: 3.6 KB, free: 10.3 GB)
+2016-02-22 21:46:19,531 [dag-scheduler-event-loop] INFO [SparkContext (logInfo(58))] Created broadcast 16 from broadcast at DAGScheduler.scala:1010
+2016-02-22 21:46:19,532 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting 2 missing tasks from ShuffleMapStage 58 (ReplicatedVertexView.withActiveSet - shippedActives (broadcast) MapPartitionsRDD[70] at mapPartitions at VertexRDDImpl.scala:251)
+2016-02-22 21:46:19,532 [dag-scheduler-event-loop] INFO [YarnScheduler (logInfo(58))] Adding task set 58.0 with 2 tasks
+2016-02-22 21:46:19,538 [dispatcher-event-loop-21] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_15_piece0 in memory on node324.cm.cluster:52317 (size: 3.7 KB, free: 34.1 GB)
+2016-02-22 21:46:19,553 [dispatcher-event-loop-16] INFO [BlockManagerInfo (logInfo(58))] Added rdd_62_0 in memory on node324.cm.cluster:52317 (size: 1605.0 KB, free: 34.1 GB)
+2016-02-22 21:46:19,575 [dispatcher-event-loop-18] INFO [TaskSetManager (logInfo(58))] Starting task 1.0 in stage 48.0 (TID 27, node324.cm.cluster, partition 1,PROCESS_LOCAL, 2244 bytes)
+2016-02-22 21:46:19,579 [task-result-getter-2] INFO [TaskSetManager (logInfo(58))] Finished task 0.0 in stage 48.0 (TID 26) in 55 ms on node324.cm.cluster (1/2)
+2016-02-22 21:46:19,590 [dispatcher-event-loop-26] INFO [BlockManagerInfo (logInfo(58))] Added rdd_62_1 in memory on node324.cm.cluster:52317 (size: 1614.9 KB, free: 34.1 GB)
+2016-02-22 21:46:19,610 [dispatcher-event-loop-29] INFO [TaskSetManager (logInfo(58))] Starting task 0.0 in stage 58.0 (TID 28, node324.cm.cluster, partition 0,PROCESS_LOCAL, 2180 bytes)
+2016-02-22 21:46:19,612 [task-result-getter-3] INFO [TaskSetManager (logInfo(58))] Finished task 1.0 in stage 48.0 (TID 27) in 37 ms on node324.cm.cluster (2/2)
+2016-02-22 21:46:19,612 [task-result-getter-3] INFO [YarnScheduler (logInfo(58))] Removed TaskSet 48.0, whose tasks have all completed, from pool 
+2016-02-22 21:46:19,612 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] ShuffleMapStage 48 (mapPartitions at VertexRDDImpl.scala:247) finished in 0.089 s
+2016-02-22 21:46:19,613 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:EndTime InfoValue:1456173979613 ActorType:Scheduler ActorId:48 MissionType:Stage MissionId:48 Timestamp:1456173979613 Extra:None
+2016-02-22 21:46:19,613 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] looking for newly runnable stages
+2016-02-22 21:46:19,613 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] running: Set(ShuffleMapStage 58)
+2016-02-22 21:46:19,613 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] waiting: Set(ResultStage 60, ShuffleMapStage 59)
+2016-02-22 21:46:19,613 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] failed: Set()
+2016-02-22 21:46:19,619 [dispatcher-event-loop-1] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_16_piece0 in memory on node324.cm.cluster:52317 (size: 3.6 KB, free: 34.1 GB)
+2016-02-22 21:46:19,638 [dispatcher-event-loop-2] INFO [TaskSetManager (logInfo(58))] Starting task 1.0 in stage 58.0 (TID 29, node324.cm.cluster, partition 1,PROCESS_LOCAL, 2180 bytes)
+2016-02-22 21:46:19,641 [task-result-getter-0] INFO [TaskSetManager (logInfo(58))] Finished task 0.0 in stage 58.0 (TID 28) in 32 ms on node324.cm.cluster (1/2)
+2016-02-22 21:46:19,659 [task-result-getter-1] INFO [TaskSetManager (logInfo(58))] Finished task 1.0 in stage 58.0 (TID 29) in 21 ms on node324.cm.cluster (2/2)
+2016-02-22 21:46:19,659 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] ShuffleMapStage 58 (mapPartitions at VertexRDDImpl.scala:251) finished in 0.127 s
+2016-02-22 21:46:19,659 [task-result-getter-1] INFO [YarnScheduler (logInfo(58))] Removed TaskSet 58.0, whose tasks have all completed, from pool 
+2016-02-22 21:46:19,659 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:EndTime InfoValue:1456173979659 ActorType:Scheduler ActorId:58 MissionType:Stage MissionId:58 Timestamp:1456173979659 Extra:None
+2016-02-22 21:46:19,659 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] looking for newly runnable stages
+2016-02-22 21:46:19,659 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] running: Set()
+2016-02-22 21:46:19,659 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] waiting: Set(ResultStage 60, ShuffleMapStage 59)
+2016-02-22 21:46:19,660 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] failed: Set()
+2016-02-22 21:46:19,661 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting ShuffleMapStage 59 (GraphImpl.aggregateMessages - preAgg MapPartitionsRDD[74] at mapPartitions at GraphImpl.scala:235), which has no missing parents
+2016-02-22 21:46:19,662 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:StartTime InfoValue:1456173979661 ActorType:Scheduler ActorId:59 MissionType:Stage MissionId:59 Timestamp:1456173979662 Extra:None
+2016-02-22 21:46:19,664 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_17 stored as values in memory (estimated size 9.1 KB, free 490.0 KB)
+2016-02-22 21:46:19,668 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_17_piece0 stored as bytes in memory (estimated size 4.3 KB, free 494.3 KB)
+2016-02-22 21:46:19,668 [dispatcher-event-loop-10] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_17_piece0 in memory on 10.141.0.23:47687 (size: 4.3 KB, free: 10.3 GB)
+2016-02-22 21:46:19,669 [dag-scheduler-event-loop] INFO [SparkContext (logInfo(58))] Created broadcast 17 from broadcast at DAGScheduler.scala:1010
+2016-02-22 21:46:19,669 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting 2 missing tasks from ShuffleMapStage 59 (GraphImpl.aggregateMessages - preAgg MapPartitionsRDD[74] at mapPartitions at GraphImpl.scala:235)
+2016-02-22 21:46:19,669 [dag-scheduler-event-loop] INFO [YarnScheduler (logInfo(58))] Adding task set 59.0 with 2 tasks
+2016-02-22 21:46:19,671 [dispatcher-event-loop-11] INFO [TaskSetManager (logInfo(58))] Starting task 0.0 in stage 59.0 (TID 30, node324.cm.cluster, partition 0,PROCESS_LOCAL, 2616 bytes)
+2016-02-22 21:46:19,681 [dispatcher-event-loop-20] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_17_piece0 in memory on node324.cm.cluster:52317 (size: 4.3 KB, free: 34.1 GB)
+2016-02-22 21:46:19,688 [dispatcher-event-loop-19] INFO [MapOutputTrackerMasterEndpoint (logInfo(58))] Asked to send map output locations for shuffle 9 to node324.cm.cluster:45480
+2016-02-22 21:46:19,688 [dispatcher-event-loop-19] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 9 is 156 bytes
+2016-02-22 21:46:19,696 [dispatcher-event-loop-14] INFO [BlockManagerInfo (logInfo(58))] Added rdd_68_0 in memory on node324.cm.cluster:52317 (size: 40.1 MB, free: 34.1 GB)
+2016-02-22 21:46:19,697 [dispatcher-event-loop-15] INFO [MapOutputTrackerMasterEndpoint (logInfo(58))] Asked to send map output locations for shuffle 10 to node324.cm.cluster:45480
+2016-02-22 21:46:19,698 [dispatcher-event-loop-15] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 10 is 156 bytes
+2016-02-22 21:46:19,901 [dispatcher-event-loop-17] INFO [TaskSetManager (logInfo(58))] Starting task 1.0 in stage 59.0 (TID 31, node324.cm.cluster, partition 1,PROCESS_LOCAL, 2616 bytes)
+2016-02-22 21:46:19,907 [task-result-getter-2] INFO [TaskSetManager (logInfo(58))] Finished task 0.0 in stage 59.0 (TID 30) in 237 ms on node324.cm.cluster (1/2)
+2016-02-22 21:46:19,914 [dispatcher-event-loop-18] INFO [BlockManagerInfo (logInfo(58))] Added rdd_68_1 in memory on node324.cm.cluster:52317 (size: 38.1 MB, free: 34.0 GB)
+2016-02-22 21:46:20,093 [task-result-getter-3] INFO [TaskSetManager (logInfo(58))] Finished task 1.0 in stage 59.0 (TID 31) in 194 ms on node324.cm.cluster (2/2)
+2016-02-22 21:46:20,093 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] ShuffleMapStage 59 (mapPartitions at GraphImpl.scala:235) finished in 0.423 s
+2016-02-22 21:46:20,093 [task-result-getter-3] INFO [YarnScheduler (logInfo(58))] Removed TaskSet 59.0, whose tasks have all completed, from pool 
+2016-02-22 21:46:20,093 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:EndTime InfoValue:1456173980093 ActorType:Scheduler ActorId:59 MissionType:Stage MissionId:59 Timestamp:1456173980093 Extra:None
+2016-02-22 21:46:20,094 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] looking for newly runnable stages
+2016-02-22 21:46:20,094 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] running: Set()
+2016-02-22 21:46:20,094 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] waiting: Set(ResultStage 60)
+2016-02-22 21:46:20,094 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] failed: Set()
+2016-02-22 21:46:20,095 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting ResultStage 60 (MapPartitionsRDD[78] at map at VertexRDDImpl.scala:90), which has no missing parents
+2016-02-22 21:46:20,095 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:StartTime InfoValue:1456173980095 ActorType:Scheduler ActorId:60 MissionType:Stage MissionId:60 Timestamp:1456173980095 Extra:None
+2016-02-22 21:46:20,098 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_18 stored as values in memory (estimated size 8.1 KB, free 502.4 KB)
+2016-02-22 21:46:20,102 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_18_piece0 stored as bytes in memory (estimated size 3.8 KB, free 506.1 KB)
+2016-02-22 21:46:20,103 [dispatcher-event-loop-29] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_18_piece0 in memory on 10.141.0.23:47687 (size: 3.8 KB, free: 10.3 GB)
+2016-02-22 21:46:20,103 [dag-scheduler-event-loop] INFO [SparkContext (logInfo(58))] Created broadcast 18 from broadcast at DAGScheduler.scala:1010
+2016-02-22 21:46:20,104 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting 2 missing tasks from ResultStage 60 (MapPartitionsRDD[78] at map at VertexRDDImpl.scala:90)
+2016-02-22 21:46:20,104 [dag-scheduler-event-loop] INFO [YarnScheduler (logInfo(58))] Adding task set 60.0 with 2 tasks
+2016-02-22 21:46:20,105 [dispatcher-event-loop-28] INFO [TaskSetManager (logInfo(58))] Starting task 0.0 in stage 60.0 (TID 32, node324.cm.cluster, partition 0,PROCESS_LOCAL, 2264 bytes)
+2016-02-22 21:46:20,116 [dispatcher-event-loop-22] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_18_piece0 in memory on node324.cm.cluster:52317 (size: 3.8 KB, free: 34.0 GB)
+2016-02-22 21:46:20,124 [dispatcher-event-loop-0] INFO [MapOutputTrackerMasterEndpoint (logInfo(58))] Asked to send map output locations for shuffle 11 to node324.cm.cluster:45480
+2016-02-22 21:46:20,124 [dispatcher-event-loop-0] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 11 is 159 bytes
+2016-02-22 21:46:20,154 [dispatcher-event-loop-1] INFO [BlockManagerInfo (logInfo(58))] Added rdd_76_0 in memory on node324.cm.cluster:52317 (size: 1613.0 KB, free: 34.0 GB)
+2016-02-22 21:46:20,159 [dispatcher-event-loop-2] INFO [TaskSetManager (logInfo(58))] Starting task 1.0 in stage 60.0 (TID 33, node324.cm.cluster, partition 1,PROCESS_LOCAL, 2264 bytes)
+2016-02-22 21:46:20,162 [task-result-getter-0] INFO [TaskSetManager (logInfo(58))] Finished task 0.0 in stage 60.0 (TID 32) in 57 ms on node324.cm.cluster (1/2)
+2016-02-22 21:46:20,189 [dispatcher-event-loop-7] INFO [BlockManagerInfo (logInfo(58))] Added rdd_76_1 in memory on node324.cm.cluster:52317 (size: 1623.0 KB, free: 34.0 GB)
+2016-02-22 21:46:20,197 [task-result-getter-1] INFO [TaskSetManager (logInfo(58))] Finished task 1.0 in stage 60.0 (TID 33) in 38 ms on node324.cm.cluster (2/2)
+2016-02-22 21:46:20,197 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] ResultStage 60 (reduce at VertexRDDImpl.scala:90) finished in 0.092 s
+2016-02-22 21:46:20,197 [task-result-getter-1] INFO [YarnScheduler (logInfo(58))] Removed TaskSet 60.0, whose tasks have all completed, from pool 
+2016-02-22 21:46:20,197 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:EndTime InfoValue:1456173980197 ActorType:Scheduler ActorId:60 MissionType:Stage MissionId:60 Timestamp:1456173980197 Extra:None
+2016-02-22 21:46:20,199 [main] INFO [DAGScheduler (logInfo(58))] Job 4 finished: reduce at VertexRDDImpl.scala:90, took 0.708552 s
+2016-02-22 21:46:20,203 [main] INFO [Pregel (logInfo(58))] Pregel finished iteration 1
+2016-02-22 21:46:20,203 [main] INFO [ZippedPartitionsRDD2 (logInfo(58))] Removing RDD 59 from persistence list
+2016-02-22 21:46:20,205 [block-manager-slave-async-thread-pool-1] INFO [BlockManager (logInfo(58))] Removing RDD 59
+2016-02-22 21:46:20,205 [main] INFO [ZippedPartitionsRDD2 (logInfo(58))] Removing RDD 45 from persistence list
+2016-02-22 21:46:20,206 [block-manager-slave-async-thread-pool-0] INFO [BlockManager (logInfo(58))] Removing RDD 45
+2016-02-22 21:46:20,206 [main] INFO [ZippedPartitionsRDD2 (logInfo(58))] Removing RDD 51 from persistence list
+2016-02-22 21:46:20,207 [block-manager-slave-async-thread-pool-1] INFO [BlockManager (logInfo(58))] Removing RDD 51
+2016-02-22 21:46:20,233 [main] INFO [SparkContext (logInfo(58))] Starting job: reduce at VertexRDDImpl.scala:90
+2016-02-22 21:46:20,235 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 1 is 156 bytes
+2016-02-22 21:46:20,237 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 0 is 159 bytes
+2016-02-22 21:46:20,238 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 2 is 156 bytes
+2016-02-22 21:46:20,239 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 3 is 156 bytes
+2016-02-22 21:46:20,240 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 4 is 159 bytes
+2016-02-22 21:46:20,241 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 5 is 158 bytes
+2016-02-22 21:46:20,242 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 6 is 159 bytes
+2016-02-22 21:46:20,246 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 7 is 159 bytes
+2016-02-22 21:46:20,247 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 8 is 159 bytes
+2016-02-22 21:46:20,248 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 9 is 156 bytes
+2016-02-22 21:46:20,252 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 10 is 156 bytes
+2016-02-22 21:46:20,253 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Registering RDD 83 (mapPartitions at VertexRDDImpl.scala:247)
+2016-02-22 21:46:20,258 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Registering RDD 87 (mapPartitions at VertexRDDImpl.scala:251)
+2016-02-22 21:46:20,258 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Registering RDD 91 (mapPartitions at GraphImpl.scala:235)
+2016-02-22 21:46:20,259 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Got job 5 (reduce at VertexRDDImpl.scala:90) with 2 output partitions
+2016-02-22 21:46:20,259 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Final stage: ResultStage 105 (reduce at VertexRDDImpl.scala:90)
+2016-02-22 21:46:20,259 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Parents of final stage: List(ShuffleMapStage 102, ShuffleMapStage 96, ShuffleMapStage 100, ShuffleMapStage 104, ShuffleMapStage 98, ShuffleMapStage 95)
+2016-02-22 21:46:20,260 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Missing parents: List(ShuffleMapStage 104)
+2016-02-22 21:46:20,262 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting ShuffleMapStage 90 (ReplicatedVertexView.updateVertices - shippedVerts true true (broadcast) MapPartitionsRDD[83] at mapPartitions at VertexRDDImpl.scala:247), which has no missing parents
+2016-02-22 21:46:20,262 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:StartTime InfoValue:1456173980262 ActorType:Scheduler ActorId:90 MissionType:Stage MissionId:90 Timestamp:1456173980262 Extra:None
+2016-02-22 21:46:20,266 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_19 stored as values in memory (estimated size 8.2 KB, free 514.3 KB)
+2016-02-22 21:46:20,272 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_19_piece0 stored as bytes in memory (estimated size 3.8 KB, free 518.1 KB)
+2016-02-22 21:46:20,272 [dispatcher-event-loop-21] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_19_piece0 in memory on 10.141.0.23:47687 (size: 3.8 KB, free: 10.3 GB)
+2016-02-22 21:46:20,273 [dag-scheduler-event-loop] INFO [SparkContext (logInfo(58))] Created broadcast 19 from broadcast at DAGScheduler.scala:1010
+2016-02-22 21:46:20,273 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting 2 missing tasks from ShuffleMapStage 90 (ReplicatedVertexView.updateVertices - shippedVerts true true (broadcast) MapPartitionsRDD[83] at mapPartitions at VertexRDDImpl.scala:247)
+2016-02-22 21:46:20,274 [dag-scheduler-event-loop] INFO [YarnScheduler (logInfo(58))] Adding task set 90.0 with 2 tasks
+2016-02-22 21:46:20,275 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting ShuffleMapStage 103 (ReplicatedVertexView.withActiveSet - shippedActives (broadcast) MapPartitionsRDD[87] at mapPartitions at VertexRDDImpl.scala:251), which has no missing parents
+2016-02-22 21:46:20,275 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:StartTime InfoValue:1456173980275 ActorType:Scheduler ActorId:103 MissionType:Stage MissionId:103 Timestamp:1456173980275 Extra:None
+2016-02-22 21:46:20,275 [dispatcher-event-loop-24] INFO [TaskSetManager (logInfo(58))] Starting task 0.0 in stage 90.0 (TID 34, node324.cm.cluster, partition 0,PROCESS_LOCAL, 2317 bytes)
+2016-02-22 21:46:20,277 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_20 stored as values in memory (estimated size 7.8 KB, free 526.0 KB)
+2016-02-22 21:46:20,281 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_20_piece0 stored as bytes in memory (estimated size 3.7 KB, free 529.7 KB)
+2016-02-22 21:46:20,282 [dispatcher-event-loop-23] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_20_piece0 in memory on 10.141.0.23:47687 (size: 3.7 KB, free: 10.3 GB)
+2016-02-22 21:46:20,283 [dag-scheduler-event-loop] INFO [SparkContext (logInfo(58))] Created broadcast 20 from broadcast at DAGScheduler.scala:1010
+2016-02-22 21:46:20,283 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting 2 missing tasks from ShuffleMapStage 103 (ReplicatedVertexView.withActiveSet - shippedActives (broadcast) MapPartitionsRDD[87] at mapPartitions at VertexRDDImpl.scala:251)
+2016-02-22 21:46:20,283 [dag-scheduler-event-loop] INFO [YarnScheduler (logInfo(58))] Adding task set 103.0 with 2 tasks
+2016-02-22 21:46:20,284 [dispatcher-event-loop-26] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_19_piece0 in memory on node324.cm.cluster:52317 (size: 3.8 KB, free: 34.1 GB)
+2016-02-22 21:46:20,299 [dispatcher-event-loop-28] INFO [BlockManagerInfo (logInfo(58))] Added rdd_79_0 in memory on node324.cm.cluster:52317 (size: 1605.0 KB, free: 34.1 GB)
+2016-02-22 21:46:20,332 [dispatcher-event-loop-30] INFO [TaskSetManager (logInfo(58))] Starting task 1.0 in stage 90.0 (TID 35, node324.cm.cluster, partition 1,PROCESS_LOCAL, 2317 bytes)
+2016-02-22 21:46:20,334 [task-result-getter-2] INFO [TaskSetManager (logInfo(58))] Finished task 0.0 in stage 90.0 (TID 34) in 59 ms on node324.cm.cluster (1/2)
+2016-02-22 21:46:20,344 [dispatcher-event-loop-31] INFO [BlockManagerInfo (logInfo(58))] Added rdd_79_1 in memory on node324.cm.cluster:52317 (size: 1614.9 KB, free: 34.1 GB)
+2016-02-22 21:46:20,372 [dispatcher-event-loop-0] INFO [TaskSetManager (logInfo(58))] Starting task 0.0 in stage 103.0 (TID 36, node324.cm.cluster, partition 0,PROCESS_LOCAL, 2253 bytes)
+2016-02-22 21:46:20,375 [task-result-getter-3] INFO [TaskSetManager (logInfo(58))] Finished task 1.0 in stage 90.0 (TID 35) in 44 ms on node324.cm.cluster (2/2)
+2016-02-22 21:46:20,375 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] ShuffleMapStage 90 (mapPartitions at VertexRDDImpl.scala:247) finished in 0.101 s
+2016-02-22 21:46:20,375 [task-result-getter-3] INFO [YarnScheduler (logInfo(58))] Removed TaskSet 90.0, whose tasks have all completed, from pool 
+2016-02-22 21:46:20,375 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:EndTime InfoValue:1456173980375 ActorType:Scheduler ActorId:90 MissionType:Stage MissionId:90 Timestamp:1456173980375 Extra:None
+2016-02-22 21:46:20,375 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] looking for newly runnable stages
+2016-02-22 21:46:20,375 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] running: Set(ShuffleMapStage 103)
+2016-02-22 21:46:20,375 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] waiting: Set(ShuffleMapStage 104, ResultStage 105)
+2016-02-22 21:46:20,375 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] failed: Set()
+2016-02-22 21:46:20,380 [dispatcher-event-loop-9] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_20_piece0 in memory on node324.cm.cluster:52317 (size: 3.7 KB, free: 34.1 GB)
+2016-02-22 21:46:20,402 [dispatcher-event-loop-8] INFO [TaskSetManager (logInfo(58))] Starting task 1.0 in stage 103.0 (TID 37, node324.cm.cluster, partition 1,PROCESS_LOCAL, 2253 bytes)
+2016-02-22 21:46:20,404 [task-result-getter-0] INFO [TaskSetManager (logInfo(58))] Finished task 0.0 in stage 103.0 (TID 36) in 33 ms on node324.cm.cluster (1/2)
+2016-02-22 21:46:20,425 [task-result-getter-1] INFO [TaskSetManager (logInfo(58))] Finished task 1.0 in stage 103.0 (TID 37) in 23 ms on node324.cm.cluster (2/2)
+2016-02-22 21:46:20,425 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] ShuffleMapStage 103 (mapPartitions at VertexRDDImpl.scala:251) finished in 0.141 s
+2016-02-22 21:46:20,425 [task-result-getter-1] INFO [YarnScheduler (logInfo(58))] Removed TaskSet 103.0, whose tasks have all completed, from pool 
+2016-02-22 21:46:20,425 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:EndTime InfoValue:1456173980425 ActorType:Scheduler ActorId:103 MissionType:Stage MissionId:103 Timestamp:1456173980425 Extra:None
+2016-02-22 21:46:20,425 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] looking for newly runnable stages
+2016-02-22 21:46:20,425 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] running: Set()
+2016-02-22 21:46:20,426 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] waiting: Set(ShuffleMapStage 104, ResultStage 105)
+2016-02-22 21:46:20,426 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] failed: Set()
+2016-02-22 21:46:20,426 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting ShuffleMapStage 104 (GraphImpl.aggregateMessages - preAgg MapPartitionsRDD[91] at mapPartitions at GraphImpl.scala:235), which has no missing parents
+2016-02-22 21:46:20,427 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:StartTime InfoValue:1456173980426 ActorType:Scheduler ActorId:104 MissionType:Stage MissionId:104 Timestamp:1456173980427 Extra:None
+2016-02-22 21:46:20,428 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_21 stored as values in memory (estimated size 9.3 KB, free 539.0 KB)
+2016-02-22 21:46:20,432 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_21_piece0 stored as bytes in memory (estimated size 4.4 KB, free 543.4 KB)
+2016-02-22 21:46:20,433 [dispatcher-event-loop-20] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_21_piece0 in memory on 10.141.0.23:47687 (size: 4.4 KB, free: 10.3 GB)
+2016-02-22 21:46:20,433 [dag-scheduler-event-loop] INFO [SparkContext (logInfo(58))] Created broadcast 21 from broadcast at DAGScheduler.scala:1010
+2016-02-22 21:46:20,433 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting 2 missing tasks from ShuffleMapStage 104 (GraphImpl.aggregateMessages - preAgg MapPartitionsRDD[91] at mapPartitions at GraphImpl.scala:235)
+2016-02-22 21:46:20,433 [dag-scheduler-event-loop] INFO [YarnScheduler (logInfo(58))] Adding task set 104.0 with 2 tasks
+2016-02-22 21:46:20,434 [dispatcher-event-loop-12] INFO [TaskSetManager (logInfo(58))] Starting task 0.0 in stage 104.0 (TID 38, node324.cm.cluster, partition 0,PROCESS_LOCAL, 2657 bytes)
+2016-02-22 21:46:20,443 [dispatcher-event-loop-21] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_21_piece0 in memory on node324.cm.cluster:52317 (size: 4.4 KB, free: 34.1 GB)
+2016-02-22 21:46:20,449 [dispatcher-event-loop-16] INFO [MapOutputTrackerMasterEndpoint (logInfo(58))] Asked to send map output locations for shuffle 12 to node324.cm.cluster:45480
+2016-02-22 21:46:20,450 [dispatcher-event-loop-16] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 12 is 156 bytes
+2016-02-22 21:46:20,463 [dispatcher-event-loop-18] INFO [BlockManagerInfo (logInfo(58))] Added rdd_85_0 in memory on node324.cm.cluster:52317 (size: 40.1 MB, free: 34.1 GB)
+2016-02-22 21:46:20,465 [dispatcher-event-loop-23] INFO [MapOutputTrackerMasterEndpoint (logInfo(58))] Asked to send map output locations for shuffle 13 to node324.cm.cluster:45480
+2016-02-22 21:46:20,466 [dispatcher-event-loop-23] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 13 is 156 bytes
+2016-02-22 21:46:20,691 [dispatcher-event-loop-27] INFO [TaskSetManager (logInfo(58))] Starting task 1.0 in stage 104.0 (TID 39, node324.cm.cluster, partition 1,PROCESS_LOCAL, 2657 bytes)
+2016-02-22 21:46:20,694 [task-result-getter-2] INFO [TaskSetManager (logInfo(58))] Finished task 0.0 in stage 104.0 (TID 38) in 260 ms on node324.cm.cluster (1/2)
+2016-02-22 21:46:20,709 [dispatcher-event-loop-28] INFO [BlockManagerInfo (logInfo(58))] Added rdd_85_1 in memory on node324.cm.cluster:52317 (size: 38.1 MB, free: 34.0 GB)
+2016-02-22 21:46:20,900 [task-result-getter-3] INFO [TaskSetManager (logInfo(58))] Finished task 1.0 in stage 104.0 (TID 39) in 210 ms on node324.cm.cluster (2/2)
+2016-02-22 21:46:20,900 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] ShuffleMapStage 104 (mapPartitions at GraphImpl.scala:235) finished in 0.466 s
+2016-02-22 21:46:20,900 [task-result-getter-3] INFO [YarnScheduler (logInfo(58))] Removed TaskSet 104.0, whose tasks have all completed, from pool 
+2016-02-22 21:46:20,900 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:EndTime InfoValue:1456173980900 ActorType:Scheduler ActorId:104 MissionType:Stage MissionId:104 Timestamp:1456173980900 Extra:None
+2016-02-22 21:46:20,900 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] looking for newly runnable stages
+2016-02-22 21:46:20,900 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] running: Set()
+2016-02-22 21:46:20,900 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] waiting: Set(ResultStage 105)
+2016-02-22 21:46:20,900 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] failed: Set()
+2016-02-22 21:46:20,901 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting ResultStage 105 (MapPartitionsRDD[95] at map at VertexRDDImpl.scala:90), which has no missing parents
+2016-02-22 21:46:20,901 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:StartTime InfoValue:1456173980901 ActorType:Scheduler ActorId:105 MissionType:Stage MissionId:105 Timestamp:1456173980901 Extra:None
+2016-02-22 21:46:20,903 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_22 stored as values in memory (estimated size 8.5 KB, free 552.0 KB)
+2016-02-22 21:46:20,906 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_22_piece0 stored as bytes in memory (estimated size 3.8 KB, free 555.8 KB)
+2016-02-22 21:46:20,906 [dispatcher-event-loop-31] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_22_piece0 in memory on 10.141.0.23:47687 (size: 3.8 KB, free: 10.3 GB)
+2016-02-22 21:46:20,906 [dag-scheduler-event-loop] INFO [SparkContext (logInfo(58))] Created broadcast 22 from broadcast at DAGScheduler.scala:1010
+2016-02-22 21:46:20,907 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting 2 missing tasks from ResultStage 105 (MapPartitionsRDD[95] at map at VertexRDDImpl.scala:90)
+2016-02-22 21:46:20,907 [dag-scheduler-event-loop] INFO [YarnScheduler (logInfo(58))] Adding task set 105.0 with 2 tasks
+2016-02-22 21:46:20,908 [dispatcher-event-loop-0] INFO [TaskSetManager (logInfo(58))] Starting task 0.0 in stage 105.0 (TID 40, node324.cm.cluster, partition 0,PROCESS_LOCAL, 2337 bytes)
+2016-02-22 21:46:20,917 [dispatcher-event-loop-6] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_22_piece0 in memory on node324.cm.cluster:52317 (size: 3.8 KB, free: 34.0 GB)
+2016-02-22 21:46:20,923 [dispatcher-event-loop-4] INFO [MapOutputTrackerMasterEndpoint (logInfo(58))] Asked to send map output locations for shuffle 14 to node324.cm.cluster:45480
+2016-02-22 21:46:20,923 [dispatcher-event-loop-4] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 14 is 155 bytes
+2016-02-22 21:46:20,933 [dispatcher-event-loop-9] INFO [BlockManagerInfo (logInfo(58))] Added rdd_93_0 in memory on node324.cm.cluster:52317 (size: 1613.0 KB, free: 34.0 GB)
+2016-02-22 21:46:20,937 [dispatcher-event-loop-8] INFO [TaskSetManager (logInfo(58))] Starting task 1.0 in stage 105.0 (TID 41, node324.cm.cluster, partition 1,PROCESS_LOCAL, 2337 bytes)
+2016-02-22 21:46:20,941 [task-result-getter-0] INFO [TaskSetManager (logInfo(58))] Finished task 0.0 in stage 105.0 (TID 40) in 33 ms on node324.cm.cluster (1/2)
+2016-02-22 21:46:20,950 [dispatcher-event-loop-13] INFO [BlockManagerInfo (logInfo(58))] Added rdd_93_1 in memory on node324.cm.cluster:52317 (size: 1623.0 KB, free: 34.0 GB)
+2016-02-22 21:46:20,956 [task-result-getter-1] INFO [TaskSetManager (logInfo(58))] Finished task 1.0 in stage 105.0 (TID 41) in 19 ms on node324.cm.cluster (2/2)
+2016-02-22 21:46:20,956 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] ResultStage 105 (reduce at VertexRDDImpl.scala:90) finished in 0.049 s
+2016-02-22 21:46:20,956 [task-result-getter-1] INFO [YarnScheduler (logInfo(58))] Removed TaskSet 105.0, whose tasks have all completed, from pool 
+2016-02-22 21:46:20,956 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:EndTime InfoValue:1456173980956 ActorType:Scheduler ActorId:105 MissionType:Stage MissionId:105 Timestamp:1456173980956 Extra:None
+2016-02-22 21:46:20,958 [main] INFO [DAGScheduler (logInfo(58))] Job 5 finished: reduce at VertexRDDImpl.scala:90, took 0.724715 s
+2016-02-22 21:46:20,961 [main] INFO [Pregel (logInfo(58))] Pregel finished iteration 2
+2016-02-22 21:46:20,961 [main] INFO [ZippedPartitionsRDD2 (logInfo(58))] Removing RDD 76 from persistence list
+2016-02-22 21:46:20,962 [block-manager-slave-async-thread-pool-0] INFO [BlockManager (logInfo(58))] Removing RDD 76
+2016-02-22 21:46:20,962 [main] INFO [ZippedPartitionsRDD2 (logInfo(58))] Removing RDD 62 from persistence list
+2016-02-22 21:46:20,963 [block-manager-slave-async-thread-pool-1] INFO [BlockManager (logInfo(58))] Removing RDD 62
+2016-02-22 21:46:20,963 [main] INFO [ZippedPartitionsRDD2 (logInfo(58))] Removing RDD 68 from persistence list
+2016-02-22 21:46:20,964 [block-manager-slave-async-thread-pool-0] INFO [BlockManager (logInfo(58))] Removing RDD 68
+2016-02-22 21:46:20,986 [main] INFO [SparkContext (logInfo(58))] Starting job: reduce at VertexRDDImpl.scala:90
+2016-02-22 21:46:20,988 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 1 is 156 bytes
+2016-02-22 21:46:20,989 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 0 is 159 bytes
+2016-02-22 21:46:20,990 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 2 is 156 bytes
+2016-02-22 21:46:20,990 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 3 is 156 bytes
+2016-02-22 21:46:20,992 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 4 is 159 bytes
+2016-02-22 21:46:20,992 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 5 is 158 bytes
+2016-02-22 21:46:20,993 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 6 is 159 bytes
+2016-02-22 21:46:20,996 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 7 is 159 bytes
+2016-02-22 21:46:20,997 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 8 is 159 bytes
+2016-02-22 21:46:20,998 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 9 is 156 bytes
+2016-02-22 21:46:21,001 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 10 is 156 bytes
+2016-02-22 21:46:21,002 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 11 is 159 bytes
+2016-02-22 21:46:21,003 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 12 is 156 bytes
+2016-02-22 21:46:21,007 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 13 is 156 bytes
+2016-02-22 21:46:21,008 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Registering RDD 100 (mapPartitions at VertexRDDImpl.scala:247)
+2016-02-22 21:46:21,012 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Registering RDD 104 (mapPartitions at VertexRDDImpl.scala:251)
+2016-02-22 21:46:21,012 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Registering RDD 108 (mapPartitions at GraphImpl.scala:235)
+2016-02-22 21:46:21,012 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Got job 6 (reduce at VertexRDDImpl.scala:90) with 2 output partitions
+2016-02-22 21:46:21,012 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Final stage: ResultStage 168 (reduce at VertexRDDImpl.scala:90)
+2016-02-22 21:46:21,012 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Parents of final stage: List(ShuffleMapStage 161, ShuffleMapStage 165, ShuffleMapStage 157, ShuffleMapStage 159, ShuffleMapStage 156, ShuffleMapStage 163, ShuffleMapStage 167)
+2016-02-22 21:46:21,014 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Missing parents: List(ShuffleMapStage 167)
+2016-02-22 21:46:21,015 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting ShuffleMapStage 150 (ReplicatedVertexView.updateVertices - shippedVerts true true (broadcast) MapPartitionsRDD[100] at mapPartitions at VertexRDDImpl.scala:247), which has no missing parents
+2016-02-22 21:46:21,015 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:StartTime InfoValue:1456173981015 ActorType:Scheduler ActorId:150 MissionType:Stage MissionId:150 Timestamp:1456173981015 Extra:None
+2016-02-22 21:46:21,018 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_23 stored as values in memory (estimated size 8.7 KB, free 564.5 KB)
+2016-02-22 21:46:21,021 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_23_piece0 stored as bytes in memory (estimated size 3.9 KB, free 568.4 KB)
+2016-02-22 21:46:21,022 [dispatcher-event-loop-26] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_23_piece0 in memory on 10.141.0.23:47687 (size: 3.9 KB, free: 10.3 GB)
+2016-02-22 21:46:21,023 [dag-scheduler-event-loop] INFO [SparkContext (logInfo(58))] Created broadcast 23 from broadcast at DAGScheduler.scala:1010
+2016-02-22 21:46:21,023 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting 2 missing tasks from ShuffleMapStage 150 (ReplicatedVertexView.updateVertices - shippedVerts true true (broadcast) MapPartitionsRDD[100] at mapPartitions at VertexRDDImpl.scala:247)
+2016-02-22 21:46:21,023 [dag-scheduler-event-loop] INFO [YarnScheduler (logInfo(58))] Adding task set 150.0 with 2 tasks
+2016-02-22 21:46:21,024 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting ShuffleMapStage 166 (ReplicatedVertexView.withActiveSet - shippedActives (broadcast) MapPartitionsRDD[104] at mapPartitions at VertexRDDImpl.scala:251), which has no missing parents
+2016-02-22 21:46:21,024 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:StartTime InfoValue:1456173981024 ActorType:Scheduler ActorId:166 MissionType:Stage MissionId:166 Timestamp:1456173981024 Extra:None
+2016-02-22 21:46:21,025 [dispatcher-event-loop-29] INFO [TaskSetManager (logInfo(58))] Starting task 0.0 in stage 150.0 (TID 42, node324.cm.cluster, partition 0,PROCESS_LOCAL, 2390 bytes)
+2016-02-22 21:46:21,026 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_24 stored as values in memory (estimated size 8.3 KB, free 576.6 KB)
+2016-02-22 21:46:21,028 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_24_piece0 stored as bytes in memory (estimated size 3.8 KB, free 580.4 KB)
+2016-02-22 21:46:21,029 [dispatcher-event-loop-30] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_24_piece0 in memory on 10.141.0.23:47687 (size: 3.8 KB, free: 10.3 GB)
+2016-02-22 21:46:21,029 [dag-scheduler-event-loop] INFO [SparkContext (logInfo(58))] Created broadcast 24 from broadcast at DAGScheduler.scala:1010
+2016-02-22 21:46:21,029 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting 2 missing tasks from ShuffleMapStage 166 (ReplicatedVertexView.withActiveSet - shippedActives (broadcast) MapPartitionsRDD[104] at mapPartitions at VertexRDDImpl.scala:251)
+2016-02-22 21:46:21,029 [dag-scheduler-event-loop] INFO [YarnScheduler (logInfo(58))] Adding task set 166.0 with 2 tasks
+2016-02-22 21:46:21,034 [dispatcher-event-loop-31] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_23_piece0 in memory on node324.cm.cluster:52317 (size: 3.9 KB, free: 34.1 GB)
+2016-02-22 21:46:21,044 [dispatcher-event-loop-1] INFO [BlockManagerInfo (logInfo(58))] Added rdd_96_0 in memory on node324.cm.cluster:52317 (size: 1605.0 KB, free: 34.1 GB)
+2016-02-22 21:46:21,100 [dispatcher-event-loop-2] INFO [TaskSetManager (logInfo(58))] Starting task 1.0 in stage 150.0 (TID 43, node324.cm.cluster, partition 1,PROCESS_LOCAL, 2390 bytes)
+2016-02-22 21:46:21,103 [task-result-getter-2] INFO [TaskSetManager (logInfo(58))] Finished task 0.0 in stage 150.0 (TID 42) in 79 ms on node324.cm.cluster (1/2)
+2016-02-22 21:46:21,112 [dispatcher-event-loop-7] INFO [BlockManagerInfo (logInfo(58))] Added rdd_96_1 in memory on node324.cm.cluster:52317 (size: 1614.9 KB, free: 34.1 GB)
+2016-02-22 21:46:21,136 [dispatcher-event-loop-4] INFO [TaskSetManager (logInfo(58))] Starting task 0.0 in stage 166.0 (TID 44, node324.cm.cluster, partition 0,PROCESS_LOCAL, 2326 bytes)
+2016-02-22 21:46:21,139 [task-result-getter-3] INFO [TaskSetManager (logInfo(58))] Finished task 1.0 in stage 150.0 (TID 43) in 39 ms on node324.cm.cluster (2/2)
+2016-02-22 21:46:21,140 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] ShuffleMapStage 150 (mapPartitions at VertexRDDImpl.scala:247) finished in 0.115 s
+2016-02-22 21:46:21,140 [task-result-getter-3] INFO [YarnScheduler (logInfo(58))] Removed TaskSet 150.0, whose tasks have all completed, from pool 
+2016-02-22 21:46:21,140 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:EndTime InfoValue:1456173981140 ActorType:Scheduler ActorId:150 MissionType:Stage MissionId:150 Timestamp:1456173981140 Extra:None
+2016-02-22 21:46:21,140 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] looking for newly runnable stages
+2016-02-22 21:46:21,140 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] running: Set(ShuffleMapStage 166)
+2016-02-22 21:46:21,140 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] waiting: Set(ResultStage 168, ShuffleMapStage 167)
+2016-02-22 21:46:21,140 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] failed: Set()
+2016-02-22 21:46:21,146 [dispatcher-event-loop-19] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_24_piece0 in memory on node324.cm.cluster:52317 (size: 3.8 KB, free: 34.1 GB)
+2016-02-22 21:46:21,180 [dispatcher-event-loop-20] INFO [TaskSetManager (logInfo(58))] Starting task 1.0 in stage 166.0 (TID 45, node324.cm.cluster, partition 1,PROCESS_LOCAL, 2326 bytes)
+2016-02-22 21:46:21,183 [task-result-getter-0] INFO [TaskSetManager (logInfo(58))] Finished task 0.0 in stage 166.0 (TID 44) in 46 ms on node324.cm.cluster (1/2)
+2016-02-22 21:46:21,204 [task-result-getter-1] INFO [TaskSetManager (logInfo(58))] Finished task 1.0 in stage 166.0 (TID 45) in 24 ms on node324.cm.cluster (2/2)
+2016-02-22 21:46:21,204 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] ShuffleMapStage 166 (mapPartitions at VertexRDDImpl.scala:251) finished in 0.174 s
+2016-02-22 21:46:21,204 [task-result-getter-1] INFO [YarnScheduler (logInfo(58))] Removed TaskSet 166.0, whose tasks have all completed, from pool 
+2016-02-22 21:46:21,205 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:EndTime InfoValue:1456173981205 ActorType:Scheduler ActorId:166 MissionType:Stage MissionId:166 Timestamp:1456173981205 Extra:None
+2016-02-22 21:46:21,205 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] looking for newly runnable stages
+2016-02-22 21:46:21,205 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] running: Set()
+2016-02-22 21:46:21,205 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] waiting: Set(ResultStage 168, ShuffleMapStage 167)
+2016-02-22 21:46:21,205 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] failed: Set()
+2016-02-22 21:46:21,206 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting ShuffleMapStage 167 (GraphImpl.aggregateMessages - preAgg MapPartitionsRDD[108] at mapPartitions at GraphImpl.scala:235), which has no missing parents
+2016-02-22 21:46:21,207 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:StartTime InfoValue:1456173981207 ActorType:Scheduler ActorId:167 MissionType:Stage MissionId:167 Timestamp:1456173981207 Extra:None
+2016-02-22 21:46:21,209 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_25 stored as values in memory (estimated size 9.6 KB, free 590.0 KB)
+2016-02-22 21:46:21,213 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_25_piece0 stored as bytes in memory (estimated size 4.5 KB, free 594.5 KB)
+2016-02-22 21:46:21,213 [dispatcher-event-loop-16] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_25_piece0 in memory on 10.141.0.23:47687 (size: 4.5 KB, free: 10.3 GB)
+2016-02-22 21:46:21,213 [dag-scheduler-event-loop] INFO [SparkContext (logInfo(58))] Created broadcast 25 from broadcast at DAGScheduler.scala:1010
+2016-02-22 21:46:21,214 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting 2 missing tasks from ShuffleMapStage 167 (GraphImpl.aggregateMessages - preAgg MapPartitionsRDD[108] at mapPartitions at GraphImpl.scala:235)
+2016-02-22 21:46:21,214 [dag-scheduler-event-loop] INFO [YarnScheduler (logInfo(58))] Adding task set 167.0 with 2 tasks
+2016-02-22 21:46:21,215 [dispatcher-event-loop-18] INFO [TaskSetManager (logInfo(58))] Starting task 0.0 in stage 167.0 (TID 46, node324.cm.cluster, partition 0,PROCESS_LOCAL, 2698 bytes)
+2016-02-22 21:46:21,224 [dispatcher-event-loop-26] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_25_piece0 in memory on node324.cm.cluster:52317 (size: 4.5 KB, free: 34.1 GB)
+2016-02-22 21:46:21,230 [dispatcher-event-loop-28] INFO [MapOutputTrackerMasterEndpoint (logInfo(58))] Asked to send map output locations for shuffle 15 to node324.cm.cluster:45480
+2016-02-22 21:46:21,231 [dispatcher-event-loop-28] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 15 is 155 bytes
+2016-02-22 21:46:21,242 [dispatcher-event-loop-25] INFO [BlockManagerInfo (logInfo(58))] Added rdd_102_0 in memory on node324.cm.cluster:52317 (size: 40.1 MB, free: 34.1 GB)
+2016-02-22 21:46:21,244 [dispatcher-event-loop-30] INFO [MapOutputTrackerMasterEndpoint (logInfo(58))] Asked to send map output locations for shuffle 16 to node324.cm.cluster:45480
+2016-02-22 21:46:21,244 [dispatcher-event-loop-30] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 16 is 155 bytes
+2016-02-22 21:46:21,453 [dispatcher-event-loop-22] INFO [TaskSetManager (logInfo(58))] Starting task 1.0 in stage 167.0 (TID 47, node324.cm.cluster, partition 1,PROCESS_LOCAL, 2698 bytes)
+2016-02-22 21:46:21,455 [task-result-getter-2] INFO [TaskSetManager (logInfo(58))] Finished task 0.0 in stage 167.0 (TID 46) in 240 ms on node324.cm.cluster (1/2)
+2016-02-22 21:46:21,466 [dispatcher-event-loop-1] INFO [BlockManagerInfo (logInfo(58))] Added rdd_102_1 in memory on node324.cm.cluster:52317 (size: 38.1 MB, free: 34.0 GB)
+2016-02-22 21:46:21,625 [task-result-getter-3] INFO [TaskSetManager (logInfo(58))] Finished task 1.0 in stage 167.0 (TID 47) in 173 ms on node324.cm.cluster (2/2)
+2016-02-22 21:46:21,625 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] ShuffleMapStage 167 (mapPartitions at GraphImpl.scala:235) finished in 0.410 s
+2016-02-22 21:46:21,625 [task-result-getter-3] INFO [YarnScheduler (logInfo(58))] Removed TaskSet 167.0, whose tasks have all completed, from pool 
+2016-02-22 21:46:21,625 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:EndTime InfoValue:1456173981625 ActorType:Scheduler ActorId:167 MissionType:Stage MissionId:167 Timestamp:1456173981625 Extra:None
+2016-02-22 21:46:21,625 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] looking for newly runnable stages
+2016-02-22 21:46:21,626 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] running: Set()
+2016-02-22 21:46:21,626 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] waiting: Set(ResultStage 168)
+2016-02-22 21:46:21,626 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] failed: Set()
+2016-02-22 21:46:21,627 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting ResultStage 168 (MapPartitionsRDD[112] at map at VertexRDDImpl.scala:90), which has no missing parents
+2016-02-22 21:46:21,627 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:StartTime InfoValue:1456173981627 ActorType:Scheduler ActorId:168 MissionType:Stage MissionId:168 Timestamp:1456173981627 Extra:None
+2016-02-22 21:46:21,629 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_26 stored as values in memory (estimated size 8.9 KB, free 603.5 KB)
+2016-02-22 21:46:21,632 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_26_piece0 stored as bytes in memory (estimated size 4.0 KB, free 607.4 KB)
+2016-02-22 21:46:21,633 [dispatcher-event-loop-7] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_26_piece0 in memory on 10.141.0.23:47687 (size: 4.0 KB, free: 10.3 GB)
+2016-02-22 21:46:21,633 [dag-scheduler-event-loop] INFO [SparkContext (logInfo(58))] Created broadcast 26 from broadcast at DAGScheduler.scala:1010
+2016-02-22 21:46:21,634 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting 2 missing tasks from ResultStage 168 (MapPartitionsRDD[112] at map at VertexRDDImpl.scala:90)
+2016-02-22 21:46:21,634 [dag-scheduler-event-loop] INFO [YarnScheduler (logInfo(58))] Adding task set 168.0 with 2 tasks
+2016-02-22 21:46:21,635 [dispatcher-event-loop-4] INFO [TaskSetManager (logInfo(58))] Starting task 0.0 in stage 168.0 (TID 48, node324.cm.cluster, partition 0,PROCESS_LOCAL, 2410 bytes)
+2016-02-22 21:46:21,651 [dispatcher-event-loop-11] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_26_piece0 in memory on node324.cm.cluster:52317 (size: 4.0 KB, free: 34.0 GB)
+2016-02-22 21:46:21,658 [dispatcher-event-loop-13] INFO [MapOutputTrackerMasterEndpoint (logInfo(58))] Asked to send map output locations for shuffle 17 to node324.cm.cluster:45480
+2016-02-22 21:46:21,659 [dispatcher-event-loop-13] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 17 is 159 bytes
+2016-02-22 21:46:21,663 [dispatcher-event-loop-5] INFO [BlockManagerInfo (logInfo(58))] Added rdd_110_0 in memory on node324.cm.cluster:52317 (size: 1613.0 KB, free: 34.0 GB)
+2016-02-22 21:46:21,667 [dispatcher-event-loop-19] INFO [TaskSetManager (logInfo(58))] Starting task 1.0 in stage 168.0 (TID 49, node324.cm.cluster, partition 1,PROCESS_LOCAL, 2410 bytes)
+2016-02-22 21:46:21,669 [task-result-getter-0] INFO [TaskSetManager (logInfo(58))] Finished task 0.0 in stage 168.0 (TID 48) in 34 ms on node324.cm.cluster (1/2)
+2016-02-22 21:46:21,675 [dispatcher-event-loop-14] INFO [BlockManagerInfo (logInfo(58))] Added rdd_110_1 in memory on node324.cm.cluster:52317 (size: 1623.0 KB, free: 34.0 GB)
+2016-02-22 21:46:21,680 [task-result-getter-1] INFO [TaskSetManager (logInfo(58))] Finished task 1.0 in stage 168.0 (TID 49) in 13 ms on node324.cm.cluster (2/2)
+2016-02-22 21:46:21,680 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] ResultStage 168 (reduce at VertexRDDImpl.scala:90) finished in 0.046 s
+2016-02-22 21:46:21,680 [task-result-getter-1] INFO [YarnScheduler (logInfo(58))] Removed TaskSet 168.0, whose tasks have all completed, from pool 
+2016-02-22 21:46:21,681 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:EndTime InfoValue:1456173981681 ActorType:Scheduler ActorId:168 MissionType:Stage MissionId:168 Timestamp:1456173981681 Extra:None
+2016-02-22 21:46:21,682 [main] INFO [DAGScheduler (logInfo(58))] Job 6 finished: reduce at VertexRDDImpl.scala:90, took 0.695753 s
+2016-02-22 21:46:21,685 [main] INFO [Pregel (logInfo(58))] Pregel finished iteration 3
+2016-02-22 21:46:21,685 [main] INFO [ZippedPartitionsRDD2 (logInfo(58))] Removing RDD 93 from persistence list
+2016-02-22 21:46:21,686 [block-manager-slave-async-thread-pool-1] INFO [BlockManager (logInfo(58))] Removing RDD 93
+2016-02-22 21:46:21,686 [main] INFO [ZippedPartitionsRDD2 (logInfo(58))] Removing RDD 79 from persistence list
+2016-02-22 21:46:21,687 [block-manager-slave-async-thread-pool-0] INFO [BlockManager (logInfo(58))] Removing RDD 79
+2016-02-22 21:46:21,687 [main] INFO [ZippedPartitionsRDD2 (logInfo(58))] Removing RDD 85 from persistence list
+2016-02-22 21:46:21,688 [block-manager-slave-async-thread-pool-1] INFO [BlockManager (logInfo(58))] Removing RDD 85
+2016-02-22 21:46:21,711 [main] INFO [SparkContext (logInfo(58))] Starting job: reduce at VertexRDDImpl.scala:90
+2016-02-22 21:46:21,712 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 1 is 156 bytes
+2016-02-22 21:46:21,713 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 0 is 159 bytes
+2016-02-22 21:46:21,714 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 2 is 156 bytes
+2016-02-22 21:46:21,715 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 3 is 156 bytes
+2016-02-22 21:46:21,716 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 4 is 159 bytes
+2016-02-22 21:46:21,717 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 5 is 158 bytes
+2016-02-22 21:46:21,718 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 6 is 159 bytes
+2016-02-22 21:46:21,721 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 7 is 159 bytes
+2016-02-22 21:46:21,722 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 8 is 159 bytes
+2016-02-22 21:46:21,723 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 9 is 156 bytes
+2016-02-22 21:46:21,726 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 10 is 156 bytes
+2016-02-22 21:46:21,727 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 11 is 159 bytes
+2016-02-22 21:46:21,728 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 12 is 156 bytes
+2016-02-22 21:46:21,732 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 13 is 156 bytes
+2016-02-22 21:46:21,733 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 14 is 155 bytes
+2016-02-22 21:46:21,733 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 15 is 155 bytes
+2016-02-22 21:46:21,738 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 16 is 155 bytes
+2016-02-22 21:46:21,739 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Registering RDD 117 (mapPartitions at VertexRDDImpl.scala:247)
+2016-02-22 21:46:21,745 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Registering RDD 121 (mapPartitions at VertexRDDImpl.scala:251)
+2016-02-22 21:46:21,746 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Registering RDD 125 (mapPartitions at GraphImpl.scala:235)
+2016-02-22 21:46:21,746 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Got job 7 (reduce at VertexRDDImpl.scala:90) with 2 output partitions
+2016-02-22 21:46:21,746 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Final stage: ResultStage 252 (reduce at VertexRDDImpl.scala:90)
+2016-02-22 21:46:21,746 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Parents of final stage: List(ShuffleMapStage 251, ShuffleMapStage 249, ShuffleMapStage 241, ShuffleMapStage 238, ShuffleMapStage 245, ShuffleMapStage 239, ShuffleMapStage 243, ShuffleMapStage 247)
+2016-02-22 21:46:21,747 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Missing parents: List(ShuffleMapStage 251)
+2016-02-22 21:46:21,748 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting ShuffleMapStage 231 (ReplicatedVertexView.updateVertices - shippedVerts true true (broadcast) MapPartitionsRDD[117] at mapPartitions at VertexRDDImpl.scala:247), which has no missing parents
+2016-02-22 21:46:21,748 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:StartTime InfoValue:1456173981748 ActorType:Scheduler ActorId:231 MissionType:Stage MissionId:231 Timestamp:1456173981748 Extra:None
+2016-02-22 21:46:21,751 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_27 stored as values in memory (estimated size 9.1 KB, free 616.5 KB)
+2016-02-22 21:46:21,756 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_27_piece0 stored as bytes in memory (estimated size 4.0 KB, free 620.5 KB)
+2016-02-22 21:46:21,756 [dispatcher-event-loop-22] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_27_piece0 in memory on 10.141.0.23:47687 (size: 4.0 KB, free: 10.3 GB)
+2016-02-22 21:46:21,756 [dag-scheduler-event-loop] INFO [SparkContext (logInfo(58))] Created broadcast 27 from broadcast at DAGScheduler.scala:1010
+2016-02-22 21:46:21,757 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting 2 missing tasks from ShuffleMapStage 231 (ReplicatedVertexView.updateVertices - shippedVerts true true (broadcast) MapPartitionsRDD[117] at mapPartitions at VertexRDDImpl.scala:247)
+2016-02-22 21:46:21,757 [dag-scheduler-event-loop] INFO [YarnScheduler (logInfo(58))] Adding task set 231.0 with 2 tasks
+2016-02-22 21:46:21,758 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting ShuffleMapStage 250 (ReplicatedVertexView.withActiveSet - shippedActives (broadcast) MapPartitionsRDD[121] at mapPartitions at VertexRDDImpl.scala:251), which has no missing parents
+2016-02-22 21:46:21,758 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:StartTime InfoValue:1456173981758 ActorType:Scheduler ActorId:250 MissionType:Stage MissionId:250 Timestamp:1456173981758 Extra:None
+2016-02-22 21:46:21,758 [dispatcher-event-loop-31] INFO [TaskSetManager (logInfo(58))] Starting task 0.0 in stage 231.0 (TID 50, node324.cm.cluster, partition 0,PROCESS_LOCAL, 2463 bytes)
+2016-02-22 21:46:21,759 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_28 stored as values in memory (estimated size 8.7 KB, free 629.2 KB)
+2016-02-22 21:46:21,762 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_28_piece0 stored as bytes in memory (estimated size 3.9 KB, free 633.1 KB)
+2016-02-22 21:46:21,762 [dispatcher-event-loop-1] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_28_piece0 in memory on 10.141.0.23:47687 (size: 3.9 KB, free: 10.3 GB)
+2016-02-22 21:46:21,763 [dag-scheduler-event-loop] INFO [SparkContext (logInfo(58))] Created broadcast 28 from broadcast at DAGScheduler.scala:1010
+2016-02-22 21:46:21,763 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting 2 missing tasks from ShuffleMapStage 250 (ReplicatedVertexView.withActiveSet - shippedActives (broadcast) MapPartitionsRDD[121] at mapPartitions at VertexRDDImpl.scala:251)
+2016-02-22 21:46:21,763 [dag-scheduler-event-loop] INFO [YarnScheduler (logInfo(58))] Adding task set 250.0 with 2 tasks
+2016-02-22 21:46:21,768 [dispatcher-event-loop-6] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_27_piece0 in memory on node324.cm.cluster:52317 (size: 4.0 KB, free: 34.1 GB)
+2016-02-22 21:46:21,777 [dispatcher-event-loop-4] INFO [BlockManagerInfo (logInfo(58))] Added rdd_113_0 in memory on node324.cm.cluster:52317 (size: 1605.0 KB, free: 34.1 GB)
+2016-02-22 21:46:21,796 [dispatcher-event-loop-9] INFO [TaskSetManager (logInfo(58))] Starting task 1.0 in stage 231.0 (TID 51, node324.cm.cluster, partition 1,PROCESS_LOCAL, 2463 bytes)
+2016-02-22 21:46:21,798 [task-result-getter-2] INFO [TaskSetManager (logInfo(58))] Finished task 0.0 in stage 231.0 (TID 50) in 40 ms on node324.cm.cluster (1/2)
+2016-02-22 21:46:21,805 [dispatcher-event-loop-10] INFO [BlockManagerInfo (logInfo(58))] Added rdd_113_1 in memory on node324.cm.cluster:52317 (size: 1614.9 KB, free: 34.1 GB)
+2016-02-22 21:46:21,823 [dispatcher-event-loop-13] INFO [TaskSetManager (logInfo(58))] Starting task 0.0 in stage 250.0 (TID 52, node324.cm.cluster, partition 0,PROCESS_LOCAL, 2399 bytes)
+2016-02-22 21:46:21,826 [task-result-getter-3] INFO [TaskSetManager (logInfo(58))] Finished task 1.0 in stage 231.0 (TID 51) in 30 ms on node324.cm.cluster (2/2)
+2016-02-22 21:46:21,826 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] ShuffleMapStage 231 (mapPartitions at VertexRDDImpl.scala:247) finished in 0.069 s
+2016-02-22 21:46:21,826 [task-result-getter-3] INFO [YarnScheduler (logInfo(58))] Removed TaskSet 231.0, whose tasks have all completed, from pool 
+2016-02-22 21:46:21,826 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:EndTime InfoValue:1456173981826 ActorType:Scheduler ActorId:231 MissionType:Stage MissionId:231 Timestamp:1456173981826 Extra:None
+2016-02-22 21:46:21,826 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] looking for newly runnable stages
+2016-02-22 21:46:21,827 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] running: Set(ShuffleMapStage 250)
+2016-02-22 21:46:21,827 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] waiting: Set(ShuffleMapStage 251, ResultStage 252)
+2016-02-22 21:46:21,827 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] failed: Set()
+2016-02-22 21:46:21,831 [dispatcher-event-loop-21] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_28_piece0 in memory on node324.cm.cluster:52317 (size: 3.9 KB, free: 34.1 GB)
+2016-02-22 21:46:21,851 [dispatcher-event-loop-15] INFO [TaskSetManager (logInfo(58))] Starting task 1.0 in stage 250.0 (TID 53, node324.cm.cluster, partition 1,PROCESS_LOCAL, 2399 bytes)
+2016-02-22 21:46:21,853 [task-result-getter-0] INFO [TaskSetManager (logInfo(58))] Finished task 0.0 in stage 250.0 (TID 52) in 30 ms on node324.cm.cluster (1/2)
+2016-02-22 21:46:21,896 [task-result-getter-1] INFO [TaskSetManager (logInfo(58))] Finished task 1.0 in stage 250.0 (TID 53) in 45 ms on node324.cm.cluster (2/2)
+2016-02-22 21:46:21,896 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] ShuffleMapStage 250 (mapPartitions at VertexRDDImpl.scala:251) finished in 0.132 s
+2016-02-22 21:46:21,896 [task-result-getter-1] INFO [YarnScheduler (logInfo(58))] Removed TaskSet 250.0, whose tasks have all completed, from pool 
+2016-02-22 21:46:21,896 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:EndTime InfoValue:1456173981896 ActorType:Scheduler ActorId:250 MissionType:Stage MissionId:250 Timestamp:1456173981896 Extra:None
+2016-02-22 21:46:21,896 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] looking for newly runnable stages
+2016-02-22 21:46:21,897 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] running: Set()
+2016-02-22 21:46:21,897 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] waiting: Set(ShuffleMapStage 251, ResultStage 252)
+2016-02-22 21:46:21,897 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] failed: Set()
+2016-02-22 21:46:21,898 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting ShuffleMapStage 251 (GraphImpl.aggregateMessages - preAgg MapPartitionsRDD[125] at mapPartitions at GraphImpl.scala:235), which has no missing parents
+2016-02-22 21:46:21,898 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:StartTime InfoValue:1456173981898 ActorType:Scheduler ActorId:251 MissionType:Stage MissionId:251 Timestamp:1456173981898 Extra:None
+2016-02-22 21:46:21,900 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_29 stored as values in memory (estimated size 9.9 KB, free 643.0 KB)
+2016-02-22 21:46:21,903 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_29_piece0 stored as bytes in memory (estimated size 4.6 KB, free 647.5 KB)
+2016-02-22 21:46:21,904 [dispatcher-event-loop-27] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_29_piece0 in memory on 10.141.0.23:47687 (size: 4.6 KB, free: 10.3 GB)
+2016-02-22 21:46:21,904 [dag-scheduler-event-loop] INFO [SparkContext (logInfo(58))] Created broadcast 29 from broadcast at DAGScheduler.scala:1010
+2016-02-22 21:46:21,905 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting 2 missing tasks from ShuffleMapStage 251 (GraphImpl.aggregateMessages - preAgg MapPartitionsRDD[125] at mapPartitions at GraphImpl.scala:235)
+2016-02-22 21:46:21,905 [dag-scheduler-event-loop] INFO [YarnScheduler (logInfo(58))] Adding task set 251.0 with 2 tasks
+2016-02-22 21:46:21,906 [dispatcher-event-loop-26] INFO [TaskSetManager (logInfo(58))] Starting task 0.0 in stage 251.0 (TID 54, node324.cm.cluster, partition 0,PROCESS_LOCAL, 2739 bytes)
+2016-02-22 21:46:21,915 [dispatcher-event-loop-31] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_29_piece0 in memory on node324.cm.cluster:52317 (size: 4.6 KB, free: 34.1 GB)
+2016-02-22 21:46:21,922 [dispatcher-event-loop-2] INFO [MapOutputTrackerMasterEndpoint (logInfo(58))] Asked to send map output locations for shuffle 18 to node324.cm.cluster:45480
+2016-02-22 21:46:21,922 [dispatcher-event-loop-2] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 18 is 159 bytes
+2016-02-22 21:46:21,930 [dispatcher-event-loop-1] INFO [BlockManagerInfo (logInfo(58))] Added rdd_119_0 in memory on node324.cm.cluster:52317 (size: 40.1 MB, free: 34.1 GB)
+2016-02-22 21:46:21,932 [dispatcher-event-loop-3] INFO [MapOutputTrackerMasterEndpoint (logInfo(58))] Asked to send map output locations for shuffle 19 to node324.cm.cluster:45480
+2016-02-22 21:46:21,932 [dispatcher-event-loop-3] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 19 is 159 bytes
+2016-02-22 21:46:22,079 [dispatcher-event-loop-6] INFO [TaskSetManager (logInfo(58))] Starting task 1.0 in stage 251.0 (TID 55, node324.cm.cluster, partition 1,PROCESS_LOCAL, 2739 bytes)
+2016-02-22 21:46:22,081 [task-result-getter-2] INFO [TaskSetManager (logInfo(58))] Finished task 0.0 in stage 251.0 (TID 54) in 175 ms on node324.cm.cluster (1/2)
+2016-02-22 21:46:22,088 [dispatcher-event-loop-9] INFO [BlockManagerInfo (logInfo(58))] Added rdd_119_1 in memory on node324.cm.cluster:52317 (size: 38.1 MB, free: 34.0 GB)
+2016-02-22 21:46:22,248 [task-result-getter-3] INFO [TaskSetManager (logInfo(58))] Finished task 1.0 in stage 251.0 (TID 55) in 170 ms on node324.cm.cluster (2/2)
+2016-02-22 21:46:22,248 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] ShuffleMapStage 251 (mapPartitions at GraphImpl.scala:235) finished in 0.343 s
+2016-02-22 21:46:22,248 [task-result-getter-3] INFO [YarnScheduler (logInfo(58))] Removed TaskSet 251.0, whose tasks have all completed, from pool 
+2016-02-22 21:46:22,248 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:EndTime InfoValue:1456173982248 ActorType:Scheduler ActorId:251 MissionType:Stage MissionId:251 Timestamp:1456173982248 Extra:None
+2016-02-22 21:46:22,248 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] looking for newly runnable stages
+2016-02-22 21:46:22,248 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] running: Set()
+2016-02-22 21:46:22,249 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] waiting: Set(ResultStage 252)
+2016-02-22 21:46:22,249 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] failed: Set()
+2016-02-22 21:46:22,249 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting ResultStage 252 (MapPartitionsRDD[129] at map at VertexRDDImpl.scala:90), which has no missing parents
+2016-02-22 21:46:22,250 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:StartTime InfoValue:1456173982249 ActorType:Scheduler ActorId:252 MissionType:Stage MissionId:252 Timestamp:1456173982250 Extra:None
+2016-02-22 21:46:22,251 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_30 stored as values in memory (estimated size 9.4 KB, free 656.9 KB)
+2016-02-22 21:46:22,255 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_30_piece0 stored as bytes in memory (estimated size 4.0 KB, free 661.0 KB)
+2016-02-22 21:46:22,255 [dispatcher-event-loop-13] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_30_piece0 in memory on 10.141.0.23:47687 (size: 4.0 KB, free: 10.3 GB)
+2016-02-22 21:46:22,256 [dag-scheduler-event-loop] INFO [SparkContext (logInfo(58))] Created broadcast 30 from broadcast at DAGScheduler.scala:1010
+2016-02-22 21:46:22,256 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting 2 missing tasks from ResultStage 252 (MapPartitionsRDD[129] at map at VertexRDDImpl.scala:90)
+2016-02-22 21:46:22,256 [dag-scheduler-event-loop] INFO [YarnScheduler (logInfo(58))] Adding task set 252.0 with 2 tasks
+2016-02-22 21:46:22,257 [dispatcher-event-loop-5] INFO [TaskSetManager (logInfo(58))] Starting task 0.0 in stage 252.0 (TID 56, node324.cm.cluster, partition 0,PROCESS_LOCAL, 2483 bytes)
+2016-02-22 21:46:22,265 [dispatcher-event-loop-12] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_30_piece0 in memory on node324.cm.cluster:52317 (size: 4.0 KB, free: 34.0 GB)
+2016-02-22 21:46:22,270 [dispatcher-event-loop-17] INFO [MapOutputTrackerMasterEndpoint (logInfo(58))] Asked to send map output locations for shuffle 20 to node324.cm.cluster:45480
+2016-02-22 21:46:22,271 [dispatcher-event-loop-17] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 20 is 155 bytes
+2016-02-22 21:46:22,274 [dispatcher-event-loop-21] INFO [BlockManagerInfo (logInfo(58))] Added rdd_127_0 in memory on node324.cm.cluster:52317 (size: 1613.0 KB, free: 34.0 GB)
+2016-02-22 21:46:22,278 [dispatcher-event-loop-15] INFO [TaskSetManager (logInfo(58))] Starting task 1.0 in stage 252.0 (TID 57, node324.cm.cluster, partition 1,PROCESS_LOCAL, 2483 bytes)
+2016-02-22 21:46:22,280 [task-result-getter-0] INFO [TaskSetManager (logInfo(58))] Finished task 0.0 in stage 252.0 (TID 56) in 23 ms on node324.cm.cluster (1/2)
+2016-02-22 21:46:22,284 [dispatcher-event-loop-23] INFO [BlockManagerInfo (logInfo(58))] Added rdd_127_1 in memory on node324.cm.cluster:52317 (size: 1623.0 KB, free: 34.0 GB)
+2016-02-22 21:46:22,289 [task-result-getter-1] INFO [TaskSetManager (logInfo(58))] Finished task 1.0 in stage 252.0 (TID 57) in 12 ms on node324.cm.cluster (2/2)
+2016-02-22 21:46:22,290 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] ResultStage 252 (reduce at VertexRDDImpl.scala:90) finished in 0.032 s
+2016-02-22 21:46:22,290 [task-result-getter-1] INFO [YarnScheduler (logInfo(58))] Removed TaskSet 252.0, whose tasks have all completed, from pool 
+2016-02-22 21:46:22,290 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:EndTime InfoValue:1456173982290 ActorType:Scheduler ActorId:252 MissionType:Stage MissionId:252 Timestamp:1456173982290 Extra:None
+2016-02-22 21:46:22,291 [main] INFO [DAGScheduler (logInfo(58))] Job 7 finished: reduce at VertexRDDImpl.scala:90, took 0.580661 s
+2016-02-22 21:46:22,295 [main] INFO [Pregel (logInfo(58))] Pregel finished iteration 4
+2016-02-22 21:46:22,295 [main] INFO [ZippedPartitionsRDD2 (logInfo(58))] Removing RDD 110 from persistence list
+2016-02-22 21:46:22,307 [block-manager-slave-async-thread-pool-0] INFO [BlockManager (logInfo(58))] Removing RDD 110
+2016-02-22 21:46:22,307 [main] INFO [ZippedPartitionsRDD2 (logInfo(58))] Removing RDD 96 from persistence list
+2016-02-22 21:46:22,308 [block-manager-slave-async-thread-pool-2] INFO [BlockManager (logInfo(58))] Removing RDD 96
+2016-02-22 21:46:22,308 [main] INFO [ZippedPartitionsRDD2 (logInfo(58))] Removing RDD 102 from persistence list
+2016-02-22 21:46:22,309 [block-manager-slave-async-thread-pool-1] INFO [BlockManager (logInfo(58))] Removing RDD 102
+2016-02-22 21:46:22,313 [main] INFO [SparkContext (logInfo(58))] Starting job: reduce at VertexRDDImpl.scala:90
+2016-02-22 21:46:22,315 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 1 is 156 bytes
+2016-02-22 21:46:22,316 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 0 is 159 bytes
+2016-02-22 21:46:22,317 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 2 is 156 bytes
+2016-02-22 21:46:22,317 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 3 is 156 bytes
+2016-02-22 21:46:22,319 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 4 is 159 bytes
+2016-02-22 21:46:22,320 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 5 is 158 bytes
+2016-02-22 21:46:22,321 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 6 is 159 bytes
+2016-02-22 21:46:22,324 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 7 is 159 bytes
+2016-02-22 21:46:22,324 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 8 is 159 bytes
+2016-02-22 21:46:22,325 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 9 is 156 bytes
+2016-02-22 21:46:22,328 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 10 is 156 bytes
+2016-02-22 21:46:22,329 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 11 is 159 bytes
+2016-02-22 21:46:22,331 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 12 is 156 bytes
+2016-02-22 21:46:22,335 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 13 is 156 bytes
+2016-02-22 21:46:22,335 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 14 is 155 bytes
+2016-02-22 21:46:22,336 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 15 is 155 bytes
+2016-02-22 21:46:22,339 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 16 is 155 bytes
+2016-02-22 21:46:22,340 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 17 is 159 bytes
+2016-02-22 21:46:22,340 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Got job 8 (reduce at VertexRDDImpl.scala:90) with 2 output partitions
+2016-02-22 21:46:22,340 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Final stage: ResultStage 315 (reduce at VertexRDDImpl.scala:90)
+2016-02-22 21:46:22,340 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Parents of final stage: List(ShuffleMapStage 306, ShuffleMapStage 303, ShuffleMapStage 310, ShuffleMapStage 304, ShuffleMapStage 314, ShuffleMapStage 308, ShuffleMapStage 312)
+2016-02-22 21:46:22,341 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Missing parents: List()
+2016-02-22 21:46:22,341 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting ResultStage 315 (MapPartitionsRDD[130] at map at VertexRDDImpl.scala:90), which has no missing parents
+2016-02-22 21:46:22,342 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:StartTime InfoValue:1456173982342 ActorType:Scheduler ActorId:315 MissionType:Stage MissionId:315 Timestamp:1456173982342 Extra:None
+2016-02-22 21:46:22,344 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_31 stored as values in memory (estimated size 9.1 KB, free 670.0 KB)
+2016-02-22 21:46:22,348 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_31_piece0 stored as bytes in memory (estimated size 4.0 KB, free 674.0 KB)
+2016-02-22 21:46:22,348 [dispatcher-event-loop-31] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_31_piece0 in memory on 10.141.0.23:47687 (size: 4.0 KB, free: 10.3 GB)
+2016-02-22 21:46:22,349 [dag-scheduler-event-loop] INFO [SparkContext (logInfo(58))] Created broadcast 31 from broadcast at DAGScheduler.scala:1010
+2016-02-22 21:46:22,349 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting 2 missing tasks from ResultStage 315 (MapPartitionsRDD[130] at map at VertexRDDImpl.scala:90)
+2016-02-22 21:46:22,349 [dag-scheduler-event-loop] INFO [YarnScheduler (logInfo(58))] Adding task set 315.0 with 2 tasks
+2016-02-22 21:46:22,350 [dispatcher-event-loop-0] INFO [TaskSetManager (logInfo(58))] Starting task 0.0 in stage 315.0 (TID 58, node324.cm.cluster, partition 0,PROCESS_LOCAL, 2442 bytes)
+2016-02-22 21:46:22,359 [dispatcher-event-loop-3] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_31_piece0 in memory on node324.cm.cluster:52317 (size: 4.0 KB, free: 34.1 GB)
+2016-02-22 21:46:22,366 [dispatcher-event-loop-6] INFO [TaskSetManager (logInfo(58))] Starting task 1.0 in stage 315.0 (TID 59, node324.cm.cluster, partition 1,PROCESS_LOCAL, 2442 bytes)
+2016-02-22 21:46:22,369 [task-result-getter-2] INFO [TaskSetManager (logInfo(58))] Finished task 0.0 in stage 315.0 (TID 58) in 19 ms on node324.cm.cluster (1/2)
+2016-02-22 21:46:22,374 [task-result-getter-3] INFO [TaskSetManager (logInfo(58))] Finished task 1.0 in stage 315.0 (TID 59) in 8 ms on node324.cm.cluster (2/2)
+2016-02-22 21:46:22,374 [task-result-getter-3] INFO [YarnScheduler (logInfo(58))] Removed TaskSet 315.0, whose tasks have all completed, from pool 
+2016-02-22 21:46:22,374 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] ResultStage 315 (reduce at VertexRDDImpl.scala:90) finished in 0.024 s
+2016-02-22 21:46:22,375 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:EndTime InfoValue:1456173982375 ActorType:Scheduler ActorId:315 MissionType:Stage MissionId:315 Timestamp:1456173982375 Extra:None
+2016-02-22 21:46:22,376 [main] INFO [DAGScheduler (logInfo(58))] Job 8 finished: reduce at VertexRDDImpl.scala:90, took 0.062301 s
+2016-02-22 21:46:22,379 [main] INFO [SparkContext (logInfo(58))] Starting job: reduce at EdgeRDDImpl.scala:89
+2016-02-22 21:46:22,391 [dag-scheduler-event-loop] INFO [MapOutputTrackerMaster (logInfo(58))] Size of output statuses for shuffle 18 is 159 bytes
+2016-02-22 21:46:22,391 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Got job 9 (reduce at EdgeRDDImpl.scala:89) with 2 output partitions
+2016-02-22 21:46:22,391 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Final stage: ResultStage 379 (reduce at EdgeRDDImpl.scala:89)
+2016-02-22 21:46:22,391 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Parents of final stage: List(ShuffleMapStage 368, ShuffleMapStage 361, ShuffleMapStage 365, ShuffleMapStage 362, ShuffleMapStage 363, ShuffleMapStage 378, ShuffleMapStage 360, ShuffleMapStage 364)
+2016-02-22 21:46:22,392 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Missing parents: List()
+2016-02-22 21:46:22,392 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting ResultStage 379 (MapPartitionsRDD[131] at map at EdgeRDDImpl.scala:89), which has no missing parents
+2016-02-22 21:46:22,392 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:StartTime InfoValue:1456173982392 ActorType:Scheduler ActorId:379 MissionType:Stage MissionId:379 Timestamp:1456173982392 Extra:None
+2016-02-22 21:46:22,394 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_32 stored as values in memory (estimated size 8.7 KB, free 682.7 KB)
+2016-02-22 21:46:22,397 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_32_piece0 stored as bytes in memory (estimated size 4.1 KB, free 686.8 KB)
+2016-02-22 21:46:22,398 [dispatcher-event-loop-8] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_32_piece0 in memory on 10.141.0.23:47687 (size: 4.1 KB, free: 10.3 GB)
+2016-02-22 21:46:22,398 [dag-scheduler-event-loop] INFO [SparkContext (logInfo(58))] Created broadcast 32 from broadcast at DAGScheduler.scala:1010
+2016-02-22 21:46:22,398 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting 2 missing tasks from ResultStage 379 (MapPartitionsRDD[131] at map at EdgeRDDImpl.scala:89)
+2016-02-22 21:46:22,399 [dag-scheduler-event-loop] INFO [YarnScheduler (logInfo(58))] Adding task set 379.0 with 2 tasks
+2016-02-22 21:46:22,400 [dispatcher-event-loop-11] INFO [TaskSetManager (logInfo(58))] Starting task 0.0 in stage 379.0 (TID 60, node324.cm.cluster, partition 0,PROCESS_LOCAL, 2709 bytes)
+2016-02-22 21:46:22,409 [dispatcher-event-loop-5] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_32_piece0 in memory on node324.cm.cluster:52317 (size: 4.1 KB, free: 34.1 GB)
+2016-02-22 21:46:22,417 [dispatcher-event-loop-19] INFO [TaskSetManager (logInfo(58))] Starting task 1.0 in stage 379.0 (TID 61, node324.cm.cluster, partition 1,PROCESS_LOCAL, 2709 bytes)
+2016-02-22 21:46:22,419 [task-result-getter-0] INFO [TaskSetManager (logInfo(58))] Finished task 0.0 in stage 379.0 (TID 60) in 20 ms on node324.cm.cluster (1/2)
+2016-02-22 21:46:22,425 [task-result-getter-1] INFO [TaskSetManager (logInfo(58))] Finished task 1.0 in stage 379.0 (TID 61) in 9 ms on node324.cm.cluster (2/2)
+2016-02-22 21:46:22,425 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] ResultStage 379 (reduce at EdgeRDDImpl.scala:89) finished in 0.026 s
+2016-02-22 21:46:22,425 [task-result-getter-1] INFO [YarnScheduler (logInfo(58))] Removed TaskSet 379.0, whose tasks have all completed, from pool 
+2016-02-22 21:46:22,425 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:EndTime InfoValue:1456173982425 ActorType:Scheduler ActorId:379 MissionType:Stage MissionId:379 Timestamp:1456173982425 Extra:None
+2016-02-22 21:46:22,426 [main] INFO [DAGScheduler (logInfo(58))] Job 9 finished: reduce at EdgeRDDImpl.scala:89, took 0.046489 s
+2016-02-22 21:46:22,427 [main] INFO [ZippedPartitionsRDD2 (logInfo(58))] Removing RDD 13 from persistence list
+2016-02-22 21:46:22,428 [block-manager-slave-async-thread-pool-7] INFO [BlockManager (logInfo(58))] Removing RDD 13
+2016-02-22 21:46:22,428 [main] INFO [MapPartitionsRDD (logInfo(58))] Removing RDD 16 from persistence list
+2016-02-22 21:46:22,428 [block-manager-slave-async-thread-pool-0] INFO [BlockManager (logInfo(58))] Removing RDD 16
+2016-02-22 21:46:22,456 [main] INFO [deprecation (warnOnceIfDeprecated(1009))] mapred.tip.id is deprecated. Instead, use mapreduce.task.id
+2016-02-22 21:46:22,456 [main] INFO [deprecation (warnOnceIfDeprecated(1009))] mapred.task.id is deprecated. Instead, use mapreduce.task.attempt.id
+2016-02-22 21:46:22,456 [main] INFO [deprecation (warnOnceIfDeprecated(1009))] mapred.task.is.map is deprecated. Instead, use mapreduce.task.ismap
+2016-02-22 21:46:22,456 [main] INFO [deprecation (warnOnceIfDeprecated(1009))] mapred.task.partition is deprecated. Instead, use mapreduce.task.partition
+2016-02-22 21:46:22,456 [main] INFO [deprecation (warnOnceIfDeprecated(1009))] mapred.job.id is deprecated. Instead, use mapreduce.job.id
+2016-02-22 21:46:22,494 [main] INFO [SparkContext (logInfo(58))] Starting job: saveAsTextFile at GraphXJobOutput.scala:34
+2016-02-22 21:46:22,506 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Got job 10 (saveAsTextFile at GraphXJobOutput.scala:34) with 2 output partitions
+2016-02-22 21:46:22,506 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Final stage: ResultStage 442 (saveAsTextFile at GraphXJobOutput.scala:34)
+2016-02-22 21:46:22,506 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Parents of final stage: List(ShuffleMapStage 437, ShuffleMapStage 441, ShuffleMapStage 430, ShuffleMapStage 431, ShuffleMapStage 435, ShuffleMapStage 439, ShuffleMapStage 433)
+2016-02-22 21:46:22,507 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Missing parents: List()
+2016-02-22 21:46:22,508 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting ResultStage 442 (MapPartitionsRDD[133] at saveAsTextFile at GraphXJobOutput.scala:34), which has no missing parents
+2016-02-22 21:46:22,508 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:StartTime InfoValue:1456173982508 ActorType:Scheduler ActorId:442 MissionType:Stage MissionId:442 Timestamp:1456173982508 Extra:None
+2016-02-22 21:46:22,557 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_33 stored as values in memory (estimated size 64.0 KB, free 750.8 KB)
+2016-02-22 21:46:22,561 [dag-scheduler-event-loop] INFO [MemoryStore (logInfo(58))] Block broadcast_33_piece0 stored as bytes in memory (estimated size 22.4 KB, free 773.2 KB)
+2016-02-22 21:46:22,562 [dispatcher-event-loop-18] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_33_piece0 in memory on 10.141.0.23:47687 (size: 22.4 KB, free: 10.3 GB)
+2016-02-22 21:46:22,562 [dag-scheduler-event-loop] INFO [SparkContext (logInfo(58))] Created broadcast 33 from broadcast at DAGScheduler.scala:1010
+2016-02-22 21:46:22,562 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] Submitting 2 missing tasks from ResultStage 442 (MapPartitionsRDD[133] at saveAsTextFile at GraphXJobOutput.scala:34)
+2016-02-22 21:46:22,562 [dag-scheduler-event-loop] INFO [YarnScheduler (logInfo(58))] Adding task set 442.0 with 2 tasks
+2016-02-22 21:46:22,564 [dispatcher-event-loop-29] INFO [TaskSetManager (logInfo(58))] Starting task 0.0 in stage 442.0 (TID 62, node324.cm.cluster, partition 0,PROCESS_LOCAL, 2442 bytes)
+2016-02-22 21:46:22,573 [dispatcher-event-loop-28] INFO [BlockManagerInfo (logInfo(58))] Added broadcast_33_piece0 in memory on node324.cm.cluster:52317 (size: 22.4 KB, free: 34.2 GB)
+2016-02-22 21:46:22,726 [dispatcher-event-loop-25] INFO [BlockManagerInfo (logInfo(58))] Added rdd_132_0 in memory on node324.cm.cluster:52317 (size: 3.3 MB, free: 34.2 GB)
+2016-02-22 21:46:22,940 [dispatcher-event-loop-31] INFO [TaskSetManager (logInfo(58))] Starting task 1.0 in stage 442.0 (TID 63, node324.cm.cluster, partition 1,PROCESS_LOCAL, 2442 bytes)
+2016-02-22 21:46:22,943 [task-result-getter-2] INFO [TaskSetManager (logInfo(58))] Finished task 0.0 in stage 442.0 (TID 62) in 380 ms on node324.cm.cluster (1/2)
+2016-02-22 21:46:23,002 [dispatcher-event-loop-1] INFO [BlockManagerInfo (logInfo(58))] Added rdd_132_1 in memory on node324.cm.cluster:52317 (size: 3.3 MB, free: 34.2 GB)
+2016-02-22 21:46:23,471 [task-result-getter-3] INFO [TaskSetManager (logInfo(58))] Finished task 1.0 in stage 442.0 (TID 63) in 531 ms on node324.cm.cluster (2/2)
+2016-02-22 21:46:23,471 [dag-scheduler-event-loop] INFO [DAGScheduler (logInfo(58))] ResultStage 442 (saveAsTextFile at GraphXJobOutput.scala:34) finished in 0.908 s
+2016-02-22 21:46:23,471 [task-result-getter-3] INFO [YarnScheduler (logInfo(58))] Removed TaskSet 442.0, whose tasks have all completed, from pool 
+2016-02-22 21:46:23,472 [dag-scheduler-event-loop] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:EndTime InfoValue:1456173983471 ActorType:Scheduler ActorId:442 MissionType:Stage MissionId:442 Timestamp:1456173983471 Extra:None
+2016-02-22 21:46:23,474 [main] INFO [DAGScheduler (logInfo(58))] Job 10 finished: saveAsTextFile at GraphXJobOutput.scala:34, took 0.980289 s
+2016-02-22 21:46:23,572 [main] INFO [ZippedPartitionsRDD2 (logInfo(58))] Removing RDD 113 from persistence list
+2016-02-22 21:46:23,575 [block-manager-slave-async-thread-pool-7] INFO [BlockManager (logInfo(58))] Removing RDD 113
+2016-02-22 21:46:23,576 [main] INFO [ZippedPartitionsRDD2 (logInfo(58))] Removing RDD 119 from persistence list
+2016-02-22 21:46:23,577 [block-manager-slave-async-thread-pool-0] INFO [BlockManager (logInfo(58))] Removing RDD 119
+2016-02-22 21:46:23,577 [main] INFO [MapPartitionsRDD (logInfo(58))] Removing RDD 132 from persistence list
+2016-02-22 21:46:23,578 [block-manager-slave-async-thread-pool-7] INFO [BlockManager (logInfo(58))] Removing RDD 132
+2016-02-22 21:46:23,671 [main] INFO [ContextHandler (doStop(843))] stopped o.s.j.s.ServletContextHandler{/metrics/json,null}
+2016-02-22 21:46:23,672 [main] INFO [ContextHandler (doStop(843))] stopped o.s.j.s.ServletContextHandler{/stages/stage/kill,null}
+2016-02-22 21:46:23,672 [main] INFO [ContextHandler (doStop(843))] stopped o.s.j.s.ServletContextHandler{/api,null}
+2016-02-22 21:46:23,673 [main] INFO [ContextHandler (doStop(843))] stopped o.s.j.s.ServletContextHandler{/,null}
+2016-02-22 21:46:23,674 [main] INFO [ContextHandler (doStop(843))] stopped o.s.j.s.ServletContextHandler{/static,null}
+2016-02-22 21:46:23,674 [main] INFO [ContextHandler (doStop(843))] stopped o.s.j.s.ServletContextHandler{/executors/threadDump/json,null}
+2016-02-22 21:46:23,675 [main] INFO [ContextHandler (doStop(843))] stopped o.s.j.s.ServletContextHandler{/executors/threadDump,null}
+2016-02-22 21:46:23,675 [main] INFO [ContextHandler (doStop(843))] stopped o.s.j.s.ServletContextHandler{/executors/json,null}
+2016-02-22 21:46:23,675 [main] INFO [ContextHandler (doStop(843))] stopped o.s.j.s.ServletContextHandler{/executors,null}
+2016-02-22 21:46:23,675 [main] INFO [ContextHandler (doStop(843))] stopped o.s.j.s.ServletContextHandler{/environment/json,null}
+2016-02-22 21:46:23,676 [main] INFO [ContextHandler (doStop(843))] stopped o.s.j.s.ServletContextHandler{/environment,null}
+2016-02-22 21:46:23,676 [main] INFO [ContextHandler (doStop(843))] stopped o.s.j.s.ServletContextHandler{/storage/rdd/json,null}
+2016-02-22 21:46:23,676 [main] INFO [ContextHandler (doStop(843))] stopped o.s.j.s.ServletContextHandler{/storage/rdd,null}
+2016-02-22 21:46:23,676 [main] INFO [ContextHandler (doStop(843))] stopped o.s.j.s.ServletContextHandler{/storage/json,null}
+2016-02-22 21:46:23,676 [main] INFO [ContextHandler (doStop(843))] stopped o.s.j.s.ServletContextHandler{/storage,null}
+2016-02-22 21:46:23,677 [main] INFO [ContextHandler (doStop(843))] stopped o.s.j.s.ServletContextHandler{/stages/pool/json,null}
+2016-02-22 21:46:23,677 [main] INFO [ContextHandler (doStop(843))] stopped o.s.j.s.ServletContextHandler{/stages/pool,null}
+2016-02-22 21:46:23,677 [main] INFO [ContextHandler (doStop(843))] stopped o.s.j.s.ServletContextHandler{/stages/stage/json,null}
+2016-02-22 21:46:23,677 [main] INFO [ContextHandler (doStop(843))] stopped o.s.j.s.ServletContextHandler{/stages/stage,null}
+2016-02-22 21:46:23,678 [main] INFO [ContextHandler (doStop(843))] stopped o.s.j.s.ServletContextHandler{/stages/json,null}
+2016-02-22 21:46:23,678 [main] INFO [ContextHandler (doStop(843))] stopped o.s.j.s.ServletContextHandler{/stages,null}
+2016-02-22 21:46:23,678 [main] INFO [ContextHandler (doStop(843))] stopped o.s.j.s.ServletContextHandler{/jobs/job/json,null}
+2016-02-22 21:46:23,678 [main] INFO [ContextHandler (doStop(843))] stopped o.s.j.s.ServletContextHandler{/jobs/job,null}
+2016-02-22 21:46:23,678 [main] INFO [ContextHandler (doStop(843))] stopped o.s.j.s.ServletContextHandler{/jobs/json,null}
+2016-02-22 21:46:23,679 [main] INFO [ContextHandler (doStop(843))] stopped o.s.j.s.ServletContextHandler{/jobs,null}
+2016-02-22 21:46:23,732 [main] INFO [SparkUI (logInfo(58))] Stopped Spark web UI at http://10.141.0.23:4040
+2016-02-22 21:46:23,739 [main] INFO [YarnClientSchedulerBackend (logInfo(58))] Shutting down all executors
+2016-02-22 21:46:23,739 [Yarn application state monitor] INFO [YarnClientSchedulerBackend (logInfo(58))] Interrupting monitor thread
+2016-02-22 21:46:23,740 [dispatcher-event-loop-10] INFO [YarnClientSchedulerBackend (logInfo(58))] Asking each executor to shut down
+2016-02-22 21:46:23,744 [main] INFO [YarnClientSchedulerBackend (logInfo(58))] Stopped
+2016-02-22 21:46:23,751 [dispatcher-event-loop-20] INFO [MapOutputTrackerMasterEndpoint (logInfo(58))] MapOutputTrackerMasterEndpoint stopped!
+2016-02-22 21:46:23,763 [main] INFO [MemoryStore (logInfo(58))] MemoryStore cleared
+2016-02-22 21:46:23,764 [main] INFO [BlockManager (logInfo(58))] BlockManager stopped
+2016-02-22 21:46:23,765 [main] INFO [BlockManagerMaster (logInfo(58))] BlockManagerMaster stopped
+2016-02-22 21:46:23,768 [dispatcher-event-loop-21] INFO [OutputCommitCoordinator$OutputCommitCoordinatorEndpoint (logInfo(58))] OutputCommitCoordinator stopped!
+2016-02-22 21:46:23,772 [main] INFO [GranulaLogger (logInfo(58))] GRANULA - InfoName:EndTime InfoValue:1456173983772 ActorType:SparkApp ActorId:Id.Unique MissionType:SparkJob MissionId:Id.Unique Timestamp:1456173983772 Extra:None
+2016-02-22 21:46:23,773 [main] INFO [SparkContext (logInfo(58))] Successfully stopped SparkContext
+2016-02-22 21:46:23,781 [sparkDriverActorSystem-akka.actor.default-dispatcher-3] INFO [RemoteActorRefProvider$RemotingTerminator (apply$mcV$sp(74))] Shutting down remote daemon.
+2016-02-22 21:46:23,783 [sparkDriverActorSystem-akka.actor.default-dispatcher-3] INFO [RemoteActorRefProvider$RemotingTerminator (apply$mcV$sp(74))] Remote daemon shut down; proceeding with flushing remote transports.
+2016-02-22 21:46:23,822 [sparkDriverActorSystem-akka.actor.default-dispatcher-3] INFO [RemoteActorRefProvider$RemotingTerminator (apply$mcV$sp(74))] Remoting shut down.

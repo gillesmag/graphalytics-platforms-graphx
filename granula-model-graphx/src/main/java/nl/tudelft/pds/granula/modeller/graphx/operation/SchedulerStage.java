@@ -31,7 +31,7 @@ public class SchedulerStage extends ConcreteOperationModel {
 
     public void loadRules() {
         super.loadRules();
-        addLinkingRule(new UniqueParentLinking(GraphXType.GraphX, GraphXType.ProcessGraph));
+        addLinkingRule(new UniqueParentLinking(GraphXType.SparkApp, GraphXType.SparkJob));
 
 
         addVisualDerivation(new MainInfoTableVisualization(1,

@@ -43,7 +43,7 @@ public class GraphX extends JobModel {
     public void loadRules() {
 
         addFillingRule(new UniqueOperationFilling(2, GraphXType.TopActor, GraphXType.TopMission));
-        addFillingRule(new UniqueOperationFilling(1, GraphXType.GraphX, GraphXType.ProcessGraph));
+//        addFillingRule(new UniqueOperationFilling(1, GraphXType.GraphX, GraphXType.ProcessGraph));
 
         addInfoDerivation(new JobNameDerivationRule(4));
         addExtraction(new GraphXExtractionRule(1));
