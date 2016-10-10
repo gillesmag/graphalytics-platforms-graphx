@@ -3,13 +3,14 @@
 
 	<groupId>nl.tudelft.graphalytics</groupId>
 	<artifactId>graphalytics-platforms-graphx</artifactId>
-	<version>0.1</version>
+	<version>0.2-SNAPSHOT</version>
+
 	<packaging>pom</packaging>
 
 	<name>Graphalytics Platform GraphX</name>
 
 	<properties>
-		<graphalytics.version>0.3</graphalytics.version>
+		<graphalytics.version>0.4-SNAPSHOT</graphalytics.version>
 	</properties>
 
 	<scm>
@@ -40,7 +41,6 @@
 				<activeByDefault>false</activeByDefault>
 			</activation>
 			<modules>
-				<module>granula-model-graphx</module>
 				<module>graphalytics-platforms-graphx-granula</module>
 			</modules>
 		</profile>

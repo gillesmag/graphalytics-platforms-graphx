@@ -3,14 +3,14 @@
 
 	<groupId>nl.tudelft.graphalytics</groupId>
 	<artifactId>graphalytics-platforms-graphx-platform</artifactId>
-	<version>0.1</version>
+	<version>0.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>Graphalytics Platform GraphX - Platform</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<graphalytics.version>0.3</graphalytics.version>
+		<graphalytics.version>0.4-SNAPSHOT</graphalytics.version>
 		<hadoop.version>2.4.1</hadoop.version>
 		<scala.version>2.10.4</scala.version>
 		<scalatest.version>2.2.4</scalatest.version>

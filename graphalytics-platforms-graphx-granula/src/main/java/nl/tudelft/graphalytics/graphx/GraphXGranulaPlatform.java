@@ -15,11 +15,11 @@
  */
 package nl.tudelft.graphalytics.graphx;
 
+import nl.tudelft.granula.modeller.job.JobModel;
+import nl.tudelft.granula.modeller.platform.GraphX;
+import nl.tudelft.graphalytics.domain.Benchmark;
 import nl.tudelft.graphalytics.granula.GranulaAwarePlatform;
-import nl.tudelft.graphalytics.granula.GranulaManager;
-import nl.tudelft.graphalytics.graphx.reporting.logging.GraphXLogger;
-import nl.tudelft.pds.granula.modeller.model.job.JobModel;
-import nl.tudelft.pds.granula.modeller.graphx.job.GraphX;
+
 import java.nio.file.Path;
 
 /**
@@ -27,28 +27,22 @@ import java.nio.file.Path;
  */
 public final class GraphXGranulaPlatform extends GraphXPlatform implements GranulaAwarePlatform {
 
-
 	@Override
-	public void setBenchmarkLogDirectory(Path logDirectory) {
+	public void preBenchmark(Benchmark benchmark, Path path) {
 		GraphXLogger.stopCoreLogging();
-		if(GranulaManager.isLoggingEnabled) {
-			GraphXLogger.startPlatformLogging(logDirectory.resolve("OperationLog").resolve("driver.logs"));
-		}
+		GraphXLogger.startPlatformLogging(path.resolve("platform").resolve("driver.logs"));
+
 	}
 
 	@Override
-	public void finalizeBenchmarkLogs(Path logDirectory) {
-		if(GranulaManager.isLoggingEnabled) {
-			GraphXLogger.collectYarnLogs(logDirectory);
-			GraphXLogger.collectUtilLog(null, null, 0, 0, logDirectory);
-			GraphXLogger.stopPlatformLogging();
-		}
+	public void postBenchmark(Benchmark benchmark, Path path) {
+		GraphXLogger.collectYarnLogs(path);
+		GraphXLogger.stopPlatformLogging();
 		GraphXLogger.startCoreLogging();
-
 	}
 
 	@Override
-	public JobModel getGranulaModel() {
-		return new GraphX();
+	public JobModel getJobModel() {
+		return new JobModel(new GraphX());
 	}
 }

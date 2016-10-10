@@ -103,7 +103,7 @@ class GraphXPlatform extends Platform {
 
 				if(benchmark.isOutputRequired){
 					val fs = FileSystem.get(new Configuration())
-					fs.copyToLocalFile(new Path(outPath), new Path(benchmark.getOutputPath))
+					fs.copyToLocalFile(false, new Path(outPath), new Path(benchmark.getOutputPath), true)
 					fs.close()
 				}
 
