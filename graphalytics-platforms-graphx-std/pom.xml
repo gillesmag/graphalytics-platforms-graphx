@@ -11,6 +11,7 @@
 		<graphalytics.version>0.3</graphalytics.version>
 		<hadoop.version>2.4.1</hadoop.version>
 		<scala.version>2.10.4</scala.version>
+		<scala.binary.version>2.10</scala.binary.version>
 		<scalatest.version>2.2.4</scalatest.version>
 		<spark.version>1.6.0</spark.version>
 		<log4j.version>2.0</log4j.version>
