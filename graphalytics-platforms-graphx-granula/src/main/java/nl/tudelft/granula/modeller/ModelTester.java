@@ -14,18 +14,18 @@ import java.nio.file.Paths;
  */
 public class ModelTester {
     public static void main(String[] args) {
-        String inputPath = "/home/wlngai/Workstation/Exec/Granula/debug/archiver/graphx/log";
-        String driverLogPath = "/home/wlngai/Workstation/Exec/Granula/debug/archiver/graphx/log/execution/execution-log.js";
-        String outputPath = "/home/wlngai/Workstation/Exec/Granula/debug/archiver/graphx/arc";
+        String inputPath = "/media/sf_Large/Large/runner/result/archive2/r512288-graphx/report/report-graphx-161109-164131/log/r466181_example-directed_BFS";
+        String outputPath = "/media/sf_Large/Large/runner/result/archive2/r512288-graphx/output";
 
 
-        Execution execution = (Execution) JsonUtil.fromJson(FileUtil.readFile(Paths.get(driverLogPath)), Execution.class);
+        Execution execution = (Execution) JsonUtil.fromJson(FileUtil.readFile(Paths.get(inputPath).resolve("execution").resolve("execution-log.js")), Execution.class);
         execution.setLogPath(inputPath);
         execution.setEndTime(System.currentTimeMillis());
         execution.setArcPath(outputPath);
         JobModel jobModel = new JobModel(GranulaPlugin.getPlatformModel(execution.getPlatform()));
 
         GranulaExecutor granulaExecutor = new GranulaExecutor();
+        granulaExecutor.setEnvEnabled(false);
         granulaExecutor.setExecution(execution);
         granulaExecutor.buildJobArchive(jobModel);
 

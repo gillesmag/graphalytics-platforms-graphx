@@ -27,6 +27,7 @@ public class GraphX extends PlatformModel {
         addOperationModel(new OffloadGraph());
         addOperationModel(new ProcessGraph());
         addOperationModel(new SchedulerStage());
+        addOperationModel(new SchedulerProcessStage());
         addOperationModel(new SparkAppSparkJob());
         addOperationModel(new TopActorTopMission());
     }

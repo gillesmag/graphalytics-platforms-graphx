@@ -46,10 +46,41 @@ public class GraphXExtractionRule extends ExtractionRule {
             String line = null;
             int lineCount = 0;
 
+            boolean processingStarted = false;
             while ((line = br.readLine()) != null) {
                 lineCount++;
 
+                if(line.contains("ProcessGraph StartTime") || line.contains("ProcessGraph EndTime")) {
+                    String reformattedLine = reformatLine(line);
+                    processingStarted = true;
+
+
+                    Log log = extractRecord(reformattedLine);
+
+                    LogLocation trace = new LogLocation();
+
+                    String codeLocation;
+                    String logFilePath;
+                    if(false) { //TODO if supported
+                        codeLocation = reformattedLine.split("\\) - Granular")[0].split(" \\(")[1];
+                    }
+
+                    codeLocation = "unspecified";
+                    logFilePath = "unspecified";
+
+                    trace.setLocation(logFilePath, lineCount, codeLocation);
+                    log.setLocation(trace);
+
+                    granularlogList.add(log);
+                }
+
+
+
                 if(line.contains("GRANULA") ) {
+
+                    if(processingStarted && line.contains("MissionType:Stage")) {
+                        line = line.replaceAll("MissionType:Stage", "MissionType:ProcessStage");
+                    }
 
 //                    if(line.contains("GraphX") && line.contains("Job")) {
 //                        continue;
@@ -86,6 +117,19 @@ public class GraphXExtractionRule extends ExtractionRule {
         return granularlogList;
     }
 
+    public String reformatLine(String line) {
+        Log log = new Log();
+
+        String[] logAttrs = line.split("\\s+");
+
+        String infoName = logAttrs[1];
+        String infoValue = logAttrs[2];
+
+        String reformattedLine = String.format("GRANULA - InfoName:%s InfoValue:%s ActorType:GraphX ActorId:Id.Unique MissionType:ProcessGraph MissionId:Id.Unique Timestamp:%s Extra:None",
+                infoName, infoValue, infoValue);
+
+        return reformattedLine;
+    }
 
     public Log extractRecord(String line) {
         Log log = new Log();

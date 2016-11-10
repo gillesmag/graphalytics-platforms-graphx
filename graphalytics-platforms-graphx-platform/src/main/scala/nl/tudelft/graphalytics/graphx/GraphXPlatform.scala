@@ -17,7 +17,7 @@ package nl.tudelft.graphalytics.graphx
 
 import nl.tudelft.graphalytics.graphx.pr.PageRankJob
 import nl.tudelft.graphalytics.graphx.sssp.SingleSourceShortestPathJob
-import nl.tudelft.graphalytics.{PlatformExecutionException, Platform}
+import nl.tudelft.graphalytics.{BenchmarkMetrics, Platform, PlatformExecutionException}
 import nl.tudelft.graphalytics.domain._
 import org.apache.commons.configuration.{ConfigurationException, PropertiesConfiguration}
 import org.apache.hadoop.fs.FileSystem
@@ -28,6 +28,7 @@ import nl.tudelft.graphalytics.graphx.cdlp.CommunityDetectionLPJob
 import nl.tudelft.graphalytics.graphx.wcc.WeaklyConnectedComponentsJob
 import nl.tudelft.graphalytics.graphx.ffm.ForestFireModelJob
 import nl.tudelft.graphalytics.graphx.lcc.LocalClusteringCoefficientJob
+import org.apache.logging.log4j.{LogManager, Logger}
 
 /**
  * Constants for GraphXPlatform
@@ -52,6 +53,7 @@ object GraphXPlatform {
 class GraphXPlatform extends Platform {
 	import GraphXPlatform._
 
+	val LOG: Logger = LogManager.getLogger
 	var pathsOfGraphs : Map[String, (String, String)] = Map()
 
 	/* Parse the GraphX configuration file */
@@ -78,13 +80,26 @@ class GraphXPlatform extends Platform {
 		pathsOfGraphs += (graph.getName -> (hdfsVertexPath.toUri.getPath, hdfsEdgePath.toUri.getPath))
 	}
 
+
+	def setupGraphPath(graph : Graph) = {
+
+		val hdfsVertexPath = new Path(s"$hdfsDirectory/$getName/input/${graph.getName}.v")
+		val hdfsEdgePath = new Path(s"$hdfsDirectory/$getName/input/${graph.getName}.e")
+		pathsOfGraphs += (graph.getName -> (hdfsVertexPath.toUri.getPath, hdfsEdgePath.toUri.getPath))
+	}
+
+
 	def executeAlgorithmOnGraph(benchmark : Benchmark) : PlatformBenchmarkResult = {
 		val graph = benchmark.getGraph
 		val algorithmType = benchmark.getAlgorithm
 		val parameters = benchmark.getAlgorithmParameters
+		LOG.info("hi i'm here at executeAlg.")
+		setupGraphPath(graph)
+
+		LOG.info("hi i'm here at executeAlg 2.")
 		try  {
 			val (vertexPath, edgePath) = pathsOfGraphs(graph.getName)
-			val outPath = s"$hdfsDirectory/$getName/output/${algorithmType.name}-${graph.getName}"
+			val outPath = s"$hdfsDirectory/$getName/output/${benchmark.getId}-${algorithmType.name}-${graph.getName}"
 			val format = graph.getGraphFormat
 
 			val job = algorithmType match {
@@ -98,6 +113,7 @@ class GraphXPlatform extends Platform {
 				case x => throw new IllegalArgumentException(s"Invalid algorithm type: $x")
 			}
 
+			LOG.info("hi i'm here at executeAlg 3.")
 			if (job.hasValidInput) {
 				job.runJob()
 
@@ -107,12 +123,15 @@ class GraphXPlatform extends Platform {
 					fs.close()
 				}
 
+				LOG.info("hi i'm here at executeAlg 4.")
 				// TODO: After executing the job, any intermediate and output data should be
 				// verified and/or cleaned up. This should preferably be configurable.
 				new PlatformBenchmarkResult(NestedConfiguration.empty())
+
 			} else {
 				throw new IllegalArgumentException("Invalid parameters for job")
 			}
+
 
 		} catch {
 			case e : Exception => throw new PlatformExecutionException("GraphX job failed with exception: ", e)
@@ -133,5 +152,7 @@ class GraphXPlatform extends Platform {
 		catch {
 			case ex: ConfigurationException => NestedConfiguration.empty
 		}
+
+	override def retrieveMetrics(): BenchmarkMetrics = new BenchmarkMetrics();
 }
 

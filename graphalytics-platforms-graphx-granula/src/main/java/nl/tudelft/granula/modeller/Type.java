@@ -37,6 +37,8 @@ public class Type extends BasicType {
     public static String Scheduler = "Scheduler";
     public static String Stage = "Stage";
 
+    public static String ProcessStage = "ProcessStage";
+
     public static String SparkApp = "SparkApp";
     public static String SparkJob = "SparkJob";
 
