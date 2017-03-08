@@ -15,25 +15,31 @@
  */
 package nl.tudelft.graphalytics.graphx
 
+import java.nio.file.Path
+
+import nl.tudelft.granula.archiver.PlatformArchive
+import nl.tudelft.granula.modeller.job.JobModel
+import nl.tudelft.granula.modeller.platform.Graphx
 import nl.tudelft.graphalytics.graphx.pr.PageRankJob
 import nl.tudelft.graphalytics.graphx.sssp.SingleSourceShortestPathJob
 import nl.tudelft.graphalytics.{BenchmarkMetrics, Platform, PlatformExecutionException}
 import nl.tudelft.graphalytics.domain._
+import nl.tudelft.graphalytics.granula.GranulaAwarePlatform
 import org.apache.commons.configuration.{ConfigurationException, PropertiesConfiguration}
 import org.apache.hadoop.fs.FileSystem
 import org.apache.hadoop.conf.Configuration
-import org.apache.hadoop.fs.Path
 import nl.tudelft.graphalytics.graphx.bfs.BreadthFirstSearchJob
 import nl.tudelft.graphalytics.graphx.cdlp.CommunityDetectionLPJob
 import nl.tudelft.graphalytics.graphx.wcc.WeaklyConnectedComponentsJob
 import nl.tudelft.graphalytics.graphx.ffm.ForestFireModelJob
 import nl.tudelft.graphalytics.graphx.lcc.LocalClusteringCoefficientJob
 import org.apache.logging.log4j.{LogManager, Logger}
+import org.json.simple.JSONObject
 
 /**
  * Constants for GraphXPlatform
  */
-object GraphXPlatform {
+object GraphxPlatform {
 	val OUTPUT_REQUIRED_KEY = "benchmark.run.output-required"
 	val OUTPUT_DIRECTORY_KEY = "benchmark.run.output-directory"
 	val OUTPUT_DIRECTORY = "./output/"
@@ -50,8 +56,8 @@ object GraphXPlatform {
  * Graphalytics Platform implementation for GraphX. Manages the datasets on HDFS and launches the appropriate
  * GraphX jobs.
  */
-class GraphXPlatform extends Platform {
-	import GraphXPlatform._
+class GraphxPlatform extends GranulaAwarePlatform {
+	import GraphxPlatform._
 
 	val LOG: Logger = LogManager.getLogger
 	var pathsOfGraphs : Map[String, (String, String)] = Map()
@@ -67,10 +73,10 @@ class GraphXPlatform extends Platform {
 	val outputRequired = config.getString(OUTPUT_REQUIRED_KEY).getOrElse("false")
 
 	def uploadGraph(graph : Graph) = {
-		val localVertexPath = new Path(graph.getVertexFilePath)
-		val localEdgePath = new Path(graph.getEdgeFilePath)
-		val hdfsVertexPath = new Path(s"$hdfsDirectory/$getName/input/${graph.getName}.v")
-		val hdfsEdgePath = new Path(s"$hdfsDirectory/$getName/input/${graph.getName}.e")
+		val localVertexPath = new org.apache.hadoop.fs.Path(graph.getVertexFilePath)
+		val localEdgePath = new org.apache.hadoop.fs.Path(graph.getEdgeFilePath)
+		val hdfsVertexPath = new org.apache.hadoop.fs.Path(s"$hdfsDirectory/$getName/input/${graph.getName}.v")
+		val hdfsEdgePath = new org.apache.hadoop.fs.Path(s"$hdfsDirectory/$getName/input/${graph.getName}.e")
 
 		val fs = FileSystem.get(new Configuration())
 		fs.copyFromLocalFile(localVertexPath, hdfsVertexPath)
@@ -83,8 +89,8 @@ class GraphXPlatform extends Platform {
 
 	def setupGraphPath(graph : Graph) = {
 
-		val hdfsVertexPath = new Path(s"$hdfsDirectory/$getName/input/${graph.getName}.v")
-		val hdfsEdgePath = new Path(s"$hdfsDirectory/$getName/input/${graph.getName}.e")
+		val hdfsVertexPath = new org.apache.hadoop.fs.Path(s"$hdfsDirectory/$getName/input/${graph.getName}.v")
+		val hdfsEdgePath = new org.apache.hadoop.fs.Path(s"$hdfsDirectory/$getName/input/${graph.getName}.e")
 		pathsOfGraphs += (graph.getName -> (hdfsVertexPath.toUri.getPath, hdfsEdgePath.toUri.getPath))
 	}
 
@@ -119,7 +125,8 @@ class GraphXPlatform extends Platform {
 
 				if(benchmark.isOutputRequired){
 					val fs = FileSystem.get(new Configuration())
-					fs.copyToLocalFile(false, new Path(outPath), new Path(benchmark.getOutputPath), true)
+					fs.copyToLocalFile(false, new org.apache.hadoop.fs.Path(outPath),
+						new org.apache.hadoop.fs.Path(benchmark.getOutputPath), true)
 					fs.close()
 				}
 
@@ -154,5 +161,35 @@ class GraphXPlatform extends Platform {
 		}
 
 	override def retrieveMetrics(): BenchmarkMetrics = new BenchmarkMetrics();
+
+	def preBenchmark(benchmark: Benchmark, path: java.nio.file.Path) {
+		GraphXLogger.stopCoreLogging
+		GraphXLogger.startPlatformLogging(path.resolve("platform").resolve("driver.logs"))
+	}
+
+	def postBenchmark(benchmark: Benchmark, path: java.nio.file.Path) {
+		GraphXLogger.collectYarnLogs(path)
+		GraphXLogger.stopPlatformLogging
+		GraphXLogger.startCoreLogging
+	}
+
+	def getJobModel: JobModel = {
+		return new JobModel(new Graphx)
+	}
+
+	def enrichMetrics(benchmarkResult: BenchmarkResult, arcDirectory: Path) {
+		try {
+			val platformArchive: PlatformArchive = PlatformArchive.readArchive(arcDirectory)
+			val processGraph: JSONObject = platformArchive.operation("ProcessGraph")
+			val procTime: Long = platformArchive.info(processGraph, "Duration").toLong
+			val metrics: BenchmarkMetrics = benchmarkResult.getMetrics
+			metrics.setProcessingTime(procTime)
+		}
+		catch {
+			case e: Exception => {
+				LOG.error("Failed to enrich metrics.")
+			}
+		}
+	}
 }
 

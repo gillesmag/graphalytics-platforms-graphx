@@ -19,9 +19,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class GraphX extends PlatformModel {
+public class Graphx extends PlatformModel {
 
-    public GraphX() {
+    public Graphx() {
         super();
         addOperationModel(new LoadGraph());
         addOperationModel(new OffloadGraph());
