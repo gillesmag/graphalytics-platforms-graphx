@@ -16,7 +16,6 @@
 package nl.tudelft.graphalytics.graphx.sssp
 
 import java.util
-import nl.tudelft.graphalytics.domain.GraphFormat
 import nl.tudelft.graphalytics.graphx.GraphXJobTest
 import nl.tudelft.graphalytics.validation.algorithms.sssp.SingleSourceShortestPathsValidationTest
 import nl.tudelft.graphalytics.domain.algorithms.SingleSourceShortestPathsParameters
@@ -46,7 +45,7 @@ class SingleSourceShortestPathsJobTest extends SingleSourceShortestPathsValidati
 
   private def execute(vertexData : List[String], edgeData : List[String], directed: Boolean,
 			parameters: SingleSourceShortestPathsParameters) = {
-    val job = new SingleSourceShortestPathJob("", "", new GraphFormat(directed), "", parameters)
+    val job = new SingleSourceShortestPathJob("", "", directed, "", parameters)
 		val (vertexOutput, _) = executeJob(job, vertexData, edgeData)
 		val output = new util.HashMap[java.lang.Long, java.lang.Double](vertexOutput.size)
 		vertexOutput.foreach { case (vid, value) => output.put(vid, value) }

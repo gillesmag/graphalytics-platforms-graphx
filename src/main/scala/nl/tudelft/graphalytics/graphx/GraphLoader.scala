@@ -15,7 +15,6 @@
  */
 package nl.tudelft.graphalytics.graphx
 
-import nl.tudelft.graphalytics.domain.GraphFormat
 import org.apache.spark.rdd.RDD
 import org.apache.spark.graphx.{Edge, VertexId, Graph}
 import scala.reflect.ClassTag
@@ -28,15 +27,12 @@ object GraphLoader {
 	/**
 	 * @param vertexData raw vertex data in Graphalytics vertex/edge format
 	 * @param edgeData raw edge data in Graphalytics vertex/edge format
-	 * @param graphFormat the graph data format specification
-	 * @param defaultValue default value for each vertex
-	 * @tparam VD vertex value type
-	 * @return a parsed GraphX graph
+	 * @param isDirected the directedness of graph data
 	 */
 	def loadGraph[VD : ClassTag, ED : ClassTag](vertexData : RDD[String], edgeData : RDD[String],
-	    vertexParser : Array[String] => VD, edgeParser : Array[String] => ED, graphFormat : GraphFormat) = {
+	    vertexParser : Array[String] => VD, edgeParser : Array[String] => ED, isDirected : Boolean) = {
 		val vertices = loadVerticesData(vertexData, vertexParser)
-		val edges = if (graphFormat.isDirected)
+		val edges = if (isDirected)
 		              loadEdgesFromEdgeDirectedData(edgeData, edgeParser)
                 else
                   loadEdgesFromEdgeUndirectedData(edgeData, edgeParser)

@@ -15,7 +15,6 @@
  */
 package nl.tudelft.graphalytics.graphx.ffm
 
-import nl.tudelft.graphalytics.domain.GraphFormat
 import org.apache.spark.graphx._
 import org.apache.spark.rdd.RDD
 import nl.tudelft.graphalytics.domain.algorithms.ForestFireModelParameters
@@ -28,13 +27,13 @@ import scala.util.Random
  *
  * @param graphVertexPath the path of the input graph's vertex data
  * @param graphEdgePath the path of the input graph's edge data
- * @param graphFormat the format of the graph data
+ * @param isDirected the directedness of the graph data
  * @param outputPath the output path of the computation
  * @author Tim Hegeman
  */
-class ForestFireModelJob(graphVertexPath : String, graphEdgePath : String, graphFormat : GraphFormat,
+class ForestFireModelJob(graphVertexPath : String, graphEdgePath : String, isDirected : Boolean,
 		outputPath : String, parameters : Object)
-		extends GraphXJob[Boolean, Int](graphVertexPath, graphEdgePath, graphFormat, outputPath) {
+		extends GraphXJob[Boolean, Int](graphVertexPath, graphEdgePath, isDirected, outputPath) {
 
 	val evoParam : ForestFireModelParameters = parameters match {
 		case p : ForestFireModelParameters => p
@@ -213,7 +212,7 @@ class ForestFireModelJob(graphVertexPath : String, graphEdgePath : String, graph
 		}
 
 		// Merge the new edges into the original graph
-		val graphEdges = if (graphFormat.isDirected) {
+		val graphEdges = if (isDirected) {
 			g.edges.union(edgeList.flatMap {
 				case (vid, sources) => sources.map(Edge(_, vid, 1))
 			})

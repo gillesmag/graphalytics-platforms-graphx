@@ -17,7 +17,6 @@ package nl.tudelft.graphalytics.graphx.cdlp
 
 import java.util
 
-import nl.tudelft.graphalytics.domain.GraphFormat
 import nl.tudelft.graphalytics.domain.algorithms.CommunityDetectionLPParameters
 import nl.tudelft.graphalytics.graphx.{ValidationGraphUtils, GraphXJobTest}
 import nl.tudelft.graphalytics.validation.GraphStructure
@@ -44,7 +43,7 @@ class CommunityDetectionLPJobTest extends CommunityDetectionLPValidationTest wit
 
 	private def executeCommunityDetection(vertexData : List[String], edgeData : List[String], directed : Boolean,
 			parameters : CommunityDetectionLPParameters) : CommunityDetectionLPOutput = {
-		val cdJob = new CommunityDetectionLPJob("", "", new GraphFormat(directed), "", parameters)
+		val cdJob = new CommunityDetectionLPJob("", "", directed, "", parameters)
 		val (vertexOutput, _) = executeJob(cdJob, vertexData, edgeData)
 		val outputAsJavaMap = new util.HashMap[java.lang.Long, java.lang.Long](vertexOutput.size)
 		vertexOutput.foreach { case (vid, value) => outputAsJavaMap.put(vid, value) }

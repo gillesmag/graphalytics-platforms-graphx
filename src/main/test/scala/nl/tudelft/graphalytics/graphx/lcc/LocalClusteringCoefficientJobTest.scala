@@ -17,7 +17,6 @@ package nl.tudelft.graphalytics.graphx.lcc
 
 import java.util
 
-import nl.tudelft.graphalytics.domain.GraphFormat
 import nl.tudelft.graphalytics.graphx.{ValidationGraphUtils, GraphXJobTest}
 import nl.tudelft.graphalytics.validation.GraphStructure
 import nl.tudelft.graphalytics.validation.algorithms.lcc.{LocalClusteringCoefficientOutput, LocalClusteringCoefficientValidationTest}
@@ -43,7 +42,7 @@ class LocalClusteringCoefficientJobTest extends LocalClusteringCoefficientValida
 
 	private def executeLocalClusteringCoefficient(vertexData : List[String], edgeData : List[String],
 			directed: Boolean) : LocalClusteringCoefficientOutput = {
-		val lccJob = new LocalClusteringCoefficientJob("", "", new GraphFormat(directed), "")
+		val lccJob = new LocalClusteringCoefficientJob("", "", directed, "")
 		val (vertexOutput, _) = executeJob(lccJob, vertexData, edgeData)
 		val outputAsJavaMap = new util.HashMap[java.lang.Long, java.lang.Double](vertexOutput.size)
 		vertexOutput.foreach { case (vid, value) => outputAsJavaMap.put(vid, value) }

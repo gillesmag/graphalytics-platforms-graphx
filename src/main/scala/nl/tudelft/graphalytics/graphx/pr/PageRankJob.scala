@@ -15,7 +15,6 @@
  */
 package nl.tudelft.graphalytics.graphx.pr
 
-import nl.tudelft.graphalytics.domain.GraphFormat
 import nl.tudelft.graphalytics.domain.algorithms.PageRankParameters
 import nl.tudelft.graphalytics.graphx.{GraphXJob, GraphXJobOutput}
 import org.apache.spark.graphx.{TripletFields, Graph}
@@ -27,14 +26,14 @@ import org.apache.spark.graphx.{TripletFields, Graph}
  *
  * @param graphVertexPath the path of the input graph's vertex data
  * @param graphEdgePath the path of the input graph's edge data
- * @param graphFormat the format of the graph data
+ * @param isDirected the directedness of the graph data
  * @param outputPath the output path of the computation
  * @param parameters the graph-specific parameters for PageRank
  * @author Tim Hegeman
  */
-class PageRankJob(graphVertexPath : String, graphEdgePath : String, graphFormat : GraphFormat, outputPath : String,
+class PageRankJob(graphVertexPath : String, graphEdgePath : String, isDirected : Boolean, outputPath : String,
 		parameters : Object)
-		extends GraphXJob[Double, Unit](graphVertexPath, graphEdgePath, graphFormat, outputPath) {
+		extends GraphXJob[Double, Unit](graphVertexPath, graphEdgePath, isDirected, outputPath) {
 
 	val prParam : PageRankParameters = parameters match {
 		case p : PageRankParameters => p

@@ -15,7 +15,6 @@
  */
 package nl.tudelft.graphalytics.graphx
 
-import nl.tudelft.graphalytics.domain.GraphFormat
 import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.graphx.{VertexId, Graph, EdgeTriplet}
 import org.apache.spark.rdd.RDD
@@ -30,11 +29,11 @@ import org.apache.spark.graphx.Graph
  * @tparam ED edge data type
  * @param graphVertexPath the path of the input graph's vertex data
  * @param graphEdgePath the path of the input graph's edge data
- * @param graphFormat the format of the graph data
+ * @param isDirected the directedness of the graph data
  * @param outputPath the output path of the computation
  */
 abstract class GraphXJob[VD : ClassTag, ED : ClassTag](graphVertexPath : String, graphEdgePath : String,
-		graphFormat : GraphFormat, outputPath : String) extends Serializable {
+		isDirected : Boolean, outputPath : String) extends Serializable {
 
 	/**
 	 * Executes the full GraphX job by reading and parsing the input graph,
@@ -43,7 +42,7 @@ abstract class GraphXJob[VD : ClassTag, ED : ClassTag](graphVertexPath : String,
 	def runJob() = {
 		// Set up the Spark context for use in the GraphX job.
 		val sparkConfiguration = new SparkConf()
-		sparkConfiguration.setAppName(s"Graphalytics: $getAppName")
+		sparkConfiguration.setAppName(s"GraphalyticsBenchmark: $getAppName")
 		sparkConfiguration.setMaster("yarn-client")
 		sparkConfiguration.set("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
 		sparkConfiguration.set("spark.ui.showConsoleProgress", "false")
@@ -80,8 +79,7 @@ abstract class GraphXJob[VD : ClassTag, ED : ClassTag](graphVertexPath : String,
 	def executeOnGraph(vertexData : RDD[String], edgeData : RDD[String]) : Graph[VD, ED] = {
 		// Parse the vertex and edge data
 		val graph = GraphLoader.loadGraph(vertexData, edgeData,
-		                                  parseVertexData, parseEdgeData,
-		                                  graphFormat).cache()
+			parseVertexData, parseEdgeData,isDirected).cache()
 
 		println("Vertex count: " + graph.vertices.count())
 		println("Edge count: " + graph.edges.count())

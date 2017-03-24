@@ -17,7 +17,6 @@ package nl.tudelft.graphalytics.graphx.wcc
 
 import java.util
 
-import nl.tudelft.graphalytics.domain.GraphFormat
 import nl.tudelft.graphalytics.graphx.{GraphXJobTest, ValidationGraphUtils}
 import nl.tudelft.graphalytics.validation.GraphStructure
 import nl.tudelft.graphalytics.validation.algorithms.wcc.{WeaklyConnectedComponentsOutput, WeaklyConnectedComponentsValidationTest}
@@ -41,7 +40,7 @@ class WeaklyConnectedComponentsJobTest extends WeaklyConnectedComponentsValidati
 
 	private def executeConnectedComponents(vertexData : List[String], edgeData : List[String],
 			directed: Boolean) : WeaklyConnectedComponentsOutput = {
-		val ccJob = new WeaklyConnectedComponentsJob("", "", new GraphFormat(directed), "")
+		val ccJob = new WeaklyConnectedComponentsJob("", "", directed, "")
 		val (vertexOutput, _) = executeJob(ccJob, vertexData, edgeData)
 		val outputAsJavaMap = new util.HashMap[java.lang.Long, java.lang.Long](vertexOutput.size)
 		vertexOutput.foreach { case (vid, value) => outputAsJavaMap.put(vid, value) }

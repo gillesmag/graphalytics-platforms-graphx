@@ -17,7 +17,6 @@ package nl.tudelft.graphalytics.graphx.pr
 
 import java.util
 
-import nl.tudelft.graphalytics.domain.GraphFormat
 import nl.tudelft.graphalytics.domain.algorithms.PageRankParameters
 import nl.tudelft.graphalytics.graphx.{ValidationGraphUtils, GraphXJobTest}
 import nl.tudelft.graphalytics.validation.GraphStructure
@@ -41,7 +40,7 @@ class PageRankJobTest extends PageRankValidationTest with GraphXJobTest {
 
 	private def executePageRank(vertexData : List[String], edgeData : List[String],
 			directed: Boolean, parameters : PageRankParameters) : PageRankOutput = {
-		val prJob = new PageRankJob("", "", new GraphFormat(directed), "", parameters)
+		val prJob = new PageRankJob("", "", directed, "", parameters)
 		val (vertexOutput, _) = executeJob(prJob, vertexData, edgeData)
 		val outputAsJavaMap = new util.HashMap[java.lang.Long, java.lang.Double](vertexOutput.size)
 		vertexOutput.foreach { case (vid, value) => outputAsJavaMap.put(vid, value) }

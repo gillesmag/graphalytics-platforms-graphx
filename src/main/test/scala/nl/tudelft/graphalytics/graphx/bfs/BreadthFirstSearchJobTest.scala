@@ -17,7 +17,6 @@ package nl.tudelft.graphalytics.graphx.bfs
 
 import java.util
 
-import nl.tudelft.graphalytics.domain.GraphFormat
 import nl.tudelft.graphalytics.domain.algorithms.BreadthFirstSearchParameters
 import nl.tudelft.graphalytics.graphx.{GraphXJobTest, ValidationGraphUtils}
 import nl.tudelft.graphalytics.validation.GraphStructure
@@ -44,7 +43,7 @@ class BreadthFirstSearchJobTest extends BreadthFirstSearchValidationTest with Gr
 
 	private def executeBreadthFirstSearch(vertexData : List[String], edgeData : List[String], directed: Boolean,
 			parameters: BreadthFirstSearchParameters): BreadthFirstSearchOutput = {
-		val bfsJob = new BreadthFirstSearchJob("", "", new GraphFormat(directed), "", parameters)
+		val bfsJob = new BreadthFirstSearchJob("", "", directed, "", parameters)
 		val (vertexOutput, _) = executeJob(bfsJob, vertexData, edgeData)
 		val outputAsJavaMap = new util.HashMap[java.lang.Long, java.lang.Long](vertexOutput.size)
 		vertexOutput.foreach { case (vid, value) => outputAsJavaMap.put(vid, value) }

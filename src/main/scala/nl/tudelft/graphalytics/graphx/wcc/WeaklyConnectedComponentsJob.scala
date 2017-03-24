@@ -15,7 +15,6 @@
  */
 package nl.tudelft.graphalytics.graphx.wcc
 
-import nl.tudelft.graphalytics.domain.GraphFormat
 import org.apache.spark.graphx.{VertexId, Graph}
 import nl.tudelft.graphalytics.graphx.{GraphXJobOutput, GraphXJob}
 
@@ -24,12 +23,12 @@ import nl.tudelft.graphalytics.graphx.{GraphXJobOutput, GraphXJob}
  *
  * @param graphVertexPath the path of the input graph's vertex data
  * @param graphEdgePath the path of the input graph's edge data
- * @param graphFormat the format of the graph data
+ * @param isDirected the directedness of the graph data
  * @param outputPath the output path of the computation
  * @author Tim Hegeman
  */
-class WeaklyConnectedComponentsJob(graphVertexPath : String, graphEdgePath : String, graphFormat : GraphFormat, outputPath : String)
-		extends GraphXJob[VertexId, Unit](graphVertexPath, graphEdgePath, graphFormat, outputPath) {
+class WeaklyConnectedComponentsJob(graphVertexPath : String, graphEdgePath : String, isDirected : Boolean, outputPath : String)
+		extends GraphXJob[VertexId, Unit](graphVertexPath, graphEdgePath, isDirected, outputPath) {
 
 	/**
 	 * Perform the graph computation using job-specific logic.

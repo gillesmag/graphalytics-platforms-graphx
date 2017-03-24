@@ -1,6 +1,5 @@
 package nl.tudelft.graphalytics.graphx.sssp
 
-import nl.tudelft.graphalytics.domain.GraphFormat
 import nl.tudelft.graphalytics.graphx.GraphXPregelJob
 import nl.tudelft.graphalytics.graphx.GraphXJobOutput
 import org.apache.spark.graphx.{VertexId, EdgeTriplet, Graph}
@@ -12,14 +11,14 @@ import nl.tudelft.graphalytics.domain.algorithms.BreadthFirstSearchParameters
  *
  * @param graphVertexPath the path of the input graph's vertex data
  * @param graphEdgePath the path of the input graph's edge data
- * @param graphFormat the format of the graph data
+ * @param isDirected the directedness of the graph data
  * @param outputPath the output path of the computation
  * @param parameters the graph-specific parameters for BFS
  * @author Tim Hegeman
  */
-class SingleSourceShortestPathJob(graphVertexPath : String, graphEdgePath : String, graphFormat : GraphFormat,
+class SingleSourceShortestPathJob(graphVertexPath : String, graphEdgePath : String, isDirected : Boolean,
 		outputPath : String, parameters : Object)
-		extends	GraphXPregelJob[Double, Double, Double](graphVertexPath, graphEdgePath, graphFormat, outputPath) {
+		extends	GraphXPregelJob[Double, Double, Double](graphVertexPath, graphEdgePath, isDirected, outputPath) {
 
 
 	val ssspParam : SingleSourceShortestPathsParameters = parameters match {

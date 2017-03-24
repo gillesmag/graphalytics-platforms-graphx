@@ -18,7 +18,6 @@ package nl.tudelft.graphalytics.graphx.ffm
 import java.util
 import java.lang.{Long => JLong}
 
-import nl.tudelft.graphalytics.domain.GraphFormat
 import nl.tudelft.graphalytics.domain.algorithms.ForestFireModelParameters
 import nl.tudelft.graphalytics.graphx.{ValidationGraphUtils, GraphXJobTest}
 import nl.tudelft.graphalytics.validation.GraphStructure
@@ -45,7 +44,7 @@ class ForestFireModelJobTest extends ForestFireModelValidationTest with GraphXJo
 
 	private def executeForestFireModel(vertexData : List[String], edgeData : List[String], directed : Boolean,
 			parameters : ForestFireModelParameters) : GraphStructure = {
-		val ffmJob = new ForestFireModelJob("", "", new GraphFormat(directed), "", parameters)
+		val ffmJob = new ForestFireModelJob("", "", directed, "", parameters)
 		val (vertexOutput, edgeOutput) = executeJob(ffmJob, vertexData, edgeData)
 		val edgeLists = new util.HashMap[JLong, util.Set[JLong]]()
 		vertexOutput.foreach { case (vid, _) => edgeLists.put(vid, new util.HashSet[JLong]())}

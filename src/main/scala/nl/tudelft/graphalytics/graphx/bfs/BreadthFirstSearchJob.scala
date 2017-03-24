@@ -15,7 +15,6 @@
  */
 package nl.tudelft.graphalytics.graphx.bfs
 
-import nl.tudelft.graphalytics.domain.GraphFormat
 import nl.tudelft.graphalytics.graphx.{GraphXJobOutput, GraphXPregelJob}
 import org.apache.spark.graphx.{VertexId, EdgeTriplet, Graph}
 import nl.tudelft.graphalytics.domain.algorithms.BreadthFirstSearchParameters
@@ -25,14 +24,14 @@ import nl.tudelft.graphalytics.domain.algorithms.BreadthFirstSearchParameters
  *
  * @param graphVertexPath the path of the input graph's vertex data
  * @param graphEdgePath the path of the input graph's edge data
- * @param graphFormat the format of the graph data
+ * @param isDirected the directedness of the graph data
  * @param outputPath the output path of the computation
  * @param parameters the graph-specific parameters for BFS
  * @author Tim Hegeman
  */
-class BreadthFirstSearchJob(graphVertexPath : String, graphEdgePath : String, graphFormat : GraphFormat,
+class BreadthFirstSearchJob(graphVertexPath : String, graphEdgePath : String, isDirected : Boolean,
 		outputPath : String, parameters : Object)
-		extends	GraphXPregelJob[Long, Unit, Long](graphVertexPath, graphEdgePath, graphFormat, outputPath) {
+		extends	GraphXPregelJob[Long, Unit, Long](graphVertexPath, graphEdgePath, isDirected, outputPath) {
 
 	val bfsParam : BreadthFirstSearchParameters = parameters match {
 		case p : BreadthFirstSearchParameters => p

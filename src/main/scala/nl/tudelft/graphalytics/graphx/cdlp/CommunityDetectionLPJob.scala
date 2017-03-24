@@ -15,7 +15,6 @@
  */
 package nl.tudelft.graphalytics.graphx.cdlp
 
-import nl.tudelft.graphalytics.domain.GraphFormat
 import nl.tudelft.graphalytics.domain.algorithms.CommunityDetectionLPParameters
 import nl.tudelft.graphalytics.graphx.{GraphXJobOutput, GraphXPregelJob}
 import org.apache.spark.graphx.{EdgeTriplet, Graph, VertexId}
@@ -26,14 +25,14 @@ import org.apache.spark.graphx.{EdgeTriplet, Graph, VertexId}
  *
  * @param graphVertexPath the path of the input graph's vertex data
  * @param graphEdgePath the path of the input graph's edge data
- * @param graphFormat the format of the graph data
+ * @param isDirected the directedness of the graph data
  * @param outputPath the output path of the computation
  * @param parameters the graph-specific parameters for community detection
  * @author Tim Hegeman
  */
-class CommunityDetectionLPJob(graphVertexPath : String, graphEdgePath : String, graphFormat : GraphFormat,
+class CommunityDetectionLPJob(graphVertexPath : String, graphEdgePath : String, isDirected : Boolean,
 		outputPath : String, parameters : Object)
-		extends GraphXPregelJob[VertexId, Unit, Map[VertexId, Long]](graphVertexPath, graphEdgePath, graphFormat, outputPath) {
+		extends GraphXPregelJob[VertexId, Unit, Map[VertexId, Long]](graphVertexPath, graphEdgePath, isDirected, outputPath) {
 
 	val cdParam : CommunityDetectionLPParameters = parameters match {
 		case p : CommunityDetectionLPParameters => p

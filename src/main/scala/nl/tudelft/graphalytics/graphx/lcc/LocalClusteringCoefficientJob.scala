@@ -15,7 +15,6 @@
  */
 package nl.tudelft.graphalytics.graphx.lcc
 
-import nl.tudelft.graphalytics.domain.GraphFormat
 import org.apache.spark.graphx._
 import nl.tudelft.graphalytics.graphx.{GraphXJobOutput, GraphXJob}
 
@@ -25,13 +24,13 @@ import nl.tudelft.graphalytics.graphx.{GraphXJobOutput, GraphXJob}
  *
  * @param graphVertexPath the path of the input graph's vertex data
  * @param graphEdgePath the path of the input graph's edge data
- * @param graphFormat the format of the graph data
+ * @param isDirected the format of the graph data
  * @param outputPath the output path of the computation
  * @author Tim Hegeman
  */
-class LocalClusteringCoefficientJob(graphVertexPath : String, graphEdgePath : String, graphFormat : GraphFormat,
+class LocalClusteringCoefficientJob(graphVertexPath : String, graphEdgePath : String, isDirected : Boolean,
 		outputPath : String)
-		extends GraphXJob[Double, Unit](graphVertexPath, graphEdgePath, graphFormat, outputPath) {
+		extends GraphXJob[Double, Unit](graphVertexPath, graphEdgePath, isDirected, outputPath) {
 
 	/**
 	 * Computes the local clustering coefficient (LCC) for each vertex in the graph.
