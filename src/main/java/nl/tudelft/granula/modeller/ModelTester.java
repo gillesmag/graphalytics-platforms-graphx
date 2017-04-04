@@ -5,7 +5,7 @@ import nl.tudelft.granula.modeller.entity.Execution;
 import nl.tudelft.granula.modeller.job.JobModel;
 import nl.tudelft.granula.util.FileUtil;
 import nl.tudelft.granula.util.json.JsonUtil;
-import nl.tudelft.graphalytics.granula.GranulaPlugin;
+import science.atlarge.graphalytics.granula.GranulaPlugin;
 
 import java.nio.file.Paths;
 
