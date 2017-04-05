@@ -25,8 +25,7 @@ import science.atlarge.graphalytics.graphx.sssp.SingleSourceShortestPathJob
 import science.atlarge.graphalytics.domain._
 import science.atlarge.graphalytics.domain.benchmark.BenchmarkRun
 import science.atlarge.graphalytics.report.result.{BenchmarkMetrics, BenchmarkResult}
-import science.atlarge.graphalytics.domain.graph.Graph
-import science.atlarge.graphalytics.execution.{Platform, PlatformExecutionException}
+import science.atlarge.graphalytics.domain.graph.{Graph, FormattedGraph}
 import science.atlarge.graphalytics.granula.GranulaAwarePlatform
 import org.apache.commons.configuration.{ConfigurationException, PropertiesConfiguration}
 import org.apache.hadoop.fs.FileSystem
@@ -89,7 +88,7 @@ class GraphxPlatform extends GranulaAwarePlatform {
 	val hdfsDirectory = config.getString(HDFS_DIRECTORY_KEY).getOrElse(HDFS_DIRECTORY)
 	val outputRequired = config.getString(OUTPUT_REQUIRED_KEY).getOrElse("false")
 
-	def uploadGraph(graph : Graph) = {
+	def uploadGraph(graph : FormattedGraph) = {
 		val localVertexPath = new org.apache.hadoop.fs.Path(graph.getVertexFilePath)
 		val localEdgePath = new org.apache.hadoop.fs.Path(graph.getEdgeFilePath)
 		val hdfsVertexPath = new org.apache.hadoop.fs.Path(s"$hdfsDirectory/$getPlatformName/input/${graph.getName}.v")
@@ -104,7 +103,7 @@ class GraphxPlatform extends GranulaAwarePlatform {
 	}
 
 
-	def setupGraphPath(graph : Graph) = {
+	def setupGraphPath(graph : FormattedGraph) = {
 
 		val hdfsVertexPath = new org.apache.hadoop.fs.Path(s"$hdfsDirectory/$getPlatformName/input/${graph.getName}.v")
 		val hdfsEdgePath = new org.apache.hadoop.fs.Path(s"$hdfsDirectory/$getPlatformName/input/${graph.getName}.e")
@@ -112,8 +111,8 @@ class GraphxPlatform extends GranulaAwarePlatform {
 	}
 
 
-	def execute(benchmark : BenchmarkRun) : PlatformBenchmarkResult = {
-		val graph = benchmark.getGraph
+	def execute(benchmark : BenchmarkRun) : Boolean = {
+		val graph = benchmark.getFormattedGraph
 		val algorithmType = benchmark.getAlgorithm
 		val parameters = benchmark.getAlgorithmParameters
 		LOG.info("hi i'm here at executeAlg.")
@@ -150,7 +149,7 @@ class GraphxPlatform extends GranulaAwarePlatform {
 				LOG.info("hi i'm here at executeAlg 4.")
 				// TODO: After executing the job, any intermediate and output data should be
 				// verified and/or cleaned up. This should preferably be configurable.
-				new PlatformBenchmarkResult()
+				true
 
 			} else {
 				throw new IllegalArgumentException("Invalid parameters for job")
@@ -162,14 +161,12 @@ class GraphxPlatform extends GranulaAwarePlatform {
 		}
 	}
 
-	def deleteGraph(graphName : String) = {
+	def deleteGraph(formattedGraph: FormattedGraph) = {
 		// TODO: Delete graph data from HDFS to clean up. This should preferably be configurable.
 	}
 
 	def getPlatformName : String = "graphx"
 
-
-	override def extractMetrics(): BenchmarkMetrics = new BenchmarkMetrics();
 
 	def preprocess(benchmark: BenchmarkRun) {
 		GraphXLogger.stopCoreLogging
