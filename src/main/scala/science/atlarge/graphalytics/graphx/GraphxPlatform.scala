@@ -173,9 +173,10 @@ class GraphxPlatform extends GranulaAwarePlatform {
 		GraphXLogger.startPlatformLogging(benchmark.getLogDir.resolve("platform").resolve("driver.logs"))
 	}
 
-	def postprocess(benchmarkRun: BenchmarkRun) {
+	def postprocess(benchmarkRun: BenchmarkRun): BenchmarkMetrics = {
 		GraphXLogger.stopPlatformLogging
 		GraphXLogger.startCoreLogging
+	  new BenchmarkMetrics;
 	}
 
 	def prepare(benchmarkRun: BenchmarkRun) {
