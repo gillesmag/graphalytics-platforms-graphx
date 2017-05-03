@@ -24,7 +24,7 @@ import science.atlarge.graphalytics.graphx.pr.PageRankJob
 import science.atlarge.graphalytics.graphx.sssp.SingleSourceShortestPathJob
 import science.atlarge.graphalytics.domain._
 import science.atlarge.graphalytics.domain.benchmark.BenchmarkRun
-import science.atlarge.graphalytics.report.result.{BenchmarkMetrics, BenchmarkResult}
+import science.atlarge.graphalytics.report.result.{BenchmarkMetrics, BenchmarkRunResult}
 import science.atlarge.graphalytics.domain.graph.{Graph, FormattedGraph}
 import science.atlarge.graphalytics.granula.GranulaAwarePlatform
 import org.apache.commons.configuration.{ConfigurationException, PropertiesConfiguration}
@@ -35,7 +35,7 @@ import science.atlarge.graphalytics.graphx.cdlp.CommunityDetectionLPJob
 import science.atlarge.graphalytics.graphx.wcc.WeaklyConnectedComponentsJob
 import science.atlarge.graphalytics.graphx.ffm.ForestFireModelJob
 import science.atlarge.graphalytics.graphx.lcc.LocalClusteringCoefficientJob
-import science.atlarge.graphalytics.report.result.{BenchmarkMetrics, BenchmarkResult, PlatformBenchmarkResult}
+import science.atlarge.graphalytics.report.result.{BenchmarkMetrics, BenchmarkRunResult, PlatformBenchmarkResult}
 import org.apache.logging.log4j.{LogManager, Logger}
 import org.json.simple.JSONObject
 import science.atlarge.graphalytics.domain.algorithms.Algorithm
@@ -50,7 +50,7 @@ import science.atlarge.graphalytics.graphx.lcc.LocalClusteringCoefficientJob
 import science.atlarge.graphalytics.graphx.pr.PageRankJob
 import science.atlarge.graphalytics.graphx.sssp.SingleSourceShortestPathJob
 import science.atlarge.graphalytics.graphx.wcc.WeaklyConnectedComponentsJob
-import science.atlarge.graphalytics.report.result.{BenchmarkMetrics, BenchmarkResult, PlatformBenchmarkResult}
+import science.atlarge.graphalytics.report.result.{BenchmarkMetrics, BenchmarkRunResult, PlatformBenchmarkResult}
 
 /**
  * Constants for GraphXPlatform
@@ -192,7 +192,7 @@ class GraphxPlatform extends GranulaAwarePlatform {
 		return new JobModel(new Graphx)
 	}
 
-	def enrichMetrics(benchmarkResult: BenchmarkResult, arcDirectory: Path) {
+	def enrichMetrics(benchmarkResult: BenchmarkRunResult, arcDirectory: Path) {
 		try {
 			val platformArchive: PlatformArchive = PlatformArchive.readArchive(arcDirectory)
 			val processGraph: JSONObject = platformArchive.operation("ProcessGraph")
