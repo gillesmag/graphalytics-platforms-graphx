@@ -59,13 +59,13 @@ object GraphxPlatform {
 	val OUTPUT_REQUIRED_KEY = "benchmark.run.output-required"
 	val OUTPUT_DIRECTORY_KEY = "benchmark.run.output-directory"
 	val OUTPUT_DIRECTORY = "./output/"
-	val HDFS_DIRECTORY_KEY = "hadoop.hdfs.directory"
+	val HDFS_DIRECTORY_KEY = "platform.hadoop.hdfs.directory"
 	val HDFS_DIRECTORY = "graphalytics"
 
-	val CONFIG_PATH = "graphx.properties"
-	val CONFIG_JOB_NUM_EXECUTORS = "graphx.job.num-executors"
-	val CONFIG_JOB_EXECUTOR_MEMORY = "graphx.job.executor-memory"
-	val CONFIG_JOB_EXECUTOR_CORES = "graphx.job.executor-cores"
+	val CONFIG_PATH = "benchmark.properties"
+	val CONFIG_JOB_NUM_EXECUTORS = "platform.graphx.job.num-executors"
+	val CONFIG_JOB_EXECUTOR_MEMORY = "platform.graphx.job.executor-memory"
+	val CONFIG_JOB_EXECUTOR_CORES = "platform.graphx.job.executor-cores"
 }
 
 /**
