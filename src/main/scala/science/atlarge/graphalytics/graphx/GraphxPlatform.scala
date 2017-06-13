@@ -88,7 +88,7 @@ class GraphxPlatform extends GranulaAwarePlatform {
 	val hdfsDirectory = config.getString(HDFS_DIRECTORY_KEY).getOrElse(HDFS_DIRECTORY)
 	val outputRequired = config.getString(OUTPUT_REQUIRED_KEY).getOrElse("false")
 
-	def uploadGraph(graph : FormattedGraph) = {
+	def loadGraph(graph : FormattedGraph) = {
 		val localVertexPath = new org.apache.hadoop.fs.Path(graph.getVertexFilePath)
 		val localEdgePath = new org.apache.hadoop.fs.Path(graph.getEdgeFilePath)
 		val hdfsVertexPath = new org.apache.hadoop.fs.Path(s"$hdfsDirectory/$getPlatformName/input/${graph.getName}.v")
@@ -102,6 +102,7 @@ class GraphxPlatform extends GranulaAwarePlatform {
 		pathsOfGraphs += (graph.getName -> (hdfsVertexPath.toUri.getPath, hdfsEdgePath.toUri.getPath))
 	}
 
+	def verifySetup(): Unit = {}
 
 	def setupGraphPath(graph : FormattedGraph) = {
 
@@ -111,7 +112,7 @@ class GraphxPlatform extends GranulaAwarePlatform {
 	}
 
 
-	def execute(benchmark : BenchmarkRun) : Boolean = {
+	def run(benchmark : BenchmarkRun) : Boolean = {
 		val graph = benchmark.getFormattedGraph
 		val algorithmType = benchmark.getAlgorithm
 		val parameters = benchmark.getAlgorithmParameters
@@ -168,12 +169,12 @@ class GraphxPlatform extends GranulaAwarePlatform {
 	def getPlatformName : String = "graphx"
 
 
-	def preprocess(benchmark: BenchmarkRun) {
+	def startup(benchmark: BenchmarkRun) {
 		GraphXLogger.stopCoreLogging
 		GraphXLogger.startPlatformLogging(benchmark.getLogDir.resolve("platform").resolve("driver.logs"))
 	}
 
-	def postprocess(benchmarkRun: BenchmarkRun): BenchmarkMetrics = {
+	def finalize(benchmarkRun: BenchmarkRun): BenchmarkMetrics = {
 		GraphXLogger.stopPlatformLogging
 		GraphXLogger.startCoreLogging
 	  new BenchmarkMetrics;
@@ -183,7 +184,7 @@ class GraphxPlatform extends GranulaAwarePlatform {
 
 	}
 
-	def cleanup(benchmarkRun: BenchmarkRun) {
+	def terminate(benchmarkRun: BenchmarkRun) {
 		GraphXLogger.collectYarnLogs(benchmarkRun.getLogDir)
 	}
 
