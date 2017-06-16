@@ -16,31 +16,18 @@
 package science.atlarge.graphalytics.graphx
 
 import java.math.BigDecimal
-import java.nio.file.{Path, Paths}
+import java.nio.file.Path
 
 import nl.tudelft.granula.archiver.PlatformArchive
 import nl.tudelft.granula.modeller.job.JobModel
 import nl.tudelft.granula.modeller.platform.Graphx
-import science.atlarge.graphalytics.graphx.pr.PageRankJob
-import science.atlarge.graphalytics.graphx.sssp.SingleSourceShortestPathJob
-import science.atlarge.graphalytics.domain._
-import science.atlarge.graphalytics.domain.benchmark.BenchmarkRun
-import science.atlarge.graphalytics.report.result.{BenchmarkMetric, BenchmarkMetrics, BenchmarkRunResult, PlatformBenchmarkResult}
-import science.atlarge.graphalytics.domain.graph.{FormattedGraph, Graph}
-import science.atlarge.graphalytics.granula.GranulaAwarePlatform
-import org.apache.commons.configuration.{ConfigurationException, PropertiesConfiguration}
-import org.apache.hadoop.fs.FileSystem
 import org.apache.hadoop.conf.Configuration
-import science.atlarge.graphalytics.graphx.bfs.BreadthFirstSearchJob
-import science.atlarge.graphalytics.graphx.cdlp.CommunityDetectionLPJob
-import science.atlarge.graphalytics.graphx.wcc.WeaklyConnectedComponentsJob
-import science.atlarge.graphalytics.graphx.ffm.ForestFireModelJob
-import science.atlarge.graphalytics.graphx.lcc.LocalClusteringCoefficientJob
+import org.apache.hadoop.fs.FileSystem
 import org.apache.logging.log4j.{LogManager, Logger}
 import org.json.simple.JSONObject
 import science.atlarge.graphalytics.domain.algorithms.Algorithm
 import science.atlarge.graphalytics.domain.benchmark.BenchmarkRun
-import science.atlarge.graphalytics.domain.graph.Graph
+import science.atlarge.graphalytics.domain.graph.FormattedGraph
 import science.atlarge.graphalytics.execution.PlatformExecutionException
 import science.atlarge.graphalytics.granula.GranulaAwarePlatform
 import science.atlarge.graphalytics.graphx.bfs.BreadthFirstSearchJob
@@ -50,7 +37,7 @@ import science.atlarge.graphalytics.graphx.lcc.LocalClusteringCoefficientJob
 import science.atlarge.graphalytics.graphx.pr.PageRankJob
 import science.atlarge.graphalytics.graphx.sssp.SingleSourceShortestPathJob
 import science.atlarge.graphalytics.graphx.wcc.WeaklyConnectedComponentsJob
-import science.atlarge.graphalytics.report.result.{BenchmarkMetrics, BenchmarkRunResult, PlatformBenchmarkResult}
+import science.atlarge.graphalytics.report.result.{BenchmarkMetric, BenchmarkMetrics, BenchmarkRunResult}
 
 /**
  * Constants for GraphXPlatform
@@ -88,6 +75,9 @@ class GraphxPlatform extends GranulaAwarePlatform {
 	val hdfsDirectory = config.getString(HDFS_DIRECTORY_KEY).getOrElse(HDFS_DIRECTORY)
 	val outputRequired = config.getString(OUTPUT_REQUIRED_KEY).getOrElse("false")
 
+
+	def verifySetup(): Unit = {}
+
 	def loadGraph(graph : FormattedGraph) = {
 		val localVertexPath = new org.apache.hadoop.fs.Path(graph.getVertexFilePath)
 		val localEdgePath = new org.apache.hadoop.fs.Path(graph.getEdgeFilePath)
@@ -102,7 +92,9 @@ class GraphxPlatform extends GranulaAwarePlatform {
 		pathsOfGraphs += (graph.getName -> (hdfsVertexPath.toUri.getPath, hdfsEdgePath.toUri.getPath))
 	}
 
-	def verifySetup(): Unit = {}
+	def deleteGraph(formattedGraph: FormattedGraph) = {
+		// TODO: Delete graph data from HDFS to clean up. This should preferably be configurable.
+	}
 
 	def setupGraphPath(graph : FormattedGraph) = {
 
@@ -111,6 +103,14 @@ class GraphxPlatform extends GranulaAwarePlatform {
 		pathsOfGraphs += (graph.getName -> (hdfsVertexPath.toUri.getPath, hdfsEdgePath.toUri.getPath))
 	}
 
+	def prepare(benchmarkRun: BenchmarkRun) {
+
+	}
+
+	def startup(benchmark: BenchmarkRun) {
+		GraphXLogger.stopCoreLogging
+		GraphXLogger.startPlatformLogging(benchmark.getLogDir.resolve("platform").resolve("driver.logs"))
+	}
 
 	def run(benchmark : BenchmarkRun) : Boolean = {
 		val graph = benchmark.getFormattedGraph
@@ -162,35 +162,10 @@ class GraphxPlatform extends GranulaAwarePlatform {
 		}
 	}
 
-	def deleteGraph(formattedGraph: FormattedGraph) = {
-		// TODO: Delete graph data from HDFS to clean up. This should preferably be configurable.
-	}
-
-	def getPlatformName : String = "graphx"
-
-
-	def startup(benchmark: BenchmarkRun) {
-		GraphXLogger.stopCoreLogging
-		GraphXLogger.startPlatformLogging(benchmark.getLogDir.resolve("platform").resolve("driver.logs"))
-	}
-
 	def finalize(benchmarkRun: BenchmarkRun): BenchmarkMetrics = {
 		GraphXLogger.stopPlatformLogging
 		GraphXLogger.startCoreLogging
 	  new BenchmarkMetrics;
-	}
-
-	def prepare(benchmarkRun: BenchmarkRun) {
-
-	}
-
-	def terminate(benchmarkRun: BenchmarkRun) {
-		GraphXLogger.collectYarnLogs(benchmarkRun.getLogDir)
-	}
-
-
-	def getJobModel: JobModel = {
-		return new JobModel(new Graphx)
 	}
 
 	def enrichMetrics(benchmarkResult: BenchmarkRunResult, arcDirectory: Path) {
@@ -209,5 +184,16 @@ class GraphxPlatform extends GranulaAwarePlatform {
 			}
 		}
 	}
+
+	def terminate(benchmarkRun: BenchmarkRun) {
+		GraphXLogger.collectYarnLogs(benchmarkRun.getLogDir)
+	}
+
+	def getJobModel: JobModel = {
+		return new JobModel(new Graphx)
+	}
+
+	def getPlatformName : String = "graphx"
+
 }
 
