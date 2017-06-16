@@ -15,6 +15,7 @@
  */
 package science.atlarge.graphalytics.graphx
 
+import java.math.BigDecimal
 import java.nio.file.{Path, Paths}
 
 import nl.tudelft.granula.archiver.PlatformArchive
@@ -24,8 +25,8 @@ import science.atlarge.graphalytics.graphx.pr.PageRankJob
 import science.atlarge.graphalytics.graphx.sssp.SingleSourceShortestPathJob
 import science.atlarge.graphalytics.domain._
 import science.atlarge.graphalytics.domain.benchmark.BenchmarkRun
-import science.atlarge.graphalytics.report.result.{BenchmarkMetrics, BenchmarkRunResult}
-import science.atlarge.graphalytics.domain.graph.{Graph, FormattedGraph}
+import science.atlarge.graphalytics.report.result.{BenchmarkMetric, BenchmarkMetrics, BenchmarkRunResult, PlatformBenchmarkResult}
+import science.atlarge.graphalytics.domain.graph.{FormattedGraph, Graph}
 import science.atlarge.graphalytics.granula.GranulaAwarePlatform
 import org.apache.commons.configuration.{ConfigurationException, PropertiesConfiguration}
 import org.apache.hadoop.fs.FileSystem
@@ -35,7 +36,6 @@ import science.atlarge.graphalytics.graphx.cdlp.CommunityDetectionLPJob
 import science.atlarge.graphalytics.graphx.wcc.WeaklyConnectedComponentsJob
 import science.atlarge.graphalytics.graphx.ffm.ForestFireModelJob
 import science.atlarge.graphalytics.graphx.lcc.LocalClusteringCoefficientJob
-import science.atlarge.graphalytics.report.result.{BenchmarkMetrics, BenchmarkRunResult, PlatformBenchmarkResult}
 import org.apache.logging.log4j.{LogManager, Logger}
 import org.json.simple.JSONObject
 import science.atlarge.graphalytics.domain.algorithms.Algorithm
@@ -195,11 +195,13 @@ class GraphxPlatform extends GranulaAwarePlatform {
 
 	def enrichMetrics(benchmarkResult: BenchmarkRunResult, arcDirectory: Path) {
 		try {
+			val metrics: BenchmarkMetrics = benchmarkResult.getMetrics
 			val platformArchive: PlatformArchive = PlatformArchive.readArchive(arcDirectory)
 			val processGraph: JSONObject = platformArchive.operation("ProcessGraph")
-			val procTime: Long = platformArchive.info(processGraph, "Duration").toLong
-			val metrics: BenchmarkMetrics = benchmarkResult.getMetrics
-			metrics.setProcessingTime(procTime)
+
+			val procTimeMS: Long = platformArchive.info(processGraph, "Duration").toLong
+			val procTimeS : BigDecimal = new BigDecimal(procTimeMS).divide(new BigDecimal(1000), 3, BigDecimal.ROUND_CEILING);
+			metrics.setProcessingTime(new BenchmarkMetric(procTimeS, "s"));
 		}
 		catch {
 			case e: Exception => {
