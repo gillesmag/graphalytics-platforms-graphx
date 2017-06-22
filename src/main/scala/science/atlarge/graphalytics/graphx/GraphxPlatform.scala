@@ -21,6 +21,7 @@ import java.nio.file.Path
 import nl.tudelft.granula.archiver.PlatformArchive
 import nl.tudelft.granula.modeller.job.JobModel
 import nl.tudelft.granula.modeller.platform.Graphx
+import nl.tudelft.granula.util.FileUtil
 import org.apache.hadoop.conf.Configuration
 import org.apache.hadoop.fs.FileSystem
 import org.apache.logging.log4j.{LogManager, Logger}
@@ -165,7 +166,36 @@ class GraphxPlatform extends GranulaAwarePlatform {
 	def finalize(benchmarkRun: BenchmarkRun): BenchmarkMetrics = {
 		GraphXLogger.stopPlatformLogging
 		GraphXLogger.startCoreLogging
-	  new BenchmarkMetrics;
+		GraphXLogger.collectYarnLogs(benchmarkRun.getLogDir)
+
+		val logs = FileUtil.readFile(benchmarkRun.getLogDir.resolve("platform").resolve("driver.logs"))
+
+		var startTime = -1l
+		var endTime = -1l
+
+		for (line <- logs.split("\n")) {
+			try {
+				if (line.contains("ProcessGraph StartTime ")) {
+					startTime = line.split("\\s+").last.toLong
+				}
+				if (line.contains("ProcessGraph EndTime ")) {
+					endTime = line.split("\\s+").last.toLong
+				}
+			} catch {
+				case e: Exception =>
+					LOG.error(String.format("Cannot parse line: %s", line))
+					e.printStackTrace()
+			}
+		}
+
+		if (startTime != -1 && endTime != -1) {
+			val metrics = new BenchmarkMetrics
+			val procTimeMS = endTime - startTime
+			val procTimeS = new BigDecimal(procTimeMS).divide(new BigDecimal(1000), 3, BigDecimal.ROUND_CEILING)
+			metrics.setProcessingTime(new BenchmarkMetric(procTimeS, "s"))
+			return metrics
+		}
+		else return new BenchmarkMetrics
 	}
 
 	def enrichMetrics(benchmarkResult: BenchmarkRunResult, arcDirectory: Path) {
@@ -186,7 +216,6 @@ class GraphxPlatform extends GranulaAwarePlatform {
 	}
 
 	def terminate(benchmarkRun: BenchmarkRun) {
-		GraphXLogger.collectYarnLogs(benchmarkRun.getLogDir)
 	}
 
 	def getJobModel: JobModel = {
