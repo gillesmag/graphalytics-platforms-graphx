@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package nl.tudelft.granula.modeller.platform.operation;
+package science.atlarge.granula.modeller.platform.operation;
 
-import nl.tudelft.granula.modeller.Type;
-import nl.tudelft.granula.modeller.rule.derivation.SimpleSummaryDerivation;
-import nl.tudelft.granula.modeller.rule.derivation.time.FilialEndTimeDerivation;
-import nl.tudelft.granula.modeller.rule.derivation.time.FilialStartTimeDerivation;
-import nl.tudelft.granula.modeller.rule.linking.EmptyLinking;
+import science.atlarge.granula.modeller.Type;
+import science.atlarge.granula.modeller.rule.derivation.SimpleSummaryDerivation;
+import science.atlarge.granula.modeller.rule.derivation.time.FilialEndTimeDerivation;
+import science.atlarge.granula.modeller.rule.derivation.time.FilialStartTimeDerivation;
+import science.atlarge.granula.modeller.rule.linking.EmptyLinking;
 
 public class TopActorTopMission extends AbstractOperationModel {
 

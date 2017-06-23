@@ -18,14 +18,14 @@ package science.atlarge.graphalytics.graphx
 import java.math.BigDecimal
 import java.nio.file.Path
 
-import nl.tudelft.granula.archiver.PlatformArchive
-import nl.tudelft.granula.modeller.job.JobModel
-import nl.tudelft.granula.modeller.platform.Graphx
-import nl.tudelft.granula.util.FileUtil
+import science.atlarge.granula.archiver.PlatformArchive
+import science.atlarge.granula.modeller.job.JobModel
+import science.atlarge.granula.util.FileUtil
 import org.apache.hadoop.conf.Configuration
 import org.apache.hadoop.fs.FileSystem
 import org.apache.logging.log4j.{LogManager, Logger}
 import org.json.simple.JSONObject
+import science.atlarge.granula.modeller.platform.Graphx
 import science.atlarge.graphalytics.domain.algorithms.Algorithm
 import science.atlarge.graphalytics.domain.benchmark.BenchmarkRun
 import science.atlarge.graphalytics.domain.graph.FormattedGraph
