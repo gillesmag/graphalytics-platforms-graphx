@@ -113,7 +113,7 @@ class GraphxPlatform extends GranulaAwarePlatform {
 		GraphXLogger.startPlatformLogging(benchmark.getLogDir.resolve("platform").resolve("driver.logs"))
 	}
 
-	def run(benchmark : BenchmarkRun) : Boolean = {
+	def run(benchmark : BenchmarkRun) = {
 		val graph = benchmark.getFormattedGraph
 		val algorithmType = benchmark.getAlgorithm
 		val parameters = benchmark.getAlgorithmParameters
@@ -151,7 +151,6 @@ class GraphxPlatform extends GranulaAwarePlatform {
 				LOG.info("hi i'm here at executeAlg 4.")
 				// TODO: After executing the job, any intermediate and output data should be
 				// verified and/or cleaned up. This should preferably be configurable.
-				true
 
 			} else {
 				throw new IllegalArgumentException("Invalid parameters for job")
