@@ -17,15 +17,21 @@ package science.atlarge.graphalytics.graphx
 
 import java.math.BigDecimal
 import java.nio.file.Path
+import java.util
+import java.util.List
 
+import scala.collection.JavaConversions._
 import science.atlarge.granula.archiver.PlatformArchive
 import science.atlarge.granula.modeller.job.JobModel
 import science.atlarge.granula.util.FileUtil
 import org.apache.hadoop.conf.Configuration
 import org.apache.hadoop.fs.FileSystem
+import org.apache.hadoop.util.ToolRunner
+import org.apache.hadoop.yarn.client.cli.ApplicationCLI
 import org.apache.logging.log4j.{LogManager, Logger}
 import org.json.simple.JSONObject
 import science.atlarge.granula.modeller.platform.Graphx
+import science.atlarge.graphalytics.configuration.GraphalyticsExecutionException
 import science.atlarge.graphalytics.domain.algorithms.Algorithm
 import science.atlarge.graphalytics.domain.benchmark.BenchmarkRun
 import science.atlarge.graphalytics.domain.graph.FormattedGraph
@@ -117,10 +123,9 @@ class GraphxPlatform extends GranulaAwarePlatform {
 		val graph = benchmark.getFormattedGraph
 		val algorithmType = benchmark.getAlgorithm
 		val parameters = benchmark.getAlgorithmParameters
-		LOG.info("hi i'm here at executeAlg.")
+
 		setupGraphPath(graph)
 
-		LOG.info("hi i'm here at executeAlg 2.")
 		try  {
 			val (vertexPath, edgePath) = pathsOfGraphs(graph.getName)
 			val outPath = s"$hdfsDirectory/$getPlatformName/output/${benchmark.getId}-${algorithmType.name}-${graph.getName}"
@@ -137,7 +142,6 @@ class GraphxPlatform extends GranulaAwarePlatform {
 				case x => throw new IllegalArgumentException(s"Invalid algorithm type: $x")
 			}
 
-			LOG.info("hi i'm here at executeAlg 3.")
 			if (job.hasValidInput) {
 				job.runJob()
 
@@ -148,7 +152,6 @@ class GraphxPlatform extends GranulaAwarePlatform {
 					fs.close()
 				}
 
-				LOG.info("hi i'm here at executeAlg 4.")
 				// TODO: After executing the job, any intermediate and output data should be
 				// verified and/or cleaned up. This should preferably be configurable.
 
@@ -214,7 +217,26 @@ class GraphxPlatform extends GranulaAwarePlatform {
 		}
 	}
 
-	def terminate(benchmarkRun: BenchmarkRun) {
+	def terminate(benchmarkRun: BenchmarkRun): Unit = {
+		val driverPath: Path = benchmarkRun.getLogDir.resolve("platform").resolve("driver.logs-graphaltyics")
+		val appIds: util.List[String] = GraphXLogger.getYarnAppIds(driverPath)
+
+		for (appId <- appIds) {
+			LOG.info("Terminating Yarn job: " + appId)
+			val args: Array[String] = Array("application", "-kill", appId)
+			try {
+				val applicationCLI: ApplicationCLI = new ApplicationCLI
+				applicationCLI.setSysOutPrintStream(System.out)
+				applicationCLI.setSysErrPrintStream(System.err)
+				val success: Int = ToolRunner.run(applicationCLI, args)
+				applicationCLI.stop()
+				if (success == 0) LOG.info("Terminated Yarn job: " + appId)
+				else throw new GraphalyticsExecutionException("Failed to terminate task: signal=" + success)
+			} catch {
+				case e: Exception =>
+					throw new GraphalyticsExecutionException("Failed to terminate task", e)
+			}
+		}
 	}
 
 	def getJobModel: JobModel = {
