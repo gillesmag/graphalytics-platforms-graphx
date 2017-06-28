@@ -14,27 +14,26 @@
  * limitations under the License.
  */
 
-package nl.tudelft.granula.modeller.platform.operation;
+package science.atlarge.granula.modeller.platform.operation;
 
-import nl.tudelft.granula.modeller.Type;
-import nl.tudelft.granula.modeller.rule.derivation.SimpleSummaryDerivation;
-import nl.tudelft.granula.modeller.rule.linking.UniqueParentLinking;
+import science.atlarge.granula.modeller.Type;
+import science.atlarge.granula.modeller.rule.derivation.DerivationRule;
+import science.atlarge.granula.modeller.rule.derivation.SimpleSummaryDerivation;
+import science.atlarge.granula.modeller.rule.linking.UniqueParentLinking;
 
-import java.util.ArrayList;
+public class OffloadGraph extends RealtimeOperationModel {
 
-public class SparkAppSparkJob extends RealtimeOperationModel {
-
-    public SparkAppSparkJob() {
-        super(Type.SparkApp, Type.SparkJob);
+    public OffloadGraph() {
+        super(Type.GraphX, Type.OffloadGraph);
     }
 
     public void loadRules() {
         super.loadRules();
-        addLinkingRule(new UniqueParentLinking(Type.TopActor, Type.TopMission));
+
+        addLinkingRule(new UniqueParentLinking(Type.SparkApp, Type.SparkJob));
 
 
-
-        String summary = "SparkAppSparkJob.";
+        String summary = "OffloadGraph.";
         addInfoDerivation(new SimpleSummaryDerivation(11, summary));
 
     }

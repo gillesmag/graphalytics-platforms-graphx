@@ -14,29 +14,27 @@
  * limitations under the License.
  */
 
-package nl.tudelft.granula.modeller.platform.operation;
+package science.atlarge.granula.modeller.platform.operation;
 
-import nl.tudelft.granula.modeller.Type;
-import nl.tudelft.granula.modeller.rule.derivation.SimpleSummaryDerivation;
-import nl.tudelft.granula.modeller.rule.linking.UniqueParentLinking;
+import science.atlarge.granula.modeller.Type;
+import science.atlarge.granula.modeller.rule.derivation.SimpleSummaryDerivation;
+import science.atlarge.granula.modeller.rule.linking.UniqueParentLinking;
 
-import java.util.ArrayList;
+public class SparkAppSparkJob extends RealtimeOperationModel {
 
-public class ProcessGraph extends RealtimeOperationModel {
-
-    public ProcessGraph() {
-        super(Type.GraphX, Type.ProcessGraph);
+    public SparkAppSparkJob() {
+        super(Type.SparkApp, Type.SparkJob);
     }
 
     public void loadRules() {
         super.loadRules();
+        addLinkingRule(new UniqueParentLinking(Type.TopActor, Type.TopMission));
 
-        addLinkingRule(new UniqueParentLinking(Type.SparkApp, Type.SparkJob));
 
 
-        String summary = "ProcessGraph.";
+        String summary = "SparkAppSparkJob.";
         addInfoDerivation(new SimpleSummaryDerivation(11, summary));
 
-
     }
+
 }

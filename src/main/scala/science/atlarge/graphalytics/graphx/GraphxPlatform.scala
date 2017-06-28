@@ -15,32 +15,26 @@
  */
 package science.atlarge.graphalytics.graphx
 
-import java.nio.file.{Path, Paths}
+import java.math.BigDecimal
+import java.nio.file.Path
+import java.util
+import java.util.List
 
-import nl.tudelft.granula.archiver.PlatformArchive
-import nl.tudelft.granula.modeller.job.JobModel
-import nl.tudelft.granula.modeller.platform.Graphx
-import science.atlarge.graphalytics.graphx.pr.PageRankJob
-import science.atlarge.graphalytics.graphx.sssp.SingleSourceShortestPathJob
-import science.atlarge.graphalytics.domain._
-import science.atlarge.graphalytics.domain.benchmark.BenchmarkRun
-import science.atlarge.graphalytics.report.result.{BenchmarkMetrics, BenchmarkRunResult}
-import science.atlarge.graphalytics.domain.graph.{Graph, FormattedGraph}
-import science.atlarge.graphalytics.granula.GranulaAwarePlatform
-import org.apache.commons.configuration.{ConfigurationException, PropertiesConfiguration}
-import org.apache.hadoop.fs.FileSystem
+import scala.collection.JavaConversions._
+import science.atlarge.granula.archiver.PlatformArchive
+import science.atlarge.granula.modeller.job.JobModel
+import science.atlarge.granula.util.FileUtil
 import org.apache.hadoop.conf.Configuration
-import science.atlarge.graphalytics.graphx.bfs.BreadthFirstSearchJob
-import science.atlarge.graphalytics.graphx.cdlp.CommunityDetectionLPJob
-import science.atlarge.graphalytics.graphx.wcc.WeaklyConnectedComponentsJob
-import science.atlarge.graphalytics.graphx.ffm.ForestFireModelJob
-import science.atlarge.graphalytics.graphx.lcc.LocalClusteringCoefficientJob
-import science.atlarge.graphalytics.report.result.{BenchmarkMetrics, BenchmarkRunResult, PlatformBenchmarkResult}
+import org.apache.hadoop.fs.FileSystem
+import org.apache.hadoop.util.ToolRunner
+import org.apache.hadoop.yarn.client.cli.ApplicationCLI
 import org.apache.logging.log4j.{LogManager, Logger}
 import org.json.simple.JSONObject
+import science.atlarge.granula.modeller.platform.Graphx
+import science.atlarge.graphalytics.configuration.GraphalyticsExecutionException
 import science.atlarge.graphalytics.domain.algorithms.Algorithm
 import science.atlarge.graphalytics.domain.benchmark.BenchmarkRun
-import science.atlarge.graphalytics.domain.graph.Graph
+import science.atlarge.graphalytics.domain.graph.FormattedGraph
 import science.atlarge.graphalytics.execution.PlatformExecutionException
 import science.atlarge.graphalytics.granula.GranulaAwarePlatform
 import science.atlarge.graphalytics.graphx.bfs.BreadthFirstSearchJob
@@ -50,7 +44,7 @@ import science.atlarge.graphalytics.graphx.lcc.LocalClusteringCoefficientJob
 import science.atlarge.graphalytics.graphx.pr.PageRankJob
 import science.atlarge.graphalytics.graphx.sssp.SingleSourceShortestPathJob
 import science.atlarge.graphalytics.graphx.wcc.WeaklyConnectedComponentsJob
-import science.atlarge.graphalytics.report.result.{BenchmarkMetrics, BenchmarkRunResult, PlatformBenchmarkResult}
+import science.atlarge.graphalytics.report.result.{BenchmarkMetric, BenchmarkMetrics, BenchmarkRunResult}
 
 /**
  * Constants for GraphXPlatform
@@ -88,7 +82,10 @@ class GraphxPlatform extends GranulaAwarePlatform {
 	val hdfsDirectory = config.getString(HDFS_DIRECTORY_KEY).getOrElse(HDFS_DIRECTORY)
 	val outputRequired = config.getString(OUTPUT_REQUIRED_KEY).getOrElse("false")
 
-	def uploadGraph(graph : FormattedGraph) = {
+
+	def verifySetup(): Unit = {}
+
+	def loadGraph(graph : FormattedGraph) = {
 		val localVertexPath = new org.apache.hadoop.fs.Path(graph.getVertexFilePath)
 		val localEdgePath = new org.apache.hadoop.fs.Path(graph.getEdgeFilePath)
 		val hdfsVertexPath = new org.apache.hadoop.fs.Path(s"$hdfsDirectory/$getPlatformName/input/${graph.getName}.v")
@@ -102,6 +99,9 @@ class GraphxPlatform extends GranulaAwarePlatform {
 		pathsOfGraphs += (graph.getName -> (hdfsVertexPath.toUri.getPath, hdfsEdgePath.toUri.getPath))
 	}
 
+	def deleteGraph(formattedGraph: FormattedGraph) = {
+		// TODO: Delete graph data from HDFS to clean up. This should preferably be configurable.
+	}
 
 	def setupGraphPath(graph : FormattedGraph) = {
 
@@ -110,15 +110,22 @@ class GraphxPlatform extends GranulaAwarePlatform {
 		pathsOfGraphs += (graph.getName -> (hdfsVertexPath.toUri.getPath, hdfsEdgePath.toUri.getPath))
 	}
 
+	def prepare(benchmarkRun: BenchmarkRun) {
 
-	def execute(benchmark : BenchmarkRun) : Boolean = {
+	}
+
+	def startup(benchmark: BenchmarkRun) {
+		GraphXLogger.stopCoreLogging
+		GraphXLogger.startPlatformLogging(benchmark.getLogDir.resolve("platform").resolve("driver.logs"))
+	}
+
+	def run(benchmark : BenchmarkRun) = {
 		val graph = benchmark.getFormattedGraph
 		val algorithmType = benchmark.getAlgorithm
 		val parameters = benchmark.getAlgorithmParameters
-		LOG.info("hi i'm here at executeAlg.")
+
 		setupGraphPath(graph)
 
-		LOG.info("hi i'm here at executeAlg 2.")
 		try  {
 			val (vertexPath, edgePath) = pathsOfGraphs(graph.getName)
 			val outPath = s"$hdfsDirectory/$getPlatformName/output/${benchmark.getId}-${algorithmType.name}-${graph.getName}"
@@ -135,7 +142,6 @@ class GraphxPlatform extends GranulaAwarePlatform {
 				case x => throw new IllegalArgumentException(s"Invalid algorithm type: $x")
 			}
 
-			LOG.info("hi i'm here at executeAlg 3.")
 			if (job.hasValidInput) {
 				job.runJob()
 
@@ -146,10 +152,8 @@ class GraphxPlatform extends GranulaAwarePlatform {
 					fs.close()
 				}
 
-				LOG.info("hi i'm here at executeAlg 4.")
 				// TODO: After executing the job, any intermediate and output data should be
 				// verified and/or cleaned up. This should preferably be configurable.
-				true
 
 			} else {
 				throw new IllegalArgumentException("Invalid parameters for job")
@@ -161,44 +165,50 @@ class GraphxPlatform extends GranulaAwarePlatform {
 		}
 	}
 
-	def deleteGraph(formattedGraph: FormattedGraph) = {
-		// TODO: Delete graph data from HDFS to clean up. This should preferably be configurable.
-	}
-
-	def getPlatformName : String = "graphx"
-
-
-	def preprocess(benchmark: BenchmarkRun) {
-		GraphXLogger.stopCoreLogging
-		GraphXLogger.startPlatformLogging(benchmark.getLogDir.resolve("platform").resolve("driver.logs"))
-	}
-
-	def postprocess(benchmarkRun: BenchmarkRun): BenchmarkMetrics = {
+	def finalize(benchmarkRun: BenchmarkRun): BenchmarkMetrics = {
 		GraphXLogger.stopPlatformLogging
 		GraphXLogger.startCoreLogging
-	  new BenchmarkMetrics;
-	}
-
-	def prepare(benchmarkRun: BenchmarkRun) {
-
-	}
-
-	def cleanup(benchmarkRun: BenchmarkRun) {
 		GraphXLogger.collectYarnLogs(benchmarkRun.getLogDir)
-	}
 
+		val logs = FileUtil.readFile(benchmarkRun.getLogDir.resolve("platform").resolve("driver.logs"))
 
-	def getJobModel: JobModel = {
-		return new JobModel(new Graphx)
+		var startTime = -1l
+		var endTime = -1l
+
+		for (line <- logs.split("\n")) {
+			try {
+				if (line.contains("ProcessGraph StartTime ")) {
+					startTime = line.split("\\s+").last.toLong
+				}
+				if (line.contains("ProcessGraph EndTime ")) {
+					endTime = line.split("\\s+").last.toLong
+				}
+			} catch {
+				case e: Exception =>
+					LOG.error(String.format("Cannot parse line: %s", line))
+					e.printStackTrace()
+			}
+		}
+
+		if (startTime != -1 && endTime != -1) {
+			val metrics = new BenchmarkMetrics
+			val procTimeMS = endTime - startTime
+			val procTimeS = new BigDecimal(procTimeMS).divide(new BigDecimal(1000), 3, BigDecimal.ROUND_CEILING)
+			metrics.setProcessingTime(new BenchmarkMetric(procTimeS, "s"))
+			return metrics
+		}
+		else return new BenchmarkMetrics
 	}
 
 	def enrichMetrics(benchmarkResult: BenchmarkRunResult, arcDirectory: Path) {
 		try {
+			val metrics: BenchmarkMetrics = benchmarkResult.getMetrics
 			val platformArchive: PlatformArchive = PlatformArchive.readArchive(arcDirectory)
 			val processGraph: JSONObject = platformArchive.operation("ProcessGraph")
-			val procTime: Long = platformArchive.info(processGraph, "Duration").toLong
-			val metrics: BenchmarkMetrics = benchmarkResult.getMetrics
-			metrics.setProcessingTime(procTime)
+
+			val procTimeMS: Long = platformArchive.info(processGraph, "Duration").toLong
+			val procTimeS : BigDecimal = new BigDecimal(procTimeMS).divide(new BigDecimal(1000), 3, BigDecimal.ROUND_CEILING);
+			metrics.setProcessingTime(new BenchmarkMetric(procTimeS, "s"));
 		}
 		catch {
 			case e: Exception => {
@@ -206,5 +216,34 @@ class GraphxPlatform extends GranulaAwarePlatform {
 			}
 		}
 	}
+
+	def terminate(benchmarkRun: BenchmarkRun): Unit = {
+		val driverPath: Path = benchmarkRun.getLogDir.resolve("platform").resolve("driver.logs-graphaltyics")
+		val appIds: util.List[String] = GraphXLogger.getYarnAppIds(driverPath)
+
+		for (appId <- appIds) {
+			LOG.info("Terminating Yarn job: " + appId)
+			val args: Array[String] = Array("application", "-kill", appId)
+			try {
+				val applicationCLI: ApplicationCLI = new ApplicationCLI
+				applicationCLI.setSysOutPrintStream(System.out)
+				applicationCLI.setSysErrPrintStream(System.err)
+				val success: Int = ToolRunner.run(applicationCLI, args)
+				applicationCLI.stop()
+				if (success == 0) LOG.info("Terminated Yarn job: " + appId)
+				else throw new GraphalyticsExecutionException("Failed to terminate task: signal=" + success)
+			} catch {
+				case e: Exception =>
+					throw new GraphalyticsExecutionException("Failed to terminate task", e)
+			}
+		}
+	}
+
+	def getJobModel: JobModel = {
+		return new JobModel(new Graphx)
+	}
+
+	def getPlatformName : String = "graphx"
+
 }
 
