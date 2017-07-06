@@ -1,7 +1,6 @@
 # Graphalytics GraphX platform extension
 
-[![Build Status](http://jenkins.tribler.org/buildStatus/icon?job=Graphalytics_GraphX_master_tester)](http://jenkins.tribler.org/job/Graphalytics_GraphX_master_tester/)
-
+[![Build Status](https://jenkins.tribler.org/buildStatus/icon?job=Graphalytics/Platforms/GraphX_master)](https://jenkins.tribler.org/job/Graphalytics/job/Platforms/job/GraphX_master/)
 
 ## Getting started
 
