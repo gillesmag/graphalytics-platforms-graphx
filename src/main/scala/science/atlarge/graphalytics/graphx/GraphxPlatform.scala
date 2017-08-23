@@ -35,7 +35,7 @@ import science.atlarge.graphalytics.configuration.GraphalyticsExecutionException
 import science.atlarge.graphalytics.domain.algorithms.Algorithm
 import science.atlarge.graphalytics.domain.benchmark.BenchmarkRun
 import science.atlarge.graphalytics.domain.graph.{FormattedGraph, LoadedGraph}
-import science.atlarge.graphalytics.execution.PlatformExecutionException
+import science.atlarge.graphalytics.execution.{PlatformExecutionException, RunSpecification}
 import science.atlarge.graphalytics.granula.GranulaAwarePlatform
 import science.atlarge.graphalytics.graphx.bfs.BreadthFirstSearchJob
 import science.atlarge.graphalytics.graphx.cdlp.CommunityDetectionLPJob
@@ -102,24 +102,29 @@ class GraphxPlatform extends GranulaAwarePlatform {
 		// TODO: Delete graph data from HDFS to clean up. This should preferably be configurable.
 	}
 
-	def prepare(benchmarkRun: BenchmarkRun) {
+	def prepare(benchmarkSpec: RunSpecification) {
 
 	}
 
-	def startup(benchmark: BenchmarkRun) {
+	def startup(benchmarkSpec: RunSpecification) {
 		GraphXLogger.stopCoreLogging
-		GraphXLogger.startPlatformLogging(benchmark.getLogDir.resolve("platform").resolve("driver.logs"))
+		val benchmarkSetup = benchmarkSpec.getBenchmarkRunSetup
+		GraphXLogger.startPlatformLogging(benchmarkSetup.getLogDir.resolve("platform").resolve("driver.logs"))
 	}
 
-	def run(benchmark : BenchmarkRun) = {
-		val graph = benchmark.getFormattedGraph
-		val algorithmType = benchmark.getAlgorithm
-		val parameters = benchmark.getAlgorithmParameters
+	def run(benchmarkSpec: RunSpecification) = {
+		val benchmarkRun = benchmarkSpec.getBenchmarkRun
+		val benchmarkRunSetup = benchmarkSpec.getBenchmarkRunSetup
+		val runtimeSetup = benchmarkSpec.getRuntimeSetup
+
+		val graph = benchmarkRun.getFormattedGraph
+		val algorithmType = benchmarkRun.getAlgorithm
+		val parameters = benchmarkRun.getAlgorithmParameters
 
 		try  {
-			val vertexPath = benchmark.getLoadedGraph.getVertexFilePath
-			val edgePath = benchmark.getLoadedGraph.getEdgeFilePath
-			val outPath = s"$hdfsDirectory/$getPlatformName/output/${benchmark.getId}-${algorithmType.name}-${graph.getName}"
+			val vertexPath = runtimeSetup.getLoadedGraph.getVertexPath
+			val edgePath = runtimeSetup.getLoadedGraph.getEdgePath
+			val outPath = s"$hdfsDirectory/$getPlatformName/output/${benchmarkRun.getId}-${algorithmType.name}-${graph.getName}"
 			val isDirected = graph.isDirected
 
 			val job = algorithmType match {
@@ -136,10 +141,10 @@ class GraphxPlatform extends GranulaAwarePlatform {
 			if (job.hasValidInput) {
 				job.runJob()
 
-				if(benchmark.isOutputRequired){
+				if(benchmarkRunSetup.isOutputRequired){
 					val fs = FileSystem.get(new Configuration())
 					fs.copyToLocalFile(false, new org.apache.hadoop.fs.Path(outPath),
-						new org.apache.hadoop.fs.Path(benchmark.getOutputDir.toAbsolutePath.toString), true)
+						new org.apache.hadoop.fs.Path(benchmarkRunSetup.getOutputDir.toAbsolutePath.toString), true)
 					fs.close()
 				}
 
@@ -156,12 +161,16 @@ class GraphxPlatform extends GranulaAwarePlatform {
 		}
 	}
 
-	def finalize(benchmarkRun: BenchmarkRun): BenchmarkMetrics = {
+	def finalize(benchmarkSpec: RunSpecification): BenchmarkMetrics = {
 		GraphXLogger.stopPlatformLogging
 		GraphXLogger.startCoreLogging
-		GraphXLogger.collectYarnLogs(benchmarkRun.getLogDir)
 
-		val logs = FileUtil.readFile(benchmarkRun.getLogDir.resolve("platform").resolve("driver.logs"))
+
+		val benchmarkRun = benchmarkSpec.getBenchmarkRun
+		val benchmarkSetup = benchmarkSpec.getBenchmarkRunSetup
+		GraphXLogger.collectYarnLogs(benchmarkSetup.getLogDir)
+
+		val logs = FileUtil.readFile(benchmarkSetup.getLogDir.resolve("platform").resolve("driver.logs"))
 
 		var startTime = -1l
 		var endTime = -1l
@@ -208,8 +217,9 @@ class GraphxPlatform extends GranulaAwarePlatform {
 		}
 	}
 
-	def terminate(benchmarkRun: BenchmarkRun): Unit = {
-		val driverPath: Path = benchmarkRun.getLogDir.resolve("platform").resolve("driver.logs-graphaltyics")
+	def terminate(benchmarkSpec: RunSpecification): Unit = {
+		val benchmarkSetup = benchmarkSpec.getBenchmarkRunSetup
+		val driverPath: Path = benchmarkSetup.getLogDir.resolve("platform").resolve("driver.logs-graphaltyics")
 		val appIds: util.List[String] = GraphXLogger.getYarnAppIds(driverPath)
 
 		for (appId <- appIds) {
