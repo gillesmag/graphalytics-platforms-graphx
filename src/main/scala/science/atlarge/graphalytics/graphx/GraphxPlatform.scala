@@ -34,7 +34,7 @@ import science.atlarge.granula.modeller.platform.Graphx
 import science.atlarge.graphalytics.configuration.GraphalyticsExecutionException
 import science.atlarge.graphalytics.domain.algorithms.Algorithm
 import science.atlarge.graphalytics.domain.benchmark.BenchmarkRun
-import science.atlarge.graphalytics.domain.graph.FormattedGraph
+import science.atlarge.graphalytics.domain.graph.{FormattedGraph, LoadedGraph}
 import science.atlarge.graphalytics.execution.PlatformExecutionException
 import science.atlarge.graphalytics.granula.GranulaAwarePlatform
 import science.atlarge.graphalytics.graphx.bfs.BreadthFirstSearchJob
@@ -70,7 +70,6 @@ class GraphxPlatform extends GranulaAwarePlatform {
 	import GraphxPlatform._
 
 	val LOG: Logger = LogManager.getLogger
-	var pathsOfGraphs : Map[String, (String, String)] = Map()
 
 	/* Parse the GraphX configuration file */
 	val config = Properties.fromFile(CONFIG_PATH).getOrElse(Properties.empty())
@@ -85,7 +84,7 @@ class GraphxPlatform extends GranulaAwarePlatform {
 
 	def verifySetup(): Unit = {}
 
-	def loadGraph(graph : FormattedGraph) = {
+	def loadGraph(graph : FormattedGraph) : LoadedGraph = {
 		val localVertexPath = new org.apache.hadoop.fs.Path(graph.getVertexFilePath)
 		val localEdgePath = new org.apache.hadoop.fs.Path(graph.getEdgeFilePath)
 		val hdfsVertexPath = new org.apache.hadoop.fs.Path(s"$hdfsDirectory/$getPlatformName/input/${graph.getName}.v")
@@ -96,18 +95,11 @@ class GraphxPlatform extends GranulaAwarePlatform {
 		fs.copyFromLocalFile(localEdgePath, hdfsEdgePath)
 		fs.close()
 
-		pathsOfGraphs += (graph.getName -> (hdfsVertexPath.toUri.getPath, hdfsEdgePath.toUri.getPath))
+		return new LoadedGraph(graph, hdfsVertexPath.toString, hdfsEdgePath.toString);
 	}
 
-	def deleteGraph(formattedGraph: FormattedGraph) = {
+	def deleteGraph(loadedGraph: LoadedGraph) = {
 		// TODO: Delete graph data from HDFS to clean up. This should preferably be configurable.
-	}
-
-	def setupGraphPath(graph : FormattedGraph) = {
-
-		val hdfsVertexPath = new org.apache.hadoop.fs.Path(s"$hdfsDirectory/$getPlatformName/input/${graph.getName}.v")
-		val hdfsEdgePath = new org.apache.hadoop.fs.Path(s"$hdfsDirectory/$getPlatformName/input/${graph.getName}.e")
-		pathsOfGraphs += (graph.getName -> (hdfsVertexPath.toUri.getPath, hdfsEdgePath.toUri.getPath))
 	}
 
 	def prepare(benchmarkRun: BenchmarkRun) {
@@ -124,10 +116,9 @@ class GraphxPlatform extends GranulaAwarePlatform {
 		val algorithmType = benchmark.getAlgorithm
 		val parameters = benchmark.getAlgorithmParameters
 
-		setupGraphPath(graph)
-
 		try  {
-			val (vertexPath, edgePath) = pathsOfGraphs(graph.getName)
+			val vertexPath = benchmark.getLoadedGraph.getVertexFilePath
+			val edgePath = benchmark.getLoadedGraph.getEdgeFilePath
 			val outPath = s"$hdfsDirectory/$getPlatformName/output/${benchmark.getId}-${algorithmType.name}-${graph.getName}"
 			val isDirected = graph.isDirected
 
