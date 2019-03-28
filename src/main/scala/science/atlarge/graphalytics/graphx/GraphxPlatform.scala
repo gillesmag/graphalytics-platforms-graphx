@@ -57,9 +57,6 @@ object GraphxPlatform {
 	val HDFS_DIRECTORY = "graphalytics"
 
 	val CONFIG_PATH = "benchmark.properties"
-	val CONFIG_JOB_NUM_EXECUTORS = "platform.graphx.job.num-executors"
-	val CONFIG_JOB_EXECUTOR_MEMORY = "platform.graphx.job.executor-memory"
-	val CONFIG_JOB_EXECUTOR_CORES = "platform.graphx.job.executor-cores"
 }
 
 /**
@@ -73,9 +70,7 @@ class GraphxPlatform extends GranulaAwarePlatform {
 
 	/* Parse the GraphX configuration file */
 	val config = Properties.fromFile(CONFIG_PATH).getOrElse(Properties.empty())
-	System.setProperty("spark.executor.cores", config.getString(CONFIG_JOB_EXECUTOR_CORES).getOrElse("1"))
-	System.setProperty("spark.executor.memory", config.getString(CONFIG_JOB_EXECUTOR_MEMORY).getOrElse("2g"))
-	System.setProperty("spark.executor.instances", config.getString(CONFIG_JOB_NUM_EXECUTORS).getOrElse("1"))
+	initSparkConfig();
 
 	val outputDirectory = config.getString(OUTPUT_DIRECTORY_KEY).getOrElse(OUTPUT_DIRECTORY)
 	val hdfsDirectory = config.getString(HDFS_DIRECTORY_KEY).getOrElse(HDFS_DIRECTORY)
@@ -100,6 +95,17 @@ class GraphxPlatform extends GranulaAwarePlatform {
 
 	def deleteGraph(loadedGraph: LoadedGraph) = {
 		// TODO: Delete graph data from HDFS to clean up. This should preferably be configurable.
+	}
+
+	def initSparkConfig() = {
+		val graphxConfig = Properties.fromFile(CONFIG_PATH).getOrElse(Properties.empty())
+		val keys = graphxConfig.configuration.getKeys("platform.graphx.job")
+
+		for (key <- keys) {
+			val propertyName = key.replaceAll("platform.graphx.job.", "")
+			val value = graphxConfig.getString(key).getOrElse("")
+			System.setProperty("spark." + propertyName, value)
+		}
 	}
 
 	def prepare(benchmarkSpec: RunSpecification) {

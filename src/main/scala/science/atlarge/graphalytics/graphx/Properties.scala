@@ -22,7 +22,7 @@ import org.apache.commons.configuration.{ConfigurationException, PropertiesConfi
  *
  * @author Tim Hegeman
  */
-class Properties(configuration: PropertiesConfiguration = new PropertiesConfiguration()) {
+class Properties(val configuration: PropertiesConfiguration = new PropertiesConfiguration()) {
 
 	/**
 	 * @param property the property to read
