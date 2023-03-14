@@ -122,7 +122,7 @@ class LocalClusteringCoefficientJob(graphVertexPath : String, graphEdgePath : St
 	/**
 	 * @return name of the GraphX job
 	 */
-	override def getAppName: String = "Local Clustering Coefficient"
+	override def getAppName: String = "application-Local-Clustering-Coefficient"
 
 	/**
 	 * @return true iff the input is valid

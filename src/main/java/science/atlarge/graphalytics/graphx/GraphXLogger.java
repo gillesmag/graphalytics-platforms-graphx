@@ -102,7 +102,7 @@ public class GraphXLogger {
             String line;
             while ((line = br.readLine()) != null) {
                 String appId = null;
-                if (line.contains("Submitted application")) {
+                if (line.contains("Submitted application") && line.contains("YarnClientImpl")) {
                     for (String word : line.split("\\s+")) {
                         appId = word;
                     }
@@ -148,6 +148,8 @@ public class GraphXLogger {
     public static void collectYarnLogs(Path logDataPath) {
         List<String> appIds = getYarnAppIds(logDataPath.resolve("platform").resolve("driver.logs-graphaltyics"));
         for (String appId : appIds) {
+            System.out.println("Collecting yarn logs for application " + logDataPath);
+            System.out.println("Collecting yarn logs for application " + appId);
             collectYarnLog(appId, logDataPath + "/platform/yarn" + appId + ".logs");
         }
 

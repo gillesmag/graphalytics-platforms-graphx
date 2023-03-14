@@ -51,7 +51,7 @@ class WeaklyConnectedComponentsJob(graphVertexPath : String, graphEdgePath : Str
 	/**
 	 * @return name of the GraphX job
 	 */
-	override def getAppName: String = "Connected Components"
+	override def getAppName: String = "application-Connected-Components"
 
 	/**
 	 * @return true iff the input is valid

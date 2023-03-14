@@ -16,13 +16,14 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <graphalytics.version>1.0.0</graphalytics.version>
+        <graphalytics.version>1.6.0-SNAPSHOT</graphalytics.version>
         <platform.name>graphx</platform.name>
-        <hadoop.version>2.4.1</hadoop.version>
-        <scala.version>2.10.4</scala.version>
-        <scalatest.version>2.2.4</scalatest.version>
-        <spark.version>1.6.0</spark.version>
-        <log4j.version>2.0</log4j.version>
+        <hadoop.version>3.2.4</hadoop.version>
+        <scala.binary.version>2.12</scala.binary.version>
+        <scala.version>2.12.15</scala.version>
+        <scalatest.version>3.2.14</scalatest.version>
+        <spark.version>3.2.3</spark.version>
+        <log4j.version>2.5</log4j.version>
     </properties>
 
     <dependencies>
@@ -38,25 +39,40 @@
             <artifactId>scala-library</artifactId>
             <version>${scala.version}</version>
         </dependency>
+
+        <!-- <dependency> -->
+        <!--     <groupId>org.scala-lang</groupId> -->
+        <!--     <artifactId>scala-reflect</artifactId> -->
+        <!--     <version>${scala.version}</version> -->
+        <!-- </dependency> -->
+        <!---->
+        <!-- <dependency> -->
+        <!--     <groupId>org.scala-lang</groupId> -->
+        <!--     <artifactId>scala-compiler</artifactId> -->
+        <!--     <version>${scala.version}</version> -->
+        <!-- </dependency> -->
+
         <dependency>
             <groupId>org.scalatest</groupId>
-            <artifactId>scalatest_2.10</artifactId>
+            <artifactId>scalatest_${scala.binary.version}</artifactId>
             <version>${scalatest.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-core_2.10</artifactId>
+            <artifactId>spark-core_${scala.binary.version}</artifactId>
             <version>${spark.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-graphx_2.10</artifactId>
+            <artifactId>spark-graphx_${scala.binary.version}</artifactId>
             <version>${spark.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-yarn_2.10</artifactId>
+            <artifactId>spark-yarn_${scala.binary.version}</artifactId>
             <version>${spark.version}</version>
             <exclusions>
                 <exclusion>
@@ -81,18 +97,21 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
         <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-yarn-client</artifactId>
             <version>${hadoop.version}</version>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-client</artifactId>
             <version>${hadoop.version}</version>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-1.2-api</artifactId>
@@ -104,6 +123,7 @@
             <artifactId>graphalytics-core</artifactId>
             <version>${graphalytics.version}</version>
         </dependency>
+
         <dependency>
             <groupId>science.atlarge.graphalytics</groupId>
             <artifactId>graphalytics-core</artifactId>
@@ -112,6 +132,7 @@
             <classifier>resources</classifier>
             <scope>runtime</scope>
         </dependency>
+
         <dependency>
             <groupId>science.atlarge.graphalytics</groupId>
             <artifactId>graphalytics-validation</artifactId>
@@ -121,101 +142,101 @@
 
     </dependencies>
 
-    <profiles>
-        <profile>
-            <id>granula</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <dependencies>
-
-                <dependency>
-                    <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-core_2.10-granula</artifactId>
-                    <version>${spark.version}</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-graphx_2.10-granula</artifactId>
-                    <version>${spark.version}</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-yarn_2.10-granula</artifactId>
-                    <version>${spark.version}</version>
-                    <exclusions>
-                        <exclusion>
-                            <groupId>org.apache.hadoop</groupId>
-                            <artifactId>hadoop-client</artifactId>
-                        </exclusion>
-                        <exclusion>
-                            <groupId>org.apache.hadoop</groupId>
-                            <artifactId>hadoop-yarn-api</artifactId>
-                        </exclusion>
-                        <exclusion>
-                            <groupId>org.apache.hadoop</groupId>
-                            <artifactId>hadoop-yarn-client</artifactId>
-                        </exclusion>
-                        <exclusion>
-                            <groupId>org.apache.hadoop</groupId>
-                            <artifactId>hadoop-yarn-common</artifactId>
-                        </exclusion>
-                        <exclusion>
-                            <groupId>org.apache.hadoop</groupId>
-                            <artifactId>hadoop-yarn-server-web-proxy</artifactId>
-                        </exclusion>
-                    </exclusions>
-                </dependency>
-
-            </dependencies>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-shade-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>with-granula</id>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>shade</goal>
-                                </goals>
-                                <configuration>
-                                    <artifactSet>
-                                        <excludes>
-                                            <exclude>*:*:*:resources</exclude>
-                                            <exclude>org.apache.spark:spark-graphx_2.10</exclude>
-                                            <exclude>org.apache.spark:spark-yarn_2.10</exclude>
-                                            <exclude>org.apache.spark:spark-core_2.10</exclude>
-                                        </excludes>
-                                    </artifactSet>
-                                    <finalName>${project.artifactId}-${project.version}-granula</finalName>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-assembly-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>bin</id>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>single</goal>
-                                </goals>
-                                <configuration>
-                                    <descriptors>
-                                        <descriptor>src/main/assembly/bin-granula.xml</descriptor>
-                                    </descriptors>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
+    <!-- <profiles> -->
+    <!--     <profile> -->
+    <!--         <id>granula</id> -->
+    <!--         <activation> -->
+    <!--             <activeByDefault>true</activeByDefault> -->
+    <!--         </activation> -->
+    <!--         <dependencies> -->
+    <!---->
+    <!--             <dependency> -->
+    <!--                 <groupId>org.apache.spark</groupId> -->
+    <!--                 <artifactId>spark-core_2.10-granula</artifactId> -->
+    <!--                 <version>${spark.version}</version> -->
+    <!--             </dependency> -->
+    <!--             <dependency> -->
+    <!--                 <groupId>org.apache.spark</groupId> -->
+    <!--                 <artifactId>spark-graphx_2.10-granula</artifactId> -->
+    <!--                 <version>${spark.version}</version> -->
+    <!--             </dependency> -->
+    <!--             <dependency> -->
+    <!--                 <groupId>org.apache.spark</groupId> -->
+    <!--                 <artifactId>spark-yarn_2.10-granula</artifactId> -->
+    <!--                 <version>${spark.version}</version> -->
+    <!--                 <exclusions> -->
+    <!--                     <exclusion> -->
+    <!--                         <groupId>org.apache.hadoop</groupId> -->
+    <!--                         <artifactId>hadoop-client</artifactId> -->
+    <!--                     </exclusion> -->
+    <!--                     <exclusion> -->
+    <!--                         <groupId>org.apache.hadoop</groupId> -->
+    <!--                         <artifactId>hadoop-yarn-api</artifactId> -->
+    <!--                     </exclusion> -->
+    <!--                     <exclusion> -->
+    <!--                         <groupId>org.apache.hadoop</groupId> -->
+    <!--                         <artifactId>hadoop-yarn-client</artifactId> -->
+    <!--                     </exclusion> -->
+    <!--                     <exclusion> -->
+    <!--                         <groupId>org.apache.hadoop</groupId> -->
+    <!--                         <artifactId>hadoop-yarn-common</artifactId> -->
+    <!--                     </exclusion> -->
+    <!--                     <exclusion> -->
+    <!--                         <groupId>org.apache.hadoop</groupId> -->
+    <!--                         <artifactId>hadoop-yarn-server-web-proxy</artifactId> -->
+    <!--                     </exclusion> -->
+    <!--                 </exclusions> -->
+    <!--             </dependency> -->
+    <!---->
+    <!--         </dependencies> -->
+    <!--         <build> -->
+    <!--             <plugins> -->
+    <!--                 <plugin> -->
+    <!--                     <groupId>org.apache.maven.plugins</groupId> -->
+    <!--                     <artifactId>maven-shade-plugin</artifactId> -->
+    <!--                     <executions> -->
+    <!--                         <execution> -->
+    <!--                             <id>with-granula</id> -->
+    <!--                             <phase>package</phase> -->
+    <!--                             <goals> -->
+    <!--                                 <goal>shade</goal> -->
+    <!--                             </goals> -->
+    <!--                             <configuration> -->
+    <!--                                 <artifactSet> -->
+    <!--                                     <excludes> -->
+    <!--                                         <exclude>*:*:*:resources</exclude> -->
+    <!--                                         <exclude>org.apache.spark:spark-graphx_2.10</exclude> -->
+    <!--                                         <exclude>org.apache.spark:spark-yarn_2.10</exclude> -->
+    <!--                                         <exclude>org.apache.spark:spark-core_2.10</exclude> -->
+    <!--                                     </excludes> -->
+    <!--                                 </artifactSet> -->
+    <!--                                 <finalName>${project.artifactId}-${project.version}-granula</finalName> -->
+    <!--                             </configuration> -->
+    <!--                         </execution> -->
+    <!--                     </executions> -->
+    <!--                 </plugin> -->
+    <!--                 <plugin> -->
+    <!--                     <groupId>org.apache.maven.plugins</groupId> -->
+    <!--                     <artifactId>maven-assembly-plugin</artifactId> -->
+    <!--                     <executions> -->
+    <!--                         <execution> -->
+    <!--                             <id>bin</id> -->
+    <!--                             <phase>package</phase> -->
+    <!--                             <goals> -->
+    <!--                                 <goal>single</goal> -->
+    <!--                             </goals> -->
+    <!--                             <configuration> -->
+    <!--                                 <descriptors> -->
+    <!--                                     <descriptor>src/main/assembly/bin-granula.xml</descriptor> -->
+    <!--                                 </descriptors> -->
+    <!--                             </configuration> -->
+    <!--                         </execution> -->
+    <!--                     </executions> -->
+    <!--                 </plugin> -->
+    <!--             </plugins> -->
+    <!--         </build> -->
+    <!--     </profile> -->
+    <!-- </profiles> -->
 
     <build>
         <plugins>

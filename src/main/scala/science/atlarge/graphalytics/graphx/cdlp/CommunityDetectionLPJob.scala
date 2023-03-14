@@ -101,7 +101,7 @@ class CommunityDetectionLPJob(graphVertexPath : String, graphEdgePath : String, 
 	/**
 	 * @return name of the GraphX job
 	 */
-	override def getAppName: String = "Community Detection"
+	override def getAppName: String = "application-Community-Detection"
 
 	/**
 	 * @return true iff the input is valid

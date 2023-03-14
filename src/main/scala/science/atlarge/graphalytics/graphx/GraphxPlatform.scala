@@ -39,7 +39,7 @@ import science.atlarge.graphalytics.execution.{PlatformExecutionException, RunSp
 import science.atlarge.graphalytics.granula.GranulaAwarePlatform
 import science.atlarge.graphalytics.graphx.bfs.BreadthFirstSearchJob
 import science.atlarge.graphalytics.graphx.cdlp.CommunityDetectionLPJob
-import science.atlarge.graphalytics.graphx.ffm.ForestFireModelJob
+// import science.atlarge.graphalytics.graphx.ffm.ForestFireModelJob
 import science.atlarge.graphalytics.graphx.lcc.LocalClusteringCoefficientJob
 import science.atlarge.graphalytics.graphx.pr.PageRankJob
 import science.atlarge.graphalytics.graphx.sssp.SingleSourceShortestPathJob
@@ -131,13 +131,16 @@ class GraphxPlatform extends GranulaAwarePlatform {
 			val vertexPath = runtimeSetup.getLoadedGraph.getVertexPath
 			val edgePath = runtimeSetup.getLoadedGraph.getEdgePath
 			val outPath = s"$hdfsDirectory/$getPlatformName/output/${benchmarkRun.getId}-${algorithmType.name}-${graph.getName}"
+			println(s"Vertex path: $vertexPath")
+			println(s"Edge path: $edgePath")
+			println(s"Output path: $outPath")
 			val isDirected = graph.isDirected
 
 			val job = algorithmType match {
 				case Algorithm.BFS => new BreadthFirstSearchJob(vertexPath, edgePath, isDirected, outPath, parameters)
 				case Algorithm.CDLP => new CommunityDetectionLPJob(vertexPath, edgePath, isDirected, outPath, parameters)
 				case Algorithm.WCC => new WeaklyConnectedComponentsJob(vertexPath, edgePath, isDirected, outPath)
-				case Algorithm.FFM => new ForestFireModelJob(vertexPath, edgePath, isDirected, outPath, parameters)
+				// case Algorithm.FFM => new ForestFireModelJob(vertexPath, edgePath, isDirected, outPath, parameters)
 				case Algorithm.LCC => new LocalClusteringCoefficientJob(vertexPath, edgePath, isDirected, outPath)
 				case Algorithm.PR => new PageRankJob(vertexPath, edgePath, isDirected, outPath, parameters)
 				case Algorithm.SSSP => new SingleSourceShortestPathJob(vertexPath, edgePath, isDirected, outPath, parameters)
@@ -161,7 +164,6 @@ class GraphxPlatform extends GranulaAwarePlatform {
 				throw new IllegalArgumentException("Invalid parameters for job")
 			}
 
-
 		} catch {
 			case e : Exception => throw new PlatformExecutionException("GraphX job failed with exception: ", e)
 		}
@@ -174,7 +176,7 @@ class GraphxPlatform extends GranulaAwarePlatform {
 
 		val benchmarkRun = benchmarkSpec.getBenchmarkRun
 		val benchmarkSetup = benchmarkSpec.getBenchmarkRunSetup
-		GraphXLogger.collectYarnLogs(benchmarkSetup.getLogDir)
+		// GraphXLogger.collectYarnLogs(benchmarkSetup.getLogDir)
 
 		val logs = FileUtil.readFile(benchmarkSetup.getLogDir.resolve("platform").resolve("driver.logs"))
 
@@ -226,19 +228,24 @@ class GraphxPlatform extends GranulaAwarePlatform {
 	def terminate(benchmarkSpec: RunSpecification): Unit = {
 		val benchmarkSetup = benchmarkSpec.getBenchmarkRunSetup
 		val driverPath: Path = benchmarkSetup.getLogDir.resolve("platform").resolve("driver.logs-graphaltyics")
+		LOG.info(s"Driver path logs: $driverPath")
 		val appIds: util.List[String] = GraphXLogger.getYarnAppIds(driverPath)
+		LOG.info(appIds)
 
 		for (appId <- appIds) {
 			LOG.info("Terminating Yarn job: " + appId)
 			val args: Array[String] = Array("application", "-kill", appId)
 			try {
-				val applicationCLI: ApplicationCLI = new ApplicationCLI
+				val applicationCLI = new ApplicationCLI()
 				applicationCLI.setSysOutPrintStream(System.out)
 				applicationCLI.setSysErrPrintStream(System.err)
-				val success: Int = ToolRunner.run(applicationCLI, args)
+				val success = ToolRunner.run(applicationCLI, args)
 				applicationCLI.stop()
-				if (success == 0) LOG.info("Terminated Yarn job: " + appId)
-				else throw new GraphalyticsExecutionException("Failed to terminate task: signal=" + success)
+				if (success == 0) {
+					LOG.info("Terminated Yarn job: " + appId)
+				} else {
+					throw new GraphalyticsExecutionException("Failed to terminate task: signal=" + success)
+				}
 			} catch {
 				case e: Exception =>
 					throw new GraphalyticsExecutionException("Failed to terminate task", e)

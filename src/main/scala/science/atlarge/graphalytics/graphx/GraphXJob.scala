@@ -42,10 +42,14 @@ abstract class GraphXJob[VD : ClassTag, ED : ClassTag](graphVertexPath : String,
 	def runJob() = {
 		// Set up the Spark context for use in the GraphX job.
 		val sparkConfiguration = new SparkConf()
-		sparkConfiguration.setAppName(s"GraphalyticsBenchmark: $getAppName")
-		sparkConfiguration.setMaster("yarn-client")
-		sparkConfiguration.set("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
-		sparkConfiguration.set("spark.ui.showConsoleProgress", "false")
+			.setAppName(s"GraphalyticsBenchmark: $getAppName")
+			.setMaster("yarn")
+			.set("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
+			.set("spark.ui.showConsoleProgress", "false")
+			.set("spark.submit.deployMode", "client")
+			.setJars(Seq("/Users/gm/vu/thesis/benchmark/run/graphalytics-1.6.0-SNAPSHOT-graphx-0.2-SNAPSHOT/lib/graphalytics-platforms-graphx-0.2-SNAPSHOT-default.jar"))
+
+//		sparkConfiguration.setJars(SparkContext.jarOfObject(this))
 
 		val sparkContext = new SparkContext(sparkConfiguration)
 
@@ -79,8 +83,9 @@ abstract class GraphXJob[VD : ClassTag, ED : ClassTag](graphVertexPath : String,
 	def executeOnGraph(vertexData : RDD[String], edgeData : RDD[String]) : Graph[VD, ED] = {
 		// Parse the vertex and edge data
 		val graph = GraphLoader.loadGraph(vertexData, edgeData,
-			parseVertexData, parseEdgeData,isDirected).cache()
+			parseVertexData, parseEdgeData, isDirected).cache()
 
+		print(graph)
 		println("Vertex count: " + graph.vertices.count())
 		println("Edge count: " + graph.edges.count())
 		println("ProcessGraph StartTime " + System.currentTimeMillis())
