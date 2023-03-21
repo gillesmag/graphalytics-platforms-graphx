@@ -110,7 +110,7 @@ class BreadthFirstSearchJob(graphVertexPath : String, graphEdgePath : String, is
 	/**
 	 * @return name of the GraphX job
 	 */
-	def getAppName = "application-Breadth-First-Search"
+	def getAppName = "Breadth-First Search"
 
 	/**
 	 * Convert a graph to the output format of this job.

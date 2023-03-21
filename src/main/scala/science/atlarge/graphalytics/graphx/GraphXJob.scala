@@ -47,9 +47,7 @@ abstract class GraphXJob[VD : ClassTag, ED : ClassTag](graphVertexPath : String,
 			.set("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
 			.set("spark.ui.showConsoleProgress", "false")
 			.set("spark.submit.deployMode", "client")
-			.setJars(Seq("/Users/gm/vu/thesis/benchmark/run/graphalytics-1.6.0-SNAPSHOT-graphx-0.2-SNAPSHOT/lib/graphalytics-platforms-graphx-0.2-SNAPSHOT-default.jar"))
-
-//		sparkConfiguration.setJars(SparkContext.jarOfObject(this))
+			.setJars(Seq("/Users/gm/vu/thesis/benchmark/run/graphalytics-1.9.0-SNAPSHOT-graphx-0.2-SNAPSHOT/lib/graphalytics-platforms-graphx-0.2-SNAPSHOT-default.jar"))
 
 		val sparkContext = new SparkContext(sparkConfiguration)
 
@@ -85,7 +83,6 @@ abstract class GraphXJob[VD : ClassTag, ED : ClassTag](graphVertexPath : String,
 		val graph = GraphLoader.loadGraph(vertexData, edgeData,
 			parseVertexData, parseEdgeData, isDirected).cache()
 
-		print(graph)
 		println("Vertex count: " + graph.vertices.count())
 		println("Edge count: " + graph.edges.count())
 		println("ProcessGraph StartTime " + System.currentTimeMillis())

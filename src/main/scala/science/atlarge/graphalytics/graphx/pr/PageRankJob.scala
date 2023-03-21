@@ -105,7 +105,7 @@ class PageRankJob(graphVertexPath : String, graphEdgePath : String, isDirected :
 	/**
 	  * @return name of the GraphX job
 	  */
-	override def getAppName: String = "application-PageRank"
+	override def getAppName: String = "PageRank"
 
 	/**
 	  * @return true iff the input is valid

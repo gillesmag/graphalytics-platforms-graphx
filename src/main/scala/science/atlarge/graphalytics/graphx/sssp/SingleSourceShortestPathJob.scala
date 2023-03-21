@@ -137,5 +137,5 @@ class SingleSourceShortestPathJob(graphVertexPath : String, graphEdgePath : Stri
 	/**
 	 * @return name of the GraphX job
 	 */
-	def getAppName = "application-Single-Source-Shortests-Path"
+	def getAppName = "Single Source Shortest Path"
 }

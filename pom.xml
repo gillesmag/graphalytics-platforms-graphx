@@ -16,7 +16,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <graphalytics.version>1.6.0-SNAPSHOT</graphalytics.version>
+        <graphalytics.version>1.9.0-SNAPSHOT</graphalytics.version>
         <platform.name>graphx</platform.name>
         <hadoop.version>3.2.4</hadoop.version>
         <scala.binary.version>2.12</scala.binary.version>
@@ -39,18 +39,6 @@
             <artifactId>scala-library</artifactId>
             <version>${scala.version}</version>
         </dependency>
-
-        <!-- <dependency> -->
-        <!--     <groupId>org.scala-lang</groupId> -->
-        <!--     <artifactId>scala-reflect</artifactId> -->
-        <!--     <version>${scala.version}</version> -->
-        <!-- </dependency> -->
-        <!---->
-        <!-- <dependency> -->
-        <!--     <groupId>org.scala-lang</groupId> -->
-        <!--     <artifactId>scala-compiler</artifactId> -->
-        <!--     <version>${scala.version}</version> -->
-        <!-- </dependency> -->
 
         <dependency>
             <groupId>org.scalatest</groupId>
@@ -240,7 +228,6 @@
 
     <build>
         <plugins>
-
 
             <plugin><!-- Scala compiler settings -->
                 <groupId>net.alchim31.maven</groupId>

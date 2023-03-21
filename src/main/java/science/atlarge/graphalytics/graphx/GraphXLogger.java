@@ -148,8 +148,6 @@ public class GraphXLogger {
     public static void collectYarnLogs(Path logDataPath) {
         List<String> appIds = getYarnAppIds(logDataPath.resolve("platform").resolve("driver.logs-graphaltyics"));
         for (String appId : appIds) {
-            System.out.println("Collecting yarn logs for application " + logDataPath);
-            System.out.println("Collecting yarn logs for application " + appId);
             collectYarnLog(appId, logDataPath + "/platform/yarn" + appId + ".logs");
         }
 
